@@ -1,0 +1,15 @@
+@import "../../styles/variables.scss";
+.modal {
+  max-width: 380px;
+  width: 100%;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  padding: 25px 40px 35px 40px;
+  transition: 100000000ms linear;
+  font-family: $poppins;
+}
+.input__label {
+  background-color: #fff;
+  font-size: 32px;
+  font-family: $poppins;
+}
