@@ -1,24 +1,34 @@
 import styles from "./ChangeAdmin.module.scss";
 import Modal from "../../Modal/Modal";
 import React, { Component, useState, useEffect } from "react";
-import { postManager } from "../../../helpers/api.js";
+import {
+  postManager,
+  putManager,
+  deleteManager,
+} from "../../../helpers/api.js";
 import classnames from "classnames";
 
-const ChangeAdmin = ({ isOpen, handleClose }) => {
+const ChangeAdmin = ({ isOpen, handleClose, id }) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  console.log(isOpen);
+  const [role, setRole] = useState("");
+  const userId = id;
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const managerData = new FormData();
-    managerData.append("name", name);
-    managerData.append("description", desc);
-    managerData.append("login", login);
-    managerData.append("password", password);
-    postManager(managerData);
+    const data = new FormData();
+    data.append("name", name);
+    data.append("description", desc);
+    data.append("login", login);
+    data.append("password", password);
+    data.append("role", role);
+    await putManager(data, userId);
   };
+  const handleDelete = async () => {
+    await deleteManager(id);
+  };
+
   return (
     <div>
       {isOpen && (
@@ -70,8 +80,12 @@ const ChangeAdmin = ({ isOpen, handleClose }) => {
               </div>
               <label className={styles.input__label}>
                 <p className={styles.input__label}>Role:</p>
-                <select defaultValue={'DEFAULT'} className={classnames(styles.input, styles.select)}>
-                  <option value="DEFAULT" disabled>
+                <select
+                  defaultValue={""}
+                  className={classnames(styles.input, styles.select)}
+                  required
+                >
+                  <option value="" disabled>
                     manager/caller/confirmator
                   </option>
                   <option value="manager">Manager</option>
@@ -81,8 +95,9 @@ const ChangeAdmin = ({ isOpen, handleClose }) => {
               </label>
               <div className={styles.button__wrapper}>
                 <button
+                  type="button"
                   className={styles.input__delete}
-                  // onClick={alert("Ще не підключений бекенд")}
+                  onClick={handleDelete}
                 >
                   Delete
                 </button>

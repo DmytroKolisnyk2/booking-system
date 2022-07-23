@@ -12,11 +12,8 @@
   margin-top: 20px;
   font-family: $poppins;
   font-size: 20px;
-  // width: 80%;
-  margin: 26px auto 5px auto;
-
+  margin: 26px auto 13px auto;
   text-align-last: left;
-  // text-align: center;
 }
 
 .exit {
@@ -47,15 +44,12 @@
 .form {
   margin: 0 auto;
 }
-// .input__bottom {
-//   display: inline-block;
-//   width: 90%;
-// }
+
 .input__submit {
   width: 130px;
   height: 50px;
   border-radius: 10px;
-  margin: 30px auto;
+  margin: 10px;
   font-family: $poppins;
   color: #fff;
   background-color: $blue;
@@ -69,55 +63,27 @@
     background-color: #575aaf;
   }
 }
-
-.input__block {
+.button__wrapper {
   display: flex;
-  margin: 0 auto;
-  justify-content: space-between;
+  justify-content: center;
+  margin: 25px;
 }
-.input__block > .input__label {
-  margin: 0;
-  width: 47%;
-}
-
-.select {
-  background-color: $grey;
-  transition: all 1s;
-  width: 100%;
+.input__delete {
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  font-family: $poppins;
+  color: #fff;
+  background-color: $red;
+  display: block;
   cursor: pointer;
-  display: grid;
-  grid-template-areas: "select";
-}
-.select::after{
-  content: "../";
-  justify-self: end;
-  width: 0.8em;
-  height: 0.5em;
-  background-color: #777;
-  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-}
-
-.select {
-  -moz-appearance: none;
+  transition: all 1s;
   text-align: center;
-  -webkit-appearance: none;
-  appearance: none;
-  background-image: url("../../../img/down-arrow.png");
-  background-repeat: no-repeat, repeat;
-  background-position: right 0.7em top 55%, 0 0;
   align-items: center;
-  transition: all 0.5s;
-}
-.select::-ms-expand {
-  display: none;
-}
-.select:hover {
-  border-color: #888;
-}
-.select:focus {
-  outline: none;
-}
-
-.select option {
-  font-weight: normal;
+  font-size: 20px;
+  margin: 10px;
+  &:hover {
+    background-color: #e83e3e;
+  }
 }

@@ -9,16 +9,17 @@ const NewManager = ({ isOpen, handleClose }) => {
   const [desc, setDesc] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-
+  const [role, setRole] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const managerData = new FormData();
-    managerData.append("name", name);
-    managerData.append("description", desc);
-    managerData.append("login", login);
-    managerData.append("password", password);
-    postManager(managerData);
+    const data = new FormData();
+    data.append("name", name);
+    data.append("description", desc);
+    data.append("login", login);
+    data.append("password", password);
+    data.append("role", role);
+    postManager(data);
   };
   const erenSubmit = async (event) => {
     event.preventDefault();
@@ -32,6 +33,10 @@ const NewManager = ({ isOpen, handleClose }) => {
     managerData.append("password", "8702856EJ");
     postManager(managerData);
   };
+  const handleSetRole = (e) => {
+    setRole(e.currentTarget.value);
+  };
+
   return (
     <div>
       {isOpen && (
@@ -45,6 +50,7 @@ const NewManager = ({ isOpen, handleClose }) => {
                   className={styles.input}
                   type="text"
                   name="name"
+                  required
                   placeholder="Name"
                   onChange={(e) => setName(e.currentTarget.value)}
                 />
@@ -56,6 +62,7 @@ const NewManager = ({ isOpen, handleClose }) => {
                   type="text"
                   placeholder="Telegram username"
                   name="description"
+                  required
                   onChange={(e) => setDesc(e.currentTarget.value)}
                 />
               </label>
@@ -67,6 +74,7 @@ const NewManager = ({ isOpen, handleClose }) => {
                     type="text"
                     name="login"
                     placeholder="Login"
+                    required
                     onChange={(e) => setLogin(e.currentTarget.value)}
                   />
                 </label>
@@ -77,19 +85,25 @@ const NewManager = ({ isOpen, handleClose }) => {
                     type="password"
                     name="password"
                     placeholder="Password"
+                    required
                     onChange={(e) => setPassword(e.currentTarget.value)}
                   />
                 </label>
               </div>
               <label className={styles.input__label}>
                 <p className={styles.input__label}>Role:</p>
-                <select defaultValue={'DEFAULT'}  className={classnames(styles.input, styles.select)}>
-                  <option value="DEFAULT" disabled>
+                <select
+                  defaultValue={""}
+                  className={classnames(styles.input, styles.select)}
+                  onChange={(e) => handleSetRole(e)}
+                  required
+                >
+                  <option value="" disabled hidden>
                     manager/caller/confirmator
                   </option>
-                  <option value="Option 1">Option 1</option>
-                  <option value="Option 2">Option 2</option>
-                  <option value="Option 3">Option 3</option>
+                  <option value="manager">Manager</option>
+                  <option value="caller">Caller</option>
+                  <option value="confirmator">Confirmator</option>
                 </select>
               </label>
               <input

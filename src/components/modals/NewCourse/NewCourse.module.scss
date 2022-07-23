@@ -12,11 +12,8 @@
   margin-top: 20px;
   font-family: $poppins;
   font-size: 20px;
-  // width: 80%;
-  margin: 26px auto 5px auto;
-
+  margin: 26px auto 13px auto;
   text-align-last: left;
-  // text-align: center;
 }
 
 .exit {
@@ -68,56 +65,4 @@
   &:hover {
     background-color: #575aaf;
   }
-}
-
-.input__block {
-  display: flex;
-  margin: 0 auto;
-  justify-content: space-between;
-}
-.input__block > .input__label {
-  margin: 0;
-  width: 47%;
-}
-
-.select {
-  background-color: $grey;
-  transition: all 1s;
-  width: 100%;
-  cursor: pointer;
-  display: grid;
-  grid-template-areas: "select";
-}
-.select::after{
-  content: "../";
-  justify-self: end;
-  width: 0.8em;
-  height: 0.5em;
-  background-color: #777;
-  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-}
-
-.select {
-  -moz-appearance: none;
-  text-align: center;
-  -webkit-appearance: none;
-  appearance: none;
-  background-image: url("../../../img/down-arrow.png");
-  background-repeat: no-repeat, repeat;
-  background-position: right 0.7em top 55%, 0 0;
-  align-items: center;
-  transition: all 0.5s;
-}
-.select::-ms-expand {
-  display: none;
-}
-.select:hover {
-  border-color: #888;
-}
-.select:focus {
-  outline: none;
-}
-
-.select option {
-  font-weight: normal;
 }
