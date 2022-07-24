@@ -19,7 +19,7 @@ class App extends Component {
         {/* <BgWrapper title="Manager">
         </BgWrapper> */}
         <Routes>
-          <Route path={path.test} element={<HomePage />} />
+          <Route path={path.home} element={<HomePage />} />
         </Routes>
         <Footer />
       </>

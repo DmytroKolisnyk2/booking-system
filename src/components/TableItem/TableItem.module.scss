@@ -1,0 +1,93 @@
+@import "../../styles//variables.scss";
+.item {
+    padding: 12px 66px;
+    font-family: $poppins;
+    color: $font-black;
+    font-weight: 400;
+    text-align: center;
+    font-size: 24px;
+    border-collapse: collapse;
+    border: 1.5px solid #000;
+    cursor: pointer;
+    position: relative;
+    &:nth-last-child(-n + 15) {
+        border-right: none;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 999;
+            display: block;
+            width: 53px;
+            height: 59px;
+            background-color: inherit;
+        }
+    }
+    &:nth-child(-n + 15) {
+        border-left: none;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            display: block;
+            width: 53px;
+            height: 59px;
+            background-color: inherit;
+        }
+    }
+    &:nth-child(15n + 1) {
+            border-top: none;
+            &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -3px;
+            z-index: 999;
+            display: block;
+            width: 59px;
+            height: 21px;
+            background-color: inherit;
+        }
+    }
+        &:nth-last-child(15n + 1) {
+            border-bottom: none;
+            &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: -3px;
+            z-index: 999;
+            display: block;
+            width: 59px;
+            height: 21px;
+            background-color: inherit;
+        }
+    }
+}
+
+.grayColor {
+    background-color: $tableItem-grayColor;
+    transition: 200ms linear;
+    &:hover {
+        background-color: $tableItem-grayHover;
+    }
+}
+
+.greenColor {
+    background-color: $tableItem-greenColor;
+    transition: 200ms linear;
+    &:hover {
+        background-color: $tableItem-greenHover;
+    }
+}
+
+.orangeColor {
+    background-color: $tableItem-orangeColor;
+    transition: 200ms linear;
+    &:hover {
+        background-color: $tableItem-orangeHover;
+    }
+}
