@@ -29,7 +29,7 @@ const postCourse = (credentials) => {
 };
 const postGroup = (credentials) => {
   return axios
-    .post("/register_course", credentials)
+    .post("/register_group", credentials)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };

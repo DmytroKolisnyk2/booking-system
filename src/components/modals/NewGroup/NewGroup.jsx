@@ -1,5 +1,6 @@
 import styles from "./NewGroup.module.scss";
 import Modal from "../../Modal/Modal";
+import Select from "../../Select/Select";
 import React, { Component, useState, useEffect } from "react";
 import { getCourses, postGroup } from "../../../helpers/api.js";
 import DatePicker from "react-datepicker";
@@ -15,11 +16,12 @@ const NewGroup = ({ isOpen, handleClose }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData();
-    data.append("timetable", schedule);
-    data.append("start_date", startDate);
     data.append("course_id", courseId);
     data.append("name", name);
-    postGroup(data);
+    data.append("timetable", schedule);
+    data.append("start_date", startDate);
+    // data.append("start_date", startDate);
+    await postGroup(data);
   };
   const getCoursesData = async () => {
     const res = await getCourses()
@@ -28,24 +30,6 @@ const NewGroup = ({ isOpen, handleClose }) => {
     setCourses(res);
     return res;
   };
-  // const courses = [
-  //   {
-  //     description: "test",
-  //     id: 1,
-  //     name: "New Course",
-  //   },
-  //   {
-  //     description: "test",
-  //     id: 3,
-  //     name: "Factorio Guides",
-  //   },
-  //   {
-  //     description: "",
-  //     id: 4,
-  //     name: "Wed 18:00-19:30, Sat 10:00-12:30",
-  //   },
-  // ];
-
   return (
     <div>
       {isOpen && (
@@ -55,6 +39,13 @@ const NewGroup = ({ isOpen, handleClose }) => {
             <form onSubmit={handleSubmit} className={styles.form}>
               <label className={styles.input__label}>
                 <p className={styles.input__label}>Course:</p>
+                {/* <Select
+                  handler={setCourseId}
+                  onClick={(e) => getCoursesData()}
+                  getData={getCoursesData}
+                  label="Group name:"
+                  defaultValue="Select group"
+                /> */}
                 <select
                   defaultValue={""}
                   className={classnames(styles.input, styles.select)}
@@ -66,7 +57,11 @@ const NewGroup = ({ isOpen, handleClose }) => {
                     Select group
                   </option>
                   {courses.map((i) => {
-                    return <option value={i.id} key={i.id}>{i.name}</option>;
+                    return (
+                      <option value={i.id} key={i.id}>
+                        {i.name}
+                      </option>
+                    );
                   })}
                 </select>
               </label>

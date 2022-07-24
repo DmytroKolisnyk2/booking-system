@@ -85,7 +85,7 @@ const ChangeAdmin = ({ isOpen, handleClose, id }) => {
                   className={classnames(styles.input, styles.select)}
                   required
                 >
-                  <option value="" disabled>
+                  <option value="" disabled hidden>
                     manager/caller/confirmator
                   </option>
                   <option value="manager">Manager</option>

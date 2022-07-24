@@ -5,6 +5,7 @@ import NewCourse from "../../components/modals/NewCourse/NewCourse";
 import ChangeCourse from "../../components/modals/ChangeCourse/ChangeCourse";
 import NewGroup from "../../components/modals/NewGroup/NewGroup";
 import ChangeGroup from "../../components/modals/ChangeGroup/ChangeGroup";
+import NewAppointment from "../../components/modals/NewAppointment/NewAppointment";
 import styles from "./ModalsPage.module.scss";
 
 const ModalsPage = () => {
@@ -17,6 +18,7 @@ const ModalsPage = () => {
   const [isChangeCourse, setIsChangeCourse] = useState(false);
   const [isNewGroup, setIsNewGroup] = useState(false);
   const [isChangeGroup, setIsChangeGroup] = useState(false);
+  const [isNewAppointment, setIsNewAppointment] = useState(false);
   const handleClose = (e) => {
     if (e === 0) {
       setIsOpen(!isOpen);
@@ -28,8 +30,10 @@ const ModalsPage = () => {
       setIsChangeCourse(!isChangeCourse);
     } else if (e === 4) {
       setIsNewGroup(!isNewGroup);
-    }else if (e === 5) {
+    } else if (e === 5) {
       setIsChangeGroup(!isChangeGroup);
+    } else if (e === 6) {
+      setIsNewAppointment(!isNewAppointment);
     }
   };
   return (
@@ -108,7 +112,11 @@ const ModalsPage = () => {
       >
         Open new group
       </button>
-      <NewGroup isOpen={isNewGroup} handleClose={() => handleClose(4)} id={courseId} />
+      <NewGroup
+        isOpen={isNewGroup}
+        handleClose={() => handleClose(4)}
+        id={courseId}
+      />
       <button
         onClick={() => {
           isChangeGroup ? setIsChangeGroup(false) : setIsChangeGroup(true);
@@ -116,7 +124,23 @@ const ModalsPage = () => {
       >
         Open change group
       </button>
-      <ChangeGroup isOpen={isChangeGroup} handleClose={() => handleClose(5)} id={groupId} />
+      <ChangeGroup
+        isOpen={isChangeGroup}
+        handleClose={() => handleClose(5)}
+        id={groupId}
+      />
+      <button
+        onClick={() => {
+          isNewAppointment ? setIsNewAppointment(false) : setIsNewAppointment(true);
+        }}
+      >
+        Open new appointment
+      </button>
+      <NewAppointment
+        isOpen={isNewAppointment}
+        handleClose={() => handleClose(6)}
+        id={groupId}
+      />
     </div>
   );
 };

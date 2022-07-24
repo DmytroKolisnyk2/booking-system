@@ -87,8 +87,10 @@
   transition: all 1s;
   width: 100%;
   cursor: pointer;
+  text-align: center;
   display: grid;
   grid-template-areas: "select";
+  text-align: center;
 }
 .select::after{
   content: "";

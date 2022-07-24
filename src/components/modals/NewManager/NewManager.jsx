@@ -1,6 +1,6 @@
 import styles from "./NewManager.module.scss";
 import Modal from "../../Modal/Modal";
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { postManager } from "../../../helpers/api.js";
 import classnames from "classnames";
 
