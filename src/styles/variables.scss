@@ -3,6 +3,14 @@
 
 $poppins: "Poppins", sans-serif;
 
+$content-width: 1240px;
+
+$main-transition: linear 200ms;
+
+%hover-shadow {
+  box-shadow: -3px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 // colors
 $font-black: #000;
 $footer-black: #454545;
