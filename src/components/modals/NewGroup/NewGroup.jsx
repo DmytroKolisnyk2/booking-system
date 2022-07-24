@@ -3,7 +3,7 @@ import Modal from "../../Modal/Modal";
 import Select from "../../Select/Select";
 import React, { Component, useState, useEffect } from "react";
 import { getCourses, postGroup } from "../../../helpers/api.js";
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import classnames from "classnames";
 
 const NewGroup = ({ isOpen, handleClose }) => {
