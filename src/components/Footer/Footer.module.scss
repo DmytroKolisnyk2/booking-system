@@ -1,0 +1,80 @@
+@import "../../styles/variables.scss";
+
+.footer {
+  background-color: $footer-black;
+  padding: 36px 20px;
+}
+.footerContentWrapper {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footerEmail,
+.footerLink,
+.footerPhone,
+.infoText {
+  color: $font-white;
+  font-size: 15px;
+  font-family: $poppins;
+  font-weight: 400;
+}
+.textWrapper {
+  padding-top: 18px;
+}
+.footerEmail,
+.footerPhone {
+  text-align: center;
+}
+.footerEmail {
+  margin-bottom: 9px;
+}
+.footerPhone {
+  margin-bottom: 38px;
+}
+.footerImg {
+  // width: 273px;
+}
+.footerLink {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -95px;
+    transform: translateY(-50%);
+    display: block;
+    width: 3px;
+    height: 120px;
+    background-color: $font-white;
+  }
+}
+.infoText {
+  position: relative;
+  &::after {
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%);
+    content: "";
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: $font-white;
+    border-radius: 50%;
+  }
+  &:nth-last-child(1) {
+    &::after {
+      display: none;
+    }
+  }
+}
+.infoWrapper {
+  width: 515px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
