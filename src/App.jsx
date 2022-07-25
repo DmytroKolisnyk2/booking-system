@@ -4,13 +4,15 @@ import path from "./helpers/routerPath.json";
 
 import HomePage from "./pages/HomePage/HomePage";
 
-
+import SuperAdministratorPage from "./pages/SuperAdministratorPage/SuperAdministratorPage"
 class App extends Component {
   render() {
     return (
-      <Routes>
+      <Routes> 
+        <Route path={path.superadmin} element={<SuperAdministratorPage />} />
         <Route path={path.test} element={<HomePage />} />
       </Routes>
+      
     );
   }
 }

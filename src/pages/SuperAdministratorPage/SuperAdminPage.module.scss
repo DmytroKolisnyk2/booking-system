@@ -1,0 +1,45 @@
+@import "../../styles/App.scss";
+
+.main_wrapper {
+}
+
+.main_title {
+  font-family: $poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  color: $font-black;
+}
+.main_title::after{
+  width: 881px;
+  height: 2px;
+  background-color: #000000;
+  display: block;
+  content: "";
+  margin: 0 auto;
+  margin-top: 17px;
+  margin-bottom: 40px;
+}
+// .main_title::after{
+//    content: ;
+//     }
+
+.superadmin_wrapper {
+}
+
+.mini_title {
+    
+}
+
+.li_wrapper {
+}
+
+.li_wrapper_item {
+}
+.add_btn{
+   margin-bottom: 40px; 
+}
+.btn_wrapper {
+  margin-top: 56px;
+
+}

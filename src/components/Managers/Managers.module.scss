@@ -1,0 +1,37 @@
+@import "../../styles/App.scss";
+.mini_title {
+  font-family: $poppins;
+  color: #000;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.text_wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.ul_items {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 16px;
+//   background-image: url(../../img/pencil.png);
+//   background-size: 8px;
+//   background-repeat: no-repeat;
+//   background-position:center;
+//   background-color: #222;
+//   display: block;
+//   text-decoration: none;
+}
+.main_wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    margin: 0 auto;
+}
+.main_wrapper::after{
+   
+   
+    background-color: #000000;
+ 
+  
+  }
