@@ -1,3 +1,4 @@
+@import "../../styles/variables.scss";
 .Overlay {
   position: fixed;
   top: 0;
@@ -14,4 +15,92 @@
 .Modal {
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 24px);
+}
+
+.tableSection {
+  width: 100vw;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.table {
+  margin: 0 auto 61px auto;
+  border-collapse: collapse;
+  max-width: 1287px;
+  width: 100%;
+  border: 3px solid $font-black;
+  border-radius: 28px;
+  overflow: hidden;
+  display: grid;
+  grid-template: repeat(15, 58px) / repeat(7, 183px);
+  grid-auto-flow: column;
+}
+
+.wrapperDays {
+  max-width: 1287px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto 52px auto;
+}
+
+.day {
+  width: 183px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 3px solid $font-black;
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.dayTitle {
+  font-family: $poppins;
+  color: $font-black;
+  font-weight: 400;
+  font-size: 36px;
+}
+
+.verticalLine {
+  transform: rotate(90deg);
+  width: 63px;
+  height: 2px;
+  background-color: $font-black;
+}
+
+.wrapperTableButtons {
+  margin: 0 auto;
+  width: 835px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendarController {
+  width: 170px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto 49px auto;
+}
+
+.calendarControllerText {
+  font-family: $poppins;
+  color: $font-black;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.calendarControllerButton {
+  background-color: transparent;
+  font-size: 28px;
+  font-weight: 400;
+  font-family: $poppins;
+  position: relative;
+  top: -1px;
+  width: 17px;
+  height: 17px;
 }
