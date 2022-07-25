@@ -15,4 +15,9 @@ const TableItem = ({data, colorId}) => {
     return <li className={activeClassnames(colorId)}>{`${data}:00`}</li>;
 };
 
+TableItem.propTypes = {
+    data: PropTypes.number.isRequired,
+    colorId: PropTypes.number.isRequired,
+};
+
 export default TableItem;
