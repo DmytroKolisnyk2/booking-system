@@ -8,7 +8,7 @@ export default function Navigation({ links, user }) {
       {user && <p className={styles["role"]}>{user.role + ": " + user.name}</p>}
       <ul className={styles["list"]}>
         {links.map((item) => (
-          <li className={styles["list__item"]}>
+          <li key={item.path} className={styles["list__item"]}>
             <NavLink
               to={item.path}
               className={(navData) =>

@@ -5,6 +5,7 @@ import "./styles/App.scss";
 
 import path from "./helpers/routerPath.json";
 
+import ModalsPage from "./pages/ModalsPage/ModalsPage";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 
@@ -20,6 +21,7 @@ class App extends Component {
         </BgWrapper> */}
         <Routes>
           <Route path={path.home} element={<HomePage />} />
+          <Route path={path.modals} element={<ModalsPage />} />
         </Routes>
         <Footer />
       </>
