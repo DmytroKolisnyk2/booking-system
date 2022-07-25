@@ -1,6 +1,8 @@
 @import "../../styles//variables.scss";
 .item {
-    padding: 12px 66px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: $poppins;
     color: $font-black;
     font-weight: 400;
