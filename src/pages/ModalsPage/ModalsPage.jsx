@@ -37,7 +37,7 @@ const ModalsPage = () => {
     }
   };
   return (
-    <div>
+    <section>
       <div>
         <label>
           You will be editing manager with id {id}
@@ -141,7 +141,7 @@ const ModalsPage = () => {
         handleClose={() => handleClose(6)}
         id={groupId}
       />
-    </div>
+    </section>
   );
 };
 

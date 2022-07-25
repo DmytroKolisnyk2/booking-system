@@ -19,9 +19,9 @@ export default function Header() {
         user={{ name: "Марія", role: "Manager" }}
         links={[
           // { text: "Planning", path: "/planning" },
-          // { text: "Consultations", path: "/consultations" },
+          { text: "Home", path: "/" },
+          { text: "Modals", path: "/modals" },
           { text: "Call center", path: "/call-center" },
-          { text: "Confirmator", path: "/confirmator" },
           { text: "Administrators", path: "/administrators" },
         ]}
       />

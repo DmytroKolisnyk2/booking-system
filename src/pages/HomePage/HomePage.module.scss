@@ -1,24 +1,7 @@
 @import "../../styles/variables.scss";
-.Overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.65);
-  z-index: 1200;
-}
-
-.Modal {
-  max-width: calc(100vw - 48px);
-  max-height: calc(100vh - 24px);
-}
-
 .tableSection {
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   margin: 0 auto;
   text-align: center;
   margin-bottom: 72px;
