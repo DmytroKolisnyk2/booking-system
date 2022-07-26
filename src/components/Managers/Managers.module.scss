@@ -4,34 +4,51 @@
   color: #000;
   font-weight: 400;
   font-size: 20px;
+  margin-bottom: 15px;
 }
 
-.text_wrapper{
-    display: flex;
-    justify-content: space-between;
+.text_wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 .ul_items {
+  display: flex;
+  justify-content: right;
+  border-bottom: 1px solid $font-black;
+  width: 203px;
+  align-items: center;
+  margin-right: 65px;
+  margin-left: 65px;
+}
+
+.ul_items::after {
+  content: "";
+  display: flex;
+  width: 14px;
+  height: 14px;
+  background-position: center;
+  background-image: url("../../img/pencil.png");
+  background-repeat: no-repeat;
+  background-size: 8px 8px;
+  background-color: $font-black;
+  border-radius: 50%;
+}
+
+.main_wrapper {
+}
+.wrapper {
+  border-inline: 2px solid $font-black;
+
+  height: auto;
+
+  align-items: center;
+}
+.ul_items_text {
   font-family: "Poppins";
   font-weight: 400;
   font-size: 16px;
-//   background-image: url(../../img/pencil.png);
-//   background-size: 8px;
-//   background-repeat: no-repeat;
-//   background-position:center;
-//   background-color: #222;
-//   display: block;
-//   text-decoration: none;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 8px;
+  margin-top: 8px;
 }
-.main_wrapper{
-    display: flex;
-    justify-content: space-between;
-    width: 800px;
-    margin: 0 auto;
-}
-.main_wrapper::after{
-   
-   
-    background-color: #000000;
- 
-  
-  }

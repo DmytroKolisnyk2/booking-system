@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Button.module.scss";
 
-
 export default function Button({
   bottom,
   children,
@@ -13,7 +12,6 @@ export default function Button({
   margin,
   height,
   type,
-
 }) {
   const colorPalette = {
     white: "white",
@@ -32,10 +30,9 @@ export default function Button({
         width: width,
         backgroundColor: bgColorPalette[bgColor],
         color: colorPalette[color],
-        marginBottom:`${bottom}px`,
+        marginBottom: `${bottom}px`,
         margin: margin,
         height: height,
-     
       }}
       className={styles.button}
       type={type ? type : "button"}
@@ -44,11 +41,4 @@ export default function Button({
     </button>
   );
 }
-
-// Button.defaultProps = {
-//   width: 170,
-//   paddingLeft: 30,
-//   paddingRight: 30,
-//   height: 60,
-// };
 
