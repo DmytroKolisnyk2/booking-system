@@ -1,0 +1,77 @@
+@import "../../styles/App.scss";
+
+.main_wrapper {
+  margin-bottom: 60px;  
+  margin-top: 34px;
+}
+
+.main_title::after {
+  width: 881px;
+  height: 1px;
+  background-color: #000000;
+  display: block;
+  content: "";
+  margin: 0 auto;
+  margin-top: 17px;
+
+}
+// .main_title::after{
+//    content: ;
+//     }
+
+.superadmin_wrapper {
+}
+
+.mini_title {
+}
+
+.li_wrapper {
+}
+
+.li_wrapper_item {
+}
+.add_btn {
+  margin-bottom: 40px;
+}
+.btn_wrapper {
+  margin-top: 56px;
+}
+.text_wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 690px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.mini_title {
+  font-family: $poppins;
+  color: #000;
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+  
+}
+.main_title {
+  font-family: $poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  color: $font-black;
+  margin-bottom: 40px;
+}
+.main_wrapper2 {
+  display: flex;
+  justify-content: center;
+  width: 700px;
+  margin: 0 auto;
+
+}
+.mini_title1{
+  margin-right: 25px;
+  font-family: $poppins;
+  color: #000;
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+}
