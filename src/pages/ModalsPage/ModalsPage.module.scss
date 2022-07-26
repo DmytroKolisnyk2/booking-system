@@ -1,4 +1,6 @@
 @import "../../styles/variables.scss";
+// @import "../../../styles/reset.scss";
+
 .modal {
   max-width: 380px;
   width: 100%;
@@ -13,8 +15,7 @@
   font-size: 32px;
   font-family: $poppins;
 }
-@import "../../../styles/variables.scss";
-@import "../../../styles/reset.scss";
+
 .modal {
   width: 520px;
   max-height: 600px;
@@ -101,4 +102,7 @@
   &:hover {
     background-color: #e83e3e;
   }
+}
+button {
+  display: block;
 }

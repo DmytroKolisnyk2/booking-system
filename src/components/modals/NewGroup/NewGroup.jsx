@@ -1,118 +1,71 @@
-import styles from "./NewGroup.module.scss";
 import Modal from "../../Modal/Modal";
 import Select from "../../Select/Select";
-import React, { Component, useState, useEffect } from "react";
-import { getCourses, postGroup } from "../../../helpers/api.js";
-// import DatePicker from "react-datepicker";
-import classnames from "classnames";
+import React, { useState } from "react";
+import {
+  // getCourses,
+  postGroup,
+  getManagers,
+} from "../../../helpers/api.js";
+import FormInput from "../../FormInput/FormInput";
+import Form from "../../Form/Form";
 
 const NewGroup = ({ isOpen, handleClose }) => {
   const [name, setName] = useState("");
-  const [courseId, setCourseId] = useState("");
+  const [course_id, setCourseId] = useState("");
   const [schedule, setSchedule] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
-  const [courses, setCourses] = useState([]);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const data = new FormData();
-    data.append("course_id", courseId);
-    data.append("name", name);
-    data.append("timetable", schedule);
-    data.append("start_date", startDate);
-    // data.append("start_date", startDate);
-    await postGroup(data);
-  };
-  const getCoursesData = async () => {
-    const res = await getCourses()
-      .then((res) => res.data)
-      .catch((error) => console.log(error));
-    setCourses(res);
-    return res;
-  };
+  const [start_date, setStartDate] = useState(new Date());
   return (
-    <div>
+    <>
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
-          <div className={styles.modal}>
-            <h3 className={styles.title}>Create new group</h3>
-            <form onSubmit={handleSubmit} className={styles.form}>
-              <label className={styles.input__label}>
-                <p className={styles.input__label}>Course:</p>
-                {/* <Select
-                  handler={setCourseId}
-                  onClick={(e) => getCoursesData()}
-                  getData={getCoursesData}
-                  label="Group name:"
-                  defaultValue="Select group"
-                /> */}
-                <select
-                  defaultValue={""}
-                  className={classnames(styles.input, styles.select)}
-                  onChange={(e) => setCourseId(e.currentTarget.value)}
-                  required
-                  onClick={(e) => getCoursesData()}
-                >
-                  <option value="" disabled hidden>
-                    Select group
-                  </option>
-                  {courses.map((i) => {
-                    return (
-                      <option value={i.id} key={i.id}>
-                        {i.name}
-                      </option>
-                    );
-                  })}
-                </select>
-              </label>
-              <label className={styles.input__label}>
-                <p className={styles.input__label}>Start date:</p>
-                <input
-                  className={styles.input}
-                  type="date"
-                  name="name"
-                  required
-                  value={startDate}
-                  placeholder="Select start date"
-                  onChange={(e) => setStartDate(e.currentTarget.value)}
-                />
-                {/* <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} /> */}
-              </label>
+          <Form
+            type={{ type: "post" }}
+            requests={{ post: postGroup }}
+            course_id={course_id}
+            name={name}
+            schedule={schedule}
+            start_date={start_date}
+            title="Create new group"
+          >
+            <Select
+              handler={setCourseId}
+              request={getManagers} //! getCourses
+              label="Group name:"
+              defaultValue="Select group"
+              title="Course:"
+            />
 
-              <label className={styles.input__label}>
-                <p className={styles.input__label}>Class schedule:</p>
-                <input
-                  className={styles.input}
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="Wed 18:00-19:30, Sat 10:00-12:30"
-                  onChange={(e) => setSchedule(e.currentTarget.value)}
-                />
-              </label>
-              <label className={styles.input__label}>
-                <p className={styles.input__label}>Group name:</p>
-                <input
-                  className={styles.input}
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="Name"
-                  onChange={(e) => setName(e.currentTarget.value)}
-                />
-              </label>
-
-              <input
-                className={styles.input__submit}
-                type="submit"
-                value="Save"
-              />
-            </form>
-            <p className={styles.exit}>Click outside to exit</p>
-          </div>
+            <FormInput
+              title="Start Date:"
+              type="date"
+              name="date"
+              value={start_date}
+              placeholder="Select start date"
+              isRequired={true}
+              handler={setStartDate}
+            />
+            <FormInput
+              title="Class schedule:"
+              type="text"
+              name="schedule"
+              value={schedule}
+              placeholder="Wed 18:00-19:30, Sat 10:00-12:30"
+              isRequired={true}
+              handler={setSchedule}
+            />
+            <FormInput
+              title="Name:"
+              type="text"
+              name="name"
+              value={name}
+              placeholder="Name"
+              isRequired={true}
+              handler={setName}
+            />
+          </Form>
         </Modal>
       )}
-    </div>
+    </>
   );
 };
 
