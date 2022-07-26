@@ -64,7 +64,7 @@
 }
 
 .calendarController {
-  width: 170px;
+  width: 200px;
   display: flex;
   justify-content: space-between;
   margin: 0 auto 49px auto;
@@ -75,6 +75,7 @@
   color: $font-black;
   font-weight: 400;
   font-size: 24px;
+  cursor: pointer;
 }
 
 .calendarControllerButton {
@@ -86,4 +87,26 @@
   top: -1px;
   width: 17px;
   height: 17px;
+}
+
+.dataPicker {
+  width: 330px !important;
+  position: absolute;
+  top: 147px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tableButton {
+    background-color: $font-black;
+    color: $font-white;
+    font-family: $poppins;
+    font-size: 32px;
+    font-weight: 400;
+    padding: 15px 31px !important;
+    border-radius: 59px;
+    transition: 200ms linear;
+    &:hover {
+        @extend %hover-shadow;
+    }
 }

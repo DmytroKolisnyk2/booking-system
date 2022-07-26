@@ -1,12 +1,14 @@
 import React from "react";
 import { Component, useState, useEffect } from "react";
-import {getManagers} from "../../helpers/api";
+import { getManagers } from "../../helpers/api";
 import styles from "./Managers.module.scss";
 
 const Managers = ({ text }) => {
   const [managers, setManagers] = useState([]);
   const getManagersData = async () => {
-    const res = await getManagers();
+    const res = await getManagers()
+      .then((res) => res.data)
+      .catch((error) => console.log(error));
 
     setManagers(res);
     console.log(res);
