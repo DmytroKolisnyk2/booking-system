@@ -9,6 +9,17 @@ import ModalsPage from "./pages/ModalsPage/ModalsPage";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 
+
+import SuperAdministratorPage from "./pages/SuperAdministratorPage/SuperAdministratorPage"
+class App extends Component {
+  render() {
+    return (
+      <Routes> 
+        <Route path={path.superadmin} element={<SuperAdministratorPage />} />
+        <Route path={path.test} element={<HomePage />} />
+      </Routes>
+      
+
 import HomePage from "./pages/HomePage/HomePage";
 // import BgWrapper from "./components/BgWrapper/BgWrapper";
 
@@ -25,6 +36,7 @@ class App extends Component {
         </Routes>
         <Footer />
       </>
+
     );
   }
 }

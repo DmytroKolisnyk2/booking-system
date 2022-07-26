@@ -1,0 +1,17 @@
+@import "../../styles/App.scss";
+.button {
+  font-family: $poppins;
+  font-weight: 400;
+  line-height: 29px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 50px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 20px;
+  // transition: 200ms linear;
+  // &:hover {
+  //   transform: scale(1.05);
+  // }
+}
