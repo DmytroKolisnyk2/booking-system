@@ -1,6 +1,6 @@
 import React from "react";
 import { Component, useState, useEffect } from "react";
-import getManagers from "../../helpers/api";
+import {getManagers} from "../../helpers/api";
 import styles from "./Managers.module.scss";
 
 const Managers = ({ text }) => {

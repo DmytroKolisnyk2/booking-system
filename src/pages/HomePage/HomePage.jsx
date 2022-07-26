@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import TableItem from "../../components/TableItem/TableItem";
-import TableButton from "../../components/TableButton/TableButton";
+import Button from "../../components/Buttons/Buttons";
 import styles from "./HomePage.module.scss";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -208,8 +208,27 @@ const HomePage = () => {
         })}
       </ul>
       <div className={styles.wrapperTableButtons}>
-        <TableButton title="save as template" />
-        <TableButton title="load a saved template" />
+        <Button
+          style={styles.tableButton}
+          paddingRight={31}
+          paddingLeft={31}
+          width={"auto"}
+          bgColor={"black"}
+          color={"white"}
+          // style={}
+        >
+          save as template
+        </Button>
+        <Button
+          style={styles.tableButton}
+          paddingRight={31}
+          paddingLeft={31}
+          width={"auto"}
+          bgColor={"black"}
+          color={"white"}
+        >
+          load a saved template
+        </Button>
       </div>
     </section>
   );

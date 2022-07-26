@@ -96,3 +96,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.tableButton {
+    background-color: $font-black;
+    color: $font-white;
+    font-family: $poppins;
+    font-size: 32px;
+    font-weight: 400;
+    padding: 15px 31px !important;
+    border-radius: 59px;
+    transition: 200ms linear;
+    &:hover {
+        @extend %hover-shadow;
+    }
+}

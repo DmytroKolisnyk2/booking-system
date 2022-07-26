@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Button.module.scss";
+import classNames from "classnames";
 
 export default function Button({
   bottom,
@@ -12,6 +13,7 @@ export default function Button({
   margin,
   height,
   type,
+  style
 }) {
   const colorPalette = {
     white: "white",
@@ -34,7 +36,7 @@ export default function Button({
         margin: margin,
         height: height,
       }}
-      className={styles.button}
+      className={classNames(styles.button, style)}
       type={type ? type : "button"}
     >
       {children}
