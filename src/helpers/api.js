@@ -5,10 +5,9 @@ axios.defaults.baseURL = "https://goiteens-rest-api.herokuapp.com";
 const getManagers = () => {
   return axios
     .get("/managers")
-    .then((res) => res.data.data)
+    .then((res) => res.data)
     .catch((error) => console.log(error));
 };
-
 const getCourses = () => {
   return axios
     .get("/courses")
@@ -100,4 +99,3 @@ export {
   getGroupById,
   getGroups
 };
-

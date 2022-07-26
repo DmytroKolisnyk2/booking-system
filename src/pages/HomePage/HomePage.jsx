@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 
 import TableItem from "../../components/TableItem/TableItem";
-import Button from "../../components/Buttons/Buttons";
+import TableButton from '../../components/TableButton/TableButton';
 import styles from "./HomePage.module.scss";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
-import moment from "moment";
 
 const HomePage = () => {
   const [week, setWeek] = useState({
@@ -133,58 +130,18 @@ const HomePage = () => {
       ],
     ],
   });
-  let id = 0;
-  const [isOpenPicker, setIsOpenPicker] = useState(false);
-  const [date, setDate] = useState(new Date());
-  const endDate = moment(date).add(6, "days");
-  const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  const month =
-    date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
-  const dateDay = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
-  const endMonth =
-    endDate.month() + 1 < 10 ? `0${endDate.month() + 1}` : endDate.month() + 1;
-  const endDateDay =
-    endDate.date() < 10 ? `0${endDate.date()}` : endDate.date();
-
-  const onClickArrowRight = () => {
-    setDate(moment(date).add(7, "days")._d);
-  };
-
-  const onClickArrowLeft = () => {
-    setDate(moment(date).subtract(7, "days")._d);
-  };
-
+  const arrayDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   return (
     <section className={styles.tableSection}>
       <div className={styles.calendarController}>
-        <button
-          onClick={onClickArrowLeft}
-          className={styles.calendarControllerButton}
-          type="button"
-        >
+        <button className={styles.calendarControllerButton} type="button">
           {"<"}
         </button>
-        <span
-          onClick={() => setIsOpenPicker(!isOpenPicker)}
-          className={styles.calendarControllerText}
-        >
-          {`${dateDay}.${month} - ${endDateDay}.${endMonth}`}
-        </span>
-        <button
-          onClick={onClickArrowRight}
-          className={styles.calendarControllerButton}
-          type="button"
-        >
+        <span className={styles.calendarControllerText}>11.07 - 17.07</span>
+        <button className={styles.calendarControllerButton} type="button">
           {">"}
         </button>
       </div>
-      {isOpenPicker && (
-        <Calendar
-          className={styles.dataPicker}
-          onChange={setDate}
-          value={date}
-        />
-      )}
       <div className={styles.wrapperDays}>
         {arrayDays.map((item) => {
           return (
@@ -197,38 +154,13 @@ const HomePage = () => {
       <ul className={styles.table}>
         {week.slots.map((day) => {
           return day.map((item) => {
-            return (
-              <TableItem
-                key={(id += 1)}
-                data={item.time}
-                colorId={item.color}
-              />
-            );
+            return <TableItem data={item.time} colorId={item.color} />;
           });
         })}
       </ul>
       <div className={styles.wrapperTableButtons}>
-        <Button
-          style={styles.tableButton}
-          paddingRight={31}
-          paddingLeft={31}
-          width={"auto"}
-          bgColor={"black"}
-          color={"white"}
-          // style={}
-        >
-          save as template
-        </Button>
-        <Button
-          style={styles.tableButton}
-          paddingRight={31}
-          paddingLeft={31}
-          width={"auto"}
-          bgColor={"black"}
-          color={"white"}
-        >
-          load a saved template
-        </Button>
+        <TableButton title="save as template" />
+        <TableButton title="load a saved template" />
       </div>
     </section>
   );
