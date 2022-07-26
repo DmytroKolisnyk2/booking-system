@@ -1,0 +1,30 @@
+@import "../../styles/variables.scss";
+.form {
+  margin: 0 auto;
+}
+.modal {
+  width: 520px;
+  max-height: 700px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  padding: 25px 40px 35px 40px;
+  transition: 1000ms linear;
+}
+.exit {
+  text-align: center;
+  color: #6f6f6f;
+  font-size: 16px;
+}
+.title {
+  border-bottom: 2px $font-black solid;
+  text-align: center;
+  font-family: $poppins;
+  padding-bottom: 13px;
+  font-size: 32px;
+  margin-bottom: 13px;
+}
+.button__wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 25px;
+}

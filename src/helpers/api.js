@@ -15,6 +15,12 @@ const getCourses = () => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+const getGroups = () => {
+  return axios
+    .get("/groups")
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
 
 const postManager = (credentials) => {
   return axios
@@ -91,6 +97,7 @@ export {
   postGroup,
   deleteGroup,
   putGroup,
-  getGroupById
+  getGroupById,
+  getGroups
 };
 

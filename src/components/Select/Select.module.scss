@@ -1,6 +1,14 @@
 @import "../../../styles/variables.scss";
 @import "../../../styles/reset.scss";
 
+.input__label {
+  margin-top: 20px;
+  font-family: $poppins;
+  font-size: 20px;
+  margin: 13px auto 13px auto;
+  text-align-last: left;
+}
+
 .select {
   background-color: $grey;
   transition: all 1s;
@@ -9,7 +17,27 @@
   display: grid;
   grid-template-areas: "select";
 }
+.select::after {
+  content: "../";
+  justify-self: end;
+  width: 0.8em;
+  height: 0.5em;
+  background-color: #777;
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
 .select {
+  margin: 10px auto;
+  display: block;
+  width: 100%;
+  background-color: $grey;
+  border-radius: 10px;
+  border: 0;
+  height: 45px;
+  padding-left: 15px;
+  font-size: 20px;
+  font-family: $poppins;
+  padding: 10px;
   -moz-appearance: none;
   text-align: center;
   -webkit-appearance: none;
@@ -33,10 +61,6 @@
 .select option {
   font-weight: normal;
 }
-.input__label {
-  margin-top: 20px;
-  font-family: $poppins;
-  font-size: 20px;
-  margin: 26px auto 15px auto;
-  text-align-last: left;
+.input__title {
+  text-align: center;
 }

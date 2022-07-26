@@ -1,41 +1,24 @@
-import React, { useState, useEffect } from "react";
-import NewManager from "../../components/modals/NewManager/NewManager";
-import ChangeAdministrator from "../../components/modals/ChangeAdmin/ChangeAdmin";
+import React, { useState } from "react";
+import NewUser from "../../components/modals/NewUser/NewUser";
+import ChangeUser from "../../components/modals/ChangeUser/ChangeUser";
 import NewCourse from "../../components/modals/NewCourse/NewCourse";
 import ChangeCourse from "../../components/modals/ChangeCourse/ChangeCourse";
 import NewGroup from "../../components/modals/NewGroup/NewGroup";
 import ChangeGroup from "../../components/modals/ChangeGroup/ChangeGroup";
 import NewAppointment from "../../components/modals/NewAppointment/NewAppointment";
-import styles from "./ModalsPage.module.scss";
+import "./ModalsPage.module.scss";
 
 const ModalsPage = () => {
   const [id, setId] = useState(0);
   const [courseId, setCourseId] = useState(0);
   const [groupId, setGroupId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const [isOpenChange, setIsOpenChange] = useState(false);
-  const [isNewCourse, setIsNewCourse] = useState(false);
-  const [isChangeCourse, setIsChangeCourse] = useState(false);
-  const [isNewGroup, setIsNewGroup] = useState(false);
-  const [isChangeGroup, setIsChangeGroup] = useState(false);
+  const [modal, setModal] = useState("");
   const [isNewAppointment, setIsNewAppointment] = useState(false);
-  const handleClose = (e) => {
-    if (e === 0) {
-      setIsOpen(!isOpen);
-    } else if (e === 1) {
-      setIsOpenChange(!isOpenChange);
-    } else if (e === 2) {
-      setIsNewCourse(!isNewCourse);
-    } else if (e === 3) {
-      setIsChangeCourse(!isChangeCourse);
-    } else if (e === 4) {
-      setIsNewGroup(!isNewGroup);
-    } else if (e === 5) {
-      setIsChangeGroup(!isChangeGroup);
-    } else if (e === 6) {
-      setIsNewAppointment(!isNewAppointment);
-    }
+  const handleClose = () => {
+    setIsOpen(!isOpen);
   };
+
   return (
     <section>
       <div>
@@ -64,83 +47,109 @@ const ModalsPage = () => {
           />
         </label>
       </div>
-
-      <button
-        onClick={() => {
-          isOpen ? setIsOpen(false) : setIsOpen(true);
+      <div
+        onClick={(e) => {
+          e.target.dataset.modal && setModal(e.target.dataset.modal);
         }}
       >
-        Open newManager
-      </button>
-      <NewManager isOpen={isOpen} handleClose={() => handleClose(0)} />
-      <button
-        onClick={() => {
-          isOpenChange ? setIsOpenChange(false) : setIsOpenChange(true);
-        }}
-      >
-        Open change administrator
-      </button>
-      <ChangeAdministrator
-        isOpen={isOpenChange}
-        handleClose={() => handleClose(1)}
-        id={id}
-      />
-      <button
-        onClick={() => {
-          isNewCourse ? setIsNewCourse(false) : setIsNewCourse(true);
-        }}
-      >
-        Open new course
-      </button>
-      <NewCourse isOpen={isNewCourse} handleClose={() => handleClose(2)} />
-      <button
-        onClick={() => {
-          isChangeCourse ? setIsChangeCourse(false) : setIsChangeCourse(true);
-        }}
-      >
-        Open change course
-      </button>
-      <ChangeCourse
-        isOpen={isChangeCourse}
-        handleClose={() => handleClose(3)}
-        id={courseId}
-      />
-      <button
-        onClick={() => {
-          isNewGroup ? setIsNewGroup(false) : setIsNewGroup(true);
-        }}
-      >
-        Open new group
-      </button>
-      <NewGroup
-        isOpen={isNewGroup}
-        handleClose={() => handleClose(4)}
-        id={courseId}
-      />
-      <button
-        onClick={() => {
-          isChangeGroup ? setIsChangeGroup(false) : setIsChangeGroup(true);
-        }}
-      >
-        Open change group
-      </button>
-      <ChangeGroup
-        isOpen={isChangeGroup}
-        handleClose={() => handleClose(5)}
-        id={groupId}
-      />
-      <button
-        onClick={() => {
-          isNewAppointment ? setIsNewAppointment(false) : setIsNewAppointment(true);
-        }}
-      >
-        Open new appointment
-      </button>
-      <NewAppointment
-        isOpen={isNewAppointment}
-        handleClose={() => handleClose(6)}
-        id={groupId}
-      />
+        <button
+          data-modal="new-user"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          Open NewUser
+        </button>
+        {modal === "new-user" && (
+          <NewUser isOpen={isOpen} handleClose={() => handleClose()} />
+        )}
+        <button
+          data-modal="change-user"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          Open change user
+        </button>
+        {modal === "change-user" && (
+          <ChangeUser
+            isOpen={isOpen}
+            handleClose={() => handleClose()}
+            id={id}
+          />
+        )}
+        <button
+          data-modal="new-course"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          Open new course
+        </button>
+        {modal === "new-course" && (
+          <NewCourse isOpen={isOpen} handleClose={() => handleClose()} />
+        )}
+        <button
+          data-modal="change-course"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          Open change course
+        </button>
+        {modal === "change-course" && (
+          <ChangeCourse
+            isOpen={isOpen}
+            handleClose={() => handleClose()}
+            id={courseId}
+          />
+        )}
+        <button
+          data-modal="new-group"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          Open new group
+        </button>
+        {modal === "new-group" && (
+          <NewGroup
+            isOpen={isOpen}
+            handleClose={() => handleClose()}
+            id={courseId}
+          />
+        )}
+        <button
+          data-modal="change-group"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          Open change group
+        </button>
+        {modal === "change-group" && (
+          <ChangeGroup
+            isOpen={isOpen}
+            handleClose={() => handleClose()}
+            id={groupId}
+          />
+        )}
+        <button
+          data-modal="new=appointment"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          Open new appointment
+        </button>
+        {modal === "new=appointment" && (
+          <NewAppointment
+            isOpen={isOpen}
+            handleClose={() => handleClose()}
+            id={groupId}
+          />
+        )}
+      </div>
     </section>
   );
 };
