@@ -1,4 +1,10 @@
 {
+
   "test": "/test",
   "superadmin": "/superadmin"
+
+  "home": "/",
+  "test": "/test",
+  "modals": "/modals"
+
 }

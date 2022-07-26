@@ -1,0 +1,14 @@
+@import "../../styles/variables.scss";
+.tableButton {
+    background-color: $font-black;
+    color: $font-white;
+    font-family: $poppins;
+    font-size: 32px;
+    font-weight: 400;
+    padding: 15px 31px;
+    border-radius: 59px;
+    transition: 200ms linear;
+    &:hover {
+        @extend %hover-shadow;
+    }
+}
