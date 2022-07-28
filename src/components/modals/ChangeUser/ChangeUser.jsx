@@ -6,13 +6,13 @@ import FormInput from "../../FormInput/FormInput";
 import Select from "../../Select/Select";
 
 import Form from "../../Form/Form";
-const ChangeUser = ({ isOpen, handleClose, id }) => {
+const ChangeUser = ({ isOpen, handleClose, id, data }) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
-
+  
   return (
     <>
       {isOpen && (
@@ -25,10 +25,10 @@ const ChangeUser = ({ isOpen, handleClose, id }) => {
               delete: deleteManager,
             }}
             name={name}
-            telegram={desc}
-            login={login}
-            password={password}
-            role={role}
+            description={desc}
+            // login={login}
+            // password={password}
+            // role={role}
             title="Change user's info"
           >
             <FormInput

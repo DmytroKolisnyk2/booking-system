@@ -17,3 +17,30 @@
   border-bottom: 1px solid $footer-black;
   }
 }
+.input__title {
+  text-align: center;
+}
+.input {
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  background-color: $grey;
+  border-radius: 10px;
+  border: 0;
+  height: 45px;
+  padding-left: 15px;
+  font-size: 20px;
+  font-family: $poppins;
+}
+.input__label {
+  margin-top: 20px;
+  font-family: $poppins;
+  font-size: 20px;
+  width: 45%;
+  margin: 26px 0 10px;
+  text-align-last: left;
+}
+.input__bottom {
+  display: inline-block;
+  width: 100%;
+}

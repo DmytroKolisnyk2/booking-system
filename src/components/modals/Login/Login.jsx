@@ -35,7 +35,7 @@ const Login = ({ isOpen, handleClose }) => {
             remember={remember}
             email={email}
             password={password}
-            title="Sign Up"
+            title="Log In"
           >
             <FormInput
               classname={styles.title}
@@ -58,6 +58,18 @@ const Login = ({ isOpen, handleClose }) => {
               isRequired={true}
               handler={setPassword}
             />
+            <label className={styles.input__label}>
+              <input
+                className={styles.input}
+                type="checkbox"
+                name="remember"
+                required
+                value={remember}
+                onChange={(e) => setRemember(e.currentTarget.value)}
+              />
+              <p className={styles.input__title}>remember me</p>
+            </label>
+
             <FormInput
               title="Remember me"
               type="checkbox"

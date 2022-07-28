@@ -9,6 +9,8 @@ import NewAppointment from "../../components/modals/NewAppointment/NewAppointmen
 import "./ModalsPage.module.scss";
 import SettingsModal from "../../components/modals/SettingsModal/SettingsModal";
 import SignUp from "../../components/modals/SignUp/SignUp";
+import Login from "../../components/modals/Login/Login";
+
 
 const ModalsPage = () => {
   const [id, setId] = useState(0);
@@ -174,11 +176,18 @@ const ModalsPage = () => {
           Open signup
         </button>
         {modal === "signup" && (
-          <SignUp
-            isOpen={isOpen}
-            handleClose={() => handleClose()}
-            id={groupId}
-          />
+          <SignUp isOpen={isOpen} handleClose={() => handleClose()} />
+        )}
+        <button
+          data-modal="login"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          Open login
+        </button>
+        {modal === "login" && (
+          <Login isOpen={isOpen} handleClose={() => handleClose()} />
         )}
       </div>
     </section>
