@@ -4,7 +4,7 @@ import styles from "./SuperAdminPage.module.scss";
 import Button from "../../components/Buttons/Buttons";
 import API from "../../helpers/api";
 import Managers from "../../components/Managers/Managers";
-import ManagerModal from "../../components/modals/ManagerModal/ManagerModal";
+import NewUser from "../../components/modals/NewUser/NewUser";
 const SuperAdministrator = () => {
   // const [isManagerModal, setManagerModal] = useState(false);
   // const handleClose = (e) => {
@@ -12,6 +12,12 @@ const SuperAdministrator = () => {
   //     setManagerModal(!isManagerModal);
   //   }
   // };
+  const [id, setId] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+  const [modal, setModal] = useState("");
+  const handleClose = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div className={styles.main_wrapper}>
       <h3 className={styles.main_title}>Manage administrators</h3>
@@ -31,29 +37,34 @@ const SuperAdministrator = () => {
       <Managers text={"Call center"} />
       </div> 
       <div className={styles.btn_wrapper}>
-        <Button className={styles.add_btn}
-          
+        <button className={styles.add_btn}
           paddingRight={39}
           paddingLeft={39}
           width={"auto"}
           bgColor={"black"}
           color={"white"}
-          margin={"0 auto"}
+          margin={"0 auto"}       data-modal="new-user"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
         >
           Add new administrator +
-        </Button>
+        </button>
+        <NewUser isOpen={isOpen} handleClose={() => handleClose()} />
+
       
-        {/* <button
+         {/* <button
           onClick={() => {
             setManagerModal(!isManagerModal);
           }}
         >
           Click
-        </button> */}
-        {/* <ManagerModal
+        </button>  */}
+         {/* <ManagerModal
           isOpen={isManagerModal}
           handleClose={() => handleClose(0)}
         /> */}
+      
       </div>
     </div>
   );
