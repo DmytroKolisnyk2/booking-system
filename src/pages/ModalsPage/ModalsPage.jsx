@@ -7,6 +7,8 @@ import NewGroup from "../../components/modals/NewGroup/NewGroup";
 import ChangeGroup from "../../components/modals/ChangeGroup/ChangeGroup";
 import NewAppointment from "../../components/modals/NewAppointment/NewAppointment";
 import "./ModalsPage.module.scss";
+import SettingsModal from "../../components/modals/SettingsModal/SettingsModal";
+import SignUp from "../../components/modals/SignUp/SignUp";
 
 const ModalsPage = () => {
   const [id, setId] = useState(0);
@@ -14,7 +16,6 @@ const ModalsPage = () => {
   const [groupId, setGroupId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
-  const [isNewAppointment, setIsNewAppointment] = useState(false);
   const handleClose = () => {
     setIsOpen(!isOpen);
   };
@@ -144,6 +145,36 @@ const ModalsPage = () => {
         </button>
         {modal === "new=appointment" && (
           <NewAppointment
+            isOpen={isOpen}
+            handleClose={() => handleClose()}
+            id={groupId}
+          />
+        )}
+        <button
+          data-modal="settings"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          Open settings
+        </button>
+        {modal === "settings" && (
+          <SettingsModal
+            isOpen={isOpen}
+            handleClose={() => handleClose()}
+            id={groupId}
+          />
+        )}
+        <button
+          data-modal="signup"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          Open signup
+        </button>
+        {modal === "signup" && (
+          <SignUp
             isOpen={isOpen}
             handleClose={() => handleClose()}
             id={groupId}

@@ -25,7 +25,7 @@ const Select = ({
       return;
     }
     getData();
-  });
+  }, []);
 
   return (
     <label className={styles.input__label}>
@@ -35,7 +35,7 @@ const Select = ({
           multiple={false}
           // defaultValue={""}
           className={
-            classname ? classnames(styles.select, classname) : styles.select
+            classname ? classnames(styles.select) : styles.select
           }
           value={value}
           onChange={(e) => setValue(e.target.value)}

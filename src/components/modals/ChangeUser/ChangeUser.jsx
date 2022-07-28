@@ -25,7 +25,7 @@ const ChangeUser = ({ isOpen, handleClose, id }) => {
               delete: deleteManager,
             }}
             name={name}
-            description={desc}
+            telegram={desc}
             login={login}
             password={password}
             role={role}
@@ -74,7 +74,8 @@ const ChangeUser = ({ isOpen, handleClose, id }) => {
             </div>
             <Select
               title="Role:"
-              handler={setRole}
+              setValue={setRole}
+              value={role}
               type="no-request"
               defaultValue="manager/caller/confirmator"
             >
