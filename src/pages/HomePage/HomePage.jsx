@@ -1,5 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
+import { getDate, getTable } from "../../redux/manager/manager-selectors";
+import {
+  getManagerCurrentWeek,
+  saveManagerTable,
+} from "../../redux/manager/manager-operations";
 import TableItem from "../../components/TableItem/TableItem";
 import Button from "../../components/Buttons/Buttons";
 import styles from "./HomePage.module.scss";
@@ -8,134 +14,13 @@ import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 
 const HomePage = () => {
-  const [week, setWeek] = useState({
-    week_id: 1,
-    manager_id: 1,
-    slots: [
-      [
-        { time: 8, color: 0 },
-        { time: 9, color: 0 },
-        { time: 10, color: 0 },
-        { time: 11, color: 1 },
-        { time: 12, color: 1 },
-        { time: 13, color: 1 },
-        { time: 14, color: 1 },
-        { time: 15, color: 1 },
-        { time: 16, color: 1 },
-        { time: 17, color: 1 },
-        { time: 18, color: 1 },
-        { time: 19, color: 1 },
-        { time: 20, color: 1 },
-        { time: 21, color: 1 },
-        { time: 22, color: 0 },
-      ],
-      [
-        { time: 8, color: 0 },
-        { time: 9, color: 0 },
-        { time: 10, color: 0 },
-        { time: 11, color: 1 },
-        { time: 12, color: 1 },
-        { time: 13, color: 1 },
-        { time: 14, color: 1 },
-        { time: 15, color: 2 },
-        { time: 16, color: 1 },
-        { time: 17, color: 1 },
-        { time: 18, color: 1 },
-        { time: 19, color: 1 },
-        { time: 20, color: 1 },
-        { time: 21, color: 1 },
-        { time: 22, color: 0 },
-      ],
-      [
-        { time: 8, color: 0 },
-        { time: 9, color: 0 },
-        { time: 10, color: 0 },
-        { time: 11, color: 1 },
-        { time: 12, color: 1 },
-        { time: 13, color: 1 },
-        { time: 14, color: 1 },
-        { time: 15, color: 1 },
-        { time: 16, color: 1 },
-        { time: 17, color: 1 },
-        { time: 18, color: 1 },
-        { time: 19, color: 1 },
-        { time: 20, color: 1 },
-        { time: 21, color: 1 },
-        { time: 22, color: 0 },
-      ],
-      [
-        { time: 8, color: 0 },
-        { time: 9, color: 0 },
-        { time: 10, color: 0 },
-        { time: 11, color: 1 },
-        { time: 12, color: 1 },
-        { time: 13, color: 1 },
-        { time: 14, color: 1 },
-        { time: 15, color: 1 },
-        { time: 16, color: 1 },
-        { time: 17, color: 1 },
-        { time: 18, color: 1 },
-        { time: 19, color: 1 },
-        { time: 20, color: 1 },
-        { time: 21, color: 1 },
-        { time: 22, color: 0 },
-      ],
-      [
-        { time: 8, color: 0 },
-        { time: 9, color: 0 },
-        { time: 10, color: 0 },
-        { time: 11, color: 1 },
-        { time: 12, color: 1 },
-        { time: 13, color: 1 },
-        { time: 14, color: 1 },
-        { time: 15, color: 1 },
-        { time: 16, color: 1 },
-        { time: 17, color: 1 },
-        { time: 18, color: 1 },
-        { time: 19, color: 1 },
-        { time: 20, color: 1 },
-        { time: 21, color: 1 },
-        { time: 22, color: 0 },
-      ],
-      [
-        { time: 8, color: 0 },
-        { time: 9, color: 0 },
-        { time: 10, color: 1 },
-        { time: 11, color: 1 },
-        { time: 12, color: 1 },
-        { time: 13, color: 1 },
-        { time: 14, color: 1 },
-        { time: 15, color: 1 },
-        { time: 16, color: 1 },
-        { time: 17, color: 1 },
-        { time: 18, color: 1 },
-        { time: 19, color: 1 },
-        { time: 20, color: 1 },
-        { time: 21, color: 0 },
-        { time: 22, color: 0 },
-      ],
-      [
-        { time: 8, color: 0 },
-        { time: 9, color: 0 },
-        { time: 10, color: 1 },
-        { time: 11, color: 1 },
-        { time: 12, color: 1 },
-        { time: 13, color: 1 },
-        { time: 14, color: 1 },
-        { time: 15, color: 1 },
-        { time: 16, color: 1 },
-        { time: 17, color: 1 },
-        { time: 18, color: 1 },
-        { time: 19, color: 1 },
-        { time: 20, color: 1 },
-        { time: 21, color: 0 },
-        { time: 22, color: 0 },
-      ],
-    ],
-  });
-  let id = 0;
+  const dispatch = useDispatch();
+  const tableDate = useSelector(getDate);
+  const table = useSelector(getTable);
+  let itemId = 0;
+  let columnId = 200;
   const [isOpenPicker, setIsOpenPicker] = useState(false);
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date(tableDate));
   const endDate = moment(date).add(6, "days");
   const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const month =
@@ -153,7 +38,12 @@ const HomePage = () => {
   const onClickArrowLeft = () => {
     setDate(moment(date).subtract(7, "days")._d);
   };
-
+  useEffect(() => {
+    dispatch(getManagerCurrentWeek(1));
+  }, []);
+  useEffect(() => {
+    setDate(new Date(tableDate));
+  }, [tableDate]);
   return (
     <section className={styles.tableSection}>
       <div className={styles.calendarController}>
@@ -195,16 +85,20 @@ const HomePage = () => {
         })}
       </div>
       <ul className={styles.table}>
-        {week.slots.map((day) => {
-          return day.map((item) => {
-            return (
-              <TableItem
-                key={(id += 1)}
-                data={item.time}
-                colorId={item.color}
-              />
-            );
-          });
+        {table.map((day) => {
+          return (
+            <React.Fragment key={columnId += 1}>
+              {day.map((item) => {
+                return (
+                  <TableItem
+                    key={(itemId += 1)}
+                    data={item.time}
+                    colorId={item.color}
+                  />
+                );
+              })}
+            </React.Fragment>
+          );
         })}
       </ul>
       <div className={styles.wrapperTableButtons}>
@@ -215,7 +109,6 @@ const HomePage = () => {
           width={"auto"}
           bgColor={"black"}
           color={"white"}
-          // style={}
         >
           save as template
         </Button>
