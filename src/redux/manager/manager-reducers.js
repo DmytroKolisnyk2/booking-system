@@ -3,7 +3,7 @@ import { getManagerCurrentWeek, saveManagerTable } from "./manager-operations";
 import { combineReducers } from "redux";
 
 const initialState = {
-  current_week_date_start: '',
+  current_week_date_start: "",
   current_week_id: null,
   manager_id: null,
   slots: [

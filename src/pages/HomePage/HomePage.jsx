@@ -17,8 +17,8 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const tableDate = useSelector(getDate);
   const table = useSelector(getTable);
-  let itemId = 0;
-  let columnId = 200;
+  let id = 0;
+  let dayId = 0;
   const [isOpenPicker, setIsOpenPicker] = useState(false);
   const [date, setDate] = useState(new Date(tableDate));
   const endDate = moment(date).add(6, "days");
@@ -78,7 +78,7 @@ const HomePage = () => {
       <div className={styles.wrapperDays}>
         {arrayDays.map((item) => {
           return (
-            <div className={styles.day}>
+            <div key={dayId += 1} className={styles.day}>
               <h3 className={styles.dayTitle}>{item}</h3>
             </div>
           );
@@ -86,19 +86,15 @@ const HomePage = () => {
       </div>
       <ul className={styles.table}>
         {table.map((day) => {
-          return (
-            <React.Fragment key={columnId += 1}>
-              {day.map((item) => {
-                return (
-                  <TableItem
-                    key={(itemId += 1)}
-                    data={item.time}
-                    colorId={item.color}
-                  />
-                );
-              })}
-            </React.Fragment>
-          );
+          return day.map((item) => {
+            return (
+              <TableItem
+                key={(id += 1)}
+                data={item.time}
+                colorId={item.color}
+              />
+            );
+          });
         })}
       </ul>
       <div className={styles.wrapperTableButtons}>
