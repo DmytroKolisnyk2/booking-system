@@ -13,7 +13,7 @@ export default function Button({
   margin,
   height,
   type,
-  style
+  style,
 }) {
   const colorPalette = {
     white: "white",
@@ -23,6 +23,9 @@ export default function Button({
     white: "white",
     purple: "#6268FF",
     black: "#000000",
+    grayColor: 'rgb(240, 240, 240)',
+    orangeColor: 'rgb(255, 235, 163)',
+    greenColor: 'rgb(188, 255, 165)',
   };
 
   return (
@@ -36,7 +39,7 @@ export default function Button({
         margin: margin,
         height: height,
       }}
-      className={classNames(styles.button, style)}
+      className={classNames(style, styles.button)}
       type={type ? type : "button"}
     >
       {children}

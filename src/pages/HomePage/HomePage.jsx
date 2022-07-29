@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
-import { getDate, getTable } from "../../redux/manager/manager-selectors";
-import {
-  getManagerCurrentWeek,
-  saveManagerTable,
-} from "../../redux/manager/manager-operations";
-import TableItem from "../../components/TableItem/TableItem";
-import Button from "../../components/Buttons/Buttons";
-import styles from "./HomePage.module.scss";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
+import styles from "./HomePage.module.scss";
+import { getDate, getTable } from "../../redux/manager/manager-selectors";
+import {
+  getManagerCurrentWeek,
+} from "../../redux/manager/manager-operations";
+import TableItem from "../../components/TableItem/TableItem";
+import Button from "../../components/Buttons/Buttons";
+import ControlButtons from "../../components/ControlButtons/ControlButtons";
+
+
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const tableDate = useSelector(getDate);
   const table = useSelector(getTable);
-  let id = 0;
   let dayId = 0;
   const [isOpenPicker, setIsOpenPicker] = useState(false);
   const [date, setDate] = useState(new Date(tableDate));
@@ -46,6 +46,7 @@ const HomePage = () => {
   }, [tableDate]);
   return (
     <section className={styles.tableSection}>
+      <ControlButtons />
       <div className={styles.calendarController}>
         <button
           onClick={onClickArrowLeft}
@@ -78,7 +79,7 @@ const HomePage = () => {
       <div className={styles.wrapperDays}>
         {arrayDays.map((item) => {
           return (
-            <div key={dayId += 1} className={styles.day}>
+            <div key={(dayId += 1)} className={styles.day}>
               <h3 className={styles.dayTitle}>{item}</h3>
             </div>
           );
@@ -88,11 +89,7 @@ const HomePage = () => {
         {table.map((day) => {
           return day.map((item) => {
             return (
-              <TableItem
-                key={(id += 1)}
-                data={item.time}
-                colorId={item.color}
-              />
+              <TableItem key={item.id} data={item.time} colorId={item.color} />
             );
           });
         })}

@@ -8,6 +8,7 @@ import path from "./helpers/routerPath.json";
 import ModalsPage from "./pages/ModalsPage/ModalsPage";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+import BgWrapper from './components/BgWrapper/BgWrapper';
 
 import HomePage from "./pages/HomePage/HomePage";
 import SuperAdministratorPage from "./pages/SuperAdministratorPage/SuperAdministratorPage"
@@ -16,8 +17,9 @@ class App extends Component {
     return (
       <>
         <Header />
-        {/* <BgWrapper title="Manager">
-        </BgWrapper> */}
+        <BgWrapper title="Manager">
+          
+        </BgWrapper>
         <Routes>
           <Route path={path.superAdmin} element={<SuperAdministratorPage />} />
           <Route path={path.home} element={<HomePage />} />
