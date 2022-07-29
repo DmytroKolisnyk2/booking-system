@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 import styles from "./ControlButton.module.scss";
 
 import { changeTypeSelection } from "../../redux/manager/manager-operations";
 import { getTypeSelection } from "../../redux/manager/manager-selectors";
+
+import RadioButton from '../RadioButton/RadioButton';
 
 const ControlButtons = () => {
     const dispatch = useDispatch();
@@ -13,51 +15,30 @@ const ControlButtons = () => {
   };
   return (
     <div className={styles.wrapperControlButtons}>
-      <label
-        className={`${styles.controlButton} ${styles.controlButtonGreen} ${
-          buttonType === "Consultations" && styles.controlButtonGreenFocus
-        }`}
-      >
-        Consultations
-        <input
-          checked={buttonType === "Consultations"}
-          value={buttonType}
-          onChange={onCheckedButton}
-          className={styles.input}
-          type="radio"
-          name="Consultations"
-        />
-      </label>
-      <label
-        className={`${styles.controlButton} ${styles.controlButtonOrange} ${
-          buttonType === "Working time" && styles.controlButtonOrangeFocus
-        }`}
-      >
-        Working time
-        <input
-          checked={buttonType === "Working time"}
-          onChange={onCheckedButton}
-          value={buttonType}
-          className={styles.input}
-          type="radio"
-          name="Working time"
-        />
-      </label>
-      <label
-        className={`${styles.controlButton} ${styles.controlButtonGray} ${
-          buttonType === "Free" && styles.controlButtonGrayFocus
-        }`}
-      >
-        Free
-        <input
-          checked={buttonType === "Free"}
-          onChange={onCheckedButton}
-          value={buttonType}
-          className={styles.input}
-          type="radio"
-          name="Free"
-        />
-      </label>
+      <RadioButton
+        buttonType={buttonType}
+        style={styles.controlButton}
+        styleActive={styles.controlButtonGreenFocus}
+        styleColor={styles.controlButtonGreen}
+        onChangeType={onCheckedButton}
+        title="Consultations"
+      />
+      <RadioButton
+        buttonType={buttonType}
+        style={styles.controlButton}
+        styleActive={styles.controlButtonOrangeFocus}
+        styleColor={styles.controlButtonOrange}
+        onChangeType={onCheckedButton}
+        title="Working time"
+      />
+      <RadioButton
+        buttonType={buttonType}
+        style={styles.controlButton}
+        styleActive={styles.controlButtonGrayFocus}
+        styleColor={styles.controlButtonGray}
+        onChangeType={onCheckedButton}
+        title="Free"
+      />
     </div>
   );
 };

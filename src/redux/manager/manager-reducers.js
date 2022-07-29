@@ -131,7 +131,7 @@ const initialState = {
 
 const week = createReducer(initialState, {
   [getManagerCurrentWeek.fulfilled]: (_, action) => {
-    let id = 0;
+    let id = 10;
     action.payload.slots.map((day) => day.map((item) => (item.id = id+=1)));
     return action.payload;
   },
