@@ -7,9 +7,9 @@ import styles from './TableItem.module.scss';
 const TableItem = ({data, colorId}) => {
       const activeClassnames = (colorId) => {
         return classNames(styles.item, {
-          [styles.grayColor]: colorId === 0,
-          [styles.orangeColor]: colorId === 2,
-          [styles.greenColor]: colorId === 1,
+          [styles.grayColor]: +colorId === 0,
+          [styles.orangeColor]: +colorId === 2,
+          [styles.greenColor]: +colorId === 1,
         });
       };
     return <li className={activeClassnames(colorId)}>{`${data}:00`}</li>;

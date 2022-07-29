@@ -33,14 +33,17 @@
 }
 
 .controlButtonGreenFocus {
+    background-color: $tableItem-greenHover;
     border: 3px solid rgba(78, 138, 56, 1);
 }
 
 .controlButtonGrayFocus {
+    background-color: $tableItem-grayHover;
     border: 3px solid rgba(136, 136, 136, 1);
 }
 
 .controlButtonOrangeFocus {
+    background-color: $tableItem-orangeHover;
     border: 3px solid rgba(141, 129, 85, 1);
 }
 
