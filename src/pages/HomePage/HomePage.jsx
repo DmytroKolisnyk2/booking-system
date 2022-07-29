@@ -89,7 +89,7 @@ const HomePage = () => {
         {table.map((day) => {
           return day.map((item) => {
             return (
-              <TableItem key={item.id} data={item.time} colorId={item.color} />
+              <TableItem key={dayId += 1} data={item.time} colorId={item.color} />
             );
           });
         })}
