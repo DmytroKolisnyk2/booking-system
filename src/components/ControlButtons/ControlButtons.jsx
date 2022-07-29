@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import {useSelector, useDispatch} from "react-redux";
 import styles from "./ControlButton.module.scss";
 
+import { changeTypeSelection } from "../../redux/manager/manager-operations";
+import { getTypeSelection } from "../../redux/manager/manager-selectors";
+
 const ControlButtons = () => {
-  const [buttonType, setButtonType] = useState("");
+    const dispatch = useDispatch();
+    const buttonType = useSelector(getTypeSelection);
   const onCheckedButton = (event) => {
-    setButtonType(event.target.name);
+    dispatch(changeTypeSelection(event.target.name));
   };
   return (
     <div className={styles.wrapperControlButtons}>

@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { getManagerCurrentWeek, saveManagerTable } from "./manager-operations";
+import { getManagerCurrentWeek, changeTypeSelection } from "./manager-operations";
 import { combineReducers } from "redux";
 
 const initialState = {
@@ -137,6 +137,11 @@ const week = createReducer(initialState, {
   },
 });
 
+const typeActionSelection = createReducer('', {
+  [changeTypeSelection]: (_, action) => action.payload,
+})
+
 export default combineReducers({
   week,
+  typeActionSelection
 });

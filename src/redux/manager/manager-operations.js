@@ -1,5 +1,5 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { GET_TABLE } from "./manager-types";
+import { createAsyncThunk, createAction } from "@reduxjs/toolkit";
+import { GET_TABLE, TYPE_SELECTION } from "./manager-types";
 import { getCurrentWeek } from "../../helpers/api";
 
 
@@ -9,4 +9,6 @@ const getManagerCurrentWeek = createAsyncThunk(GET_TABLE, (managerId, {rejectWit
       .catch((data) => rejectWithValue(data.message));
 });
 
-export { getManagerCurrentWeek };
+const changeTypeSelection = createAction(TYPE_SELECTION);
+
+export { getManagerCurrentWeek, changeTypeSelection };
