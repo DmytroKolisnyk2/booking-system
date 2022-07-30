@@ -11,7 +11,7 @@ const ChangeUser = ({ isOpen, handleClose, id }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
-
+console.log(id);
   return (
     <>
       {isOpen && (
@@ -25,9 +25,9 @@ const ChangeUser = ({ isOpen, handleClose, id }) => {
             }}
             name={name}
             description={desc}
-            login={login}
-            password={password}
-            role={role}
+            // login={login}
+            // password={password}
+            // role={role}
             title="Change user's info"
           >
             <FormInput

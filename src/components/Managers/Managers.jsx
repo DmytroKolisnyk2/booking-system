@@ -4,7 +4,7 @@ import { getManagers, putManager } from "../../helpers/api";
 import styles from "./Managers.module.scss";
 import ChangeUser from "../modals/ChangeUser/ChangeUser";
 
-const Managers = ({ text }) => {
+const Managers = ({ text, isOpenModal }) => {
   const [managers, setManagers] = useState([]);
   const [id, setId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
@@ -22,12 +22,23 @@ const Managers = ({ text }) => {
     return res;
   };
 
-  useEffect(() => {
+useEffect(() => {
     getManagersData();
   }, []);
+  useEffect(() => {
+    const get = async () => {
+      await getManagersData();
+    };
+    get();
+  }, [isOpen, isOpenModal]);
   return (
     <>
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper}>      
+      <ChangeUser
+                    isOpen={isOpen}
+                    handleClose={() => handleClose()}
+                    id={id}
+                  />
         <p className={styles.mini_title}>{text}</p>
         {managers.length > 0 && (
           <ul className={styles.main_wrapper}>
@@ -45,14 +56,11 @@ const Managers = ({ text }) => {
                     data-modal="change-user"
                     onClick={() => {
                       setIsOpen(!isOpen);
+                      setId(item.id)
                     }}
                   />
 
-                  <ChangeUser
-                    isOpen={isOpen}
-                    handleClose={() => handleClose()}
-                    id={id}
-                  />
+            
                 </li>
               );
             })}
