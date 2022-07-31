@@ -1,9 +1,13 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { getManagerCurrentWeek, changeTypeSelection } from "./manager-operations";
+import {
+  getManagerCurrentWeek,
+  changeTypeSelection,
+  changeStatusSlot,
+} from "./manager-operations";
 import { combineReducers } from "redux";
 
 const initialState = {
-  current_week_date_start: "",
+  current_week_date_start: "Sun Sep 1 1939 22:09:08 GMT+0300",
   current_week_id: null,
   manager_id: null,
   slots: [
@@ -130,10 +134,17 @@ const initialState = {
 };
 
 const week = createReducer(initialState, {
-  [getManagerCurrentWeek.fulfilled]: (_, action) => {
-    let id = 10;
-    action.payload.slots.map((day) => day.map((item) => (item.id = id+=1)));
-    return action.payload;
+  [getManagerCurrentWeek.fulfilled]: (_, action) => action.payload,
+  [changeStatusSlot]: (state, action) => {
+    state.slots.map((day, dayIndex) =>
+      day.map((item, hourIndex) => {
+        return dayIndex === action.payload.dayIndex &&
+          hourIndex === action.payload.hourIndex
+          ? (item.color = action.payload.colorId)
+          : item;
+      })
+    );
+    return state;
   },
 });
 

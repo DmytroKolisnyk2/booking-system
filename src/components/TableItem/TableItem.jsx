@@ -4,7 +4,7 @@ import classNames from "classnames";
 import styles from './TableItem.module.scss';
 
 
-const TableItem = ({data, colorId}) => {
+const TableItem = ({data, colorId, onClickFn}) => {
       const activeClassnames = (colorId) => {
         return classNames(styles.item, {
           [styles.grayColor]: +colorId === 0,
@@ -12,12 +12,18 @@ const TableItem = ({data, colorId}) => {
           [styles.greenColor]: +colorId === 1,
         });
       };
-    return <li className={activeClassnames(colorId)}>{`${data}:00`}</li>;
+    return (
+      <li
+        onClick={onClickFn}
+        className={activeClassnames(colorId)}
+      >{`${data}:00`}</li>
+    );
 };
 
 TableItem.propTypes = {
     data: PropTypes.number.isRequired,
     colorId: PropTypes.number.isRequired,
+    onClickFn: PropTypes.func.isRequired,
 };
 
 export default TableItem;

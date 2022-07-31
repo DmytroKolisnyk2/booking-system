@@ -4,20 +4,24 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 import styles from "./HomePage.module.scss";
-import { getDate, getTable } from "../../redux/manager/manager-selectors";
+import {
+  getDate,
+  getTable,
+  getTypeSelection,
+} from "../../redux/manager/manager-selectors";
 import {
   getManagerCurrentWeek,
+  changeStatusSlot,
 } from "../../redux/manager/manager-operations";
 import TableItem from "../../components/TableItem/TableItem";
 import Button from "../../components/Buttons/Buttons";
 import ControlButtons from "../../components/ControlButtons/ControlButtons";
 
-
-
 const HomePage = () => {
   const dispatch = useDispatch();
   const tableDate = useSelector(getDate);
   const table = useSelector(getTable);
+  const typeSelection = useSelector(getTypeSelection);
   let dayId = 0;
   const [isOpenPicker, setIsOpenPicker] = useState(false);
   const [date, setDate] = useState(new Date(tableDate));
@@ -37,6 +41,36 @@ const HomePage = () => {
 
   const onClickArrowLeft = () => {
     setDate(moment(date).subtract(7, "days")._d);
+  };
+  const onClickSlot = (dayIndex, hourIndex) => {
+    switch (typeSelection) {
+      case "Consultations":
+        return dispatch(
+          changeStatusSlot({
+            dayIndex,
+            hourIndex,
+            colorId: 1,
+          })
+        );
+      case "Working time":
+        return dispatch(
+          changeStatusSlot({
+            dayIndex,
+            hourIndex,
+            colorId: 2,
+          })
+        );
+      case "Free":
+        return dispatch(
+          changeStatusSlot({
+            dayIndex,
+            hourIndex,
+            colorId: 0,
+          })
+        );
+      default:
+        break;
+    }
   };
   useEffect(() => {
     dispatch(getManagerCurrentWeek(1));
@@ -86,10 +120,15 @@ const HomePage = () => {
         })}
       </div>
       <ul className={styles.table}>
-        {table.map((day) => {
-          return day.map((item) => {
+        {table.map((day, dayIndex) => {
+          return day.map((item, hourIndex) => {
             return (
-              <TableItem key={dayId += 1} data={item.time} colorId={item.color} />
+              <TableItem
+                onClickFn={() => onClickSlot(dayIndex, hourIndex)}
+                key={(dayId += 1)}
+                data={item.time}
+                colorId={item.color}
+              />
             );
           });
         })}
