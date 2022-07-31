@@ -1,0 +1,48 @@
+@import "../../styles/variables.scss";
+
+.wrapperControlButtons {
+    width: 546px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 75px auto;
+}
+
+.controlButton {
+    padding: 10px;
+    font-size: 24px;
+    transition: 200ms linear;
+    border-radius: 30px;
+    border: 3px solid transparent;
+    font-family: $poppins;
+    font-weight: 400;
+    color: $font-black;
+    cursor: pointer;
+}
+
+.controlButtonGreen{
+    background-color: $tableItem-greenColor;
+}
+
+.controlButtonGray{
+    background-color: $tableItem-grayColor;
+}
+
+.controlButtonOrange{
+    background-color: $tableItem-orangeColor;
+}
+
+.controlButtonGreenFocus {
+    background-color: $tableItem-greenHover;
+    border: 3px solid rgba(78, 138, 56, 1);
+}
+
+.controlButtonGrayFocus {
+    background-color: $tableItem-grayHover;
+    border: 3px solid rgba(136, 136, 136, 1);
+}
+
+.controlButtonOrangeFocus {
+    background-color: $tableItem-orangeHover;
+    border: 3px solid rgba(141, 129, 85, 1);
+}

@@ -92,19 +92,15 @@
 .dataPicker {
   width: 330px !important;
   position: absolute;
-  top: 147px;
+  top: 410px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .tableButton {
-    background-color: $font-black;
-    color: $font-white;
-    font-family: $poppins;
-    font-size: 32px;
-    font-weight: 400;
+    font-size: 32px !important;
     padding: 15px 31px !important;
-    border-radius: 59px;
+    border-radius: 59px !important;
     transition: 200ms linear;
     &:hover {
         @extend %hover-shadow;

@@ -12,6 +12,7 @@
     border: 1.5px solid #000;
     cursor: pointer;
     position: relative;
+    transition: 200ms linear;
     &:nth-last-child(-n + 15) {
         border-right: none;
         &::after {

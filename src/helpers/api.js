@@ -84,6 +84,27 @@ const getGroupById = (id) => {
     .catch((error) => console.log(error));
 };
 
+const getCurrentWeek = (managerId) => {
+  return axios
+    .get(`/current_week/${managerId}`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+
+const getWeek = (managerId, weekId) => {
+    return axios
+      .get(`/get_week/${managerId}/${weekId}`)
+      .then((res) => res.data)
+      .catch((error) => console.log(error));
+};
+
+const saveTable = (managerId, tableCredential) => {
+  return axios
+    .post(`/save_template/${managerId}`, tableCredential)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+
 export {
   getManagers,
   getCourses,
@@ -97,5 +118,8 @@ export {
   deleteGroup,
   putGroup,
   getGroupById,
-  getGroups
+  getGroups,
+  getCurrentWeek,
+  saveTable,
+  getWeek,
 };

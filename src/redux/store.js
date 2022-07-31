@@ -1,5 +1,4 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { test } from "./test/test-reducers";
 import {
   // persistReducer,
   // persistStore,
@@ -11,20 +10,24 @@ import {
   REGISTER,
 } from "redux-persist";
 // import storage from "redux-persist/lib/storage";
-
+import tableReducers from './manager/manager-reducers';
+import {error, loading} from './reducers';
 // const persistConfig = {
 //   key: "booking-system",
 //   storage,
 //   blacklist: ['token'],
 // };
 
-const rootReducer = combineReducers({ test });
 
 // const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   // reducer: persistedReducer,
-  reducer: rootReducer,
+  reducer: {
+    manager: tableReducers,
+    error,
+    loading,
+  },
   devTools: process.env.NODE_ENV === "development",
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

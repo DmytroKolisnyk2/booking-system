@@ -16,8 +16,7 @@ class App extends Component {
     return (
       <>
         <Header />
-        {/* <BgWrapper title="Manager">
-        </BgWrapper> */}
+  
         <Routes>
           <Route path={path.superAdmin} element={<SuperAdministratorPage />} />
           <Route path={path.home} element={<HomePage />} />
