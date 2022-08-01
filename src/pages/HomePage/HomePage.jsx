@@ -4,6 +4,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 import styles from "./HomePage.module.scss";
+import Table from "../../components/Table/Table";
 import {
   getDate,
   getTable,
@@ -13,7 +14,6 @@ import {
   getManagerCurrentWeek,
   changeStatusSlot,
 } from "../../redux/manager/manager-operations";
-import TableItem from "../../components/TableItem/TableItem";
 import Button from "../../components/Buttons/Buttons";
 import ControlButtons from "../../components/ControlButtons/ControlButtons";
 
@@ -119,20 +119,7 @@ const HomePage = () => {
           );
         })}
       </div>
-      <ul className={styles.table}>
-        {table.map((day, dayIndex) => {
-          return day.map((item, hourIndex) => {
-            return (
-              <TableItem
-                onClickFn={() => onClickSlot(dayIndex, hourIndex)}
-                key={(dayId += 1)}
-                data={item.time}
-                colorId={item.color}
-              />
-            );
-          });
-        })}
-      </ul>
+      <Table table={table} onClickSlotFn={onClickSlot} />
       <div className={styles.wrapperTableButtons}>
         <Button
           style={styles.tableButton}
