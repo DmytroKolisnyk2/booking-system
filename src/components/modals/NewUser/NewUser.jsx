@@ -8,25 +8,10 @@ import Form from "../../Form/Form";
 
 const NewUser = ({ isOpen, handleClose }) => {
   const [name, setName] = useState("");
-  const [desc, setDesc] = useState("");
+  const [telegram, setTelegram] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
-  const erenSubmit = async (event) => {
-    event.preventDefault();
-    const managerData = new FormData();
-    managerData.append("name", "Eren Jaeger");
-    managerData.append(
-      "description",
-      "Eren Jaeger from paradise privit privit🥰🥰🥰"
-    );
-    managerData.append("login", "erenjaeger885");
-    managerData.append("password", "8702856EJ");
-    postManager(managerData);
-  };
-  const handleSetRole = (e) => {
-    setRole(e.currentTarget.value);
-  };
 
   return (
     <>
@@ -36,7 +21,7 @@ const NewUser = ({ isOpen, handleClose }) => {
             type={{ type: "post" }}
             requests={{ post: postManager }}
             name={name}
-            description={desc}
+            description={telegram}
             login={login}
             password={password}
             role={role}
@@ -55,10 +40,10 @@ const NewUser = ({ isOpen, handleClose }) => {
               title="Telegram username:"
               type="text"
               name="username"
-              value={desc}
+              value={telegram}
               placeholder="Telegram username"
               isRequired={true}
-              handler={setDesc}
+              handler={setTelegram}
             />
 
             <div className={styles.input__block}>
@@ -83,9 +68,11 @@ const NewUser = ({ isOpen, handleClose }) => {
                 handler={setPassword}
               />
             </div>
+            
             <Select
               title="Role:"
-              handler={handleSetRole}
+              setValue={setRole}
+              value={role}
               type="no-request"
               defaultValue="manager/caller/confirmator"
             >

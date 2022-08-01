@@ -17,6 +17,11 @@ const Select = ({
     const res = await request()
       .then((res) => res.data)
       .catch((error) => console.log(error));
+
+    if (res === undefined) {
+      setData([]);
+      return;
+    }
     setData(res);
     return res;
   };
@@ -24,9 +29,9 @@ const Select = ({
     if (type === "no-request") {
       return;
     }
-    getData();
-  });
 
+    getData();
+  }, []);
   return (
     <label className={styles.input__label}>
       <p className={classnames(styles.input__title, classname)}>{title}</p>
@@ -34,9 +39,7 @@ const Select = ({
         <select
           multiple={false}
           // defaultValue={""}
-          className={
-            classname ? classnames(styles.select, classname) : styles.select
-          }
+          className={classname ? classnames(styles.select) : styles.select}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           required
@@ -62,17 +65,19 @@ const Select = ({
               {defaultValue}
             </option>
           )}
-          {data.length === 0 ? (
-            <option value="">Nothing found</option>
-          ) : (
-            data.map((i) => {
-              return (
-                <option value={i.id} key={i.id}>
-                  {i.name}
-                </option>
-              );
-            })
+          {data.length = 0 && (
+            <option value="" disabled hidden>
+              Not found
+            </option>
           )}
+
+          {data.map((i) => {
+            return (
+              <option value={i.id} key={i.id}>
+                {i.name}
+              </option>
+            );
+          })}
         </select>
       )}
     </label>

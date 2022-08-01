@@ -12,7 +12,9 @@
 }
 
 .Modal {
-  max-width: calc(100vw - 48px);
-  max-height: calc(100v);
+  min-width: 520px;
+  max-height: 1000px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  padding: 25px 40px 35px 40px;
 }
-

@@ -2,14 +2,6 @@
 .form {
   margin: 0 auto;
 }
-.modal {
-  width: 520px;
-  max-height: 700px;
-  background-color: #f5f5f5;
-  border-radius: 12px;
-  padding: 25px 40px 35px 40px;
-  transition: 1000ms linear;
-}
 .exit {
   text-align: center;
   color: #6f6f6f;
@@ -21,10 +13,50 @@
   font-family: $poppins;
   padding-bottom: 13px;
   font-size: 32px;
-  margin-bottom: 13px;
+  margin-bottom: 5px;
 }
 .button__wrapper {
   display: flex;
   justify-content: center;
   margin: 25px;
+}
+.signup {
+  border-radius: 43px;
+  background-color: $blue;
+  color: $font-white;
+  font-family: $poppins;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 10px 24px;
+  transition: $main-transition;
+  &:hover {
+    @extend %hover-shadow;
+  }
+}
+.login {
+  font-family: $poppins;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 10px 24px;
+  color: $font-black;
+  background-color: transparent;
+  border-radius: 43px;
+  border: 1px solid $blue;
+  transition: $main-transition;
+  &:hover {
+    @extend %hover-shadow;
+  }
+}
+.signup {
+  border-radius: 43px;
+  background-color: $blue;
+  color: $font-white;
+  font-family: $poppins;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 10px 24px;
+  transition: $main-transition;
+  &:hover {
+    @extend %hover-shadow;
+  }
 }

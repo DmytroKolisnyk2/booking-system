@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { putManager, deleteManager } from "../../../helpers/api.js";
 import FormInput from "../../FormInput/FormInput";
 import Select from "../../Select/Select";
-
 import Form from "../../Form/Form";
 const ChangeUser = ({ isOpen, handleClose, id }) => {
   const [name, setName] = useState("");
@@ -26,9 +25,9 @@ const ChangeUser = ({ isOpen, handleClose, id }) => {
             }}
             name={name}
             description={desc}
-            login={login}
-            password={password}
-            role={role}
+            // login={login}
+            // password={password}
+            // role={role}
             title="Change user's info"
           >
             <FormInput

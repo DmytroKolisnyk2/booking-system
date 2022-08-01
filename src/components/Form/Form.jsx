@@ -2,7 +2,17 @@ import styles from "./Form.module.scss";
 import InputSubmit from "../InputSubmit/InputSubmit";
 import InputDelete from "../InputDelete/InputDelete";
 
-const Form = ({ type, title, id, requests, children, width, ...formData }) => {
+const Form = ({
+  type,
+  onSubmit,
+  title,
+  id,
+  requests,
+  children,
+  width,
+  text,
+  ...formData
+}) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData();
@@ -20,15 +30,43 @@ const Form = ({ type, title, id, requests, children, width, ...formData }) => {
   return (
     <div className={styles.modal} style={{ width: width }}>
       <h3 className={styles.title}>{title}</h3>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form
+        onSubmit={(e) => {
+          handleSubmit(e);
+          {onSubmit && (onSubmit())}
+        }}
+        className={styles.form}
+      >
         {children}
         <div className={styles.button__wrapper}>
-          {type.additionalType && <InputDelete handleDelete={handleDelete} />}
+          {type.button === "login" && (
+            <button
+              type="button"
+              onClick={(e) => {
+                handleSubmit(e);
+              }}
+              className={styles.login}
+            >
+              Log in
+            </button>
+          )}
+          {type.button === "signup" && (
+            <button
+              type="button"
+              onClick={(e) => {
+                handleSubmit(e);
+              }}
+              className={styles.signup}
+            >
+              Sign Up
+            </button>
+          )}
 
-          <InputSubmit />
+          {type.additionalType && <InputDelete handleDelete={handleDelete} />}
+          {!type.button && <InputSubmit />}
         </div>
       </form>
-
+      {text}
       <p className={styles.exit}>Click outside to exit</p>
     </div>
   );

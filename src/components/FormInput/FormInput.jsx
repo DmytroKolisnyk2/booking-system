@@ -12,16 +12,21 @@ const FormInput = ({
   placeholder,
   value,
   handler,
+  pattern,
+  min,
+  width
 }) => {
   return (
-    <label className={styles.input__label}>
-      <p className={styles.input__label}>{title}</p>
+    <label className={styles.input__label} style={{ width: width }}>
+      <p className={classnames(styles.input__title, styles[`${classname}`])}>{title}</p>
       <input
         className={classnames(styles.input, styles[`${classname}`])}
         type={type}
         name={name}
         required={isRequired}
         value={value}
+        pattern={pattern}
+        minLength={min}
         placeholder={placeholder}
         onChange={(e) => handler(e.currentTarget.value)}
       />

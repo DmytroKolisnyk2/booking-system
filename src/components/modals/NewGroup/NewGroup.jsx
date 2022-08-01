@@ -2,9 +2,8 @@ import Modal from "../../Modal/Modal";
 import Select from "../../Select/Select";
 import React, { useState } from "react";
 import {
-  // getCourses,
+  getCourses,
   postGroup,
-  getManagers,
 } from "../../../helpers/api.js";
 import FormInput from "../../FormInput/FormInput";
 import Form from "../../Form/Form";
@@ -29,7 +28,7 @@ const NewGroup = ({ isOpen, handleClose }) => {
           >
             <Select
               handler={setCourseId}
-              request={getManagers} //! getCourses
+              request={getCourses} //! getCourses
               label="Group name:"
               defaultValue="Select group"
               title="Course:"

@@ -1,0 +1,19 @@
+@import "../../../styles/variables.scss";
+.title {
+  margin-top: 30px !important;
+}
+.exit {
+  color: $font-black;
+  font-size: 13px;
+  margin: 10px;
+  font-family: $poppins;
+}
+.exit > span {
+  border-bottom: 1px solid $font-black;
+  cursor: pointer;
+  transition: all 1s;
+  &:hover {
+  color:$footer-black;
+  border-bottom: 1px solid $footer-black;
+  }
+}
