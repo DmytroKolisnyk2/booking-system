@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NewUser from "../../components/modals/NewUser/NewUser";
 import ChangeUser from "../../components/modals/ChangeUser/ChangeUser";
 import NewCourse from "../../components/modals/NewCourse/NewCourse";
@@ -10,7 +10,9 @@ import "./ModalsPage.module.scss";
 import SettingsModal from "../../components/modals/SettingsModal/SettingsModal";
 import SignUp from "../../components/modals/SignUp/SignUp";
 import Login from "../../components/modals/Login/Login";
-
+import ConsultationInfo from "../../components/modals/ConsultationInfo/ConsultationInfo";
+import NewAppointment2 from "../../components/modals/NewAppointment2/NewAppointment";
+import { getManagers } from "../../helpers/api.js";
 
 const ModalsPage = () => {
   const [id, setId] = useState(0);
@@ -18,12 +20,28 @@ const ModalsPage = () => {
   const [groupId, setGroupId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
+  const [data, setData] = useState([]);
   const handleClose = () => {
     setIsOpen(!isOpen);
   };
+  // const getData = async () => {
+  //   const res = await getManagers()
+  //     .then((res) => res.data)
+  //     .catch((error) => console.log(error));
+  //   setData(res);
+  //   console.log("work");
+  //   return res;
+  // };
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   return (
     <section>
+      {data.map((data) => {
+        <p key={data.id}> {data.name}</p>;
+      })}
+
       <div>
         <label>
           You will be editing manager with id {id}
@@ -188,6 +206,28 @@ const ModalsPage = () => {
         </button>
         {modal === "login" && (
           <Login isOpen={isOpen} handleClose={() => handleClose()} />
+        )}
+        <button
+          data-modal="consulta"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          Open consultion
+        </button>
+        {modal === "consulta" && (
+          <ConsultationInfo isOpen={isOpen} handleClose={() => handleClose()} />
+        )}
+        <button
+          data-modal="new-appointment-2"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          Open new-appointment-2
+        </button>
+        {modal === "new-appointment-2" && (
+          <NewAppointment2 isOpen={isOpen} handleClose={() => handleClose()} />
         )}
       </div>
     </section>

@@ -51,7 +51,7 @@ const NewAppointment = ({ isOpen, handleClose, data }) => {
                 classname={styles.select__label}
                 value={course}
                 setValue={setCourses}
-                request={getCourses} //! */ getCourses need but backend ZLAMAVSYA and /courses deleted NAFIG
+                request={getCourses} //!  getCourses need but backend ZLAMAVSYA and /courses deleted NAFIG
                 label="course"
                 defaultValue="Select course"
                 title="Course:"

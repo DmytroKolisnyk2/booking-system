@@ -4,15 +4,14 @@ import React, { useState } from "react";
 import { putManager, deleteManager } from "../../../helpers/api.js";
 import FormInput from "../../FormInput/FormInput";
 import Select from "../../Select/Select";
-
 import Form from "../../Form/Form";
-const ChangeUser = ({ isOpen, handleClose, id, data }) => {
+const ChangeUser = ({ isOpen, handleClose, id }) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
-  
+
   return (
     <>
       {isOpen && (
@@ -74,8 +73,7 @@ const ChangeUser = ({ isOpen, handleClose, id, data }) => {
             </div>
             <Select
               title="Role:"
-              setValue={setRole}
-              value={role}
+              handler={setRole}
               type="no-request"
               defaultValue="manager/caller/confirmator"
             >

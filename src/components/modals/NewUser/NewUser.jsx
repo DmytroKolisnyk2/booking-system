@@ -21,7 +21,7 @@ const NewUser = ({ isOpen, handleClose }) => {
             type={{ type: "post" }}
             requests={{ post: postManager }}
             name={name}
-            telegramription={telegram}
+            description={telegram}
             login={login}
             password={password}
             role={role}
@@ -68,6 +68,7 @@ const NewUser = ({ isOpen, handleClose }) => {
                 handler={setPassword}
               />
             </div>
+            
             <Select
               title="Role:"
               setValue={setRole}

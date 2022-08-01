@@ -13,7 +13,7 @@
   font-family: $poppins;
   padding-bottom: 13px;
   font-size: 32px;
-  margin-bottom: 13px;
+  margin-bottom: 5px;
 }
 .button__wrapper {
   display: flex;
@@ -42,6 +42,19 @@
   background-color: transparent;
   border-radius: 43px;
   border: 1px solid $blue;
+  transition: $main-transition;
+  &:hover {
+    @extend %hover-shadow;
+  }
+}
+.signup {
+  border-radius: 43px;
+  background-color: $blue;
+  color: $font-white;
+  font-family: $poppins;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 10px 24px;
   transition: $main-transition;
   &:hover {
     @extend %hover-shadow;

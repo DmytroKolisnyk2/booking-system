@@ -19,16 +19,28 @@ const Login = ({ isOpen, handleClose }) => {
           <Form
             type={{ type: "no-request", button: "login" }}
             text={
-              <p className={styles.exit}>
-                Already have an account?{" "}
-                <span
-                  onClick={() => {
-                    handleClose();
-                  }}
-                >
-                  Log in
-                </span>
-              </p>
+              <>
+                <p className={styles.exit}>
+                  Don’t have an account?{" "}
+                  <span
+                    onClick={() => {
+                      handleClose();
+                    }}
+                  >
+                    Sign Up
+                  </span>
+                </p>
+                <p className={styles.exit}>
+                  Forgot your password?{" "}
+                  <span
+                    onClick={() => {
+                      handleClose();
+                    }}
+                  >
+                    Click here
+                  </span>
+                </p>
+              </>
             }
             requests={{ post: postManager }}
             setValue={setData}
@@ -59,26 +71,19 @@ const Login = ({ isOpen, handleClose }) => {
               handler={setPassword}
             />
             <label className={styles.input__label}>
-              <input
-                className={styles.input}
-                type="checkbox"
-                name="remember"
-                required
-                value={remember}
-                onChange={(e) => setRemember(e.currentTarget.value)}
-              />
-              <p className={styles.input__title}>remember me</p>
-            </label>
+              <div className={styles.checkbox__wrapper}>
+                <input
+                  className={styles.input}
+                  type="checkbox"
+                  name="remember"
+                  required
+                  value={remember}
+                  onChange={(e) => setRemember(e.target.checked)}
+                />
 
-            <FormInput
-              title="Remember me"
-              type="checkbox"
-              name="password"
-              value={remember}
-              placeholder="Remember"
-              isRequired={true}
-              handler={setRemember}
-            />
+                <p className={styles.input__title}>Remember me</p>
+              </div>
+            </label>
           </Form>
         </Modal>
       )}
