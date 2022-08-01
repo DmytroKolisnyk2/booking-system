@@ -5,7 +5,7 @@ import Button from "../../components/Buttons/Buttons";
 import API from "../../helpers/api";
 import Managers from "../../components/Managers/Managers";
 import NewUser from "../../components/modals/NewUser/NewUser";
-
+import ModalBtn from "../../components/ModalBtn/ModalBtn";
 
 const SuperAdministrator = () => {
   // const [isManagerModal, setManagerModal] = useState(false);
@@ -35,12 +35,7 @@ const SuperAdministrator = () => {
       </div> 
       <div className={styles.btn_wrapper}>
         <button className={styles.add_btn}
-          paddingRight={39}
-          paddingLeft={39}
-          width={"auto"}
-          bgColor={"black"}
-          color={"white"}
-          margin={"0 auto"}       data-modal="new-user"
+    data-modal="new-user"
           onClick={() => {
             setIsOpen(!isOpen);
           }}
@@ -49,7 +44,6 @@ const SuperAdministrator = () => {
         </button>
         <NewUser isOpen={isOpen} handleClose={() => handleClose()} />
 
-      
          {/* <button
           onClick={() => {
             setManagerModal(!isManagerModal);
@@ -61,7 +55,7 @@ const SuperAdministrator = () => {
           isOpen={isManagerModal}
           handleClose={() => handleClose(0)}
         /> */}
-      
+      {/* <ModalBtn/> */}
       </div>
     </div>
   );

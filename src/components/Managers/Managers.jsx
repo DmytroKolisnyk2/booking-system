@@ -4,12 +4,15 @@ import { getManagers, putManager } from "../../helpers/api";
 import styles from "./Managers.module.scss";
 import ChangeUser from "../modals/ChangeUser/ChangeUser";
 
-const Managers = ({ text, isOpenModal }) => {
+
+export default function Managers ({ text, isOpenModal }){
   const [managers, setManagers] = useState([]);
   const [id, setId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
-  const handleClose = () => {
+  // const [errorMessage, setErrorMessage] = useState('');
+  // setErrorMessage('Example error message!');
+  const handleClose = () => { 
     setIsOpen(!isOpen);
   };
   const getManagersData = async () => {
@@ -22,7 +25,7 @@ const Managers = ({ text, isOpenModal }) => {
     return res;
   };
 
-useEffect(() => {
+  useEffect(() => {
     getManagersData();
   }, []);
   useEffect(() => {
@@ -33,12 +36,11 @@ useEffect(() => {
   }, [isOpen, isOpenModal]);
   return (
     <>
-      <div className={styles.wrapper}>      
-      <ChangeUser
-                    isOpen={isOpen}
-                    handleClose={() => handleClose()}
-                    id={id}
-                  />
+    {/* {errorMessage && (
+      <p className="error"> {errorMessage} </p>
+    )} */}
+      <div className={styles.wrapper}>
+        <ChangeUser isOpen={isOpen} handleClose={() => handleClose()} id={id} />
         <p className={styles.mini_title}>{text}</p>
         {managers.length > 0 && (
           <ul className={styles.main_wrapper}>
@@ -56,18 +58,17 @@ useEffect(() => {
                     data-modal="change-user"
                     onClick={() => {
                       setIsOpen(!isOpen);
-                      setId(item.id)
+                      setId(item.id);
                     }}
                   />
-
-            
                 </li>
               );
             })}
           </ul>
         )}
+           
       </div>
     </>
   );
 };
-export default Managers;
+// export default Managers;

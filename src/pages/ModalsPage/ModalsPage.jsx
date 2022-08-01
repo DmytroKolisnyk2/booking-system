@@ -15,6 +15,7 @@ const ModalsPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
   const [isNewAppointment, setIsNewAppointment] = useState(false);
+  
   const handleClose = () => {
     setIsOpen(!isOpen);
   };
