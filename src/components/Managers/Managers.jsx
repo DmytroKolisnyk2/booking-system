@@ -55,6 +55,7 @@ const Managers = ({ text, isOpenModal, role }) => {
           id={id}
           dataName={name}
           dataDesc={telegram}
+          administrator={true}
         />
       </div>
     </>

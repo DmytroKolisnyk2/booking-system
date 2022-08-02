@@ -73,7 +73,7 @@ const Select = ({
           )}
 
           {data.map((i) => {
-            if (i.name === "Administrator") {
+            if (i.name === "Administrator" && administrator === true) {
               return;
             }
             return (

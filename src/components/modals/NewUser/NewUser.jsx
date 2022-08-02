@@ -74,7 +74,7 @@ const NewUser = ({ isOpen, handleClose, administrator }) => {
               request={getRoles}
               setValue={setRole}
               value={role}
-              isAdministrator={administrator}
+              administrator={true}
               defaultValue="manager/caller/confirmator"
             >
             </Select>

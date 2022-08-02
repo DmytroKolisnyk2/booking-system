@@ -69,7 +69,7 @@ const SuperAdministrator = () => {
         >
           Click
         </button> */}
-        <NewUser isOpen={isManagerModal} handleClose={() => handleClose()} />
+        <NewUser isOpen={isManagerModal} handleClose={() => handleClose()} administrator={true}/>
       </div>
     </div>
   );
