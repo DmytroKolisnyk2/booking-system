@@ -10,13 +10,20 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 
 import HomePage from "./pages/HomePage/HomePage";
-import SuperAdministratorPage from "./pages/SuperAdministratorPage/SuperAdministratorPage"
+import SuperAdministratorPage from "./pages/SuperAdministratorPage/SuperAdministratorPage";
 class App extends Component {
   render() {
     return (
       <>
-        <Header />
-  
+        <Header
+          endpoints={[
+            { text: "Home", path: "/" },
+            { text: "Modals", path: "/modals" },
+            { text: "Call center", path: "/call-center" },
+            { text: "Administrators", path: "/administrators" },
+          ]}
+          user={{ name: "Марія", role: "Manager" }}
+        />
         <Routes>
           <Route path={path.superAdmin} element={<SuperAdministratorPage />} />
           <Route path={path.home} element={<HomePage />} />

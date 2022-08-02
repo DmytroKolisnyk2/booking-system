@@ -4,7 +4,7 @@ import LoginBox from "../LoginBox/LoginBox";
 import Navigation from "../Navigation/Navigation";
 import styles from "./Header.module.scss";
 
-export default function Header() {
+export default function Header({ endpoints, user }) {
   return (
     <header className={styles.header}>
       <a
@@ -15,16 +15,7 @@ export default function Header() {
       >
         <img src={logo} alt="logo" className={styles["logoImg"]} />
       </a>
-      <Navigation
-        user={{ name: "Марія", role: "Manager" }}
-        links={[
-          // { text: "Planning", path: "/planning" },
-          { text: "Home", path: "/" },
-          { text: "Modals", path: "/modals" },
-          { text: "Call center", path: "/call-center" },
-          { text: "Administrators", path: "/administrators" },
-        ]}
-      />
+      <Navigation user={user} links={endpoints} />
       <LoginBox />
     </header>
   );
