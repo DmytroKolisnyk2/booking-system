@@ -10,8 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 // import storage from "redux-persist/lib/storage";
-import tableReducers from './manager/manager-reducers';
-import {error, loading} from './reducers';
+import managerReducer from './manager/manager-reducers';
 // const persistConfig = {
 //   key: "booking-system",
 //   storage,
@@ -24,9 +23,7 @@ import {error, loading} from './reducers';
 export const store = configureStore({
   // reducer: persistedReducer,
   reducer: {
-    manager: tableReducers,
-    error,
-    loading,
+    manager: managerReducer,
   },
   devTools: process.env.NODE_ENV === "development",
   middleware: (getDefaultMiddleware) =>

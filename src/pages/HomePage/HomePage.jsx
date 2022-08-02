@@ -53,7 +53,7 @@ const HomePage = () => {
     }
   };
   useEffect(() => {
-    dispatch(getManagerCurrentWeek(1));
+    dispatch(getManagerCurrentWeek(3));
   }, []);
   return (
     <section className={styles.tableSection}>

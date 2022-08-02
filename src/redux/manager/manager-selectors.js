@@ -1,4 +1,4 @@
-const getDate = (state) => state.manager.week.current_week_date_start;
+const getDate = (state) => state.manager.week.weekDate;
 const getTable = (state) => state.manager.week.slots;
 const getTypeSelection = (state) => state.manager.typeActionSelection;
 
