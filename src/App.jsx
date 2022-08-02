@@ -11,6 +11,7 @@ import Header from "./components/Header/Header";
 
 import HomePage from "./pages/HomePage/HomePage";
 import SuperAdministratorPage from "./pages/SuperAdministratorPage/SuperAdministratorPage"
+import ConfirmatorPage from "./pages/ConfirmatorPage/ConfirmatorPage"
 class App extends Component {
   render() {
     return (
@@ -21,6 +22,7 @@ class App extends Component {
           <Route path={path.superAdmin} element={<SuperAdministratorPage />} />
           <Route path={path.home} element={<HomePage />} />
           <Route path={path.modals} element={<ModalsPage />} />
+          <Route path={path.confirmator} element={<ConfirmatorPage />} />
         </Routes>
         <Footer />
       </>

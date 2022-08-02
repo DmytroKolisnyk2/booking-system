@@ -4,13 +4,14 @@ import React, { useState } from "react";
 import {
   getCourses,
   postGroup,
-  getManagers,
+  getUsersByRole,
   getGroups,
 } from "../../../helpers/api.js";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
 import FormInput from "../../FormInput/FormInput";
 import classnames from "classnames";
+import DropList from "../../DropList/DropList";
 
 const NewAppointment = ({ isOpen, handleClose, data }) => {
   const [link, setLink] = useState("");
@@ -32,14 +33,21 @@ const NewAppointment = ({ isOpen, handleClose, data }) => {
             type={{ type: "post" }}
             requests={{ post: postGroup }}
             course={course}
-            manager={manager}
             group={group}
             confirmation={confirmation}
             result={result}
             date={date}
             title="Create an appointment"
           >
-            <p className={styles.input__title}>Manager: Олена</p>
+            {/* <p className={styles.input__title}>Manager: {manager}</p> */}
+            <DropList
+              title="Manager"
+              value={manager}
+              setValue={setManager}
+              request={() => getUsersByRole("Manager")}
+              label="course"
+              defaultValue="Select course"
+            />
             <Select
               classname={styles.select__label}
               value={course}
@@ -49,6 +57,7 @@ const NewAppointment = ({ isOpen, handleClose, data }) => {
               defaultValue="Select course"
               title="Course:"
             />
+
             <FormInput
               title="CRM link:"
               type="text"

@@ -23,6 +23,7 @@ export default function Header() {
           { text: "Modals", path: "/modals" },
           { text: "Call center", path: "/call-center" },
           { text: "Administrators", path: "/administrators" },
+          { text: "Confirmator", path: "/confirmator" },
         ]}
       />
       <LoginBox />

@@ -4,6 +4,7 @@
   "superAdmin": "/superadmin",
   "home": "/",
   "test": "/test",
-  "modals": "/modals"
+  "modals": "/modals",
+  "confirmator": "/confirmator"
 
 }
