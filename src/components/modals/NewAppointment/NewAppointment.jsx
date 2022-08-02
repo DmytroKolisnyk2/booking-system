@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import {
   getCourses,
   postGroup,
-  getManagers,
+  getUsersByRole,
   getGroups,
 } from "../../../helpers/api.js";
 import Select from "../../Select/Select";
@@ -40,7 +40,7 @@ const NewAppointment = ({ isOpen, handleClose, data }) => {
               <Select
                 classname={styles.select__label}
                 handler={setManager}
-                request={getManagers}
+                request={() => getUsersByRole("Manager")}
                 label="manager"
                 value={manager}
                 setValue={setManager}

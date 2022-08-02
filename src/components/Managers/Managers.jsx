@@ -1,30 +1,28 @@
 import React from "react";
 import { Component, useState, useEffect } from "react";
-import { getManagers } from "../../helpers/api";
+import { getUsersByRole } from "../../helpers/api";
 import styles from "./Managers.module.scss";
 import ChangeUser from "../modals/ChangeUser/ChangeUser";
 
-const Managers = ({ text, isOpenModal }) => {
+const Managers = ({ text, isOpenModal, role }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [managers, setManagers] = useState([]);
   const [id, setId] = useState(0);
+  const [name, setName] = useState("");
+  const [telegram, setTelegram] = useState("");
   const getManagersData = async () => {
-    const res = await getManagers()
+    const res = await getUsersByRole(role)
       .then((res) => res.data)
       .catch((error) => console.log(error));
 
     setManagers(res);
-    console.log(res);
     return res;
   };
   useEffect(() => {
     getManagersData();
   }, []);
   useEffect(() => {
-    const get = async () => {
-      await getManagersData();
-    };
-    get();
+    getManagersData();
   }, [isOpen, isOpenModal]);
   return (
     <>
@@ -40,6 +38,8 @@ const Managers = ({ text, isOpenModal }) => {
                     onClick={() => {
                       setIsOpen(!isOpen);
                       setId(item.id);
+                      setName(item.name);
+                      setTelegram(item.telegram);
                     }}
                   >
                     {item.name}
@@ -53,6 +53,9 @@ const Managers = ({ text, isOpenModal }) => {
           isOpen={isOpen}
           handleClose={() => setIsOpen(!isOpen)}
           id={id}
+          dataName={name}
+          dataDesc={telegram}
+          administrator={true}
         />
       </div>
     </>

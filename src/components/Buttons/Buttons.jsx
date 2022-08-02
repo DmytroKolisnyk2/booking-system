@@ -14,6 +14,7 @@ export default function Button({
   height,
   type,
   style,
+  onclick,
 }) {
   const colorPalette = {
     white: "white",
@@ -23,9 +24,9 @@ export default function Button({
     white: "white",
     purple: "#6268FF",
     black: "#000000",
-    grayColor: 'rgb(240, 240, 240)',
-    orangeColor: 'rgb(255, 235, 163)',
-    greenColor: 'rgb(188, 255, 165)',
+    grayColor: "rgb(240, 240, 240)",
+    orangeColor: "rgb(255, 235, 163)",
+    greenColor: "rgb(188, 255, 165)",
   };
 
   return (
@@ -41,9 +42,9 @@ export default function Button({
       }}
       className={classNames(style, styles.button)}
       type={type ? type : "button"}
+      onClick={onclick}
     >
       {children}
     </button>
   );
 }
-
