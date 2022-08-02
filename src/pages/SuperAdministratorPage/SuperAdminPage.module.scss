@@ -13,7 +13,6 @@
   content: "";
   margin: 0 auto;
   margin-top: 17px;
-
 }
 // .main_title::after{
 //    content: ;
@@ -30,9 +29,7 @@
 
 .li_wrapper_item {
 }
-.add_btn {
-  margin-bottom: 40px;
-}
+
 .btn_wrapper {
   margin-top: 56px;
 }
@@ -74,4 +71,15 @@
   font-weight: 400;
   font-size: 20px;
   text-align: center;
+}
+.add_btn{
+  padding: 11px 39px;
+  border-radius: 20px;
+  color:$font-white;
+  background-color: $font-black;
+  font-family: $poppins;
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+margin: 0 auto;
 }

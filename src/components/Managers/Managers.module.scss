@@ -1,3 +1,5 @@
+
+
 @import "../../styles/App.scss";
 .mini_title {
   font-family: $poppins;
@@ -17,13 +19,25 @@
   border-bottom: 1px solid $font-black;
   width: 203px;
   align-items: center;
-  margin-right: 65px;
-  margin-left: 65px;
+  margin-right: 54px;
+  margin-left: 54px;
 }
 
-.ul_items::after {
-  content: "";
-  display: flex;
+// .ul_items::after {
+//   content: "";
+//   display: flex;
+//   width: 14px;
+//   height: 14px;
+//   background-position: center;
+//   background-image: url("../../img/pencil.png");
+//   background-repeat: no-repeat;
+//   background-size: 8px 8px;
+//   background-color: $font-black;
+//   border-radius: 50%;
+// }
+
+.ul_items_btn {
+ cursor: pointer;
   width: 14px;
   height: 14px;
   background-position: center;
@@ -31,10 +45,10 @@
   background-repeat: no-repeat;
   background-size: 8px 8px;
   background-color: $font-black;
-  border-radius: 50%;
+  border-radius:5px;
 }
-
 .main_wrapper {
+
 }
 .wrapper {
   border-inline: 2px solid $font-black;
@@ -52,3 +66,4 @@
   margin-bottom: 8px;
   margin-top: 8px;
 }
+

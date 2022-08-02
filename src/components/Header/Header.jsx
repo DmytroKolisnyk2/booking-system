@@ -17,8 +17,15 @@ export default function Header() {
       </a>
       <Navigation
         user={{ name: "Марія", role: "Manager" }}
-        links={[
-          // { text: "Planning", path: "/planning" },
+        // links={[
+        //   // { text: "Planning", path: "/planning" },
+        //   { text: "Home", path: "/" },
+        //   { text: "Modals", path: "/modals" },
+        //   { text: "Call center", path: "/call-center" },
+        //   { text: "Administrators", path: "/administrators" },
+        // ]}
+               links={[
+        
           { text: "Home", path: "/" },
           { text: "Modals", path: "/modals" },
           { text: "Call center", path: "/call-center" },
