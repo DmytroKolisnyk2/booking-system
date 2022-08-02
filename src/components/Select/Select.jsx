@@ -52,11 +52,11 @@ const Select = ({
         </select>
       ) : (
         <select
-          defaultValue={""}
+          // defaultValue={""}
           className={
             classname ? classnames(styles.select, classname) : styles.select
           }
-          value={value}
+          value={value ? value : ""}
           onChange={(e) => setValue(e.target.value)}
           onClick={getData}
           required

@@ -22,13 +22,14 @@ const NewGroup = ({ isOpen, handleClose }) => {
             requests={{ post: postGroup }}
             course_id={course_id}
             name={name}
-            schedule={schedule}
-            start_date={start_date}
+            timetable={"11:20 "}
             title="Create new group"
           >
             <Select
               handler={setCourseId}
-              request={getCourses} //! getCourses
+              value={course_id}
+              setValue={setCourseId}
+              request={getCourses}
               label="Group name:"
               defaultValue="Select group"
               title="Course:"
