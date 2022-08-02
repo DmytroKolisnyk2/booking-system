@@ -2,5 +2,14 @@ const GET_TABLE = 'table/get';
 const SAVE_TABLE = 'table/save';
 const TYPE_SELECTION = 'selection/type';
 const TYPE_SLOT = 'slot/color';
+const MANAGER_ERROR = 'manager/error';
+const MANAGER_LOADING = 'manager/loading';
 
-export { GET_TABLE, SAVE_TABLE, TYPE_SELECTION, TYPE_SLOT };
+export {
+  GET_TABLE,
+  SAVE_TABLE,
+  TYPE_SELECTION,
+  TYPE_SLOT,
+  MANAGER_ERROR,
+  MANAGER_LOADING,
+};

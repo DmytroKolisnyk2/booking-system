@@ -7,11 +7,16 @@ import {
   getDate,
   getTable,
   getTypeSelection,
+  getManagerId,
+  getWeekId,
 } from "../../redux/manager/manager-selectors";
 import {
   getManagerCurrentWeek,
   changeStatusSlot,
+  setManagerError,
+  setManagerLoading,
 } from "../../redux/manager/manager-operations";
+import { updateSlot } from "../../helpers/api";
 import Button from "../../components/Buttons/Buttons";
 import ControlButtons from "../../components/ControlButtons/ControlButtons";
 import DatePicker from "../../components/DatePicker/DatePicker";
@@ -21,39 +26,77 @@ const HomePage = () => {
   const tableDate = useSelector(getDate);
   const table = useSelector(getTable);
   const typeSelection = useSelector(getTypeSelection);
+  const managerId = useSelector(getManagerId);
+  const weekId = useSelector(getWeekId);
   const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const onClickSlot = (dayIndex, hourIndex) => {
     switch (typeSelection) {
       case "Consultations":
-        return dispatch(
-          changeStatusSlot({
-            dayIndex,
-            hourIndex,
-            colorId: 1,
+        dispatch(setManagerLoading(true));
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          1
+        )
+          .then((data) => {
+            dispatch(
+              changeStatusSlot({
+                dayIndex,
+                hourIndex,
+                colorId: 1,
+              })
+            );
           })
-        );
+          .catch((error) => dispatch(setManagerError(error)))
+          .finally(() => dispatch(setManagerLoading(false)));
       case "Working time":
-        return dispatch(
-          changeStatusSlot({
-            dayIndex,
-            hourIndex,
-            colorId: 2,
+        dispatch(setManagerLoading(true));
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          2
+        )
+          .then((data) => {
+            dispatch(
+              changeStatusSlot({
+                dayIndex,
+                hourIndex,
+                colorId: 2,
+              })
+            );
           })
-        );
+          .catch((error) => dispatch(setManagerError(error)))
+          .finally(() => dispatch(setManagerLoading(false)));
       case "Free":
-        return dispatch(
-          changeStatusSlot({
-            dayIndex,
-            hourIndex,
-            colorId: 0,
+        dispatch(setManagerLoading(true));
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          0
+        )
+          .then((data) => {
+            dispatch(
+              changeStatusSlot({
+                dayIndex,
+                hourIndex,
+                colorId: 0,
+              })
+            );
           })
-        );
+          .catch((error) => dispatch(setManagerError(error)))
+          .finally(() => dispatch(setManagerLoading(false)));
       default:
         break;
     }
   };
   useEffect(() => {
-    dispatch(getManagerCurrentWeek(3));
+    dispatch(getManagerCurrentWeek(20));
   }, []);
   return (
     <section className={styles.tableSection}>

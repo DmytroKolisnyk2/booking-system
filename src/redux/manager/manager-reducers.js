@@ -3,6 +3,8 @@ import {
   getManagerCurrentWeek,
   changeTypeSelection,
   changeStatusSlot,
+  setManagerError,
+  setManagerLoading,
 } from "./manager-operations";
 import { combineReducers } from "redux";
 
@@ -163,11 +165,14 @@ const typeActionSelection = createReducer("", {
 
 const managerError = createReducer("", {
   [getManagerCurrentWeek.rejected]: (_, action) => action.payload,
+  [setManagerError]: (_, action) => action.payload,
   [getManagerCurrentWeek.pending]: (_, action) => "",
+  [setManagerLoading]: (_, action) => '',
 });
 
 const managerLoading = createReducer(false, {
   [getManagerCurrentWeek.pending]: (_, action) => true,
+  [setManagerLoading]: (_, action) => action.payload,
   [getManagerCurrentWeek.rejected]: (_, action) => false,
   [getManagerCurrentWeek.fulfilled]: (_, action) => false,
 });
