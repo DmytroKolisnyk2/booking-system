@@ -34,11 +34,11 @@ const AdminPage = () => {
 
 
       
-      <Managers text={"Managers"} role="Manager"/>
+      <Managers text={"Managers"} role="Manager" isOpenModal={isOpen}/>
    
-      <Managers text={"Confirmators"} role="Confirmator"/>
+      <Managers text={"Confirmators"} role="Confirmator" isOpenModal={isOpen}/>
       
-      <Managers text={"Call center"} role="Caller"/>
+      <Managers text={"Call center"} role="Caller" isOpenModal={isOpen}/>
       </div>
       <div className={styles.btn_wrapper}>
         <button
