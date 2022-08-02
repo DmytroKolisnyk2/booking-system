@@ -27,13 +27,29 @@
             <BgWrapper title="Super administrator"/>
       <h3 className={styles.main_title}>Manage administrators</h3>
               <div className={styles.main_wrapper2}>
-            <Managers isOpenModal={isOpen} text={"Administrators"} />
-            
-            <Managers isOpenModal={isOpen} text={"Mangers"} />
-         
-            <Managers isOpenModal={isOpen} text={"Confirmators"} />
-            
-            <Managers isOpenModal={isOpen} text={"Call center"} />
+              <Managers
+          text={"Administrators"}
+          role="Administrator"
+          isOpenModal={isOpen}
+        />
+
+        <Managers
+          text={"Managers"}
+          role="Manager"
+          isOpenModal={isOpen}
+        />
+
+        <Managers
+          text={"Confirmators"}
+          role="Confirmator"
+          isOpenModal={isOpen}
+        />
+
+        <Managers
+          text={"Call center"}
+          role="Caller"
+          isOpenModal={isOpen}
+        />
             </div> 
             <div className={styles.btn_wrapper}>
               <button className={styles.add_btn}

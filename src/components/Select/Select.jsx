@@ -65,11 +65,6 @@ const Select = ({
               {defaultValue}
             </option>
           )}
-          {data.length = 0 && (
-            <option value="" disabled hidden>
-              Not found
-            </option>
-          )}
 
           {data.map((i) => {
             return (

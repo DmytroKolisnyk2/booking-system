@@ -22,7 +22,17 @@
   margin-right: 54px;
   margin-left: 54px;
 }
-
+// .ul_items::after {
+//   position: absolute;
+//   top: 50%;
+//   right: -24px;
+//   transform: translateY(-50%);
+//   content: "";
+//   display: block;
+//   width: 2px;
+//   height: 100%;
+//   background-color: #000;
+// }
 // .ul_items::after {
 //   content: "";
 //   display: flex;

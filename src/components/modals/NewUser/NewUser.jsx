@@ -3,7 +3,7 @@ import Modal from "../../Modal/Modal";
 import FormInput from "../../FormInput/FormInput";
 import Select from "../../Select/Select";
 import React, { useState } from "react";
-import { postManager } from "../../../helpers/api.js";
+import { postManager, getRoles } from "../../../helpers/api.js";
 import Form from "../../Form/Form";
 
 const NewUser = ({ isOpen, handleClose }) => {
@@ -21,10 +21,10 @@ const NewUser = ({ isOpen, handleClose }) => {
             type={{ type: "post" }}
             requests={{ post: postManager }}
             name={name}
-            description={telegram}
+            telegram={telegram}
             login={login}
             password={password}
-            role={role}
+            role_id={role}
             title="New user"
           >
             <FormInput
@@ -39,7 +39,7 @@ const NewUser = ({ isOpen, handleClose }) => {
             <FormInput
               title="Telegram username:"
               type="text"
-              name="username"
+              name="telegram"
               value={telegram}
               placeholder="Telegram username"
               isRequired={true}
@@ -68,17 +68,18 @@ const NewUser = ({ isOpen, handleClose }) => {
                 handler={setPassword}
               />
             </div>
-            
+
             <Select
               title="Role:"
+              request={getRoles}
               setValue={setRole}
               value={role}
-              type="no-request"
+              // type="no-request"
               defaultValue="manager/caller/confirmator"
             >
-              <option value="manager">Manager</option>
+              {/* <option value="manager">Manager</option>
               <option value="caller">Caller</option>
-              <option value="confirmator">Confirmator</option>
+              <option value="confirmator">Confirmator</option> */}
             </Select>
           </Form>
         </Modal>

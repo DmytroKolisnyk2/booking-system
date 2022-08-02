@@ -1,7 +1,13 @@
 import styles from "./ChangeUser.module.scss";
 import Modal from "../../Modal/Modal";
 import React, { useState } from "react";
-import { putManager, deleteManager } from "../../../helpers/api.js";
+import {
+  putManager,
+  deleteManager,
+  putUser,
+  deleteUser,
+  getRoles,
+} from "../../../helpers/api.js";
 import FormInput from "../../FormInput/FormInput";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
@@ -19,15 +25,15 @@ const ChangeUser = ({ isOpen, handleClose, id }) => {
           <Form
             type={{ type: "put", additionalType: "delete" }}
             requests={{
-              put: putManager,
+              put: putUser,
               additional: id,
-              delete: deleteManager,
+              delete: deleteUser,
             }}
             name={name}
             description={desc}
-            // login={login}
-            // password={password}
-            // role={role}
+            login={login}
+            password={password}
+            role_id={role}
             title="Change user's info"
           >
             <FormInput
@@ -48,7 +54,6 @@ const ChangeUser = ({ isOpen, handleClose, id }) => {
               isRequired={true}
               handler={setDesc}
             />
-
             <div className={styles.input__block}>
               <FormInput
                 classname="input__bottom"
@@ -70,16 +75,18 @@ const ChangeUser = ({ isOpen, handleClose, id }) => {
                 isRequired={true}
                 handler={setPassword}
               />
-            </div>
+            </div>{" "}
             <Select
               title="Role:"
-              handler={setRole}
-              type="no-request"
+              request={getRoles}
+              setValue={setRole}
+              value={role}
+              // type="no-request"
               defaultValue="manager/caller/confirmator"
             >
-              <option value="manager">Manager</option>
+              {/* <option value="manager">Manager</option>
               <option value="caller">Caller</option>
-              <option value="confirmator">Confirmator</option>
+              <option value="confirmator">Confirmator</option> */}
             </Select>
           </Form>
         </Modal>
