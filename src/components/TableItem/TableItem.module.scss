@@ -94,3 +94,51 @@
         background-color: $tableItem-orangeHover;
     }
 }
+
+.darkGreenColor {
+    background-color: $tableItem-darkGreenColor;
+    transition: 200ms linear;
+    &:hover {
+        background-color: $tableItem-darkGreenColorHover;
+    }
+}
+
+.redColor {
+    background-color: $tableItem-redColor;
+    transition: 200ms linear;
+    &:hover {
+        background-color: $tableItem-redColorHover;
+    }
+}
+
+.blueColor {
+    background-color: $tableItem-blueColor;
+    transition: 200ms linear;
+    &:hover {
+        background-color: $tableItem-blueColorHover;
+    }
+}
+
+.whiteColor {
+    background-color: $tableItem-whiteColor;
+    transition: 200ms linear;
+    &:hover {
+        background-color: $tableItem-whiteColorHover;
+    }
+}
+
+.purpleColor {
+    background-color: $tableItem-purpleColor;
+    transition: 200ms linear;
+    &:hover {
+        background-color: $tableItem-purpleColorHover;
+    }
+}
+
+.darkOrangeColor {
+    background-color: $tableItem-darkOrangeColor;
+    transition: 200ms linear;
+    &:hover {
+        background-color: $tableItem-darkOrangeColorHover;
+    }
+}
