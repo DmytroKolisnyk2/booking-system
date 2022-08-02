@@ -33,13 +33,12 @@ const AdminPage = () => {
       <div className={styles.main_wrapper2}>
 
 
-      <Managers text={"Administrators"} role="Administrator"/>
       
       <Managers text={"Managers"} role="Manager"/>
    
       <Managers text={"Confirmators"} role="Confirmator"/>
-{/*       
-      <Managers text={"Call center"} role="Caller"/> */}
+      
+      <Managers text={"Call center"} role="Caller"/>
       </div>
       <div className={styles.btn_wrapper}>
         <button
