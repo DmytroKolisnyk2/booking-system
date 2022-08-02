@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import styles from "./DatePicker.module.scss";
 
-const DatePicker = ({ tableDate }) => {
+const DatePicker = ({ tableDate, urlEndPoint }) => {
   const [date, setDate] = useState(new Date(tableDate));
   const endDate = moment(date).add(6, "days");
   const month =
@@ -50,6 +50,11 @@ DatePicker.propTypes = {
   onClickArrowLeft: PropTypes.func.isRequired,
   onClickArrowRight: PropTypes.func.isRequired,
   tableDate: PropTypes.string.isRequired,
+  urlEndPoint: PropTypes.string,
+};
+
+DatePicker.defaultProps = {
+  urlEndPoint: '',
 };
 
 export default DatePicker;
