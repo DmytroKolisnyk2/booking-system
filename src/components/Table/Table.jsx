@@ -4,7 +4,6 @@ import styles from './Table.module.scss';
 import TableItem from "../TableItem/TableItem";
 
 const Table = ({table, onClickSlotFn}) => {
-    let dayId = 0;
     return (
       <ul className={styles.table}>
         {table.map((day, dayIndex) => {
@@ -12,7 +11,7 @@ const Table = ({table, onClickSlotFn}) => {
             return (
               <TableItem
                 onClickFn={() => onClickSlotFn(dayIndex, hourIndex)}
-                key={(dayId += 1)}
+                key={hourIndex}
                 data={item.time}
                 colorId={item.color}
               />
