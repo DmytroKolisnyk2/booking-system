@@ -47,8 +47,6 @@ const DatePicker = ({ tableDate, urlEndPoint }) => {
 };
 
 DatePicker.propTypes = {
-  onClickArrowLeft: PropTypes.func.isRequired,
-  onClickArrowRight: PropTypes.func.isRequired,
   tableDate: PropTypes.string.isRequired,
   urlEndPoint: PropTypes.string,
 };

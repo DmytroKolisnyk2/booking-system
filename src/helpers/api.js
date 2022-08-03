@@ -122,9 +122,25 @@ const getWeek = (managerId, weekId) => {
     .catch((error) => console.log(error));
 };
 
+const updateSlot = (managerId, weekId, dayIndex, slotHour, colorId) => {
+  return axios
+    .post(
+      `/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`
+    )
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+
 const saveTable = (managerId, tableCredential) => {
   return axios
     .post(`/save_template/${managerId}`, tableCredential)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+
+const getTable = (managerId) => {
+  return axios
+    .get(`/get_template/${managerId}`)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -145,7 +161,9 @@ export {
   getGroups,
   getCurrentWeek,
   saveTable,
+  getTable,
   getWeek,
+  updateSlot,
   getRoles,
   getUsersByRole,
   putUser,
