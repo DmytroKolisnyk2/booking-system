@@ -15,17 +15,7 @@ export default function Header({ endpoints, user }) {
       >
         <img src={logo} alt="logo" className={styles["logoImg"]} />
       </a>
-      <Navigation
-        user={{ name: "Марія", role: "Manager" }}
-        links={[
-          { text: "Home", path: "/" },
-          { text: "Modals", path: "/modals" },
-          { text: "Call center", path: "/call-center" },
-          { text: "Administrators", path: "/administrators" },
-          { text: "Confirmator", path: "/confirmator" },
-        ]}
-      />
-      {/* <Navigation user={user} links={endpoints} /> */}
+      <Navigation user={user} links={endpoints} />
       <LoginBox />
     </header>
   );

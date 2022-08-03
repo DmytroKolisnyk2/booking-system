@@ -24,16 +24,19 @@
   width: 700px;
   margin: 0 auto;
 }
-.add_btn{
-    padding: 11px 39px;
-    border-radius: 20px;
-    color:$font-white;
-    background-color: $font-black;
-    font-family: $poppins;
+.add_btn {
+  padding: 11px 39px;
+  border-radius: 20px;
+  color: $font-white;
+  background-color: $font-black;
+  font-family: $poppins;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   margin: 0 auto;
   margin-top: 56px;
   margin-bottom: 57px;
-  }
+}
+.main_wrapper {
+  flex-grow: 1;
+}
