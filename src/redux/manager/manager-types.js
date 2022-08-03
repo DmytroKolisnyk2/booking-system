@@ -1,5 +1,6 @@
 const GET_TABLE = 'table/get';
 const SAVE_TABLE = 'table/save';
+const GET_WEEK = 'week/get';
 const TYPE_SELECTION = 'selection/type';
 const TYPE_SLOT = 'slot/color';
 const MANAGER_ERROR = 'manager/error';
@@ -12,4 +13,5 @@ export {
   TYPE_SLOT,
   MANAGER_ERROR,
   MANAGER_LOADING,
+  GET_WEEK,
 };

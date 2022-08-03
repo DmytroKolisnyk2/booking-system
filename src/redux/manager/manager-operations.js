@@ -5,15 +5,27 @@ import {
   TYPE_SLOT,
   MANAGER_LOADING,
   MANAGER_ERROR,
+  GET_WEEK,
 } from "./manager-types";
-import { getCurrentWeek } from "../../helpers/api";
+import { getCurrentWeek, getWeek } from "../../helpers/api";
 
-
-const getManagerCurrentWeek = createAsyncThunk(GET_TABLE, (managerId, {rejectWithValue}) => {
+const getManagerCurrentWeek = createAsyncThunk(
+  GET_WEEK,
+  (managerId, { rejectWithValue }) => {
     return getCurrentWeek(managerId)
       .then((data) => data)
       .catch((data) => rejectWithValue(data.message));
-});
+  }
+);
+
+const getManagerWeek = createAsyncThunk(
+  GET_WEEK,
+  ({ managerId, weekId }, { rejectWithValue }) => {
+    return getWeek(managerId, weekId)
+      .then((data) => data)
+      .catch((data) => rejectWithValue(data.message));
+  }
+);
 
 const changeTypeSelection = createAction(TYPE_SELECTION);
 const changeStatusSlot = createAction(TYPE_SLOT);
@@ -26,4 +38,5 @@ export {
   changeStatusSlot,
   setManagerError,
   setManagerLoading,
+  getManagerWeek,
 };

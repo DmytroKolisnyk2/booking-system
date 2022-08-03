@@ -1,6 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
   getManagerCurrentWeek,
+  getManagerWeek,
   changeTypeSelection,
   changeStatusSlot,
   setManagerError,
@@ -132,6 +133,7 @@ const initialState = [
 
 const slots = createReducer(initialState, {
   [getManagerCurrentWeek.fulfilled]: (_, action) => action.payload.slots,
+  [getManagerWeek.fulfilled]: (_, action) => action.payload.slots,
   [changeStatusSlot]: (state, action) => {
     state.map((day, dayIndex) =>
       day.map((item, hourIndex) => {
@@ -148,10 +150,13 @@ const slots = createReducer(initialState, {
 const weekId = createReducer("", {
   [getManagerCurrentWeek.fulfilled]: (_, action) =>
     action.payload.current_week_id,
+  [getManagerWeek.fulfilled]: (_, action) => action.payload.current_week_id,
 });
 
 const weekDate = createReducer("Sun Sep 1 1939 22:09:08 GMT+0300", {
   [getManagerCurrentWeek.fulfilled]: (_, action) =>
+    action.payload.current_week_date_start,
+  [getManagerWeek.fulfilled]: (_, action) =>
     action.payload.current_week_date_start,
 });
 
@@ -161,16 +166,21 @@ const typeActionSelection = createReducer("", {
 
 const managerError = createReducer("", {
   [getManagerCurrentWeek.rejected]: (_, action) => action.payload,
+  [getManagerWeek.rejected]: (_, action) => action.payload,
   [setManagerError]: (_, action) => action.payload,
   [getManagerCurrentWeek.pending]: (_, action) => "",
-  [setManagerLoading]: (_, action) => '',
+  [getManagerWeek.pending]: (_, action) => "",
+  [setManagerLoading]: (_, action) => "",
 });
 
 const managerLoading = createReducer(false, {
   [getManagerCurrentWeek.pending]: (_, action) => true,
+  [getManagerWeek.pending]: (_, action) => true,
   [setManagerLoading]: (_, action) => action.payload,
   [getManagerCurrentWeek.rejected]: (_, action) => false,
   [getManagerCurrentWeek.fulfilled]: (_, action) => false,
+  [getManagerWeek.rejected]: (_, action) => false,
+  [getManagerWeek.fulfilled]: (_, action) => false,
 });
 
 const week = combineReducers({
