@@ -18,7 +18,10 @@ const ChangeGroup = ({ isOpen, handleClose, id }) => {
               additional: id,
               delete: deleteGroup,
             }}
-            onSubmit={handleClose}
+            onSubmit={() => {
+              handleClose();
+              setName("");
+            }}
             name={name}
             title="Change group's info"
           >

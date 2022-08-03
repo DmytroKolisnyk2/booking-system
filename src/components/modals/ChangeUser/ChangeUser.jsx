@@ -18,6 +18,7 @@ const ChangeUser = ({
   id,
   dataName,
   dataDesc,
+  dataRole,
   administrator,
 }) => {
   const [name, setName] = useState("");
@@ -28,6 +29,7 @@ const ChangeUser = ({
   useEffect(() => {
     setName(dataName);
     setDesc(dataDesc);
+    setRole(dataRole);
   }, [isOpen]);
 
   return (
@@ -42,7 +44,14 @@ const ChangeUser = ({
               delete: deleteUser,
             }}
             name={name}
-            onSubmit={handleClose}
+            onSubmit={() => {
+              handleClose();
+              setRole("");
+              setDesc("");
+              setPassword("");
+              setLogin("");
+              setName("");
+            }}
             description={desc}
             login={login}
             password={password}

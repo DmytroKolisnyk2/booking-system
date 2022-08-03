@@ -21,7 +21,14 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
             type={{ type: "post" }}
             requests={{ post: postManager }}
             name={name}
-            onSubmit={handleClose}
+            onSubmit={() => {
+              handleClose()
+              setRole("")
+              setTelegram("")
+              setPassword("")
+              setLogin("")
+              setName("")
+            }}
             telegram={telegram}
             login={login}
             password={password}

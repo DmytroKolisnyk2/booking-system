@@ -17,7 +17,14 @@ const Login = ({ isOpen, handleClose }) => {
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
-            onSubmit={handleClose}
+            onSubmit={() => {
+              handleClose();
+              setData("");
+              setRemember("");
+              setEmail("");
+              setPhone("");
+              setName("");
+            }}
             type={{ type: "no-request", button: "login" }}
             text={
               <>

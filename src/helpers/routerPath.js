@@ -1,7 +1,9 @@
 const path = {
+  all: "*",
   home: "/",
   modals: "/modals/",
-  confirmator: "/confirmator/",
+  confirmator: "/confirmator/:confirmatorId/",
+  caller: "/caller/:callerId/",
   superAdmin: "/superAdmin/",
   admin: "/admin/:adminId/",
   users: "users/",
