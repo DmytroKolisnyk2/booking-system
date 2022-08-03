@@ -8,7 +8,6 @@ export default function Groups({ text, isOpenModal, role }) {
   const [courses, setCorses] = useState([]);
   const [id, setId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const [modal, setModal] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleClose = () => {
@@ -30,21 +29,16 @@ export default function Groups({ text, isOpenModal, role }) {
   }, [isOpen, isOpenModal]);
   return (
     <>
-      {errorMessage && <p className="error"> {errorMessage} </p>}
       <div className={styles.wrapper}>
         <ChangeGroup isOpen={isOpen} handleClose={() => handleClose()} id={id} />
         <p className={styles.mini_title}>{text}</p>
+      {errorMessage && <p className="error"> {errorMessage} </p>}
         {courses?.length > 0 && (
           <ul className={styles.main_wrapper}>
             {courses.map((item) => {
               return (
                 <li className={styles.ul_items} key={item.name}>
                   <p className={styles.ul_items_text}>{item.name}</p>
-                  {/* <button className={styles.ul_items_btn} onClick={ <ChangeUser
-            isOpen={isOpen}
-            handleClose={() => handleClose()}
-            id={id}
-          />}/> */}
                   <button
                     className={styles.ul_items_btn}
                     data-modal="change-user"

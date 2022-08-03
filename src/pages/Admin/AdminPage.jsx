@@ -19,7 +19,7 @@ const AdminPage = () => {
           { text: "courses", path: path.courses },
           { text: "actions", path: path.actions },
         ]}
-        user={{ name: adminId, role: "Manager" }}
+        user={{ name: adminId, role: "Admin" }}
       />
       <div className={styles.main_wrapper}>
         <BgWrapper title="Administrator" />

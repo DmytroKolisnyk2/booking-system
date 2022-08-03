@@ -1,6 +1,5 @@
+@import "../../styles/variables.scss";
 
-
-@import "../../styles/App.scss";
 .mini_title {
   font-family: $poppins;
   color: #000;
@@ -47,7 +46,7 @@
 // }
 
 .ul_items_btn {
- cursor: pointer;
+  cursor: pointer;
   width: 14px;
   height: 14px;
   background-position: center;
@@ -55,17 +54,19 @@
   background-repeat: no-repeat;
   background-size: 8px 8px;
   background-color: $font-black;
-  border-radius:5px;
+  border-radius: 5px;
 }
 .main_wrapper {
-
 }
 .wrapper {
-  border-inline: 2px solid $font-black;
-
+  border-right: 2px solid black;
   height: auto;
-
   align-items: center;
+  width: 203px;
+
+  &:nth-last-child(1) {
+    border-right: none;
+  }
 }
 .ul_items_text {
   font-family: "Poppins";
@@ -73,7 +74,6 @@
   font-size: 16px;
   text-align: center;
   margin: 0 auto;
-  margin-bottom: 8px;
-  margin-top: 8px;
+  margin-bottom: 12px;
+  margin-top: 12px;
 }
-

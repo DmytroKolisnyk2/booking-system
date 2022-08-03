@@ -155,10 +155,6 @@ const weekDate = createReducer("Sun Sep 1 1939 22:09:08 GMT+0300", {
     action.payload.current_week_date_start,
 });
 
-const managerId = createReducer("", {
-  [getManagerCurrentWeek.fulfilled]: (_, action) => action.payload.manager_id,
-});
-
 const typeActionSelection = createReducer("", {
   [changeTypeSelection]: (_, action) => action.payload,
 });
@@ -184,7 +180,6 @@ const week = combineReducers({
 });
 
 export default combineReducers({
-  managerId,
   typeActionSelection,
   managerError,
   managerLoading,
