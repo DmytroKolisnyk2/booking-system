@@ -22,6 +22,9 @@ import UsersPage from "./pages/SuperAdmin/UsersPage";
 import GroupsPage from "./pages/SuperAdmin/GroupsPage";
 import CoursesPage from "./pages/SuperAdmin/CoursesPage";
 import ActionsPage from "./pages/SuperAdmin/ActionsPage";
+import ManagerPage from "./pages/Manager/ManagerPage";
+import ConsultationsPage from "./pages/Manager/ConsultationsPage";
+import PlanningPage from "./pages/Manager/PlanningPage";
 
 class App extends Component {
   render() {
@@ -41,9 +44,13 @@ class App extends Component {
             <Route path={path.courses} element={<CoursesPage />} />
             <Route path={path.actions} element={<ActionsPage />} />
           </Route>
+          <Route path={path.manager} element={<ManagerPage />}>
+            <Route path={path.consultations} element={<ConsultationsPage />} />
+            <Route path={path.planning} element={<PlanningPage />} />
+          </Route>
+
           <Route path={path.modals} element={<ModalsPage />} />
           <Route path={path.confirmator} element={<ConfirmatorPage />} />
-          <Route path={path.administrators} element={<AdminPage />} />
         </Routes>
         <Footer />
       </>
