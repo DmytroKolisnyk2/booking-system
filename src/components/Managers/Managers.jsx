@@ -11,20 +11,21 @@ import ChangeUser from "../modals/ChangeUser/ChangeUser";
 //   const [id, setId] = useState(0);
 // =======
 export default function Managers({ text, isOpenModal, role, isAdmin }) {
-
   const [name, setName] = useState("");
   const [telegram, setTelegram] = useState("");
   const [managers, setManagers] = useState([]);
   const [id, setId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
+  const [newRole, setRole] = useState("");
   const handleClose = () => {
     setIsOpen(!isOpen);
   };
   const getManagersData = async () => {
     const res = await getUsersByRole(role)
-      .then((res) => (res.data ? res.data : setErrorMessage("Example error message!")))
+      .then((res) =>
+        res.data ? res.data : setErrorMessage("Example error message!")
+      )
       .catch((error) => setErrorMessage(error.message));
     setManagers(res);
     return res;
@@ -40,7 +41,12 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
   return (
     <>
       <div className={styles.wrapper}>
-        <ChangeUser isOpen={isOpen} handleClose={() => handleClose()} id={id} administrator={isAdmin}/>
+        <ChangeUser
+          isOpen={isOpen}
+          handleClose={() => handleClose()}
+          id={id}
+          administrator={isAdmin}
+        />
         <p className={styles.mini_title}>{text}</p>
         {errorMessage && <p className="error"> {errorMessage} </p>}
         {managers?.length > 0 && (
@@ -57,6 +63,7 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
                       setId(item.id);
                       setName(item.name);
                       setTelegram(item.telegram);
+                      setRole(item.role_id);
                     }}
                   />
                 </li>
@@ -71,6 +78,7 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
           dataName={name}
           dataDesc={telegram}
           administrator={isAdmin}
+          dataRole={newRole}
         />
       </div>
     </>

@@ -18,6 +18,7 @@ const ChangeUser = ({
   id,
   dataName,
   dataDesc,
+  dataRole,
   administrator,
 }) => {
   const [name, setName] = useState("");
@@ -28,6 +29,7 @@ const ChangeUser = ({
   useEffect(() => {
     setName(dataName);
     setDesc(dataDesc);
+    setRole(dataRole);
   }, [isOpen]);
 
   return (
