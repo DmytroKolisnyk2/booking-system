@@ -66,7 +66,7 @@ const putCourse = (credentials, id) => {
 };
 const putGroup = (credentials, id) => {
   return axios
-    .put(`/update_course/${id}`, credentials)
+    .put(`/update_group/${id}`, credentials)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
