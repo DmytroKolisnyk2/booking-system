@@ -94,28 +94,7 @@ const ConsultationPage = () => {
         })}
       </div>
       <Table table={table} onClickSlotFn={onClickSlot} />
-      <div className={styles.wrapperTableButtons}>
-        <Button
-          style={styles.tableButton}
-          paddingRight={31}
-          paddingLeft={31}
-          width={"auto"}
-          bgColor={"black"}
-          color={"white"}
-        >
-          save as template
-        </Button>
-        <Button
-          style={styles.tableButton}
-          paddingRight={31}
-          paddingLeft={31}
-          width={"auto"}
-          bgColor={"black"}
-          color={"white"}
-        >
-          load a saved template
-        </Button>
-      </div>
+    
     </section>
   );
 };
