@@ -10,7 +10,7 @@ import ChangeUser from "../modals/ChangeUser/ChangeUser";
 //   const [managers, setManagers] = useState([]);
 //   const [id, setId] = useState(0);
 // =======
-export default function Managers({ text, isOpenModal, role }) {
+export default function Managers({ text, isOpenModal, role, isAdmin }) {
   const [name, setName] = useState("");
   const [telegram, setTelegram] = useState("");
   const [managers, setManagers] = useState([]);
@@ -46,7 +46,7 @@ export default function Managers({ text, isOpenModal, role }) {
     <>
       {errorMessage && <p className="error"> {errorMessage} </p>}
       <div className={styles.wrapper}>
-        <ChangeUser isOpen={isOpen} handleClose={() => handleClose()} id={id} />
+        <ChangeUser isOpen={isOpen} handleClose={() => handleClose()} id={id} administrator={isAdmin}/>
         <p className={styles.mini_title}>{text}</p>
         {managers?.length > 0 && (
           <ul className={styles.main_wrapper}>
@@ -80,7 +80,7 @@ export default function Managers({ text, isOpenModal, role }) {
           id={id}
           dataName={name}
           dataDesc={telegram}
-          administrator={true}
+          administrator={isAdmin}
         />
       </div>
     </>

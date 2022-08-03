@@ -12,6 +12,7 @@ const NewCourse = ({ isOpen, handleClose }) => {
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
+            onSubmit={handleClose}
             type={{ type: "post" }}
             requests={{
               post: postCourse,

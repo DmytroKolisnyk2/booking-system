@@ -25,12 +25,12 @@ const NewAppointment = ({ isOpen, handleClose, data }) => {
   const [age, setAge] = useState(0);
   const [phone, setPhone] = useState("");
 
-
   return (
     <div>
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
+            onSubmit={handleClose}
             type={{ type: "post" }}
             requests={{ post: postGroup }}
             course={course}

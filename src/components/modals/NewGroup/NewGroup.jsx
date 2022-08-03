@@ -1,10 +1,7 @@
 import Modal from "../../Modal/Modal";
 import Select from "../../Select/Select";
 import React, { useState } from "react";
-import {
-  getCourses,
-  postGroup,
-} from "../../../helpers/api.js";
+import { getCourses, postGroup } from "../../../helpers/api.js";
 import FormInput from "../../FormInput/FormInput";
 import Form from "../../Form/Form";
 
@@ -18,6 +15,7 @@ const NewGroup = ({ isOpen, handleClose }) => {
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
+            onSubmit={handleClose}
             type={{ type: "post" }}
             requests={{ post: postGroup }}
             course_id={course_id}

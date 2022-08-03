@@ -18,14 +18,34 @@ export default function UsersPage() {
     <>
       <h3 className={styles.main_title}>Manage administrators</h3>
       <div className={styles.main_wrapper2}>
-        <Managers text={"Administrators"} role="Administrator" isOpenModal={isOpen} />
+        <Managers
+          text={"Administrators"}
+          role="Administrator"
+          isOpenModal={isOpen}
+          isAdmin={false}
+        />
         {/* >>>>>>> administratorpage */}
 
-        <Managers text={"Managers"} role="Manager" isOpenModal={isOpen} />
+        <Managers
+          text={"Managers"}
+          role="Manager"
+          isOpenModal={isOpen}
+          isAdmin={false}
+        />
 
-        <Managers text={"Confirmators"} role="Confirmator" isOpenModal={isOpen} />
+        <Managers
+          text={"Confirmators"}
+          role="Confirmator"
+          isOpenModal={isOpen}
+          isAdmin={false}
+        />
 
-        <Managers text={"Call center"} role="Caller" isOpenModal={isOpen} />
+        <Managers
+          text={"Call center"}
+          role="Caller"
+          isOpenModal={isOpen}
+          isAdmin={false}
+        />
       </div>
       <div className={styles.btn_wrapper}>
         <button
@@ -37,7 +57,7 @@ export default function UsersPage() {
         >
           Add new administrator +
         </button>
-        <NewUser isOpen={isOpen} handleClose={() => handleClose()} />
+        <NewUser isOpen={isOpen} handleClose={() => handleClose()} isAdmin={false}/>
 
         {/* <button
                   onClick={() => {
