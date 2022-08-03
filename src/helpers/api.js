@@ -39,6 +39,13 @@ const postManager = (credentials) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+
+const postUser = (credentials) => {
+  return axios
+    .post("/register_manager", credentials)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
 const postCourse = (credentials) => {
   return axios
     .post("/register_course", credentials)
@@ -124,9 +131,7 @@ const getWeek = (managerId, weekId) => {
 
 const updateSlot = (managerId, weekId, dayIndex, slotHour, colorId) => {
   return axios
-    .post(
-      `/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`
-    )
+    .post(`/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -145,7 +150,15 @@ const getTable = (managerId) => {
     .catch((error) => console.log(error));
 };
 
+const getCurrentWorkWeek = (managerId) => {
+  return axios
+    .get(`/current_work_week/${managerId}`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+
 export {
+  getCurrentWorkWeek,
   getManagers,
   getCourses,
   postManager,
@@ -168,4 +181,5 @@ export {
   getUsersByRole,
   putUser,
   deleteUser,
+  postUser
 };

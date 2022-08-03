@@ -12,7 +12,9 @@ const Form = ({
   children,
   width,
   text,
+  role,
   handleClose,
+  isDelete,
   ...formData
 }) => {
   const [error, setError] = useState(false);
@@ -24,6 +26,10 @@ const Form = ({
         data.append(i, formData[i]);
       }
       data.append("description", "test");
+      +role === 1 && (await requests.user(data));
+      if (+role !== 1 && +role && isDelete) {
+        await requests.userDelete(id);
+      }
       type.type === "post"
         ? await requests.post(data).catch(() => setError(!error))
         : await requests[type.type](data, requests.additional);
@@ -35,6 +41,7 @@ const Form = ({
     !error && onSubmit && onSubmit();
   };
   const handleDelete = async () => {
+    +role === 1 && (await requests.userDelete(id));
     await requests.delete(requests.additional);
     !error && onSubmit && onSubmit();
   };
