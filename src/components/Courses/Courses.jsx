@@ -1,56 +1,42 @@
 import React from "react";
 import { Component, useState, useEffect } from "react";
-import { getUsersByRole } from "../../helpers/api";
-import styles from "./Managers.module.scss";
-import ChangeUser from "../modals/ChangeUser/ChangeUser";
+import { getCourses } from "../../helpers/api";
+import styles from "../Managers/Managers.module.scss";
+import ChangeCourses from "../modals/ChangeCourse/ChangeCourse";
 
-// <<<<<<< HEAD
-// export default Managers = ({ text, isOpenModal, role }) => {
-//   const [isOpen, setIsOpen] = useState(false);
-//   const [managers, setManagers] = useState([]);
-//   const [id, setId] = useState(0);
-// =======
-export default function Managers({ text, isOpenModal, role }) {
-  const [name, setName] = useState("");
-  const [telegram, setTelegram] = useState("");
-  const [managers, setManagers] = useState([]);
+export default function Courses({ text, isOpenModal, role }) {
+  const [courses, setCorses] = useState([]);
   const [id, setId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  // const getManagersData = async () => {
-  //   const res = await getUsersByRole(role)
-  //     .then((res) => res.data)
-  //     .catch((error) => console.log(error));
-  // };
   const handleClose = () => {
     setIsOpen(!isOpen);
   };
-  const getManagersData = async () => {
-    const res = await getUsersByRole(role)
+  const getCoursesData = async () => {
+    const res = await getCourses(role)
       .then((res) => (res.data ? res.data : setErrorMessage("Example error message!")))
       .catch((error) => setErrorMessage(error.message));
-    // >>>>>>> administratorpage
 
-    setManagers(res);
+    setCorses(res);
     return res;
   };
   useEffect(() => {
-    getManagersData();
+    getCoursesData();
   }, []);
   useEffect(() => {
-    getManagersData();
+    getCoursesData();
   }, [isOpen, isOpenModal]);
   return (
     <>
       {errorMessage && <p className="error"> {errorMessage} </p>}
       <div className={styles.wrapper}>
-        <ChangeUser isOpen={isOpen} handleClose={() => handleClose()} id={id} />
+        <ChangeCourses isOpen={isOpen} handleClose={() => handleClose()} id={id} />
         <p className={styles.mini_title}>{text}</p>
-        {managers?.length > 0 && (
+        {courses?.length > 0 && (
           <ul className={styles.main_wrapper}>
-            {managers.map((item) => {
+            {courses.map((item) => {
               return (
                 <li className={styles.ul_items} key={item.name}>
                   <p className={styles.ul_items_text}>{item.name}</p>
@@ -65,8 +51,6 @@ export default function Managers({ text, isOpenModal, role }) {
                     onClick={() => {
                       setIsOpen(!isOpen);
                       setId(item.id);
-                      setName(item.name);
-                      setTelegram(item.telegram);
                     }}
                   />
                 </li>
@@ -74,14 +58,6 @@ export default function Managers({ text, isOpenModal, role }) {
             })}
           </ul>
         )}
-        <ChangeUser
-          isOpen={isOpen}
-          handleClose={() => setIsOpen(!isOpen)}
-          id={id}
-          dataName={name}
-          dataDesc={telegram}
-          administrator={true}
-        />
       </div>
     </>
   );

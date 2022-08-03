@@ -6,10 +6,13 @@ import {
   getCourses,
   deleteManager,
   getGroups,
+  getUsersByRole,
 } from "../../../helpers/api.js";
 import FormInput from "../../FormInput/FormInput";
+import DropList from "../../DropList/DropList";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
+
 const ConsultationInfo = ({ isOpen, handleClose, id }) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
@@ -19,6 +22,7 @@ const ConsultationInfo = ({ isOpen, handleClose, id }) => {
   const [course, setCourse] = useState("");
   const [group, setGroup] = useState("");
   const [message, setMessage] = useState("");
+  const [manager, setManager] = useState("");
   return (
     <>
       {isOpen && (
@@ -40,7 +44,14 @@ const ConsultationInfo = ({ isOpen, handleClose, id }) => {
             // role={role}
             title="Consultation Info"
           >
-            <p className={styles.input__title}>Mon, 11.07, 11:00, Олена</p>
+            <DropList
+              title="Manager"
+              value={manager}
+              setValue={setManager}
+              request={() => getUsersByRole("Manager")}
+              label="course"
+              defaultValue="Select course"
+            />
             <Select
               title="Course:"
               value={course}

@@ -14,6 +14,18 @@ const getCourses = () => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+const getRoles = () => {
+  return axios
+    .get("/roles")
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+const getUsersByRole = (roleName) => {
+  return axios
+    .get(`/users/${roleName}`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
 const getGroups = () => {
   return axios
     .get("/groups")
@@ -23,7 +35,7 @@ const getGroups = () => {
 
 const postManager = (credentials) => {
   return axios
-    .post("/register_manager", credentials)
+    .post("/register_user", credentials)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -54,7 +66,13 @@ const putCourse = (credentials, id) => {
 };
 const putGroup = (credentials, id) => {
   return axios
-    .put(`/update_course/${id}`, credentials)
+    .put(`/update_group/${id}`, credentials)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+const putUser = (credentials, id) => {
+  return axios
+    .put(`/update_user/${id}`, credentials)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -68,6 +86,12 @@ const deleteManager = (managerId) => {
 const deleteCourse = (id) => {
   return axios
     .delete(`/remove_course/${id}`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+const deleteUser = (id) => {
+  return axios
+    .delete(`/remove_user/${id}`)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -92,10 +116,10 @@ const getCurrentWeek = (managerId) => {
 };
 
 const getWeek = (managerId, weekId) => {
-    return axios
-      .get(`/get_week/${managerId}/${weekId}`)
-      .then((res) => res.data)
-      .catch((error) => console.log(error));
+  return axios
+    .get(`/get_week/${managerId}/${weekId}`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
 };
 
 const updateSlot = (managerId, weekId, dayIndex, slotHour, colorId) => {
@@ -140,4 +164,8 @@ export {
   getTable,
   getWeek,
   updateSlot,
+  getRoles,
+  getUsersByRole,
+  putUser,
+  deleteUser,
 };
