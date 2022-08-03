@@ -5,32 +5,33 @@ import styles from "./Managers.module.scss";
 import ChangeUser from "../modals/ChangeUser/ChangeUser";
 
 // <<<<<<< HEAD
-const Managers = ({ text, isOpenModal, role }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [managers, setManagers] = useState([]);
-  const [id, setId] = useState(0);
-  const [name, setName] = useState("");
-  const [telegram, setTelegram] = useState("");
-  const getManagersData = async () => {
-    const res = await getUsersByRole(role)
-      .then((res) => res.data)
-      .catch((error) => console.log(error));
-// =======
-// export default function Managers({ text, isOpenModal,role }) {
+// export default Managers = ({ text, isOpenModal, role }) => {
+//   const [isOpen, setIsOpen] = useState(false);
 //   const [managers, setManagers] = useState([]);
 //   const [id, setId] = useState(0);
-//   const [isOpen, setIsOpen] = useState(false);
-//   const [modal, setModal] = useState("");
-//   const [errorMessage, setErrorMessage] = useState('');
+// =======
+export default function Managers({ text, isOpenModal, role }) {
+  const [name, setName] = useState("");
+  const [telegram, setTelegram] = useState("");
+  const [managers, setManagers] = useState([]);
+  const [id, setId] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+  const [modal, setModal] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-//   const handleClose = () => {
-//     setIsOpen(!isOpen);
-//   };
-//   const getManagersData = async () => {
-//     const res = await getUsersByRole(role)
-//       .then((res) => res.data ? res.data : setErrorMessage('Example error message!'))
-//       .catch((error) =>  setErrorMessage(error.message))
-// >>>>>>> administratorpage
+  // const getManagersData = async () => {
+  //   const res = await getUsersByRole(role)
+  //     .then((res) => res.data)
+  //     .catch((error) => console.log(error));
+  // };
+  const handleClose = () => {
+    setIsOpen(!isOpen);
+  };
+  const getManagersData = async () => {
+    const res = await getUsersByRole(role)
+      .then((res) => (res.data ? res.data : setErrorMessage("Example error message!")))
+      .catch((error) => setErrorMessage(error.message));
+    // >>>>>>> administratorpage
 
     setManagers(res);
     return res;
@@ -43,9 +44,7 @@ const Managers = ({ text, isOpenModal, role }) => {
   }, [isOpen, isOpenModal]);
   return (
     <>
-      {errorMessage && (
-      <p className="error"> {errorMessage} </p>
-    )}
+      {errorMessage && <p className="error"> {errorMessage} </p>}
       <div className={styles.wrapper}>
         <ChangeUser isOpen={isOpen} handleClose={() => handleClose()} id={id} />
         <p className={styles.mini_title}>{text}</p>
@@ -54,7 +53,6 @@ const Managers = ({ text, isOpenModal, role }) => {
             {managers.map((item) => {
               return (
                 <li className={styles.ul_items} key={item.name}>
-                
                   <p className={styles.ul_items_text}>{item.name}</p>
                   {/* <button className={styles.ul_items_btn} onClick={ <ChangeUser
             isOpen={isOpen}
