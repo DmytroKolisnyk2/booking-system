@@ -17,6 +17,7 @@ const NewManager = ({ isOpen, handleClose, id }) => {
               additional: id,
               delete: deleteCourse,
             }}
+            onSubmit={handleClose}
             name={name}
             title="Change course's info"
           >

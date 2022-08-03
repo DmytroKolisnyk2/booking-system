@@ -12,7 +12,14 @@ import {
 import FormInput from "../../FormInput/FormInput";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
-const ChangeUser = ({ isOpen, handleClose, id, dataName, dataDesc, administrator }) => {
+const ChangeUser = ({
+  isOpen,
+  handleClose,
+  id,
+  dataName,
+  dataDesc,
+  administrator,
+}) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [login, setLogin] = useState("");
@@ -35,6 +42,7 @@ const ChangeUser = ({ isOpen, handleClose, id, dataName, dataDesc, administrator
               delete: deleteUser,
             }}
             name={name}
+            onSubmit={handleClose}
             description={desc}
             login={login}
             password={password}

@@ -17,6 +17,7 @@ const Login = ({ isOpen, handleClose }) => {
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
+            onSubmit={handleClose}
             type={{ type: "no-request", button: "login" }}
             text={
               <>

@@ -24,6 +24,7 @@ const NewAppointment = ({ isOpen, handleClose, data }) => {
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
+            onSubmit={handleClose}
             type={{ type: "post" }}
             requests={{ post: postGroup }}
             course={course}

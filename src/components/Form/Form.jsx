@@ -1,6 +1,7 @@
 import styles from "./Form.module.scss";
 import InputSubmit from "../InputSubmit/InputSubmit";
 import InputDelete from "../InputDelete/InputDelete";
+import { useState, useEffect } from "react";
 
 const Form = ({
   type,
@@ -11,21 +12,31 @@ const Form = ({
   children,
   width,
   text,
+  handleClose,
   ...formData
 }) => {
+  const [error, setError] = useState(false);
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    const data = new FormData();
-    for (const i in formData) {
-      data.append(i, formData[i]);
+    try {
+      event.preventDefault();
+      const data = new FormData();
+      for (const i in formData) {
+        data.append(i, formData[i]);
+      }
+      data.append("description", "test");
+      type.type === "post"
+        ? await requests.post(data).catch(() => setError(!error))
+        : await requests[type.type](data, requests.additional);
+    } catch (e) {
+      setError(!error);
+      console.log(error);
+      return console.log(e);
     }
-    data.append("description", "test");
-    type.type === "post"
-      ? await requests.post(data)
-      : await requests[type.type](data, requests.additional);
+    !error && onSubmit && onSubmit();
   };
   const handleDelete = async () => {
     await requests.delete(requests.additional);
+    !error && onSubmit && onSubmit();
   };
   return (
     <div className={styles.modal} style={{ width: width }}>
@@ -33,7 +44,6 @@ const Form = ({
       <form
         onSubmit={(e) => {
           handleSubmit(e);
-          {onSubmit && (onSubmit())}
         }}
         className={styles.form}
       >

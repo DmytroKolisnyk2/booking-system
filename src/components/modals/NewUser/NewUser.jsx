@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { postManager, getRoles } from "../../../helpers/api.js";
 import Form from "../../Form/Form";
 
-const NewUser = ({ isOpen, handleClose, administrator }) => {
+const NewUser = ({ isOpen, handleClose, isAdmin }) => {
   const [name, setName] = useState("");
   const [telegram, setTelegram] = useState("");
   const [login, setLogin] = useState("");
@@ -21,6 +21,7 @@ const NewUser = ({ isOpen, handleClose, administrator }) => {
             type={{ type: "post" }}
             requests={{ post: postManager }}
             name={name}
+            onSubmit={handleClose}
             telegram={telegram}
             login={login}
             password={password}
@@ -74,7 +75,7 @@ const NewUser = ({ isOpen, handleClose, administrator }) => {
               request={getRoles}
               setValue={setRole}
               value={role}
-              administrator={true}
+              administrator={isAdmin}
               defaultValue="manager/caller/confirmator"
             ></Select>
           </Form>

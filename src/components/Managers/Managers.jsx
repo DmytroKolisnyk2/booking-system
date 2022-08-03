@@ -4,7 +4,14 @@ import { getUsersByRole } from "../../helpers/api";
 import styles from "./Managers.module.scss";
 import ChangeUser from "../modals/ChangeUser/ChangeUser";
 
-export default function Managers({ text, isOpenModal, role }) {
+// <<<<<<< HEAD
+// export default Managers = ({ text, isOpenModal, role }) => {
+//   const [isOpen, setIsOpen] = useState(false);
+//   const [managers, setManagers] = useState([]);
+//   const [id, setId] = useState(0);
+// =======
+export default function Managers({ text, isOpenModal, role, isAdmin }) {
+
   const [name, setName] = useState("");
   const [telegram, setTelegram] = useState("");
   const [managers, setManagers] = useState([]);
@@ -33,7 +40,7 @@ export default function Managers({ text, isOpenModal, role }) {
   return (
     <>
       <div className={styles.wrapper}>
-        <ChangeUser isOpen={isOpen} handleClose={() => handleClose()} id={id} />
+        <ChangeUser isOpen={isOpen} handleClose={() => handleClose()} id={id} administrator={isAdmin}/>
         <p className={styles.mini_title}>{text}</p>
         {errorMessage && <p className="error"> {errorMessage} </p>}
         {managers?.length > 0 && (
@@ -63,7 +70,7 @@ export default function Managers({ text, isOpenModal, role }) {
           id={id}
           dataName={name}
           dataDesc={telegram}
-          administrator={true}
+          administrator={isAdmin}
         />
       </div>
     </>
