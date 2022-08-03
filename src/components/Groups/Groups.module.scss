@@ -68,7 +68,7 @@
   flex-direction: column;
   height: 100%;
   flex-grow: 1;
-
+  min-width: 203px;
   &:nth-last-child(1) {
     border-right: 0;
   }
