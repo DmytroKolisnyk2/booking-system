@@ -49,8 +49,8 @@ class App extends Component {
             <Route path={path.planning} element={<PlanningPage />} />
           </Route>
 
+          <Route path={path.home} element={<HomePage />} />
           <Route path={path.modals} element={<ModalsPage />} />
-          <Route path={path.confirmator} element={<ConfirmatorPage />} />
         </Routes>
         <Footer />
       </>
