@@ -8,7 +8,7 @@ import path from "./helpers/routerPath";
 import ModalsPage from "./pages/ModalsPage/ModalsPage";
 import Footer from "./components/Footer/Footer";
 import AdminPage from "./pages/Admin/AdminPage";
-import HomePage from "./pages/HomePage/HomePage";
+// import HomePage from "./pages/HomePage/HomePage";
 
 import SuperAdministratorPage from "./pages/SuperAdmin/SuperadminPage";
 import ConfirmatorPage from "./pages/ConfirmatorPage/ConfirmatorPage";
@@ -37,7 +37,7 @@ class App extends Component {
             <Route path={path.courses} element={<AdminCoursesPage />} />
             <Route path={path.actions} element={<AdminActionsPage />} />
           </Route>
-          <Route path={path.home} element={<HomePage />} />
+          {/* <Route path={path.home} element={<HomePage />} /> */}
           <Route path={path.superAdmin} element={<SuperAdministratorPage />}>
             <Route path={path.users} element={<UsersPage />} />
             <Route path={path.groups} element={<GroupsPage />} />
@@ -49,7 +49,7 @@ class App extends Component {
             <Route path={path.planning} element={<PlanningPage />} />
           </Route>
 
-          <Route path={path.home} element={<HomePage />} />
+          {/* <Route path={path.home} element={<HomePage />} /> */}
           <Route path={path.modals} element={<ModalsPage />} />
         </Routes>
         <Footer />

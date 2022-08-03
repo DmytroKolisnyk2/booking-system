@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "react-calendar/dist/Calendar.css";
-import styles from "./HomePage.module.scss";
+import styles from "./ManagerPage.module.scss";
 import Table from "../../components/Table/Table";
 import {
   getDate,
   getTable,
   getTypeSelection,
-  getManagerId,
   getWeekId,
 } from "../../redux/manager/manager-selectors";
 import {
@@ -21,12 +21,12 @@ import Button from "../../components/Buttons/Buttons";
 import ControlButtons from "../../components/ControlButtons/ControlButtons";
 import DatePicker from "../../components/DatePicker/DatePicker";
 
-const HomePage = () => {
+const ConsultationPage = () => {
+  const { managerId } = useParams();
   const dispatch = useDispatch();
   const tableDate = useSelector(getDate);
   const table = useSelector(getTable);
   const typeSelection = useSelector(getTypeSelection);
-  const managerId = useSelector(getManagerId);
   const weekId = useSelector(getWeekId);
   const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const onClickSlot = (dayIndex, hourIndex) => {
@@ -120,4 +120,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default ConsultationPage;
