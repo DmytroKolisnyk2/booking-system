@@ -19,7 +19,7 @@ const Form = ({
     for (const i in formData) {
       data.append(i, formData[i]);
     }
-    // data.append("description", "test");
+    data.append("description", "test");
     type.type === "post"
       ? await requests.post(data)
       : await requests[type.type](data, requests.additional);
