@@ -14,6 +14,7 @@ const Form = ({
   text,
   role,
   handleClose,
+  isDelete,
   ...formData
 }) => {
   const [error, setError] = useState(false);
@@ -26,7 +27,7 @@ const Form = ({
       }
       data.append("description", "test");
       +role === 1 && (await requests.user(data));
-      if (+role !== 1 && +role) {
+      if (+role !== 1 && +role && isDelete) {
         await requests.userDelete(id);
       }
       type.type === "post"

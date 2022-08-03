@@ -48,35 +48,33 @@ export default function Groups({ text, isOpenModal }) {
 
       {errorMessage && <p className="error"> {errorMessage} </p>}
       {courses?.length > 0 && (
-        <div className={styles.wrapper}>  
+        <div className={styles.wrapper}>
           {courses.map((i) => {
             return (
-                <div className={styles.main__wrapper}>
-                  <p className={styles.mini_title}>{i.name}</p>
-                  <ul key={i.id}>
-                    {groups.map((item) => {
-                      return (
-                        <>
-                          {item.course_id === i.id && (
-                            <li className={styles.ul_items}>
-                              <p className={styles.ul_items_text}>
-                                {item.name}
-                              </p>
-                              <button
-                                className={styles.ul_items_btn}
-                                data-modal="change-user"
-                                onClick={() => {
-                                  setIsOpen(!isOpen);
-                                  setId(item.id);
-                                }}
-                              />
-                            </li>
-                          )}
-                        </>
-                      );
-                    })}
-                  </ul>
-                </div>
+              <div className={styles.main_wrapper}>
+                <p className={styles.mini_title}>{i.name}</p>
+                <ul key={i.id} className={styles.list}>
+                  {groups.map((item) => {
+                    return (
+                      <>
+                        {item.course_id === i.id && (
+                          <li className={styles.ul_items}>
+                            <p className={styles.ul_items_text}>{item.name}</p>
+                            <button
+                              className={styles.ul_items_btn}
+                              data-modal="change-user"
+                              onClick={() => {
+                                setIsOpen(!isOpen);
+                                setId(item.id);
+                              }}
+                            />
+                          </li>
+                        )}
+                      </>
+                    );
+                  })}
+                </ul>
+              </div>
             );
           })}
         </div>

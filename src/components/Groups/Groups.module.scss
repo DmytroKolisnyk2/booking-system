@@ -19,8 +19,10 @@
   width: 190px;
   align-items: center;
 }
-  // margin-right: 54px;
-  // margin-left: 54px;
+.columns__wrapper {
+}
+// margin-right: 54px;
+// margin-left: 54px;
 
 // .ul_items::after {
 //   position: absolute;
@@ -57,12 +59,26 @@
   background-color: $font-black;
   border-radius: 50%;
   align-items: center;
-  
 }
 .main_wrapper {
+  border-right: 2px solid black;
+  border-right: 2px solid black;
+  padding: 5px 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
 
+  &:nth-last-child(1) {
+    border-right: 0;
+  }
+}
+.list {
+  flex-grow: 1;
 }
 .wrapper {
+  display: flex;
+  justify-content: center;
   border-right: 2px solid black;
   height: auto;
   align-items: center;
