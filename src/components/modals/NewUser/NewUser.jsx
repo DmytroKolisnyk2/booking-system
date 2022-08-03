@@ -76,8 +76,7 @@ const NewUser = ({ isOpen, handleClose, administrator }) => {
               value={role}
               administrator={true}
               defaultValue="manager/caller/confirmator"
-            >
-            </Select>
+            ></Select>
           </Form>
         </Modal>
       )}

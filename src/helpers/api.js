@@ -149,5 +149,5 @@ export {
   getRoles,
   getUsersByRole,
   putUser,
-  deleteUser
+  deleteUser,
 };

@@ -1,6 +1,7 @@
 import styles from "./ChangeUser.module.scss";
 import Modal from "../../Modal/Modal";
 import React, { useState, useEffect } from "react";
+
 import {
   putManager,
   deleteManager,
