@@ -15,7 +15,7 @@ export default function ManagerPage() {
         ]}
         user={{ name: managerId, role: "Manager" }}
       />
-      <Outlet/>
+      <Outlet urlManager_Id={managerId} />
     </>
   );
 }
