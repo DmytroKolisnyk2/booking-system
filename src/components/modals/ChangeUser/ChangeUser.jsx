@@ -44,7 +44,14 @@ const ChangeUser = ({
               delete: deleteUser,
             }}
             name={name}
-            onSubmit={handleClose}
+            onSubmit={() => {
+              handleClose();
+              setRole("");
+              setDesc("");
+              setPassword("");
+              setLogin("");
+              setName("");
+            }}
             description={desc}
             login={login}
             password={password}

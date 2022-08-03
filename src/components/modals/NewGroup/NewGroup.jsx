@@ -15,7 +15,12 @@ const NewGroup = ({ isOpen, handleClose }) => {
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
-            onSubmit={handleClose}
+            onSubmit={() => {
+              handleClose();
+              // setPassword("");
+              // setLogin("");
+              setName("");
+            }}
             type={{ type: "post" }}
             requests={{ post: postGroup }}
             course_id={course_id}

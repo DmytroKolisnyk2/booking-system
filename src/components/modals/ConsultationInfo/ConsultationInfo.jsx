@@ -34,7 +34,13 @@ const ConsultationInfo = ({ isOpen, handleClose, id }) => {
               additional: id,
               delete: deleteManager,
             }}
-            onSubmit={handleClose}
+            onSubmit={() => {
+              handleClose();
+              setDesc("");
+              setPassword("");
+              setLogin("");
+              setName("");
+            }}
             name={name}
             description={desc}
             course={course}
