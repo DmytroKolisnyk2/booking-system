@@ -207,6 +207,11 @@ const ModalsPage = () => {
         {modal === "login" && (
           <Login isOpen={isOpen} handleClose={() => handleClose()} />
         )}
+
+
+
+
+
         <button
           data-modal="consulta"
           onClick={() => {
@@ -218,6 +223,12 @@ const ModalsPage = () => {
         {modal === "consulta" && (
           <ConsultationInfo isOpen={isOpen} handleClose={() => handleClose()} />
         )}
+
+
+
+
+
+        
         <button
           data-modal="new-appointment-2"
           onClick={() => {
