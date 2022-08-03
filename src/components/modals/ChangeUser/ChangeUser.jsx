@@ -42,6 +42,8 @@ const ChangeUser = ({
               put: putUser,
               additional: id,
               delete: deleteUser,
+              user: putManager,
+              userDelete: deleteManager,
             }}
             name={name}
             onSubmit={() => {

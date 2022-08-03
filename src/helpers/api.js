@@ -39,6 +39,13 @@ const postManager = (credentials) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+
+const postUser = (credentials) => {
+  return axios
+    .post("/register_manager", credentials)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
 const postCourse = (credentials) => {
   return axios
     .post("/register_course", credentials)
@@ -168,4 +175,5 @@ export {
   getUsersByRole,
   putUser,
   deleteUser,
+  postUser
 };
