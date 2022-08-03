@@ -1,6 +1,6 @@
 import styles from "./ChangeUser.module.scss";
 import Modal from "../../Modal/Modal";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   putManager,
   deleteManager,
@@ -11,12 +11,16 @@ import {
 import FormInput from "../../FormInput/FormInput";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
-const ChangeUser = ({ isOpen, handleClose, id }) => {
+const ChangeUser = ({ isOpen, handleClose, id, dataName, dataDesc }) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  useEffect(() => {
+    setName(dataName);
+    setDesc(dataDesc);
+  }, [isOpen]);
 
   return (
     <>

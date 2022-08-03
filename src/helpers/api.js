@@ -8,6 +8,7 @@ const getManagers = () => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+
 const getCourses = () => {
   return axios
     .get("/courses")

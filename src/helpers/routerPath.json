@@ -4,5 +4,7 @@
   "home": "/",
   "test": "/test",
   "modals": "/modals",
-  "administrators": "/administrators"
+  "administrators": "/administrators",
+  "superAdminCourses":"/superAdminCourses",
+  "superAdminGroups":"/superAdminGroups"
 }

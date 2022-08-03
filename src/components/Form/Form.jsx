@@ -19,7 +19,7 @@ const Form = ({
     for (const i in formData) {
       data.append(i, formData[i]);
     }
-    // data.append("description", "test"); //* it needs for some not completed backend
+    data.append("description", "test"); //* it needs for some not completed backend
     type.type === "post"
       ? await requests.post(data)
       : await requests[type.type](data, requests.additional);
