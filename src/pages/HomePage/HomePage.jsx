@@ -7,9 +7,9 @@ const HomePage = () => {
     <div>
       <Header
         endpoints={[
-          { text: "superadmin", path: "superadmin/users" },
-          { text: "admin", path: "admin/Maks/users" },
-          { text: "manager", path: "manager/Maks/planning" },
+          { text: "superadmin", path: "superadmin/users/" },
+          { text: "admin", path: "admin/Maks/users/" },
+          { text: "manager", path: "manager/Maks/planning/" },
           { text: "modals", path: path.modals },
         ]}
       />
