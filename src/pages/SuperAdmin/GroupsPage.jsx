@@ -28,6 +28,8 @@ const GroupsPage = () => {
         <Groups text={"Minecraft"} isOpenModal={isOpen} />
         <Groups text={"Scratch"} isOpenModal={isOpen} />
         <Groups text={"Roblox"} isOpenModal={isOpen} />
+        <Groups text={"Roblox"} isOpenModal={isOpen} />
+        <Groups text={"Roblox"} isOpenModal={isOpen} />
       </div>
       <div className={styles.btn_wrapper}>
         <button
