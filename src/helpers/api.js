@@ -26,6 +26,12 @@ const getUsersByRole = (roleName) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+const getManagerByName = (name) => {
+  return axios
+    .get(`/manager/${name}`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
 const getGroups = () => {
   return axios
     .get("/groups")
@@ -131,7 +137,9 @@ const getWeek = (managerId, weekId) => {
 
 const updateSlot = (managerId, weekId, dayIndex, slotHour, colorId) => {
   return axios
-    .post(`/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`)
+    .post(
+      `/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`
+    )
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -181,5 +189,6 @@ export {
   getUsersByRole,
   putUser,
   deleteUser,
-  postUser
+  postUser,
+  getManagerByName,
 };

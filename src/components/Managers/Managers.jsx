@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getUsersByRole } from "../../helpers/api";
+import { getUsersByRole, getManagers } from "../../helpers/api";
 import styles from "./Managers.module.scss";
 import ChangeUser from "../modals/ChangeUser/ChangeUser";
 
@@ -18,6 +18,9 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
   const [isOpen, setIsOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [newRole, setRole] = useState("");
+  const [newLogin, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleClose = () => {
     setIsOpen(!isOpen);
   };
@@ -27,6 +30,25 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
         res.data ? res.data : setErrorMessage("Example error message!")
       )
       .catch((error) => setErrorMessage(error.message));
+    // if (role === "Manager") {
+    //   console.log(
+    //     await getManagers()
+    //       .then((res) =>
+    //         res.data ? res.data : setErrorMessage("Example error message!")
+    //       )
+    //       .catch((error) => setErrorMessage(error.message))
+    //   );
+    //   const managers = await getManagers()
+    //     .then((res) =>
+    //       res.data ? res.data : setErrorMessage("Example error message!")
+    //     )
+    //     .catch((error) => setErrorMessage(error.message));
+    //   managers.map((i) => {
+    //     i.manager = true;
+    //     res.push(i);
+    //   });
+    //   console.log(res);
+    // }
     setManagers(res);
     return res;
   };
@@ -41,12 +63,6 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
   return (
     <>
       <div className={styles.wrapper}>
-        <ChangeUser
-          isOpen={isOpen}
-          handleClose={() => handleClose()}
-          id={id}
-          administrator={isAdmin}
-        />
         <p className={styles.mini_title}>{text}</p>
         {errorMessage && <p className="error"> {errorMessage} </p>}
         {managers?.length > 0 && (
@@ -64,6 +80,7 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
                       setName(item.name);
                       setTelegram(item.telegram);
                       setRole(item.role_id);
+                      setLogin(item.login);
                     }}
                   />
                 </li>
@@ -79,6 +96,8 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
           dataDesc={telegram}
           administrator={isAdmin}
           dataRole={newRole}
+          dataLogin={newLogin}
+          dataPassword={password}
         />
       </div>
     </>

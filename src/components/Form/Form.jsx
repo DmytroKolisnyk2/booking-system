@@ -13,8 +13,11 @@ const Form = ({
   width,
   text,
   role,
+  startName,
   handleClose,
   isDelete,
+  isDescription,
+  manager,
   ...formData
 }) => {
   const [error, setError] = useState(false);
@@ -25,10 +28,18 @@ const Form = ({
       for (const i in formData) {
         data.append(i, formData[i]);
       }
-      data.append("description", "test");
-      +role === 1 && (await requests.user(data));
-      if (+role !== 1 && +role && isDelete) {
-        await requests.userDelete(id);
+      isDescription && data.append("description", "test")
+      if (+role === 1 && type.type === "put") {
+        console.log("worked");
+        console.log(data.get("name"));
+        const res = await requests.getByName(startName);
+        await requests.user(data, res.data.id);
+      }
+      if (+role === 1 && type.type === "post") await requests.user(data);
+      if (manager === true) {
+        const res = await requests.getByName(startName);
+        onSubmit();
+        return await requests.user(data, res.data.id);
       }
       type.type === "post"
         ? await requests.post(data).catch(() => setError(!error))
@@ -38,11 +49,22 @@ const Form = ({
       console.log(error);
       return console.log(e);
     }
+
     !error && onSubmit && onSubmit();
   };
   const handleDelete = async () => {
-    +role === 1 && (await requests.userDelete(id));
+    // +role === 1 && (await requests.userDelete(id));
+    if (manager === true) {
+      const res = await requests.getByName(startName);
+      onSubmit();
+      return await requests.userDelete(res.data.id);
+    }
     await requests.delete(requests.additional);
+    if (+role === 1 && type.additionalType === "delete") {
+      const res = await requests.getByName(startName);
+      await requests.userDelete(res.data.id);
+    }
+
     !error && onSubmit && onSubmit();
   };
   return (
