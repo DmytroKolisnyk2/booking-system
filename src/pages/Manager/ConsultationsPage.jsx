@@ -576,7 +576,13 @@ const ConsultationPage = () => {
     switch (typeSelection) {
       case "Consultations":
         dispatch(setManagerLoading(true));
-        return updateSlot(managerId, weekId, dayIndex, table[dayIndex][hourIndex].time, 1)
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          1
+        )
           .then((data) => {
             dispatch(
               changeStatusSlot({
@@ -590,7 +596,13 @@ const ConsultationPage = () => {
           .finally(() => dispatch(setManagerLoading(false)));
       case "Working time":
         dispatch(setManagerLoading(true));
-        return updateSlot(managerId, weekId, dayIndex, table[dayIndex][hourIndex].time, 2)
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          2
+        )
           .then((data) => {
             dispatch(
               changeStatusSlot({
@@ -604,7 +616,13 @@ const ConsultationPage = () => {
           .finally(() => dispatch(setManagerLoading(false)));
       case "Free":
         dispatch(setManagerLoading(true));
-        return updateSlot(managerId, weekId, dayIndex, table[dayIndex][hourIndex].time, 0)
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          0
+        )
           .then((data) => {
             dispatch(
               changeStatusSlot({
