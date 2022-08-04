@@ -9,7 +9,7 @@ import {
   SAVE_TABLE,
   GET_TABLE_WORK,
 } from "./manager-types";
-import { getCurrentWeek, getWeek, getTable, updateSlot } from "../../helpers/api";
+import { getCurrentWeek, getWeek, getTable, updateSlot, getCurrentWorkWeek } from "../../helpers/api";
 
 const changeTypeSelection = createAction(TYPE_SELECTION);
 const changeStatusSlot = createAction(TYPE_SLOT);
