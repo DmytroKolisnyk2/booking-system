@@ -42,8 +42,8 @@
         }
     }
     &:nth-child(15n + 1) {
-            border-top: none;
-            &::before {
+        border-top: none;
+        &::before {
             content: "";
             position: absolute;
             top: 0;
@@ -55,9 +55,9 @@
             background-color: inherit;
         }
     }
-        &:nth-last-child(15n + 1) {
-            border-bottom: none;
-            &::before {
+    &:nth-last-child(15n + 1) {
+        border-bottom: none;
+        &::before {
             content: "";
             position: absolute;
             bottom: 0;
@@ -141,4 +141,27 @@
     &:hover {
         background-color: $tableItem-darkOrangeColorHover;
     }
+}
+
+.hover_buttons {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    z-index: 999;
+}
+
+.hover_buttons button {
+    height: 25px;
+    width: 50px;
+    border-radius: 14px;
+}
+
+.hover_buttons button:nth-child(1) {
+    margin-right: 70px;
+}
+
+.item:hover .hover_buttons {
+    position: absolute;
+    opacity: 100%;
 }

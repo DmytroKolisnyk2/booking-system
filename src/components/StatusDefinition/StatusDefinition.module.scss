@@ -20,7 +20,10 @@
     font-weight: 400;
     color: $font-black;
     text-align: center;
-    vertical-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: #99A9C0 solid 1px;
 }
 
 .bck_blue{
