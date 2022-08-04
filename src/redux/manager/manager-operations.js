@@ -6,8 +6,20 @@ import {
   MANAGER_LOADING,
   MANAGER_ERROR,
   GET_WEEK,
+  SAVE_TABLE
 } from "./manager-types";
-import { getCurrentWeek, getWeek } from "../../helpers/api";
+import {
+  getCurrentWeek,
+  getWeek,
+  getTable,
+  updateSlot,
+} from "../../helpers/api";
+
+const changeTypeSelection = createAction(TYPE_SELECTION);
+const changeStatusSlot = createAction(TYPE_SLOT);
+const setManagerError = createAction(MANAGER_ERROR);
+const setManagerLoading = createAction(MANAGER_LOADING);
+const setSavedTemplate = createAction(SAVE_TABLE);
 
 const getManagerCurrentWeek = createAsyncThunk(
   GET_WEEK,
@@ -27,10 +39,30 @@ const getManagerWeek = createAsyncThunk(
   }
 );
 
-const changeTypeSelection = createAction(TYPE_SELECTION);
-const changeStatusSlot = createAction(TYPE_SLOT);
-const setManagerError = createAction(MANAGER_ERROR);
-const setManagerLoading = createAction(MANAGER_LOADING);
+const getManagerTable = createAsyncThunk(
+  GET_TABLE,
+  ({ managerId, weekId }, { rejectWithValue }) => {
+    return getTable(managerId)
+      .then((data) => {
+        const template = JSON.parse(data.data.template);
+        template.map((day, dayIndex) =>
+          day.map((item, hourIndex) => {
+            return item.color === 1 || item.color === 2
+              ? updateSlot(
+                  managerId,
+                  weekId,
+                  dayIndex,
+                  template[dayIndex][hourIndex].time,
+                  item.color
+                )
+              : item;
+          })
+        );
+        return template;
+      })
+      .catch((data) => rejectWithValue(data.message));
+  }
+);
 
 export {
   getManagerCurrentWeek,
@@ -39,4 +71,6 @@ export {
   setManagerError,
   setManagerLoading,
   getManagerWeek,
+  getManagerTable,
+  setSavedTemplate,
 };

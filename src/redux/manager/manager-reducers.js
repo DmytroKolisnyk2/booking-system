@@ -6,6 +6,8 @@ import {
   changeStatusSlot,
   setManagerError,
   setManagerLoading,
+  getManagerTable,
+  setSavedTemplate,
 } from "./manager-operations";
 import { combineReducers } from "redux";
 
@@ -25,7 +27,7 @@ const initialState = [
     { time: 19, color: 0 },
     { time: 20, color: 0 },
     { time: 21, color: 0 },
-    { time: 22, color: 0 },
+    { time: 22, color: 0 }
   ],
   [
     { time: 8, color: 0 },
@@ -42,7 +44,7 @@ const initialState = [
     { time: 19, color: 0 },
     { time: 20, color: 0 },
     { time: 21, color: 0 },
-    { time: 22, color: 0 },
+    { time: 22, color: 0 }
   ],
   [
     { time: 8, color: 0 },
@@ -59,7 +61,7 @@ const initialState = [
     { time: 19, color: 0 },
     { time: 20, color: 0 },
     { time: 21, color: 0 },
-    { time: 22, color: 0 },
+    { time: 22, color: 0 }
   ],
   [
     { time: 8, color: 0 },
@@ -76,7 +78,7 @@ const initialState = [
     { time: 19, color: 0 },
     { time: 20, color: 0 },
     { time: 21, color: 0 },
-    { time: 22, color: 0 },
+    { time: 22, color: 0 }
   ],
   [
     { time: 8, color: 0 },
@@ -93,7 +95,7 @@ const initialState = [
     { time: 19, color: 0 },
     { time: 20, color: 0 },
     { time: 21, color: 0 },
-    { time: 22, color: 0 },
+    { time: 22, color: 0 }
   ],
   [
     { time: 8, color: 0 },
@@ -110,7 +112,7 @@ const initialState = [
     { time: 19, color: 0 },
     { time: 20, color: 0 },
     { time: 21, color: 0 },
-    { time: 22, color: 0 },
+    { time: 22, color: 0 }
   ],
   [
     { time: 8, color: 0 },
@@ -127,13 +129,14 @@ const initialState = [
     { time: 19, color: 0 },
     { time: 20, color: 0 },
     { time: 21, color: 0 },
-    { time: 22, color: 0 },
-  ],
+    { time: 22, color: 0 }
+  ]
 ];
 
 const slots = createReducer(initialState, {
   [getManagerCurrentWeek.fulfilled]: (_, action) => action.payload.slots,
   [getManagerWeek.fulfilled]: (_, action) => action.payload.slots,
+  [getManagerTable.fulfilled]: (_, action) => action.payload,
   [changeStatusSlot]: (state, action) => {
     state.map((day, dayIndex) =>
       day.map((item, hourIndex) => {
@@ -167,20 +170,30 @@ const typeActionSelection = createReducer("", {
 const managerError = createReducer("", {
   [getManagerCurrentWeek.rejected]: (_, action) => action.payload,
   [getManagerWeek.rejected]: (_, action) => action.payload,
+  [getManagerTable.rejected]: (_, action) => action.payload,
   [setManagerError]: (_, action) => action.payload,
   [getManagerCurrentWeek.pending]: (_, action) => "",
   [getManagerWeek.pending]: (_, action) => "",
+  [getManagerTable.pending]: (_, action) => "",
   [setManagerLoading]: (_, action) => "",
 });
 
 const managerLoading = createReducer(false, {
   [getManagerCurrentWeek.pending]: (_, action) => true,
   [getManagerWeek.pending]: (_, action) => true,
+  [getManagerTable.pending]: (_, action) => true,
   [setManagerLoading]: (_, action) => action.payload,
   [getManagerCurrentWeek.rejected]: (_, action) => false,
   [getManagerCurrentWeek.fulfilled]: (_, action) => false,
   [getManagerWeek.rejected]: (_, action) => false,
   [getManagerWeek.fulfilled]: (_, action) => false,
+  [getManagerTable.rejected]: (_, action) => false,
+  [getManagerTable.fulfilled]: (_, action) => false,
+});
+
+const savedTemplate = createReducer({text: "No template", date: ''}, {
+  [setSavedTemplate]: (_, action) => action.payload,
+  [setManagerError]: (_, action) => "No template",
 });
 
 const week = combineReducers({
@@ -194,4 +207,5 @@ export default combineReducers({
   managerError,
   managerLoading,
   week,
+  savedTemplate,
 });
