@@ -1,0 +1,49 @@
+@import "../../styles/App.scss";
+.btn_yelllow {
+  background-color: $light_yellow;
+  border: 1px solid $yellow_btn;
+  border-radius: 16px;
+  padding: 2px 42px;
+  font-family: $poppins;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  display: block;
+  height: 30px;
+}
+.btn_yelllow:active {
+  background-color: $light_red;
+}
+.btn_red {
+  background-color: $light_red;
+  border: 1px solid $red;
+  border-radius: 16px;
+  padding: 2px 42px;
+  font-family: $poppins;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  height: 30px;
+  display: block;
+}
+.btn_blue {
+  background-color: $light_blue;
+  border: 1px solid $blue_btn;
+  border-radius: 16px;
+  padding: 2px 42px;
+  font-family: $poppins;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  display: block;
+  height: 30px;
+}
+.btn_wrapper {
+  display: flex;
+  justify-content: space-between;
+  // margin: 0 6px 61px 36px;
+  margin-top: 33px;
+//  margin-bottom: 26px;
+ margin-right: 36px;
+ margin-left: 36px;
+}

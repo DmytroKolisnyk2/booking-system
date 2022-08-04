@@ -25,6 +25,7 @@ const GroupsPage = () => {
     <div className={styles.main_wrapper}>
       <h3 className={styles.main_title}>Manage groups</h3>
       <div className={styles.main_wrapper2}>
+        
         <Groups text={"Minecraft"} isOpenModal={isOpen} />
         <Groups text={"Scratch"} isOpenModal={isOpen} />
         <Groups text={"Roblox"} isOpenModal={isOpen} />
