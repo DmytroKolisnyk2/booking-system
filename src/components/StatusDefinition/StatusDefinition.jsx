@@ -10,11 +10,7 @@ import RadioButton from "../RadioButton/RadioButton";
 import BgWrapper from "../BgWrapper/BgWrapper";
 
 const ControlButtons = () => {
-  //   const dispatch = useDispatch();
-  //   const buttonType = useSelector(getTypeSelection);
-  //   const onCheckedButton = (event) => {
-  //     dispatch(changeTypeSelection(event.target.name));
-  //   };
+
   return (
     <BgWrapper title="Manager">
       <div className={styles.wrapperStatsDefins}>

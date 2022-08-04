@@ -28,6 +28,7 @@ const getManagerCurrentWeek = createAsyncThunk(GET_TABLE, (managerId, { rejectWi
     .then((data) => data)
     .catch((data) => rejectWithValue(data.message));
 });
+
 const getManagerCurrentWorkWeek = createAsyncThunk(
   GET_TABLE_WORK,
   (managerId, { rejectWithValue }) => {

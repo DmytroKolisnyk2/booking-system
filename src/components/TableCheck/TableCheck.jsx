@@ -7,6 +7,7 @@ const TableCheck = ({table, onClickSlotFn}) => {
     return (
       <ul className={styles.table}>
         {table.map((day, dayIndex) => {
+          {console.log(dayIndex);}
           return day.map((item, hourIndex) => {
             return (
               <TableItemCheck
