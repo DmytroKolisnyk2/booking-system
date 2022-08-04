@@ -45,6 +45,7 @@ const ConsultationPage = () => {
           );
         })}
       </div>
+      {console.log(table)}
       <Table table={table} consultation/>
     </section>
   );
