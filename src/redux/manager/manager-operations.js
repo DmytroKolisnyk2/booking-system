@@ -25,6 +25,19 @@ const getManagerCurrentWeek = createAsyncThunk(
   GET_WEEK,
   (managerId, { rejectWithValue }) => {
     return getCurrentWeek(managerId)
+  GET_TABLE_WORK,
+} from "./manager-types";
+import { getCurrentWeek, getCurrentWorkWeek } from "../../helpers/api";
+
+const getManagerCurrentWeek = createAsyncThunk(GET_TABLE, (managerId, { rejectWithValue }) => {
+  return getCurrentWeek(managerId)
+    .then((data) => data)
+    .catch((data) => rejectWithValue(data.message));
+});
+const getManagerCurrentWorkWeek = createAsyncThunk(
+  GET_TABLE_WORK,
+  (managerId, { rejectWithValue }) => {
+    return getCurrentWorkWeek(managerId)
       .then((data) => data)
       .catch((data) => rejectWithValue(data.message));
   }
@@ -65,6 +78,7 @@ const getManagerTable = createAsyncThunk(
 );
 
 export {
+  getManagerCurrentWorkWeek,
   getManagerCurrentWeek,
   changeTypeSelection,
   changeStatusSlot,

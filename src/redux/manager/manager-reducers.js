@@ -8,6 +8,7 @@ import {
   setManagerLoading,
   getManagerTable,
   setSavedTemplate,
+  getManagerCurrentWorkWeek,
 } from "./manager-operations";
 import { combineReducers } from "redux";
 
@@ -133,15 +134,20 @@ const initialState = [
   ]
 ];
 
+
+
 const slots = createReducer(initialState, {
   [getManagerCurrentWeek.fulfilled]: (_, action) => action.payload.slots,
   [getManagerWeek.fulfilled]: (_, action) => action.payload.slots,
   [getManagerTable.fulfilled]: (_, action) => action.payload,
+  [getManagerCurrentWorkWeek.fulfilled]: (_, action) => {
+    console.log(action.payload.slots);
+    return action.payload.slots
+  },
   [changeStatusSlot]: (state, action) => {
     state.map((day, dayIndex) =>
       day.map((item, hourIndex) => {
-        return dayIndex === action.payload.dayIndex &&
-          hourIndex === action.payload.hourIndex
+        return dayIndex === action.payload.dayIndex && hourIndex === action.payload.hourIndex
           ? (item.color = action.payload.colorId)
           : item;
       })
