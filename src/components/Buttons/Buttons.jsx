@@ -15,6 +15,7 @@ export default function Button({
   type,
   style,
   onclick,
+  disabled,
 }) {
   const colorPalette = {
     white: "white",
@@ -31,6 +32,7 @@ export default function Button({
 
   return (
     <button
+      disabled={disabled}
       style={{
         padding: `10px ${paddingRight}px 10px ${paddingLeft}px`,
         width: width,
