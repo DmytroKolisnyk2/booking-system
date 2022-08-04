@@ -6,13 +6,15 @@ import {
   MANAGER_LOADING,
   MANAGER_ERROR,
   GET_WEEK,
-  SAVE_TABLE
+  SAVE_TABLE,
+  GET_TABLE_WORK,
 } from "./manager-types";
 import {
   getCurrentWeek,
   getWeek,
   getTable,
   updateSlot,
+  getCurrentWorkWeek
 } from "../../helpers/api";
 
 const changeTypeSelection = createAction(TYPE_SELECTION);
@@ -20,14 +22,6 @@ const changeStatusSlot = createAction(TYPE_SLOT);
 const setManagerError = createAction(MANAGER_ERROR);
 const setManagerLoading = createAction(MANAGER_LOADING);
 const setSavedTemplate = createAction(SAVE_TABLE);
-
-const getManagerCurrentWeek = createAsyncThunk(
-  GET_WEEK,
-  (managerId, { rejectWithValue }) => {
-    return getCurrentWeek(managerId)
-  GET_TABLE_WORK,
-} from "./manager-types";
-import { getCurrentWeek, getCurrentWorkWeek } from "../../helpers/api";
 
 const getManagerCurrentWeek = createAsyncThunk(GET_TABLE, (managerId, { rejectWithValue }) => {
   return getCurrentWeek(managerId)
