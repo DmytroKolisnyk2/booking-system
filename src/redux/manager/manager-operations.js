@@ -6,13 +6,15 @@ import {
   MANAGER_LOADING,
   MANAGER_ERROR,
   GET_WEEK,
-  SAVE_TABLE
+  SAVE_TABLE,
+  GET_TABLE_WORK,
 } from "./manager-types";
 import {
   getCurrentWeek,
   getWeek,
   getTable,
   updateSlot,
+  getCurrentWorkWeek,
 } from "../../helpers/api";
 
 const changeTypeSelection = createAction(TYPE_SELECTION);
@@ -25,19 +27,6 @@ const getManagerCurrentWeek = createAsyncThunk(
   GET_WEEK,
   (managerId, { rejectWithValue }) => {
     return getCurrentWeek(managerId)
-  GET_TABLE_WORK,
-} from "./manager-types";
-import { getCurrentWeek, getCurrentWorkWeek } from "../../helpers/api";
-
-const getManagerCurrentWeek = createAsyncThunk(GET_TABLE, (managerId, { rejectWithValue }) => {
-  return getCurrentWeek(managerId)
-    .then((data) => data)
-    .catch((data) => rejectWithValue(data.message));
-});
-const getManagerCurrentWorkWeek = createAsyncThunk(
-  GET_TABLE_WORK,
-  (managerId, { rejectWithValue }) => {
-    return getCurrentWorkWeek(managerId)
       .then((data) => data)
       .catch((data) => rejectWithValue(data.message));
   }
@@ -73,6 +62,15 @@ const getManagerTable = createAsyncThunk(
         );
         return template;
       })
+      .catch((data) => rejectWithValue(data.message));
+  }
+);
+
+const getManagerCurrentWorkWeek = createAsyncThunk(
+  GET_TABLE_WORK,
+  (managerId, { rejectWithValue }) => {
+    return getCurrentWorkWeek(managerId)
+      .then((data) => data)
       .catch((data) => rejectWithValue(data.message));
   }
 );
