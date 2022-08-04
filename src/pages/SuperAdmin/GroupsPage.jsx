@@ -8,12 +8,6 @@ import NewGroup from "../../components/modals/NewGroup/NewGroup";
 import BgWrapper from "../../components/BgWrapper/BgWrapper";
 
 const GroupsPage = () => {
-  // const [isManagerModal, setManagerModal] = useState(false);
-  // const handleClose = (e) => {
-  //   if (e === 0) {
-  //     setManagerModal(!isManagerModal);
-  //   }
-  // };
   const [id, setId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
@@ -25,9 +19,7 @@ const GroupsPage = () => {
     <div className={styles.main_wrapper}>
       <h3 className={styles.main_title}>Manage groups</h3>
       <div className={styles.main_wrapper2}>
-        <Groups text={"Minecraft"} isOpenModal={isOpen} />
-        <Groups text={"Scratch"} isOpenModal={isOpen} />
-        <Groups text={"Roblox"} isOpenModal={isOpen} />
+        <Groups isOpenModal={isOpen} />
       </div>
       <div className={styles.btn_wrapper}>
         <button

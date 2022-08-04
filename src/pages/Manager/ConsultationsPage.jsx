@@ -11,10 +11,10 @@ import {
   getWeekId,
 } from "../../redux/manager/manager-selectors";
 import {
-  getManagerCurrentWeek,
   changeStatusSlot,
   setManagerError,
   setManagerLoading,
+  getManagerCurrentWorkWeek,
 } from "../../redux/manager/manager-operations";
 import { updateSlot } from "../../helpers/api";
 import Button from "../../components/Buttons/Buttons";
@@ -26,7 +26,9 @@ const ConsultationPage = () => {
   const dispatch = useDispatch();
   const tableDate = useSelector(getDate);
   const table = useSelector(getTable);
-  {console.log(table)}
+  {
+    console.log(table);
+  }
   const typeSelection = useSelector(getTypeSelection);
   const weekId = useSelector(getWeekId);
   const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -96,9 +98,13 @@ const ConsultationPage = () => {
         break;
     }
   };
+
   useEffect(() => {
-    dispatch(getManagerCurrentWeek(20));
+    dispatch(getManagerCurrentWorkWeek(1));
   }, []);
+  {
+    console.log(table);
+  }
   return (
     <section className={styles.tableSection}>
       <StatusDefinition />

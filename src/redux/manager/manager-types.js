@@ -1,4 +1,5 @@
 const GET_TABLE = 'table/get';
+const GET_TABLE_WORK = 'table-work/get';
 const SAVE_TABLE = 'table/save';
 const TYPE_SELECTION = 'selection/type';
 const TYPE_SLOT = 'slot/color';
@@ -6,6 +7,7 @@ const MANAGER_ERROR = 'manager/error';
 const MANAGER_LOADING = 'manager/loading';
 
 export {
+  GET_TABLE_WORK,
   GET_TABLE,
   SAVE_TABLE,
   TYPE_SELECTION,
