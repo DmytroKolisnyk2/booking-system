@@ -30,7 +30,7 @@ const ConsultationPage = () => {
   const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
   useEffect(() => {
-    dispatch(getManagerCurrentWorkWeek(+managerId));
+    dispatch(getManagerCurrentWorkWeek(+11));
   }, []);
   return (
     <section className={styles.tableSection}>
