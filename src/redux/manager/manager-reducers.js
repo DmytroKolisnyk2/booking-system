@@ -136,7 +136,6 @@ const initialState = [
 const slots = createReducer(initialState, {
   [getManagerCurrentWeek.fulfilled]: (_, action) => action.payload.slots,
   [getManagerCurrentWorkWeek.fulfilled]: (_, action) => {
-    console.log(action.payload.slots);
     return action.payload.slots
   },
   [changeStatusSlot]: (state, action) => {
