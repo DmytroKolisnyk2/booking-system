@@ -157,6 +157,13 @@ const getCurrentWorkWeek = (managerId) => {
     .catch((error) => console.log(error));
 };
 
+const startConsultation = (weekId, dayIndex, slotHour, managerId) => {
+  return axios
+    .post(`/start_consultation/${weekId}/${dayIndex}/${slotHour}/${managerId}`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+
 export {
   getCurrentWorkWeek,
   getManagers,
@@ -181,5 +188,6 @@ export {
   getUsersByRole,
   putUser,
   deleteUser,
-  postUser
+  postUser,
+  startConsultation,
 };
