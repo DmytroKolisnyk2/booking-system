@@ -25,7 +25,7 @@ const NewGroup = ({ isOpen, handleClose }) => {
             requests={{ post: postGroup }}
             course_id={course_id}
             name={name}
-            timetable={"11:20 "}
+            timetable={schedule}
             title="Create new group"
           >
             <Select
@@ -37,7 +37,15 @@ const NewGroup = ({ isOpen, handleClose }) => {
               defaultValue="Select group"
               title="Course:"
             />
-
+            <FormInput
+              title="Name:"
+              type="text"
+              name="name"
+              value={name}
+              placeholder="Name"
+              isRequired={true}
+              handler={setName}
+            />
             <FormInput
               title="Start Date:"
               type="date"
@@ -55,15 +63,6 @@ const NewGroup = ({ isOpen, handleClose }) => {
               placeholder="Wed 18:00-19:30, Sat 10:00-12:30"
               isRequired={true}
               handler={setSchedule}
-            />
-            <FormInput
-              title="Name:"
-              type="text"
-              name="name"
-              value={name}
-              placeholder="Name"
-              isRequired={true}
-              handler={setName}
             />
           </Form>
         </Modal>

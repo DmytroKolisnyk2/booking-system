@@ -58,6 +58,37 @@ const postCourse = (credentials) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+const postAppointment = (credentials) => {
+  return axios
+    .post("/register_appointment", credentials)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+const createAppointment = ({
+  weekId,
+  dayIndex,
+  time,
+  courseId,
+  link,
+  phone,
+  age,
+  managerId,
+}) => {
+  console.log(weekId);
+  console.log(dayIndex);
+  console.log(time);
+  console.log(courseId);
+  console.log(link);
+  console.log(phone);
+  console.log(age);
+  console.log(managerId);
+  return axios
+    .post(
+      `/create_appointment/${weekId}/${dayIndex}/${time}/${courseId}/${link}/${phone}/${age}/${managerId}/1`
+    )
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
 const postGroup = (credentials) => {
   return axios
     .post("/register_group", credentials)
@@ -127,6 +158,12 @@ const getCurrentWeek = (managerId) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+const getCallerCurrentWeek2 = () => {
+  return axios
+    .get(`/caller_current_week`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
 
 const getWeek = (managerId, weekId) => {
   return axios
@@ -190,5 +227,8 @@ export {
   putUser,
   deleteUser,
   postUser,
+  createAppointment,
   getManagerByName,
+  postAppointment,
+  getCallerCurrentWeek2,
 };

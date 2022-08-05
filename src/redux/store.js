@@ -11,6 +11,7 @@ import {
 } from "redux-persist";
 // import storage from "redux-persist/lib/storage";
 import managerReducer from './manager/manager-reducers';
+import callerReducer from './caller/caller-reducers';
 // const persistConfig = {
 //   key: "booking-system",
 //   storage,
@@ -24,6 +25,7 @@ export const store = configureStore({
   // reducer: persistedReducer,
   reducer: {
     manager: managerReducer,
+    caller: callerReducer,
   },
   devTools: process.env.NODE_ENV === "development",
   middleware: (getDefaultMiddleware) =>
