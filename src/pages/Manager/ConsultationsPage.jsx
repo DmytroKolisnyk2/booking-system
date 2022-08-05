@@ -37,7 +37,7 @@ const ConsultationPage = () => {
       weekId,
       dayIndex,
       table[dayIndex][hourIndex].time,
-      1
+      6
     )
       .then((data) => {
         dispatch(
