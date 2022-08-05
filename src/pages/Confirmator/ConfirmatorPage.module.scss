@@ -1,21 +1,40 @@
 @import "../../styles/variables.scss";
 .tableSection {
-  width: 100%;
-  max-width: 100vw;
+  // width: 100%;
+  // max-width: 100vw;
   margin: 0 auto;
   text-align: center;
   margin-bottom: 72px;
+
+}
+.table__wrapper{  
+  overflow: scroll; 
+  width: 1400px; 
+  height: 400px; 
+  
+
+
 }
 .title {
   font-size: 32px;
   font-family: $poppins;
+  margin: 0 auto;
+  margin-bottom: 52px;
+  margin-top: 20px;
+}
+.title::after {
+  width: 1296px;
+  height: 2px;
+  background-color: #000000;
+  display: block;
+  content: "";
+  margin-top: 17px;
+  margin: 0 auto;
+  margin-top: 14px;
 }
 .table {
   margin: 0 auto 61px auto;
   border-collapse: collapse;
-  max-width: 1287px;
-  width: 100%;
-  border-top: 2px solid $font-black;
   margin-top: 25px;
   overflow: hidden;
   display: grid;
@@ -23,89 +42,85 @@
   grid-auto-flow: column;
 }
 
-.wrapperDays {
-  max-width: 1287px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto 52px auto;
-}
+// .dataPicker {
+//   width: 330px !important;
+//   position: absolute;
+//   top: 410px;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }
 
-.day {
-  width: 183px;
-  height: 64px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-right: 3px solid $font-black;
-  &:last-child {
-    border-right: none;
-  }
-}
-
-.dayTitle {
+// .tableButton {
+//   font-size: 32px !important;
+//   padding: 15px 31px !important;
+//   border-radius: 59px !important;
+//   transition: 200ms linear;
+//   &:hover {
+//     @extend %hover-shadow;
+//   }
+// }
+.meet_text {
   font-family: $poppins;
-  color: $font-black;
-  font-weight: 400;
-  font-size: 36px;
-}
 
-.verticalLine {
-  transform: rotate(90deg);
-  width: 63px;
+  font-weight: 400;
+  font-size: 16px;
+
+  color: $font-black;
+  margin-bottom: 6px;
+}
+.ul_item::after {
+  width: 270px;
   height: 2px;
-  background-color: $font-black;
+  background-color: #000000;
+  display: block;
+  content: "";
+  margin-bottom: 6px;
 }
-
-.wrapperTableButtons {
+.ul_item {
   margin: 0 auto;
-  width: 835px;
+}
+.table__wrapper {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+}
+.btn_wrapper {
+  width: 600px;  
+  border-right: 2px solid black;
+  height: auto;
   align-items: center;
 }
-
-.calendarController {
-  width: 200px;
+.btn {
+  background-color: $ligh_grey;
+  border: 1px solid $dark_grey;
+  border-radius: 16px;
+  padding: 2px 14px;
+  font-family: $poppins;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  display: block;
+  height: 30px;
+}
+.btn_wrapper2{
   display: flex;
   justify-content: space-between;
-  margin: 0 auto 49px auto;
+  width: 250px;
+  margin-top: 25px;
 }
-
-.calendarControllerText {
-  font-family: $poppins;
-  color: $font-black;
-  font-weight: 400;
-  font-size: 24px;
-  cursor: pointer;
+.input{
+  width: 130px;
+  height: 32px;
+  padding: 15px 15px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 16px;
+  border-color: none;
+  background-color: $ligh_grey;
+  margin-top: 25px;
+  margin-left: 15px;
 }
-
-.calendarControllerButton {
-  background-color: transparent;
-  font-size: 28px;
-  font-weight: 400;
-  font-family: $poppins;
-  position: relative;
-  top: -1px;
-  width: 17px;
-  height: 17px;
-}
-
-.dataPicker {
-  width: 330px !important;
-  position: absolute;
-  top: 410px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.tableButton {
-    font-size: 32px !important;
-    padding: 15px 31px !important;
-    border-radius: 59px !important;
-    transition: 200ms linear;
-    &:hover {
-        @extend %hover-shadow;
-    }
+.btn_input_wrapper{
+  display: flex;
+  margin-left: 36px;
+  margin-top: 100px;
 }
