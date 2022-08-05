@@ -16,13 +16,14 @@ import {
   setManagerLoading,
   getManagerCurrentWorkWeek,
 } from "../../redux/manager/manager-operations";
-import { updateSlot } from "../../helpers/api";
+import { updateSlot, startConsultation } from "../../helpers/api";
 import Button from "../../components/Buttons/Buttons";
 import StatusDefinition from "../../components/StatusDefinition/StatusDefinition";
 import DatePicker from "../../components/DatePicker/DatePicker";
 
 const ConsultationPage = () => {
-  const { managerId } = useParams();
+  // const { managerId } = useParams();
+  const { managerId } = 1;
   const dispatch = useDispatch();
   const tableDate = useSelector(getDate);
   const table = useSelector(getTable);
@@ -32,12 +33,11 @@ const ConsultationPage = () => {
   const onClickSlot = (dayIndex, hourIndex) => {
     console.log('onclickstart');
     dispatch(setManagerLoading(true));
-    return updateSlot(
-      managerId,
+    startConsultation(
       weekId,
       dayIndex,
       table[dayIndex][hourIndex].time,
-      6
+      managerId
     )
       .then((data) => {
         dispatch(
@@ -49,7 +49,26 @@ const ConsultationPage = () => {
         );
       })
       .catch((error) => dispatch(setManagerError(error)))
-      .finally(() => dispatch(setManagerLoading(false)));
+      .finally(() => dispatch(setManagerLoading(false)))
+    return updateSlot(
+        managerId,
+        weekId,
+        dayIndex,
+        table[dayIndex][hourIndex].time,
+        6
+      )
+        .then((data) => {
+          dispatch(
+            changeStatusSlot({
+              dayIndex,
+              hourIndex,
+              colorId: 6,
+            })
+          );
+        })
+        .catch((error) => dispatch(setManagerError(error)))
+        .finally(() => dispatch(setManagerLoading(false)))
+
   };
 
   useEffect(() => {
