@@ -8,35 +8,41 @@ import BgWrapper from "../../components/BgWrapper/BgWrapper";
 import Confirmator from "../../components/Confirmation/Confirmation";
 import ConfirmationButton from "../../components/ConfirmationButton/ConfirmationButtons";
 import ConfirmationBtn from "../../components/ConfirmationBtn/ConfirmationBtn";
+import Header from "../../components/Header/Header";
+import { useParams } from "react-router-dom";
 const ConfirmatorPage = () => {
+  const { confirmatorId } = useParams();
   return (
-    
-    <section className={styles.tableSection}>
-      {/* <BgWrapper title="Confirmator" /> */}
-      <h2 className={styles.title}>Confirmation</h2>
-      <div className={styles.table__wrapper}>
-        <Confirmator />
+    <>
+      <Header endpoints={[]} user={{ name: confirmatorId, role: "Confirmator" }} />
 
-        <div className={styles.btn_wrapper}>
-          <ConfirmationButton />
-          <ConfirmationButton />
-          <ConfirmationButton />
-          <ConfirmationButton />
-          <ConfirmationButton />
-          <ConfirmationButton />
+      <BgWrapper title="Confirmator" />
+      <section className={styles.tableSection}>
+        <h2 className={styles.title}>Confirmation</h2>
+        <div className={styles.table__wrapper}>
+          <Confirmator />
+
+          <div className={styles.btn_wrapper}>
+            <ConfirmationButton />
+            <ConfirmationButton />
+            <ConfirmationButton />
+            <ConfirmationButton />
+            <ConfirmationButton />
+            <ConfirmationButton />
+          </div>
+          <div className={styles.btn_input_wrapper}>
+            <ConfirmationBtn />
+            <input
+              type="text"
+              className={styles.input}
+              id="comment"
+              name="comment"
+              placeholder="write a comment..."
+            />
+          </div>
         </div>
-        <div className={styles.btn_input_wrapper}>
-          <ConfirmationBtn />
-          <input
-            type="text"
-            className={styles.input}
-            id="comment"
-            name="comment"
-            placeholder="write a comment..."
-          />
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
