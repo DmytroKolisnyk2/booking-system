@@ -11,7 +11,7 @@ import {
   getTypeSelection,
   getWeekId,
   getSavedTemplateDate,
-  getSavedTemplateText
+  getSavedTemplateText,
 } from "../../redux/manager/manager-selectors";
 import {
   getManagerCurrentWeek,
@@ -19,7 +19,7 @@ import {
   setManagerError,
   setManagerLoading,
   getManagerTable,
-  setSavedTemplate
+  setSavedTemplate,
 } from "../../redux/manager/manager-operations";
 import { saveTable } from "../../helpers/api";
 import { updateSlot } from "../../helpers/api";
@@ -39,7 +39,7 @@ const PlanningPage = () => {
   const weekId = useSelector(getWeekId);
   const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const onSavedTemplate = () => {
-    managerTable.append('template', JSON.stringify(table));
+    managerTable.append("template", JSON.stringify(table));
     dispatch(setManagerLoading(true));
     saveTable(managerId, managerTable)
       .then((data) => {
@@ -54,10 +54,18 @@ const PlanningPage = () => {
       .finally(() => dispatch(setManagerLoading(false)));
   };
   const getTemplate = () => {
-    table.map((day, dayIndex) => day.map((item, hourIndex) => {
-      return updateSlot(managerId, weekId,dayIndex,table[dayIndex][hourIndex].time, 0)
-    }))
-   return dispatch(getManagerTable({managerId, weekId}))
+    table.map((day, dayIndex) =>
+      day.map((item, hourIndex) => {
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          0
+        );
+      })
+    );
+    return dispatch(getManagerTable({ managerId, weekId }));
   };
   const onClickSlot = (dayIndex, hourIndex) => {
     switch (typeSelection) {
@@ -83,7 +91,13 @@ const PlanningPage = () => {
           .finally(() => dispatch(setManagerLoading(false)));
       case "Working time":
         dispatch(setManagerLoading(true));
-        return updateSlot(managerId, weekId, dayIndex, table[dayIndex][hourIndex].time, 2)
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          2
+        )
           .then((data) => {
             dispatch(
               changeStatusSlot({
@@ -97,7 +111,13 @@ const PlanningPage = () => {
           .finally(() => dispatch(setManagerLoading(false)));
       case "Free":
         dispatch(setManagerLoading(true));
-        return updateSlot(managerId, weekId, dayIndex, table[dayIndex][hourIndex].time, 0)
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          0
+        )
           .then((data) => {
             dispatch(
               changeStatusSlot({
@@ -116,11 +136,11 @@ const PlanningPage = () => {
   useEffect(() => {
     dispatch(getManagerCurrentWeek(+managerId));
   }, []);
-        const activeClassnames = (templateText) => {
-          return classNames(styles.tableButton, {
-            [styles.tableButtonDisabled]: templateText === "No template",
-          });
-        };
+  const activeClassnames = (templateText) => {
+    return classNames(styles.tableButton, {
+      [styles.tableButtonDisabled]: templateText === "No template",
+    });
+  };
   return (
     <section className={styles.tableSection}>
       <ControlButtons />
