@@ -1,0 +1,43 @@
+@import "../../styles/variables.scss";
+
+.wrapperStatsDefins{
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 75px auto;
+}
+
+.statDefin {
+    max-width: 170px;
+    height: 55px;
+    padding: 15px;
+    font-size: 24px;
+    transition: 200ms linear;
+    border-radius: 20px;
+    border: 3px solid transparent;
+    font-family: $poppins;
+    font-weight: 400;
+    color: $font-black;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: #99A9C0 solid 1px;
+}
+
+.bck_blue{
+    background-color: #DAE8FC;
+}
+.bck_pink{
+    background-color: #F8EAFF;
+}
+.bck_orange{
+    background-color: #F0A30A;
+}
+.bck_green{
+    background-color: #70BF20;
+}
+.bck_red{
+    background-color: #FF6161;
+}

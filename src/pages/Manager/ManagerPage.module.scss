@@ -93,3 +93,17 @@
         @extend %hover-shadow;
     }
 }
+
+.templateText {
+  font-size: 24px;
+  font-weight: 400;
+  font-family: $poppins;
+  color: $font-black;
+  margin: 0 70px 37px auto;
+}
+
+.tableButtonDisabled {
+  background-color: $tableItem-grayHover !important;
+  cursor: none;
+  pointer-events: none;
+}

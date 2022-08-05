@@ -3,7 +3,7 @@ import Modal from "../../Modal/Modal";
 import FormInput from "../../FormInput/FormInput";
 import Select from "../../Select/Select";
 import React, { useState } from "react";
-import { postManager, getRoles } from "../../../helpers/api.js";
+import { postManager, getRoles, postUser } from "../../../helpers/api.js";
 import Form from "../../Form/Form";
 
 const NewUser = ({ isOpen, handleClose, isAdmin }) => {
@@ -12,22 +12,22 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
-
   return (
     <>
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
             type={{ type: "post" }}
-            requests={{ post: postManager }}
+            requests={{ post: postManager, user: postUser }}
             name={name}
+            role={role}
             onSubmit={() => {
-              handleClose()
-              setRole("")
-              setTelegram("")
-              setPassword("")
-              setLogin("")
-              setName("")
+              handleClose();
+              setRole("");
+              setTelegram("");
+              setPassword("");
+              setLogin("");
+              setName("");
             }}
             telegram={telegram}
             login={login}

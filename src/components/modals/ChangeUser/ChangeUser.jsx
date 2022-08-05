@@ -8,6 +8,7 @@ import {
   putUser,
   deleteUser,
   getRoles,
+  getManagerByName,
 } from "../../../helpers/api.js";
 import FormInput from "../../FormInput/FormInput";
 import Select from "../../Select/Select";
@@ -19,6 +20,9 @@ const ChangeUser = ({
   dataName,
   dataDesc,
   dataRole,
+  manager,
+  dataLogin,
+  dataPassword,
   administrator,
 }) => {
   const [name, setName] = useState("");
@@ -30,6 +34,8 @@ const ChangeUser = ({
     setName(dataName);
     setDesc(dataDesc);
     setRole(dataRole);
+    setLogin(dataLogin);
+    // setPassword(dataPassword);
   }, [isOpen]);
 
   return (
@@ -42,7 +48,13 @@ const ChangeUser = ({
               put: putUser,
               additional: id,
               delete: deleteUser,
+              user: putManager,
+              getByName: getManagerByName,
+              userDelete: deleteManager,
             }}
+            startName={dataName}
+            isDescription={true}
+            role={role}
             name={name}
             onSubmit={() => {
               handleClose();
@@ -52,7 +64,7 @@ const ChangeUser = ({
               setLogin("");
               setName("");
             }}
-            description={desc}
+            telegram={desc}
             login={login}
             password={password}
             role_id={role}

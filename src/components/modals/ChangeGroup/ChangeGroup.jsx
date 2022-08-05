@@ -1,12 +1,14 @@
 import Modal from "../../Modal/Modal";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { putGroup, deleteGroup } from "../../../helpers/api.js";
 import Form from "../../Form/Form";
 import FormInput from "../../FormInput/FormInput";
 
-const ChangeGroup = ({ isOpen, handleClose, id }) => {
+const ChangeGroup = ({ isOpen, handleClose, id, dataName }) => {
   const [name, setName] = useState("");
-
+  useEffect(() => {
+    setName(dataName);
+  }, [isOpen]);
   return (
     <>
       {isOpen && (
@@ -18,6 +20,7 @@ const ChangeGroup = ({ isOpen, handleClose, id }) => {
               additional: id,
               delete: deleteGroup,
             }}
+            isDelete={true}
             onSubmit={() => {
               handleClose();
               setName("");

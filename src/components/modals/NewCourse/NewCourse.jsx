@@ -14,9 +14,9 @@ const NewCourse = ({ isOpen, handleClose }) => {
           <Form
             onSubmit={() => {
               handleClose();
-
               setName("");
             }}
+            isDescription={true}
             type={{ type: "post" }}
             requests={{
               post: postCourse,

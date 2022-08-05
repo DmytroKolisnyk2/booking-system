@@ -26,6 +26,12 @@ const getUsersByRole = (roleName) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+const getManagerByName = (name) => {
+  return axios
+    .get(`/manager/${name}`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
 const getGroups = () => {
   return axios
     .get("/groups")
@@ -36,6 +42,13 @@ const getGroups = () => {
 const postManager = (credentials) => {
   return axios
     .post("/register_user", credentials)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+
+const postUser = (credentials) => {
+  return axios
+    .post("/register_manager", credentials)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -145,7 +158,15 @@ const getTable = (managerId) => {
     .catch((error) => console.log(error));
 };
 
+const getCurrentWorkWeek = (managerId) => {
+  return axios
+    .get(`/current_work_week/${managerId}`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+
 export {
+  getCurrentWorkWeek,
   getManagers,
   getCourses,
   postManager,
@@ -168,4 +189,6 @@ export {
   getUsersByRole,
   putUser,
   deleteUser,
+  postUser,
+  getManagerByName,
 };

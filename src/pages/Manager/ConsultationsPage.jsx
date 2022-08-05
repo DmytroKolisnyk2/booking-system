@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "react-calendar/dist/Calendar.css";
 import styles from "./ManagerPage.module.scss";
-import Table from "../../components/Table/Table";
+import TableCheck from "../../components/TableCheck/TableCheck";
 import {
   getDate,
   getTable,
@@ -11,14 +11,14 @@ import {
   getWeekId,
 } from "../../redux/manager/manager-selectors";
 import {
-  getManagerCurrentWeek,
   changeStatusSlot,
   setManagerError,
   setManagerLoading,
+  getManagerCurrentWorkWeek,
 } from "../../redux/manager/manager-operations";
 import { updateSlot } from "../../helpers/api";
 import Button from "../../components/Buttons/Buttons";
-import ControlButtons from "../../components/ControlButtons/ControlButtons";
+import StatusDefinition from "../../components/StatusDefinition/StatusDefinition";
 import DatePicker from "../../components/DatePicker/DatePicker";
 
 const ConsultationPage = () => {
@@ -26,6 +26,9 @@ const ConsultationPage = () => {
   const dispatch = useDispatch();
   const tableDate = useSelector(getDate);
   const table = useSelector(getTable);
+  {
+    console.log(table);
+  }
   const typeSelection = useSelector(getTypeSelection);
   const weekId = useSelector(getWeekId);
   const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -33,7 +36,13 @@ const ConsultationPage = () => {
     switch (typeSelection) {
       case "Consultations":
         dispatch(setManagerLoading(true));
-        return updateSlot(managerId, weekId, dayIndex, table[dayIndex][hourIndex].time, 1)
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          1
+        )
           .then((data) => {
             dispatch(
               changeStatusSlot({
@@ -47,7 +56,13 @@ const ConsultationPage = () => {
           .finally(() => dispatch(setManagerLoading(false)));
       case "Working time":
         dispatch(setManagerLoading(true));
-        return updateSlot(managerId, weekId, dayIndex, table[dayIndex][hourIndex].time, 2)
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          2
+        )
           .then((data) => {
             dispatch(
               changeStatusSlot({
@@ -61,7 +76,13 @@ const ConsultationPage = () => {
           .finally(() => dispatch(setManagerLoading(false)));
       case "Free":
         dispatch(setManagerLoading(true));
-        return updateSlot(managerId, weekId, dayIndex, table[dayIndex][hourIndex].time, 0)
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          0
+        )
           .then((data) => {
             dispatch(
               changeStatusSlot({
@@ -77,12 +98,16 @@ const ConsultationPage = () => {
         break;
     }
   };
+
   useEffect(() => {
-    dispatch(getManagerCurrentWeek(20));
+    dispatch(getManagerCurrentWorkWeek(1));
   }, []);
+  {
+    console.log(table);
+  }
   return (
     <section className={styles.tableSection}>
-      <ControlButtons />
+      <StatusDefinition />
       <DatePicker tableDate={tableDate} />
       <div className={styles.wrapperDays}>
         {arrayDays.map((item, index) => {
@@ -93,8 +118,7 @@ const ConsultationPage = () => {
           );
         })}
       </div>
-      <Table table={table} onClickSlotFn={onClickSlot} />
-    
+      <TableCheck table={table} onClickSlotFn={onClickSlot} />
     </section>
   );
 };
