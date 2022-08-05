@@ -10,13 +10,16 @@ export default function Courses({ text, isOpenModal, role }) {
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [name, setName] = useState("");
 
   const handleClose = () => {
     setIsOpen(!isOpen);
   };
   const getCoursesData = async () => {
     const res = await getCourses(role)
-      .then((res) => (res.data ? res.data : setErrorMessage("Example error message!")))
+      .then((res) =>
+        res.data ? res.data : setErrorMessage("Example error message!")
+      )
       .catch((error) => setErrorMessage(error.message));
 
     setCorses(res);
@@ -32,7 +35,12 @@ export default function Courses({ text, isOpenModal, role }) {
     <>
       {errorMessage && <p className="error"> {errorMessage} </p>}
       <div className={styles.wrapper}>
-        <ChangeCourses isOpen={isOpen} handleClose={() => handleClose()} id={id} />
+        <ChangeCourses
+          isOpen={isOpen}
+          handleClose={() => handleClose()}
+          id={id}
+          dataName={name}
+        />
         <p className={styles.mini_title}>{text}</p>
         {courses?.length > 0 && (
           <ul className={styles.main_wrapper}>
@@ -51,6 +59,7 @@ export default function Courses({ text, isOpenModal, role }) {
                     onClick={() => {
                       setIsOpen(!isOpen);
                       setId(item.id);
+                      setName(item.name);
                     }}
                   />
                 </li>

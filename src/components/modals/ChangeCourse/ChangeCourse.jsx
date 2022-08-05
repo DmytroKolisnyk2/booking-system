@@ -1,11 +1,14 @@
 import Modal from "../../Modal/Modal";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { putCourse, deleteCourse } from "../../../helpers/api.js";
 import Form from "../../Form/Form";
 import FormInput from "../../FormInput/FormInput";
 
-const NewManager = ({ isOpen, handleClose, id }) => {
+const NewManager = ({ isOpen, handleClose, id, dataName }) => {
   const [name, setName] = useState("");
+  useEffect(() => {
+    setName(dataName);
+  }, [isOpen])
   return (
     <>
       {isOpen && (

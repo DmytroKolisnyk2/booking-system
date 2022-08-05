@@ -4,13 +4,13 @@ import { getGroups, getCourses } from "../../helpers/api";
 import styles from "./Groups.module.scss";
 import ChangeGroup from "../modals/ChangeGroup/ChangeGroup";
 
-export default function Groups({ text, isOpenModal }) {
+export default function Groups({ text, isOpenModal, dataName }) {
   const [groups, setGroups] = useState([]);
   const [courses, setCourses] = useState([]);
   const [id, setId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
+  const [name, setName] = useState("");
   const handleClose = () => {
     setIsOpen(!isOpen);
   };
@@ -39,38 +39,45 @@ export default function Groups({ text, isOpenModal }) {
     getCoursesData();
   }, []);
   useEffect(() => {
-    getGroupsData();
-    getCoursesData();
+    if (!isOpen || !isOpenModal) {
+      getGroupsData();
+      getCoursesData();
+    }
   }, [isOpen, isOpenModal]);
   return (
     <>
-      <ChangeGroup isOpen={isOpen} handleClose={() => handleClose()} id={id} />
+      <ChangeGroup
+        isOpen={isOpen}
+        handleClose={() => handleClose()}
+        id={id}
+        dataName={name}
+      />
 
       {errorMessage && <p className="error"> {errorMessage} </p>}
       {courses?.length > 0 && (
         <div className={styles.wrapper}>
           {courses.map((i) => {
             return (
-              <div className={styles.main_wrapper}>
+              <div className={styles.main_wrapper} key={i.id}>
                 <p className={styles.mini_title}>{i.name}</p>
-                <ul key={i.id} className={styles.list}>
+                <ul className={styles.list}>
                   {groups.map((item) => {
+                    if (item.name === "Не призначено") return;
                     return (
-                      <>
-                        {item.course_id === i.id && (
-                          <li className={styles.ul_items}>
-                            <p className={styles.ul_items_text}>{item.name}</p>
-                            <button
-                              className={styles.ul_items_btn}
-                              data-modal="change-user"
-                              onClick={() => {
-                                setIsOpen(!isOpen);
-                                setId(item.id);
-                              }}
-                            />
-                          </li>
-                        )}
-                      </>
+                      item.course_id === i.id && (
+                        <li className={styles.ul_items} key={item.id}>
+                          <p className={styles.ul_items_text}>{item.name}</p>
+                          <button
+                            className={styles.ul_items_btn}
+                            data-modal="change-user"
+                            onClick={() => {
+                              setIsOpen(!isOpen);
+                              setId(item.id);
+                              setName(item.name);
+                            }}
+                          />
+                        </li>
+                      )
                     );
                   })}
                 </ul>

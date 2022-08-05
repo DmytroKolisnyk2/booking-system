@@ -29,6 +29,7 @@ const ConsultationPage = () => {
   const weekId = useSelector(getWeekId);
   const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
+
   useEffect(() => {
     dispatch(getManagerCurrentWorkWeek(+managerId));
   }, []);

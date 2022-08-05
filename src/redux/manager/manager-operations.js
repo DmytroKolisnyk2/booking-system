@@ -32,14 +32,11 @@ const getManagerCurrentWeek = createAsyncThunk(
   }
 );
 
-const getManagerWeek = createAsyncThunk(
-  GET_WEEK,
-  ({ managerId, weekId }, { rejectWithValue }) => {
-    return getWeek(managerId, weekId)
-      .then((data) => data)
-      .catch((data) => rejectWithValue(data.message));
-  }
-);
+const getManagerWeek = createAsyncThunk(GET_WEEK, ({ managerId, weekId }, { rejectWithValue }) => {
+  return getWeek(managerId, weekId)
+    .then((data) => data)
+    .catch((data) => rejectWithValue(data.message));
+});
 
 const getManagerTable = createAsyncThunk(
   GET_TABLE,
