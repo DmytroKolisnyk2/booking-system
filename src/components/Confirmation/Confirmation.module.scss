@@ -7,22 +7,21 @@
   width: 250px;
   align-items: center;
   margin-right: 36px;
+  height: 57px;
 }
 
 .wrapper {
   border-right: 2px solid black;
   height: auto;
   align-items: center;
- margin-top: 25px;
-//   padding-right: 20px;    
-//   padding-left: 20px;
+  min-width: 288px;
   &:nth-last-child(1) {
     border-right: none;
   }
 }
 .ul_items_text {
   font-family: $poppins;
-  font-weight:500;
+  font-weight: 500;
   font-size: 16px;
   color: $font-black;
   margin-bottom: 10px;

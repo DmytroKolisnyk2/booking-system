@@ -137,9 +137,7 @@ const getWeek = (managerId, weekId) => {
 
 const updateSlot = (managerId, weekId, dayIndex, slotHour, colorId) => {
   return axios
-    .post(
-      `/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`
-    )
+    .post(`/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -164,8 +162,15 @@ const getCurrentWorkWeek = (managerId) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+const getCurrentConfirmatorData = () => {
+  return axios
+    .get(`/get_confirmation/1/5/2`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
 
 export {
+  getCurrentConfirmatorData,
   getCurrentWorkWeek,
   getManagers,
   getCourses,
