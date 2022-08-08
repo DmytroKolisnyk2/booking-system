@@ -65,53 +65,57 @@ const Form = ({
       <h3 className={styles.title}>{title}</h3>
       <form
         onSubmit={(e) => {
+          e.preventDefault();
           if (isThatConsultResult === true) {
             if (consultResult === true) {
               apiHelperInfo.dispatch(setManagerLoading(true));
-              apiHelperRequest(
+              return apiHelperRequest(
                 Number(apiHelperInfo.managerId),
                 apiHelperInfo.weekId,
                 apiHelperInfo.dayIndex,
                 apiHelperInfo.slotHour,
                 7
               )
-                .then((data) => {})
+                .then((data) => {
+                  return apiHelperInfo.dispatch(
+                    changeStatusSlot(
+                      apiHelperInfo.dayIndex,
+                      apiHelperInfo.hourIndex,
+                      7
+                    )
+                  );
+                })
                 .catch((error) =>
                   apiHelperInfo.dispatch(setManagerError(error))
                 )
                 .finally(() =>
                   apiHelperInfo.dispatch(setManagerLoading(false))
                 );
-              apiHelperInfo.dispatch(
-                changeStatusSlot(
-                  apiHelperInfo.dayIndex,
-                  apiHelperInfo.hourIndex,
-                  7
-                )
-              );
-            } else {
+            }
+            if (!consultResult) {
               apiHelperInfo.dispatch(setManagerLoading(true));
-              apiHelperRequest(
+              return apiHelperRequest(
                 Number(apiHelperInfo.managerId),
                 apiHelperInfo.weekId,
                 apiHelperInfo.dayIndex,
                 apiHelperInfo.slotHour,
                 8
               )
-                .then((data) => {})
+                .then((data) => {
+                  return apiHelperInfo.dispatch(
+                    changeStatusSlot(
+                      apiHelperInfo.dayIndex,
+                      apiHelperInfo.hourIndex,
+                      8
+                    )
+                  );
+                })
                 .catch((error) =>
                   apiHelperInfo.dispatch(setManagerError(error))
                 )
                 .finally(() =>
                   apiHelperInfo.dispatch(setManagerLoading(false))
                 );
-              apiHelperInfo.dispatch(
-                changeStatusSlot(
-                  apiHelperInfo.dayIndex,
-                  apiHelperInfo.hourIndex,
-                  8
-                )
-              );
             }
           }
           handleSubmit(e);
