@@ -53,7 +53,7 @@ const ConsultationInfo = ({ isOpen, handleClose, id, api_info }) => {
             apiHelperRequest={updateSlot}
             apiHelperInfo={api_info}
             requests={{
-              put: putManager,
+              post: putManager,
               additional: id,
               delete: deleteManager,
             }}

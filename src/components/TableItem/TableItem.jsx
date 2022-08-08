@@ -15,7 +15,7 @@ const TableItem = ({ data, colorId, onClickFn, consultation, dayIndex, hourIndex
   const [modal, setModal] = useState("");
   // {console.log(managerId)}
   const api_info = {
-    managerId:managerId,
+    managerId: +managerId,
     weekId: 1, // weekId
     dayIndex: dayIndex,
     slotHour: data,
