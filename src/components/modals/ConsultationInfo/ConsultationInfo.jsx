@@ -93,7 +93,7 @@ const ConsultationInfo = ({ isOpen, handleClose, id, api_info, slotId }) => {
               defaultValue="Result"
               setValue={(e) => {
                 setResult(e.target.value);
-                result ? setResult(7) : setResult(8);
+                result === true ? setResult(7) : setResult(8);
               }}
               isThatConsultResult={true}
               changeConsultationResult={changeTheConsultatiomResult}
