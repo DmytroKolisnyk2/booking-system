@@ -21,7 +21,7 @@ const ConfirmatorComments = ({ value }) => {
   return (
     <>
       {appointments.map((item) => (
-        <div className={styles.comment__wrapper}>
+        <div key={item.appointment_id} className={styles.comment__wrapper}>
           {value[item.appointment_id] === "confirmed" && (
             <input
               type="text"
