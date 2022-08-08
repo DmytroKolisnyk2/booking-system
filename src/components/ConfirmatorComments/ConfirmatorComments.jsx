@@ -27,6 +27,7 @@ const ConfirmatorComments = ({ value }) => {
   ];
   return (
     <>
+      
       {loading && <TailSpin height="57" width="57" color="#999DFF" />}
       {appointments.map((item) => (
         <div key={item.appointment_id} className={styles.comment__wrapper}>
