@@ -9,6 +9,7 @@ import classNames from "classnames";
 import { useSelector, useDispatch } from "react-redux";
 import "react-calendar/dist/Calendar.css";
 import Table from "../../components/Table/Table";
+import Days from "../../components/Days/Days";
 import {
   getDate,
   getTable,
@@ -67,7 +68,7 @@ export default function CallerPage() {
         </p>
         <section className={styles.tableSection}>
           <DatePicker tableDate={tableDate} />
-          <div className={styles.wrapperDays}>
+          {/* <div className={styles.wrapperDays}>
             {arrayDays.map((item, index) => {
               return (
                 <div key={index} className={styles.day}>
@@ -75,7 +76,8 @@ export default function CallerPage() {
                 </div>
               );
             })}
-          </div>
+          </div> */}
+          <Days />
           <Table
             weekId={weekId}
             table={table}
