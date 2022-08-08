@@ -15,6 +15,7 @@ import {
   setManagerError,
   setManagerLoading,
   getManagerCurrentWorkWeek,
+  getManagerWorkWeek
 } from "../../redux/manager/manager-operations";
 import { updateSlot } from "../../helpers/api";
 import Button from "../../components/Buttons/Buttons";
@@ -36,7 +37,7 @@ const ConsultationPage = () => {
   return (
     <section className={styles.tableSection}>
       <StatusDefinition />
-      <DatePicker tableDate={tableDate} />
+      <DatePicker tableDate={tableDate} changeDateFn={getManagerWorkWeek} />
       <div className={styles.wrapperDays}>
         {arrayDays.map((item, index) => {
           return (
@@ -46,7 +47,7 @@ const ConsultationPage = () => {
           );
         })}
       </div>
-      <Table table={table} consultation/>
+      <Table table={table} consultation />
     </section>
   );
 };

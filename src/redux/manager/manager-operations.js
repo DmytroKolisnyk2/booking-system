@@ -15,6 +15,7 @@ import {
   getTable,
   updateSlot,
   getCurrentWorkWeek,
+  getWorkWeek
 } from "../../helpers/api";
 
 const changeTypeSelection = createAction(TYPE_SELECTION);
@@ -37,6 +38,15 @@ const getManagerWeek = createAsyncThunk(GET_WEEK, ({ managerId, weekId }, { reje
     .then((data) => data)
     .catch((data) => rejectWithValue(data.message));
 });
+
+const getManagerWorkWeek = createAsyncThunk(
+  GET_WEEK,
+  ({ managerId, weekId }, { rejectWithValue }) => {
+    return getWorkWeek(managerId, weekId)
+      .then((data) => data)
+      .catch((data) => rejectWithValue(data.message));
+  }
+);
 
 const getManagerTable = createAsyncThunk(
   GET_TABLE,
@@ -82,4 +92,5 @@ export {
   getManagerWeek,
   getManagerTable,
   setSavedTemplate,
+  getManagerWorkWeek,
 };

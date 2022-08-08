@@ -191,6 +191,14 @@ const getCurrentWorkWeek = (managerId) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+
+const getWorkWeek = (managerId, weekId) => {
+  return axios
+    .get(`/get_work_week/${managerId}/${weekId}`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+
 const getCurrentConfirmatorData = () => {
   return axios
     .get(`/get_confirmation/1/5/2`)
@@ -220,6 +228,7 @@ export {
   setConfirmation,
   getCurrentConfirmatorData,
   getCurrentWorkWeek,
+  getWorkWeek,
   getManagers,
   getCourses,
   postManager,

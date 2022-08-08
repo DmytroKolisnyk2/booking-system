@@ -20,6 +20,7 @@ import {
   setManagerLoading,
   getManagerTable,
   setSavedTemplate,
+  getManagerWeek,
 } from "../../redux/manager/manager-operations";
 import { saveTable } from "../../helpers/api";
 import { updateSlot } from "../../helpers/api";
@@ -146,7 +147,7 @@ const PlanningPage = () => {
   return (
     <section className={styles.tableSection}>
       <ControlButtons />
-      <DatePicker tableDate={tableDate} />
+      <DatePicker tableDate={tableDate} changeDateFn={getManagerWeek} />
       <div className={styles.wrapperDays}>
         {arrayDays.map((item, index) => {
           return (
