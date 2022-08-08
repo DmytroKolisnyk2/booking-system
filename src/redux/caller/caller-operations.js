@@ -60,17 +60,17 @@ const getCallerTable = createAsyncThunk(
   }
 );
 
-const getCallerCurrentWorkWeek = createAsyncThunk(
-  GET_TABLE_WORK,
-  (callerId, { rejectWithValue }) => {
-    return getCurrentWorkWeek(callerId)
-      .then((data) => data)
-      .catch((data) => rejectWithValue(data.message));
-  }
-);
+// const getCallerCurrentWorkWeek = createAsyncThunk(
+//   GET_TABLE_WORK,
+//   (callerId, { rejectWithValue }) => {
+//     return getCurrentWorkWeek(callerId)
+//       .then((data) => data)
+//       .catch((data) => rejectWithValue(data.message));
+//   }
+// );
 
 export {
-  getCallerCurrentWorkWeek,
+  // getCallerCurrentWorkWeek,
   getCallerCurrentWeek,
   changeTypeSelection,
   changeStatusSlot,

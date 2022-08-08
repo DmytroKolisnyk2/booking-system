@@ -7,7 +7,7 @@ import {
   setCallerError,
   setCallerLoading,
   getCallerTable,
-  getCallerCurrentWorkWeek,
+  // getCallerCurrentWorkWeek,
 } from "./caller-operations";
 import { combineReducers } from "redux";
 
@@ -137,9 +137,9 @@ const slots = createReducer(initialState, {
   [getCallerCurrentWeek.fulfilled]: (_, action) => action.payload.slots,
   // [getCallerWeek.fulfilled]: (_, action) => action.payload.slots,
   [getCallerTable.fulfilled]: (_, action) => action.payload,
-  [getCallerCurrentWorkWeek.fulfilled]: (_, action) => {
-    return action.payload.slots;
-  },
+  // [getCallerCurrentWorkWeek.fulfilled]: (_, action) => {
+  //   return action.payload.slots;
+  // },
   [changeStatusSlot]: (state, action) => {
     state.map((day, dayIndex) =>
       day.map((item, hourIndex) => {
