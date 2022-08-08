@@ -77,7 +77,6 @@ const ConsultationInfo = ({ isOpen, handleClose, id, api_info, slotId }) => {
               setValue={setManager}
               request={() => getUsersByRole("Manager")}
               label="course"
-              defaultValue="Select course"
             />
             <Select
               title="Course:"
@@ -108,7 +107,7 @@ const ConsultationInfo = ({ isOpen, handleClose, id, api_info, slotId }) => {
               value={group}
               request={getGroups}
               setValue={setGroup}
-              defaultValue="Select course"
+              defaultValue="Select group"
             />
             <label className={styles.input__label}>
               <p className={styles.input__label}>Message</p>
