@@ -178,11 +178,11 @@ const saveTable = (managerId, tableCredential) => {
     .catch((error) => console.log(error));
 };
 
-const getTable = (managerId) => {
+const getWeekTable = (managerId) => {
   return axios
     .get(`/get_template/${managerId}`)
     .then((res) => res.data)
-    .catch((error) => console.log(error));
+    .catch((error) => {throw error});
 };
 
 const getCurrentWorkWeek = (managerId) => {
@@ -235,7 +235,7 @@ export {
   getGroups,
   getCurrentWeek,
   saveTable,
-  getTable,
+  getWeekTable,
   getWeek,
   updateSlot,
   getRoles,
@@ -247,5 +247,5 @@ export {
   getManagerByName,
   postAppointment,
   getCallerCurrentWeek2,
-  postConsultationResult
+  postConsultationResult,
 };

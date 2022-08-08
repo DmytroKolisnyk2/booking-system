@@ -12,7 +12,7 @@ import {
 import {
   getCurrentWeek,
   getWeek,
-  getTable,
+  getWeekTable,
   updateSlot,
   getCurrentWorkWeek,
 } from "../../helpers/api";
@@ -41,7 +41,7 @@ const getManagerWeek = createAsyncThunk(GET_WEEK, ({ managerId, weekId }, { reje
 const getManagerTable = createAsyncThunk(
   GET_TABLE,
   ({ managerId, weekId }, { rejectWithValue }) => {
-    return getTable(managerId)
+    return getWeekTable(managerId)
       .then((data) => {
         const template = JSON.parse(data.data.template);
         template.map((day, dayIndex) =>

@@ -10,7 +10,7 @@ import {
 } from "./caller-types";
 import {
   getCallerCurrentWeek2,
-  getTable,
+  getWeekTable,
   updateSlot,
   getCurrentWorkWeek,
 } from "../../helpers/api";
@@ -38,7 +38,7 @@ const getCallerCurrentWeek = createAsyncThunk(
 const getCallerTable = createAsyncThunk(
   GET_TABLE,
   ({ callerId, weekId }, { rejectWithValue }) => {
-    return getTable(callerId)
+    return getWeekTable(callerId)
       .then((data) => {
         const template = JSON.parse(data.data.template);
         template.map((day, dayIndex) =>

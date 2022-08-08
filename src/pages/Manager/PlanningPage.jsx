@@ -21,8 +21,7 @@ import {
   getManagerTable,
   setSavedTemplate,
 } from "../../redux/manager/manager-operations";
-import { saveTable } from "../../helpers/api";
-import { updateSlot } from "../../helpers/api";
+import { updateSlot, saveTable, getWeekTable } from "../../helpers/api";
 import Button from "../../components/Buttons/Buttons";
 import ControlButtons from "../../components/ControlButtons/ControlButtons";
 import DatePicker from "../../components/DatePicker/DatePicker";
@@ -137,6 +136,21 @@ const PlanningPage = () => {
   };
   useEffect(() => {
     dispatch(getManagerCurrentWeek(+managerId));
+    getWeekTable(+managerId)
+      .then((data) => {
+        if(!data) {
+          dispatch(setManagerError());
+        }
+        return dispatch(
+          setSavedTemplate({
+            text: "Template created",
+            date: tableDate,
+          })
+        );
+      })
+      .catch((error) => {
+       return dispatch(setManagerError(error.message));
+      });
   }, []);
   const activeClassnames = (templateText) => {
     return classNames(styles.tableButton, {
@@ -160,13 +174,13 @@ const PlanningPage = () => {
       <h3 className={styles.templateText}>
         {templateText === "Template created"
           ? `${templateText} ${
-              new Date().getDate() < 10
-                ? `0${new Date().getDate()}`
-                : new Date().getDate()
+              new Date(tableDate).getDate() < 10
+                ? `0${new Date(tableDate).getDate()}`
+                : new Date(tableDate).getDate()
             }.${
-              new Date().getMonth() + 1 < 10
-                ? `0${new Date().getMonth() + 1}`
-                : new Date().getMonth() + 1
+              new Date(tableDate).getMonth() + 1 < 10
+                ? `0${new Date(tableDate).getMonth() + 1}`
+                : new Date(tableDate).getMonth() + 1
             }`
           : templateText}
       </h3>
