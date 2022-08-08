@@ -1,4 +1,12 @@
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import {
+  changeStatusSlot,
+  setManagerError,
+  setManagerLoading,
+  getManagerCurrentWorkWeek,
+} from "../redux/manager/manager-operations";
 
 axios.defaults.baseURL = "https://goiteens-rest-api.herokuapp.com";
 
@@ -29,6 +37,13 @@ const getUsersByRole = (roleName) => {
 const getGroups = () => {
   return axios
     .get("/groups")
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+
+const getActiveweekId = () => {
+  return axios
+    .get("/active_week_id")
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -131,7 +146,9 @@ const getWeek = (managerId, weekId) => {
 
 const updateSlot = (managerId, weekId, dayIndex, slotHour, colorId) => {
   return axios
-    .post(`/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`)
+    .post(
+      `/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`
+    )
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -143,12 +160,65 @@ const saveTable = (managerId, tableCredential) => {
     .catch((error) => console.log(error));
 };
 
-const getTable = (managerId) => {
+const getTable = (managerId)=> {
   return axios
     .get(`/get_template/${managerId}`)
     .then((res) => res.data)
     .catch((error) => console.log(error));
-};
+}
+
+// const updateSlotSort = (
+//   result,
+//   managerId,
+//   weekId,
+//   dayIndex,
+//   hourIndex,
+//   slotHour,
+//   colorId,
+//   table,
+//   dispatch
+// ) => {
+//   console.log('dayIndex'+dayIndex);
+//   if (result === true) {
+//     return updateSlot(
+//       managerId,
+//       1, //weekId
+//       dayIndex,
+//       table[dayIndex][hourIndex].time,
+//       6
+//     )
+//       .then((data) => {
+//         dispatch(
+//           changeStatusSlot({
+//             dayIndex,
+//             hourIndex,
+//             colorId: 7,
+//           })
+//         );
+//       })
+//       .catch((error) => dispatch(setManagerError(error)))
+//       .finally(() => dispatch(setManagerLoading(false)));
+//   } else {
+//     return updateSlot(
+//       managerId,
+//       1, //weekId
+//       dayIndex,
+//       table[dayIndex][hourIndex].time,
+//       6
+//     )
+//       .then((data) => {
+//         dispatch(
+//           changeStatusSlot({
+//             dayIndex,
+//             hourIndex,
+//             colorId: 8,
+//           })
+//         );
+//       })
+//       .catch((error) => dispatch(setManagerError(error)))
+//       .finally(() => dispatch(setManagerLoading(false)));
+//   }
+// };
 
 const getCurrentWorkWeek = (managerId) => {
   return axios
@@ -190,4 +260,5 @@ export {
   deleteUser,
   postUser,
   startConsultation,
+  getActiveweekId,
 };

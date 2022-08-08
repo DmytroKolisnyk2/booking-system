@@ -22,19 +22,24 @@ import StatusDefinition from "../../components/StatusDefinition/StatusDefinition
 import DatePicker from "../../components/DatePicker/DatePicker";
 
 const ConsultationPage = () => {
-  // const { managerId } = useParams();
-  const { managerId } = 1;
+  const { managerId } = useParams();
   const dispatch = useDispatch();
   const tableDate = useSelector(getDate);
   const table = useSelector(getTable);
   const weekId = useSelector(getWeekId);
   const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
+  // {console.log(weekId)}
+  {
+    console.log(`manager is ${managerId}`);
+  }
+  // {console.log(`weekId is ${weekId}`)}
+
   const onClickSlot = (dayIndex, hourIndex) => {
-    console.log('onclickstart');
+    console.log("onclickstart");
     dispatch(setManagerLoading(true));
     startConsultation(
-      weekId,
+      1, //weekId
       dayIndex,
       table[dayIndex][hourIndex].time,
       managerId
@@ -49,30 +54,31 @@ const ConsultationPage = () => {
         );
       })
       .catch((error) => dispatch(setManagerError(error)))
-      .finally(() => dispatch(setManagerLoading(false)))
+      .finally(() => dispatch(setManagerLoading(false)));
+    console.log(`managerId is ${managerId}`);
+    console.log(`weekId is ${weekId}`);
     return updateSlot(
-        managerId,
-        weekId,
-        dayIndex,
-        table[dayIndex][hourIndex].time,
-        6
-      )
-        .then((data) => {
-          dispatch(
-            changeStatusSlot({
-              dayIndex,
-              hourIndex,
-              colorId: 6,
-            })
-          );
-        })
-        .catch((error) => dispatch(setManagerError(error)))
-        .finally(() => dispatch(setManagerLoading(false)))
-
+      managerId,
+      1, //weekId
+      dayIndex,
+      table[dayIndex][hourIndex].time,
+      6
+    )
+      .then((data) => {
+        dispatch(
+          changeStatusSlot({
+            dayIndex,
+            hourIndex,
+            colorId: 6,
+          })
+        );
+      })
+      .catch((error) => dispatch(setManagerError(error)))
+      .finally(() => dispatch(setManagerLoading(false)));
   };
 
   useEffect(() => {
-    dispatch(getManagerCurrentWorkWeek(+11));
+    dispatch(getManagerCurrentWorkWeek(+managerId));
   }, []);
   return (
     <section className={styles.tableSection}>

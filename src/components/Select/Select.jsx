@@ -12,6 +12,8 @@ const Select = ({
   value,
   setValue,
   administrator,
+  isThatConsultResult,
+  changeConsultationResult,
 }) => {
   const [data, setData] = useState([]);
   const getData = async () => {
@@ -42,7 +44,11 @@ const Select = ({
           // defaultValue={""}
           className={classname ? classnames(styles.select) : styles.select}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => {
+            isThatConsultResult === true
+              ? changeConsultationResult(e)
+              : setValue(e.target.value)
+          }}
           required
         >
           <option value="" disabled hidden>
@@ -71,7 +77,6 @@ const Select = ({
               Not found
             </option>
           )}
-
 
           {data.map((i) => {
             if (i.name === "Administrator" && administrator === true) {

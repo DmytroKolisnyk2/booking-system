@@ -2,6 +2,12 @@ import styles from "./Form.module.scss";
 import InputSubmit from "../InputSubmit/InputSubmit";
 import InputDelete from "../InputDelete/InputDelete";
 import { useState, useEffect } from "react";
+import {
+  changeStatusSlot,
+  setManagerError,
+  setManagerLoading,
+  getManagerCurrentWorkWeek,
+} from "../../redux/manager/manager-operations";
 
 const Form = ({
   type,
@@ -15,9 +21,14 @@ const Form = ({
   role,
   handleClose,
   isDelete,
+  isThatConsultResult,
+  consultResult,
+  apiHelperRequest,
+  apiHelperInfo,
   ...formData
 }) => {
   const [error, setError] = useState(false);
+  console.log(apiHelperInfo);
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
@@ -50,6 +61,48 @@ const Form = ({
       <h3 className={styles.title}>{title}</h3>
       <form
         onSubmit={(e) => {
+          if (isThatConsultResult === true) {
+            e.preventDefault();
+            if (consultResult === true) {
+              apiHelperRequest(
+                apiHelperInfo.managerId,
+                apiHelperInfo.weekId,
+                apiHelperInfo.dayIndex,
+                apiHelperInfo.hourIndex,
+                7
+              )
+                .then((data) => {
+                  apiHelperInfo.dispatch(
+                    changeStatusSlot(
+                      apiHelperInfo.dayIndex,
+                      apiHelperInfo.hourIndex,
+                      7
+                    )
+                  );
+                })
+                .catch((error) => apiHelperInfo.dispatch(setManagerError(error)))
+                .finally(() => apiHelperInfo.dispatch(setManagerLoading(false)));
+            } else {
+              apiHelperRequest(
+                apiHelperInfo.managerId,
+                apiHelperInfo.weekId,
+                apiHelperInfo.dayIndex,
+                apiHelperInfo.hourIndex,
+                8
+              )
+                .then((data) => {
+                  apiHelperInfo.dispatch(
+                    changeStatusSlot(
+                      apiHelperInfo.dayIndex,
+                      apiHelperInfo.hourIndex,
+                      8
+                    )
+                  );
+                })
+                .catch((error) => apiHelperInfo.dispatch(setManagerError(error)))
+                .finally(() => apiHelperInfo.dispatch(setManagerLoading(false)));
+            }
+          }
           handleSubmit(e);
         }}
         className={styles.form}

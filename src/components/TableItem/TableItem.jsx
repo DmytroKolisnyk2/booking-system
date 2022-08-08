@@ -5,10 +5,24 @@ import styles from "./TableItem.module.scss";
 import ConsultationInfo from "../../components/modals/ConsultationInfo/ConsultationInfo";
 import { changeStatusSlot } from "../../redux/manager/manager-operations";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
-const TableItem = ({ data, colorId, onClickFn, consultation }) => {
+
+const TableItem = ({ data, colorId, onClickFn, consultation, dayIndex, hourIndex }) => {
+  const { managerId } = useParams();
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
+  // {console.log(managerId)}
+  const api_info = {
+    managerId:managerId,
+    weekId: 1, // weekId
+    dayIndex: dayIndex,
+    slotHour: data,
+    colorId: [7,8],
+    hourIndex: hourIndex,
+    dispatch: dispatch,
+  }
   const activeClassnames = (colorId) => {
     return classNames(styles.item, {
       [styles.grayColor]: +colorId === 0,
@@ -47,18 +61,19 @@ const TableItem = ({ data, colorId, onClickFn, consultation }) => {
 
             {modal === "consulta" && (
               <ConsultationInfo
+                api_info={api_info}
                 isOpen={isOpen}
                 handleClose={() => setIsOpen(!isOpen)}
               />
             )}
           </>
-        ) :  colorId === 6 ? (
+        ) : colorId === 6 ? (
           <>
             <li className={activeClassnames(colorId)}>
               {`${data}:00`}
               <div className={styles.hover_buttons}>
                 <button
-                className={styles.only_info_button}
+                  className={styles.only_info_button}
                   type="button"
                   data-modal="consulta"
                   onClick={() => {

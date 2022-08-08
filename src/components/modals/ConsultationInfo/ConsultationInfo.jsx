@@ -1,19 +1,27 @@
 import styles from "./ConsultationInfo.module.scss";
 import Modal from "../../Modal/Modal";
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   putManager,
   getCourses,
   deleteManager,
   getGroups,
   getUsersByRole,
+  updateSlot,
 } from "../../../helpers/api.js";
+import {
+  getDate,
+  getTable,
+  getTypeSelection,
+  getWeekId,
+} from "../../../redux/manager/manager-selectors";
 import FormInput from "../../FormInput/FormInput";
 import DropList from "../../DropList/DropList";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
 
-const ConsultationInfo = ({ isOpen, handleClose, id }) => {
+const ConsultationInfo = ({ isOpen, handleClose, id, api_info }) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [login, setLogin] = useState("");
@@ -23,12 +31,27 @@ const ConsultationInfo = ({ isOpen, handleClose, id }) => {
   const [group, setGroup] = useState("");
   const [message, setMessage] = useState("");
   const [manager, setManager] = useState("");
+  const table = useSelector(getTable);
+  const dispatch = useDispatch();
+
+  let [consultation_result, setConsultationResult] = useState(false);
+
+  const changeTheConsultatiomResult = (e) => {
+    setConsultationResult(e.target.value);
+    setResult(e.target.value);
+    console.log(`consultation_result_in_info is ${consultation_result}`);
+  };
+
   return (
     <>
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
             type={{ type: "no-request" }}
+            isThatConsultResult={true}
+            consultResult={consultation_result}
+            apiHelperRequest={updateSlot}
+            apiHelperInfo={api_info}
             requests={{
               put: putManager,
               additional: id,
@@ -71,10 +94,14 @@ const ConsultationInfo = ({ isOpen, handleClose, id }) => {
               handler={setResult}
               type="no-request"
               defaultValue="Result"
+              setValue={setResult}
+              isThatConsultResult={true}
+              changeConsultationResult={changeTheConsultatiomResult}
             >
               <option value={true}>Successfull</option>
               <option value={false}>Not Successful</option>
             </Select>
+
             <Select
               title="Group:"
               value={group}
