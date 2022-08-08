@@ -4,8 +4,7 @@ import styles from "./CallerPage.module.scss";
 import BgWrapper from "../../components/BgWrapper/BgWrapper";
 import { Outlet, useParams } from "react-router-dom";
 import DatePicker from "../../components/DatePicker/DatePicker";
-import React, { useEffect, useState } from "react";
-import classNames from "classnames";
+import React, { useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "react-calendar/dist/Calendar.css";
 import Table from "../../components/Table/Table";
@@ -15,20 +14,10 @@ import {
   getTable,
   getTypeSelection,
   getWeekId,
-  getSavedTemplateDate,
-  getSavedTemplateText,
 } from "../../redux/caller/caller-selectors";
 import {
   getCallerCurrentWeek,
-  changeStatusSlot,
-  setCallerError,
-  setCallerLoading,
-  getCallerTable,
-  setSavedTemplate,
 } from "../../redux/caller/caller-operations";
-import { saveTable } from "../../helpers/api";
-import { updateSlot } from "../../helpers/api";
-
 export default function CallerPage() {
   const callerTable = new FormData();
   const dispatch = useDispatch();
@@ -42,7 +31,7 @@ export default function CallerPage() {
   const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   // const tableDate = useSelector(getDate);
   const onClickSlot = (dayIndex, hourIndex) => {
-    return "1";
+    dispatch(getCallerCurrentWeek(+callerId));
   };
   useEffect(() => {
     dispatch(getCallerCurrentWeek(+callerId));
@@ -68,15 +57,6 @@ export default function CallerPage() {
         </p>
         <section className={styles.tableSection}>
           <DatePicker tableDate={tableDate} />
-          {/* <div className={styles.wrapperDays}>
-            {arrayDays.map((item, index) => {
-              return (
-                <div key={index} className={styles.day}>
-                  <h3 className={styles.dayTitle}>{item}</h3>
-                </div>
-              );
-            })}
-          </div> */}
           <Days />
           <Table
             weekId={weekId}
@@ -84,7 +64,6 @@ export default function CallerPage() {
             onClickSlotFn={onClickSlot}
             caller={true}
           />
-          {/* <TableCheck table={table} onClickSlotFn={onClickSlot} /> */}
         </section>
       </div>
     </>

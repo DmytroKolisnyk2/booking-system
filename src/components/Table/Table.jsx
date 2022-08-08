@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./Table.module.scss";
 import TableItem from "../TableItem/TableItem";
 
 const Table = ({ weekId, table, onClickSlotFn, consultation, caller }) => {
-  console.log(table);
+  useEffect(() => {});
   return (
     <ul className={styles.table}>
       {table.map((day, dayIndex) => {
@@ -13,6 +13,7 @@ const Table = ({ weekId, table, onClickSlotFn, consultation, caller }) => {
             <>
               {caller ? (
                 <TableItem
+                  onClickFn={() => onClickSlotFn()}
                   key={hourIndex}
                   data={item.time}
                   weekId={weekId}

@@ -49,7 +49,6 @@ const TableItem = ({
       [styles.callerFreeLightGreenColor]: +colorId === 4,
     });
   };
-  // useEffect(() => {}, [isOpen]);
   return (
     <>
       {caller ? (
@@ -119,5 +118,7 @@ TableItem.propTypes = {
   onClickFn: PropTypes.func,
   consultation: PropTypes.bool,
 };
-
+TableItem.defaultProps = {
+  colorId: 0,
+};
 export default TableItem;

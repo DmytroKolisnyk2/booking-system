@@ -167,38 +167,38 @@
 }
 
 .callerYellowColor {
-  background-color: #fff500;
+  background-color: $caller-yellow;
   transition: 200ms linear;
   &:hover {
-    background-color: darken(#fff500, 5%);
+    background-color: darken($caller-yellow, 5%);
   }
 }
 .callerOrangeColor {
-  background-color: #ff9820;
+  background-color: $caller-orange;
   transition: 200ms linear;
   &:hover {
-    background-color: darken(#ff9820, 5%);
+    background-color: darken($caller-orange, 5%);
   }
 }
 .callerRedColor {
-  background-color: #ff6161;
+  background-color: $caller-red;
   transition: 200ms linear;
   &:hover {
-    filter: brightness(50%);
+    background-color: darken($caller-red, 5%);
   }
 }
 .callerGreenColor {
-  background-color: #00ff0a;
+  background-color: $caller-green;
   transition: 200ms linear;
   &:hover {
-    filter: brightness(50%);
+    background-color: darken($caller-green, 5%);
   }
 }
 .callerLightGreenColor {
-  background-color: #bcffa5;
+  background-color: $caller-lightGreen;
   transition: 200ms linear;
   &:hover {
-    filter: brightness(50%);
+    background-color: darken($caller-lightGreen, 5%);
   }
 }
 
