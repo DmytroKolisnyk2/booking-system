@@ -6,6 +6,7 @@ import ConsultationInfo from "../../components/modals/ConsultationInfo/Consultat
 import { changeStatusSlot } from "../../redux/manager/manager-operations";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getWeekId } from "../../redux/manager/manager-selectors";
 
 const TableItem = ({
   data,
@@ -19,14 +20,11 @@ const TableItem = ({
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
+  const weekId = useSelector(getWeekId);
   // {console.log(managerId)}
   const api_info = {
-<<<<<<< HEAD
-    managerId: managerId,
-=======
     managerId: +managerId,
->>>>>>> f22b92e125cbe9c21c5f90d569591384464e9ea6
-    weekId: 1, // weekId
+    weekId, // weekId
     dayIndex: dayIndex,
     slotHour: data,
     colorId: [7, 8],
