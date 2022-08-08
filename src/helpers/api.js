@@ -160,12 +160,18 @@ const saveTable = (managerId, tableCredential) => {
     .catch((error) => console.log(error));
 };
 
-const getTable = (managerId)=> {
+const getTable = (managerId) => {
   return axios
     .get(`/get_template/${managerId}`)
     .then((res) => res.data)
     .catch((error) => console.log(error));
-}
+};
+const postConsultationResult = (slotId, result, groupId, message) => {
+  return axios
+    .post(`/consultation_result/${slotId}/${result}/${groupId}/${message}`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
 
 // const updateSlotSort = (
 //   result,
@@ -261,4 +267,5 @@ export {
   postUser,
   startConsultation,
   getActiveweekId,
+  postConsultationResult,
 };

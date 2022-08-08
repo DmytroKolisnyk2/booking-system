@@ -8,6 +8,7 @@ import {
   deleteManager,
   getGroups,
   getUsersByRole,
+  postConsultationResult,
   updateSlot,
 } from "../../../helpers/api.js";
 import {
@@ -26,22 +27,23 @@ const ConsultationInfo = ({ isOpen, handleClose, id, api_info }) => {
   const [desc, setDesc] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState(8);
   const [course, setCourse] = useState("");
   const [group, setGroup] = useState("");
   const [message, setMessage] = useState("");
   const [manager, setManager] = useState("");
   const table = useSelector(getTable);
   const dispatch = useDispatch();
-
+  console.log(api_info);
   let [consultation_result, setConsultationResult] = useState(false);
-
+  console.log(result);
   const changeTheConsultatiomResult = (e) => {
     setConsultationResult(e.target.value);
     setResult(e.target.value);
+    result ? setResult(8) : setResult(7);
+    console.log(result);
     console.log(`consultation_result_in_info is ${consultation_result}`);
   };
-
   return (
     <>
       {isOpen && (
@@ -52,17 +54,13 @@ const ConsultationInfo = ({ isOpen, handleClose, id, api_info }) => {
             consultResult={consultation_result}
             apiHelperRequest={updateSlot}
             apiHelperInfo={api_info}
-            requests={{
-              post: putManager,
-              additional: id,
-              delete: deleteManager,
-            }}
             onSubmit={() => {
               handleClose();
               setDesc("");
               setPassword("");
               setLogin("");
               setName("");
+              postConsultationResult(424, result, group, message);
             }}
             name={name}
             description={desc}
@@ -94,7 +92,10 @@ const ConsultationInfo = ({ isOpen, handleClose, id, api_info }) => {
               handler={setResult}
               type="no-request"
               defaultValue="Result"
-              setValue={setResult}
+              setValue={(e) => {
+                setResult(e.target.value);
+                result ? setResult(7) : setResult(8);
+              }}
               isThatConsultResult={true}
               changeConsultationResult={changeTheConsultatiomResult}
             >
@@ -113,7 +114,6 @@ const ConsultationInfo = ({ isOpen, handleClose, id, api_info }) => {
               <p className={styles.input__label}>Message</p>
               <textarea
                 className={styles.textarea}
-                required
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               ></textarea>

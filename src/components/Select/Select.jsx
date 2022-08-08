@@ -47,7 +47,7 @@ const Select = ({
           onChange={(e) => {
             isThatConsultResult === true
               ? changeConsultationResult(e)
-              : setValue(e.target.value)
+              : setValue(e.target.value);
           }}
           required
         >
@@ -82,6 +82,7 @@ const Select = ({
             if (i.name === "Administrator" && administrator === true) {
               return;
             }
+            if (i.name === "Не призначено") return;
             return (
               <option value={i.id} key={i.id}>
                 {i.name}

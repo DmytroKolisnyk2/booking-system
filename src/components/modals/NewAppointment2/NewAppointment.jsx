@@ -96,7 +96,6 @@ const NewAppointment = ({ isOpen, handleClose, data }) => {
               <p className={styles.input__label}>Message</p>
               <textarea
                 className={styles.textarea}
-                required
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               ></textarea>
