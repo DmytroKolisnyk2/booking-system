@@ -65,7 +65,7 @@ const Form = ({
             e.preventDefault();
             if (consultResult === true) {
               apiHelperRequest(
-                apiHelperInfo.managerId,
+                Number(apiHelperInfo.managerId),
                 apiHelperInfo.weekId,
                 apiHelperInfo.dayIndex,
                 apiHelperInfo.slotHour,
@@ -84,7 +84,7 @@ const Form = ({
                 .finally(() => apiHelperInfo.dispatch(setManagerLoading(false)));
             } else {
               apiHelperRequest(
-                apiHelperInfo.managerId,
+                Number(apiHelperInfo.managerId),
                 apiHelperInfo.weekId,
                 apiHelperInfo.dayIndex,
                 apiHelperInfo.slotHour,

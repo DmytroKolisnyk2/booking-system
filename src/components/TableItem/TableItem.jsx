@@ -7,22 +7,28 @@ import { changeStatusSlot } from "../../redux/manager/manager-operations";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
-
-const TableItem = ({ data, colorId, onClickFn, consultation, dayIndex, hourIndex }) => {
+const TableItem = ({
+  data,
+  colorId,
+  onClickFn,
+  consultation,
+  dayIndex,
+  hourIndex,
+}) => {
   const { managerId } = useParams();
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
   // {console.log(managerId)}
   const api_info = {
-    managerId:managerId,
+    managerId: managerId,
     weekId: 1, // weekId
     dayIndex: dayIndex,
     slotHour: data,
-    colorId: [7,8],
+    colorId: [7, 8],
     hourIndex: hourIndex,
     dispatch: dispatch,
-  }
+  };
   const activeClassnames = (colorId) => {
     return classNames(styles.item, {
       [styles.grayColor]: +colorId === 0,
@@ -88,6 +94,7 @@ const TableItem = ({ data, colorId, onClickFn, consultation, dayIndex, hourIndex
 
             {modal === "consulta" && (
               <ConsultationInfo
+                api_info={api_info}
                 isOpen={isOpen}
                 handleClose={() => setIsOpen(!isOpen)}
               />
