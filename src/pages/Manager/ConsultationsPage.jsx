@@ -30,16 +30,16 @@ const ConsultationPage = () => {
   const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
   // {console.log(weekId)}
-  {
-    console.log(`manager is ${managerId}`);
-  }
+  
+    console.log(weekId);
+  
   // {console.log(`weekId is ${weekId}`)}
 
   const onClickSlot = (dayIndex, hourIndex) => {
     console.log("onclickstart");
     dispatch(setManagerLoading(true));
     startConsultation(
-      1, //weekId
+      weekId,
       dayIndex,
       table[dayIndex][hourIndex].time,
       managerId
@@ -59,7 +59,7 @@ const ConsultationPage = () => {
     console.log(`weekId is ${weekId}`);
     return updateSlot(
       managerId,
-      1, //weekId
+      +weekId,
       dayIndex,
       table[dayIndex][hourIndex].time,
       6

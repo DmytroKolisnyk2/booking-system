@@ -28,7 +28,7 @@ const initialState = [
     { time: 19, color: 0 },
     { time: 20, color: 0 },
     { time: 21, color: 0 },
-    { time: 22, color: 0 }
+    { time: 22, color: 0 },
   ],
   [
     { time: 8, color: 0 },
@@ -45,7 +45,7 @@ const initialState = [
     { time: 19, color: 0 },
     { time: 20, color: 0 },
     { time: 21, color: 0 },
-    { time: 22, color: 0 }
+    { time: 22, color: 0 },
   ],
   [
     { time: 8, color: 0 },
@@ -62,7 +62,7 @@ const initialState = [
     { time: 19, color: 0 },
     { time: 20, color: 0 },
     { time: 21, color: 0 },
-    { time: 22, color: 0 }
+    { time: 22, color: 0 },
   ],
   [
     { time: 8, color: 0 },
@@ -79,7 +79,7 @@ const initialState = [
     { time: 19, color: 0 },
     { time: 20, color: 0 },
     { time: 21, color: 0 },
-    { time: 22, color: 0 }
+    { time: 22, color: 0 },
   ],
   [
     { time: 8, color: 0 },
@@ -96,7 +96,7 @@ const initialState = [
     { time: 19, color: 0 },
     { time: 20, color: 0 },
     { time: 21, color: 0 },
-    { time: 22, color: 0 }
+    { time: 22, color: 0 },
   ],
   [
     { time: 8, color: 0 },
@@ -113,7 +113,7 @@ const initialState = [
     { time: 19, color: 0 },
     { time: 20, color: 0 },
     { time: 21, color: 0 },
-    { time: 22, color: 0 }
+    { time: 22, color: 0 },
   ],
   [
     { time: 8, color: 0 },
@@ -130,23 +130,22 @@ const initialState = [
     { time: 19, color: 0 },
     { time: 20, color: 0 },
     { time: 21, color: 0 },
-    { time: 22, color: 0 }
-  ]
+    { time: 22, color: 0 },
+  ],
 ];
-
-
 
 const slots = createReducer(initialState, {
   [getManagerCurrentWeek.fulfilled]: (_, action) => action.payload.slots,
   [getManagerWeek.fulfilled]: (_, action) => action.payload.slots,
   [getManagerTable.fulfilled]: (_, action) => action.payload,
   [getManagerCurrentWorkWeek.fulfilled]: (_, action) => {
-    return action.payload.slots
+    return action.payload.slots;
   },
   [changeStatusSlot]: (state, action) => {
     state.map((day, dayIndex) =>
       day.map((item, hourIndex) => {
-        return dayIndex === action.payload.dayIndex && hourIndex === action.payload.hourIndex
+        return dayIndex === action.payload.dayIndex &&
+          hourIndex === action.payload.hourIndex
           ? (item.color = action.payload.colorId)
           : item;
       })
@@ -159,6 +158,8 @@ const weekId = createReducer("", {
   [getManagerCurrentWeek.fulfilled]: (_, action) =>
     action.payload.current_week_id,
   [getManagerWeek.fulfilled]: (_, action) => action.payload.current_week_id,
+  [getManagerCurrentWorkWeek.fulfilled]: (_, action) =>
+    action.payload.current_week_id,
 });
 
 const weekDate = createReducer("Sun Sep 1 1939 22:09:08 GMT+0300", {
@@ -166,9 +167,8 @@ const weekDate = createReducer("Sun Sep 1 1939 22:09:08 GMT+0300", {
     action.payload.current_week_date_start,
   [getManagerWeek.fulfilled]: (_, action) =>
     action.payload.current_week_date_start,
-    [getManagerCurrentWorkWeek.fulfilled]: (_, action) => {
-      return action.payload.current_week_date_start
-    },
+  [getManagerCurrentWorkWeek.fulfilled]: (_, action) =>
+    action.payload.current_week_date_start,
 });
 
 const typeActionSelection = createReducer("", {
@@ -199,10 +199,13 @@ const managerLoading = createReducer(false, {
   [getManagerTable.fulfilled]: (_, action) => false,
 });
 
-const savedTemplate = createReducer({text: "No template", date: ''}, {
-  [setSavedTemplate]: (_, action) => action.payload,
-  [setManagerError]: (_, action) => "No template",
-});
+const savedTemplate = createReducer(
+  { text: "No template", date: "" },
+  {
+    [setSavedTemplate]: (_, action) => action.payload,
+    [setManagerError]: (_, action) => "No template",
+  }
+);
 
 const week = combineReducers({
   weekId,
