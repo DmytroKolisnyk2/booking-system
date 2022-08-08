@@ -21,7 +21,11 @@ const TableItem = ({
   const [modal, setModal] = useState("");
   // {console.log(managerId)}
   const api_info = {
+<<<<<<< HEAD
     managerId: managerId,
+=======
+    managerId: +managerId,
+>>>>>>> f22b92e125cbe9c21c5f90d569591384464e9ea6
     weekId: 1, // weekId
     dayIndex: dayIndex,
     slotHour: data,

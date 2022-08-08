@@ -30,6 +30,11 @@ const Form = ({
   const [error, setError] = useState(false);
   console.log(apiHelperInfo);
   const handleSubmit = async (event) => {
+    if (type.type === "no-request") {
+      onSubmit && onSubmit();
+      return;
+    }
+
     try {
       event.preventDefault();
       const data = new FormData();
@@ -46,7 +51,6 @@ const Form = ({
         : await requests[type.type](data, requests.additional);
     } catch (e) {
       setError(!error);
-      console.log(error);
       return console.log(e);
     }
     !error && onSubmit && onSubmit();
@@ -80,8 +84,12 @@ const Form = ({
                     )
                   );
                 })
-                .catch((error) => apiHelperInfo.dispatch(setManagerError(error)))
-                .finally(() => apiHelperInfo.dispatch(setManagerLoading(false)));
+                .catch((error) =>
+                  apiHelperInfo.dispatch(setManagerError(error))
+                )
+                .finally(() =>
+                  apiHelperInfo.dispatch(setManagerLoading(false))
+                );
             } else {
               apiHelperRequest(
                 Number(apiHelperInfo.managerId),
@@ -99,8 +107,12 @@ const Form = ({
                     )
                   );
                 })
-                .catch((error) => apiHelperInfo.dispatch(setManagerError(error)))
-                .finally(() => apiHelperInfo.dispatch(setManagerLoading(false)));
+                .catch((error) =>
+                  apiHelperInfo.dispatch(setManagerError(error))
+                )
+                .finally(() =>
+                  apiHelperInfo.dispatch(setManagerLoading(false))
+                );
             }
           }
           handleSubmit(e);
