@@ -3,9 +3,10 @@ import Modal from "../../Modal/Modal";
 import React, { useState } from "react";
 import {
   getCourses,
-  postGroup,
+  postAppointment,
   getUsersByRole,
   getGroups,
+  createAppointment,
 } from "../../../helpers/api.js";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
@@ -13,45 +14,55 @@ import FormInput from "../../FormInput/FormInput";
 import classnames from "classnames";
 import DropList from "../../DropList/DropList";
 
-const NewAppointment = ({ isOpen, handleClose, data }) => {
+const NewAppointment = ({ isOpen, handleClose, time, weekId, dayIndex }) => {
   const [link, setLink] = useState("");
-  const [course, setCourses] = useState("");
+  const [courseId, setCourses] = useState("");
   const [manager, setManager] = useState("");
-  const [group, setGroups] = useState("");
-  const [confirmation, setConfirmation] = useState("");
-  const [result, setResult] = useState("");
-  const [date, setDate] = useState(new Date());
+  const [managerId, setManagerId] = useState("");
+  const [group, setGroups] = useState(1);
   const [message, setMessage] = useState("");
   const [age, setAge] = useState(0);
   const [phone, setPhone] = useState("");
-
   return (
-    <div>
+    <>
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
-            onSubmit={handleClose}
-            type={{ type: "post" }}
-            requests={{ post: postGroup }}
-            course={course}
-            group={group}
-            confirmation={confirmation}
-            result={result}
-            date={date}
+            onSubmit={() => {
+              createAppointment(
+                link,
+                managerId,
+                weekId,
+                dayIndex,
+                time,
+                courseId,
+                phone,
+                age
+              );
+              handleClose();
+            }}
+            type={{ type: "no-request" }}
+            requests={{ post: createAppointment }}
+            // course_id={course}
+            group_id={group}
+            age={age}
+            slot_id={109}
+            zoho_link={link}
+            comments={message}
+            phone={phone}
+            manager={manager}
             title="Create an appointment"
           >
-            {/* <p className={styles.input__title}>Manager: {manager}</p> */}
             <DropList
               title="Manager"
               value={manager}
               setValue={setManager}
+              setValueSecondary={setManagerId}
               request={() => getUsersByRole("Manager")}
-              label="course"
-              defaultValue="Select course"
             />
             <Select
               classname={styles.select__label}
-              value={course}
+              value={courseId}
               setValue={setCourses}
               request={getCourses}
               label="course"
@@ -104,7 +115,7 @@ const NewAppointment = ({ isOpen, handleClose, data }) => {
           </Form>
         </Modal>
       )}
-    </div>
+    </>
   );
 };
 

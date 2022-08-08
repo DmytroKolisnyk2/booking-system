@@ -9,6 +9,7 @@ const DropList = ({
   type,
   value,
   setValue,
+  setValueSecondary,
   width,
   request,
 }) => {
@@ -57,6 +58,7 @@ const DropList = ({
               onClick={(e) => {
                 setIsOpen(!isOpen);
                 setValue(i.name);
+                setValueSecondary(i.id)
               }}
             >
               {i.name}

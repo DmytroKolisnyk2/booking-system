@@ -24,14 +24,18 @@ const Form = ({
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
+      if (type.type === "no-request") {
+        if(onSubmit) {
+          onSubmit();
+        }
+        return;
+      }
       const data = new FormData();
       for (const i in formData) {
         data.append(i, formData[i]);
       }
-      isDescription && data.append("description", "test")
+      isDescription && data.append("description", "test");
       if (+role === 1 && type.type === "put") {
-        console.log("worked");
-        console.log(data.get("name"));
         const res = await requests.getByName(startName);
         await requests.user(data, res.data.id);
       }
