@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import styles from "./TableItem.module.scss";
@@ -49,6 +49,7 @@ const TableItem = ({
       [styles.callerFreeLightGreenColor]: +colorId === 4,
     });
   };
+  // useEffect(() => {}, [isOpen]);
   return (
     <>
       {caller ? (
@@ -58,6 +59,7 @@ const TableItem = ({
               setIsOpen(!isOpen);
               setModal("appointment");
             }}
+            key={dayIndex}
             className={activeCallerClassnames(colorId)}
           >
             {`${data}:00`}

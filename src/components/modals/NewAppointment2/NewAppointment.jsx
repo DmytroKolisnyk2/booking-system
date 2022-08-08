@@ -23,18 +23,23 @@ const NewAppointment = ({ isOpen, handleClose, time, weekId, dayIndex }) => {
   const [message, setMessage] = useState("");
   const [age, setAge] = useState(0);
   const [phone, setPhone] = useState("");
-console.log(link);
   return (
     <>
-    {/*weekId, dayIndex, time, courseId, link, phone, age, managerId*/}
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
             onSubmit={() => {
-              createAppointment(link, managerId, weekId, dayIndex, time, courseId, phone, age);
+              createAppointment(
+                link,
+                managerId,
+                weekId,
+                dayIndex,
+                time,
+                courseId,
+                phone,
+                age
+              );
               handleClose();
-              console.log("worked")
-              
             }}
             type={{ type: "no-request" }}
             requests={{ post: createAppointment }}

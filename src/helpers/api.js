@@ -64,27 +64,19 @@ const postAppointment = (credentials) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
-const createAppointment = ({
+const createAppointment = (
+  link,
+  managerId,
   weekId,
   dayIndex,
   time,
   courseId,
-  link,
   phone,
-  age,
-  managerId,
-}) => {
-  console.log(weekId);
-  console.log(dayIndex);
-  console.log(time);
-  console.log(courseId);
-  console.log(link);
-  console.log(phone);
-  console.log(age);
-  console.log(managerId);
+  age
+) => {
   return axios
     .post(
-      `/create_appointment/${weekId}/${dayIndex}/${time}/${courseId}/${link}/${phone}/${age}/${managerId}/1`
+      `/create_appointment/${weekId}/${dayIndex}/${time}/${courseId}/${link}/${phone}/${age}/${managerId}`
     )
     .then((res) => res.data)
     .catch((error) => console.log(error));
