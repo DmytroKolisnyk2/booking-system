@@ -158,14 +158,9 @@ const weekId = createReducer("", {
   [getManagerCurrentWeek.fulfilled]: (_, action) =>
     action.payload.current_week_id,
   [getManagerWeek.fulfilled]: (_, action) => action.payload.current_week_id,
-<<<<<<< HEAD
-}
-);
-=======
   [getManagerCurrentWorkWeek.fulfilled]: (_, action) =>
     action.payload.current_week_id,
 });
->>>>>>> 0e26ff7325015d4b301662550c22c1ec959eabd2
 
 const weekDate = createReducer("Sun Sep 1 1939 22:09:08 GMT+0300", {
   [getManagerCurrentWeek.fulfilled]: (_, action) =>
