@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { setCancelConfirmation, setConfirmation } from "../../helpers/api";
 import styles from "../../pages/Confirmator/ConfirmatorPage.module.scss";
 import { getConfirmatorAppointments } from "../../redux/confirmator/confirmator-selectors";
 
 const ConfirmatorComments = ({ value }) => {
   const appointments = useSelector(getConfirmatorAppointments);
   const [reject, setReject] = useState("");
+  const [confirm, setConfirm] = useState("");
 
   const confirmationTable = [
     {
@@ -27,6 +29,8 @@ const ConfirmatorComments = ({ value }) => {
               type="text"
               className={styles.comment__input}
               placeholder="Write a comment here..."
+              onChange={({ target }) => setConfirm(target.value)}
+              onBlur={({ target }) => confirm && setConfirmation(item.slot_id, 4, confirm)}
             />
           )}
           {value[item.appointment_id] === "canceled" && (
@@ -35,7 +39,10 @@ const ConfirmatorComments = ({ value }) => {
                 return (
                   <button
                     key={i.text}
-                    onClick={() => setReject(i.text)}
+                    onClick={() => {
+                      setReject(i.text);
+                      reject && setCancelConfirmation(item.slot_id, 8, reject);
+                    }}
                     className={`${styles.btn} ${reject === i.text && styles.btn_active}`}
                   >
                     {i.text}
@@ -48,6 +55,7 @@ const ConfirmatorComments = ({ value }) => {
                 placeholder="Write a comment here..."
                 value={reject}
                 onChange={({ target }) => setReject(target.value)}
+                onBlur={() => reject && setCancelConfirmation(item.slot_id, 8, reject)}
               />
             </div>
           )}
