@@ -6,12 +6,10 @@ import {
   CALLER_LOADING,
   CALLER_ERROR,
   GET_WEEK,
-  SAVE_TABLE,
   GET_TABLE_WORK,
 } from "./caller-types";
 import {
   getCallerCurrentWeek2,
-  getWeek,
   getTable,
   updateSlot,
   getCurrentWorkWeek,
