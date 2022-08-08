@@ -1,6 +1,7 @@
 import axios from "axios";
 
 axios.defaults.baseURL = "https://goiteens-rest-api.herokuapp.com";
+axios.defaults.headers.common["Accept"] = "application/json";
 
 const getManagers = () => {
   return axios
@@ -64,16 +65,7 @@ const postAppointment = (credentials) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
-const createAppointment = (
-  link,
-  managerId,
-  weekId,
-  dayIndex,
-  time,
-  courseId,
-  phone,
-  age
-) => {
+const createAppointment = (link, managerId, weekId, dayIndex, time, courseId, phone, age) => {
   return axios
     .post(
       `/create_appointment/${weekId}/${dayIndex}/${time}/${courseId}/${link}/${phone}/${age}/${managerId}`
@@ -193,19 +185,19 @@ const getCurrentWorkWeek = (managerId) => {
 };
 const getCurrentConfirmatorData = () => {
   return axios
-    .get(`/get_confirmation/1/5/2`)
+    .get(`/current_confirmation`)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
 const setConfirmation = (slot_id, status, message) => {
   return axios
-    .put(`/set_confirmation/${slot_id}/${status}/${message}`, {})
+    .post(`/set_confirmation/${slot_id}/${status}/${message}`)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
 const setCancelConfirmation = (slot_id, status, message) => {
   return axios
-    .put(`/set_cancel_confirmation/${slot_id}/${status}/${message}`, {})
+    .post(`/set_cancel_confirmation/${slot_id}/${status}/${message}`)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
