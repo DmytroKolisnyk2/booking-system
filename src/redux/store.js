@@ -10,14 +10,16 @@ import {
   REGISTER,
 } from "redux-persist";
 // import storage from "redux-persist/lib/storage";
+
 import managerReducer from './manager/manager-reducers';
 import callerReducer from './caller/caller-reducers';
+import confirmatorReducer from "./confirmator/confirmator-reducers";
+
 // const persistConfig = {
 //   key: "booking-system",
 //   storage,
 //   blacklist: ['token'],
 // };
-
 
 // const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -26,6 +28,7 @@ export const store = configureStore({
   reducer: {
     manager: managerReducer,
     caller: callerReducer,
+    confirmator: confirmatorReducer,
   },
   devTools: process.env.NODE_ENV === "development",
   middleware: (getDefaultMiddleware) =>

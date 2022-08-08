@@ -166,9 +166,7 @@ const getWeek = (managerId, weekId) => {
 
 const updateSlot = (managerId, weekId, dayIndex, slotHour, colorId) => {
   return axios
-    .post(
-      `/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`
-    )
+    .post(`/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -193,8 +191,29 @@ const getCurrentWorkWeek = (managerId) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+const getCurrentConfirmatorData = () => {
+  return axios
+    .get(`/get_confirmation/1/5/2`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+const setConfirmation = (slot_id, status, message) => {
+  return axios
+    .put(`/set_confirmation/${slot_id}/${status}/${message}`, {})
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+const setCancelConfirmation = (slot_id, status, message) => {
+  return axios
+    .put(`/set_cancel_confirmation/${slot_id}/${status}/${message}`, {})
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
 
 export {
+  setCancelConfirmation,
+  setConfirmation,
+  getCurrentConfirmatorData,
   getCurrentWorkWeek,
   getManagers,
   getCourses,

@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
-import moment from "moment";
+import { useDispatch } from "react-redux";
 import styles from "./ConfirmatorPage.module.scss";
 import BgWrapper from "../../components/BgWrapper/BgWrapper";
 import Confirmator from "../../components/Confirmation/Confirmation";
-import ConfirmationButton from "../../components/ConfirmationButton/ConfirmationButtons";
-import ConfirmationBtn from "../../components/ConfirmationBtn/ConfirmationBtn";
+import ConfirmationButtons from "../../components/ConfirmationButtons/ConfirmationButtons";
 import Header from "../../components/Header/Header";
 import { useParams } from "react-router-dom";
+import { getCurrentConfirmator } from "../../redux/confirmator/confirmator-operations";
+import ConfirmatorComments from "../../components/ConfirmatorComments/ConfirmatorComments";
+
 const ConfirmatorPage = () => {
+  const [value, setValue] = useState("");
   const { confirmatorId } = useParams();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCurrentConfirmator());
+  }, []);
+
   return (
     <>
-      <Header endpoints={[]} user={{ name: confirmatorId, role: "Confirmator" }} />
+      <Header user={{ name: confirmatorId, role: "Confirmator" }} />
 
       <BgWrapper title="Confirmator" />
       <section className={styles.tableSection}>
@@ -23,22 +28,18 @@ const ConfirmatorPage = () => {
           <Confirmator />
 
           <div className={styles.btn_wrapper}>
-            <ConfirmationButton />
-            <ConfirmationButton />
-            <ConfirmationButton />
-            <ConfirmationButton />
-            <ConfirmationButton />
-            <ConfirmationButton />
+            <ConfirmationButtons value={value} setValue={setValue} />
           </div>
           <div className={styles.btn_input_wrapper}>
-            <ConfirmationBtn />
+            <ConfirmatorComments value={value} />
+            {/* <ConfirmationBtn />
             <input
               type="text"
               className={styles.input}
               id="comment"
               name="comment"
               placeholder="write a comment..."
-            />
+            /> */}
           </div>
         </div>
       </section>
