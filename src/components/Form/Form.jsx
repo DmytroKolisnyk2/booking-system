@@ -66,9 +66,7 @@ const Form = ({
       <form
         onSubmit={(e) => {
           if (isThatConsultResult === true) {
-            e.preventDefault();
             if (consultResult === true) {
-              apiHelperInfo.dispatch(setManagerLoading(true))
               apiHelperRequest(
                 Number(apiHelperInfo.managerId),
                 apiHelperInfo.weekId,
@@ -91,7 +89,6 @@ const Form = ({
                 )
               );
             } else {
-              apiHelperInfo.dispatch(setManagerLoading(true));
               apiHelperRequest(
                 Number(apiHelperInfo.managerId),
                 apiHelperInfo.weekId,
