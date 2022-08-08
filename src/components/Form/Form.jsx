@@ -66,7 +66,7 @@ const Form = ({
       <form
         onSubmit={(e) => {
           if (isThatConsultResult === true) {
-            e.preventDefault();
+            // e.preventDefault();
             if (consultResult === true) {
               apiHelperRequest(
                 Number(apiHelperInfo.managerId),
@@ -75,21 +75,20 @@ const Form = ({
                 apiHelperInfo.slotHour,
                 7
               )
-                .then((data) => {
-                  apiHelperInfo.dispatch(
-                    changeStatusSlot(
-                      apiHelperInfo.dayIndex,
-                      apiHelperInfo.hourIndex,
-                      7
-                    )
-                  );
-                })
+                .then((data) => {})
                 .catch((error) =>
                   apiHelperInfo.dispatch(setManagerError(error))
                 )
                 .finally(() =>
                   apiHelperInfo.dispatch(setManagerLoading(false))
                 );
+              apiHelperInfo.dispatch(
+                changeStatusSlot(
+                  apiHelperInfo.dayIndex,
+                  apiHelperInfo.hourIndex,
+                  7
+                )
+              );
             } else {
               apiHelperRequest(
                 Number(apiHelperInfo.managerId),
@@ -98,21 +97,21 @@ const Form = ({
                 apiHelperInfo.slotHour,
                 8
               )
-                .then((data) => {
-                  apiHelperInfo.dispatch(
-                    changeStatusSlot(
-                      apiHelperInfo.dayIndex,
-                      apiHelperInfo.hourIndex,
-                      8
-                    )
-                  );
-                })
+                .then((data) => {})
                 .catch((error) =>
                   apiHelperInfo.dispatch(setManagerError(error))
                 )
                 .finally(() =>
                   apiHelperInfo.dispatch(setManagerLoading(false))
                 );
+
+              apiHelperInfo.dispatch(
+                changeStatusSlot(
+                  apiHelperInfo.dayIndex,
+                  apiHelperInfo.hourIndex,
+                  8
+                )
+              );
             }
           }
           handleSubmit(e);
