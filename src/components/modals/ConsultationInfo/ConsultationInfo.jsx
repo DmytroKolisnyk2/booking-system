@@ -22,7 +22,7 @@ import DropList from "../../DropList/DropList";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
 
-const ConsultationInfo = ({ isOpen, handleClose, id, api_info }) => {
+const ConsultationInfo = ({ isOpen, handleClose, id, api_info, slotId }) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [login, setLogin] = useState("");
