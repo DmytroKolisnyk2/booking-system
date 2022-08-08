@@ -170,11 +170,11 @@ const saveTable = (managerId, tableCredential) => {
     .catch((error) => console.log(error));
 };
 
-const getTable = (managerId) => {
+const getWeekTable = (managerId) => {
   return axios
     .get(`/get_template/${managerId}`)
     .then((res) => res.data)
-    .catch((error) => console.log(error));
+    .catch((error) => {throw error});
 };
 
 const getCurrentWorkWeek = (managerId) => {
@@ -201,7 +201,12 @@ const setCancelConfirmation = (slot_id, status, message) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
-
+const postConsultationResult = (slotId, result, groupId, message) => {
+  return axios
+    .post(`/consultation_result/${slotId}/${result}/${groupId}/${message}`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
 export {
   setCancelConfirmation,
   setConfirmation,
@@ -222,7 +227,7 @@ export {
   getGroups,
   getCurrentWeek,
   saveTable,
-  getTable,
+  getWeekTable,
   getWeek,
   updateSlot,
   getRoles,
@@ -234,4 +239,5 @@ export {
   getManagerByName,
   postAppointment,
   getCallerCurrentWeek2,
+  postConsultationResult,
 };
