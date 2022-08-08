@@ -118,6 +118,7 @@ const Form = ({
                 );
             }
           }
+          onSubmit();
           handleSubmit(e);
         }}
         className={styles.form}
