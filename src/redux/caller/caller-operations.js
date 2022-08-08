@@ -21,7 +21,6 @@ const changeTypeSelection = createAction(TYPE_SELECTION);
 const changeStatusSlot = createAction(TYPE_SLOT);
 const setCallerError = createAction(CALLER_ERROR);
 const setCallerLoading = createAction(CALLER_LOADING);
-const setSavedTemplate = createAction(SAVE_TABLE);
 
 const getCallerCurrentWeek = createAsyncThunk(
   GET_WEEK,
@@ -81,5 +80,4 @@ export {
   setCallerLoading,
   // getCallerWeek,
   getCallerTable,
-  setSavedTemplate,
 };

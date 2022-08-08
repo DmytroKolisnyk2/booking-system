@@ -7,7 +7,6 @@ import {
   setCallerError,
   setCallerLoading,
   getCallerTable,
-  setSavedTemplate,
   getCallerCurrentWorkWeek,
 } from "./caller-operations";
 import { combineReducers } from "redux";
@@ -195,14 +194,6 @@ const CallerLoading = createReducer(false, {
   [getCallerTable.fulfilled]: (_, action) => false,
 });
 
-const savedTemplate = createReducer(
-  { text: "No template", date: "" },
-  {
-    [setSavedTemplate]: (_, action) => action.payload,
-    [setCallerError]: (_, action) => "No template",
-  }
-);
-
 const week = combineReducers({
   weekId,
   weekDate,
@@ -214,5 +205,4 @@ export default combineReducers({
   CallerError,
   CallerLoading,
   week,
-  savedTemplate,
 });
