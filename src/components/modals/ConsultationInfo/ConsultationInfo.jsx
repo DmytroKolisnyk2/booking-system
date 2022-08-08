@@ -80,7 +80,7 @@ const ConsultationInfo = ({ isOpen, handleClose, id, api_info, slotId }) => {
               defaultValue="Result"
               setValue={setResult}
             >
-              <option value={7}>Successfull</option>
+              <option value={7}>Successful</option>
               <option value={8}>Unsuccessful</option>
             </Select>
 
