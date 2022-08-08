@@ -209,7 +209,12 @@ const setCancelConfirmation = (slot_id, status, message) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
-
+const postConsultationResult = (slotId, result, groupId, message) => {
+  return axios
+    .post(`/consultation_result/${slotId}/${result}/${groupId}/${message}`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
 export {
   setCancelConfirmation,
   setConfirmation,
@@ -242,4 +247,5 @@ export {
   getManagerByName,
   postAppointment,
   getCallerCurrentWeek2,
+  postConsultationResult
 };

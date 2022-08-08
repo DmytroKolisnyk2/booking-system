@@ -1,45 +1,53 @@
 import styles from "./ConsultationInfo.module.scss";
 import Modal from "../../Modal/Modal";
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   putManager,
   getCourses,
   deleteManager,
   getGroups,
   getUsersByRole,
+  postConsultationResult,
+  updateSlot,
 } from "../../../helpers/api.js";
+import {
+  getDate,
+  getTable,
+  getTypeSelection,
+  getWeekId,
+} from "../../../redux/manager/manager-selectors";
 import FormInput from "../../FormInput/FormInput";
 import DropList from "../../DropList/DropList";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
 
-const ConsultationInfo = ({ isOpen, handleClose, id }) => {
+const ConsultationInfo = ({ isOpen, handleClose, id, api_info, slotId }) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState(7);
   const [course, setCourse] = useState("");
   const [group, setGroup] = useState("");
   const [message, setMessage] = useState("");
   const [manager, setManager] = useState("");
+  console.log(result);
   return (
     <>
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
             type={{ type: "no-request" }}
-            requests={{
-              put: putManager,
-              additional: id,
-              delete: deleteManager,
-            }}
+            apiHelperRequest={updateSlot}
+            apiHelperInfo={api_info}
             onSubmit={() => {
               handleClose();
               setDesc("");
               setPassword("");
               setLogin("");
               setName("");
+              postConsultationResult(17, result, group, message);
             }}
             name={name}
             description={desc}
@@ -56,7 +64,6 @@ const ConsultationInfo = ({ isOpen, handleClose, id }) => {
               setValue={setManager}
               request={() => getUsersByRole("Manager")}
               label="course"
-              defaultValue="Select course"
             />
             <Select
               title="Course:"
@@ -71,22 +78,23 @@ const ConsultationInfo = ({ isOpen, handleClose, id }) => {
               handler={setResult}
               type="no-request"
               defaultValue="Result"
+              setValue={setResult}
             >
-              <option value={true}>Successfull</option>
-              <option value={false}>Not Successful</option>
+              <option value={7}>Successfull</option>
+              <option value={8}>Unsuccessful</option>
             </Select>
+
             <Select
               title="Group:"
               value={group}
               request={getGroups}
               setValue={setGroup}
-              defaultValue="Select course"
+              defaultValue="Select group"
             />
             <label className={styles.input__label}>
               <p className={styles.input__label}>Message</p>
               <textarea
                 className={styles.textarea}
-                required
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               ></textarea>
