@@ -9,7 +9,7 @@ export default function Header({ endpoints = [], user }) {
     <header className={styles.header}>
       <a
         className={styles["logoLink"]}
-        href="/modals"
+        href="https://goiteens.ua/"
         rel="noopener noreferrer nofollow"
         target="_blank"
       >
