@@ -68,7 +68,7 @@ const Form = ({
                 apiHelperInfo.managerId,
                 apiHelperInfo.weekId,
                 apiHelperInfo.dayIndex,
-                apiHelperInfo.hourIndex,
+                apiHelperInfo.slotHour,
                 7
               )
                 .then((data) => {
@@ -87,7 +87,7 @@ const Form = ({
                 apiHelperInfo.managerId,
                 apiHelperInfo.weekId,
                 apiHelperInfo.dayIndex,
-                apiHelperInfo.hourIndex,
+                apiHelperInfo.slotHour,
                 8
               )
                 .then((data) => {

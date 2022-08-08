@@ -45,13 +45,8 @@ const ConsultationPage = () => {
       managerId
     )
       .then((data) => {
-        dispatch(
-          changeStatusSlot({
-            dayIndex,
-            hourIndex,
-            colorId: 6,
-          })
-        );
+       
+      
       })
       .catch((error) => dispatch(setManagerError(error)))
       .finally(() => dispatch(setManagerLoading(false)));
