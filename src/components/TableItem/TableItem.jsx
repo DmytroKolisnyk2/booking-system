@@ -34,19 +34,19 @@ const TableItem = ({
 
   const activeCallerClassnames = (colorId) => {
     return classNames(styles.item, {
-      [styles.callerYellowColor]: +colorId === 1,
-      [styles.callerOrangeColor]: +colorId === 0,
-      [styles.callerRedColor]: +colorId === -1,
-      [styles.callerGreenColor]: +colorId === 2,
+      [styles.callerYellowColor]: +colorId === 2,
+      [styles.callerOrangeColor]: +colorId === 1,
+      [styles.callerRedColor]: +colorId === 0,
+      [styles.callerGreenColor]: +colorId >= 4,
       [styles.callerLightGreenColor]: +colorId === 3,
     });
   };
   const activeCallerFreeClassnames = (colorId) => {
     return classNames(styles.free__button, {
-      [styles.callerFreeYellowColor]: +colorId === 1,
-      [styles.callerFreeOrangeColor]: +colorId === 0,
-      [styles.callerFreeRedColor]: +colorId === -1,
-      [styles.callerFreeGreenColor]: +colorId === 2,
+      [styles.callerFreeYellowColor]: +colorId === 2,
+      [styles.callerFreeOrangeColor]: +colorId === 1,
+      [styles.callerFreeRedColor]: +colorId === 0,
+      [styles.callerFreeGreenColor]: +colorId >= 4,
       [styles.callerFreeLightGreenColor]: +colorId === 3,
     });
   };
@@ -63,7 +63,6 @@ const TableItem = ({
             className={activeCallerClassnames(colorId)}
           >
             {`${data}:00`}
-            {console.log(colorId)}
             <div className={activeCallerFreeClassnames(colorId)}>{colorId}</div>
           </li>
           {modal === "appointment" && (
