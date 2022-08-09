@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import NewUser from "../../components/modals/NewUser/NewUser";
 import ChangeUser from "../../components/modals/ChangeUser/ChangeUser";
 import NewCourse from "../../components/modals/NewCourse/NewCourse";
@@ -12,7 +12,6 @@ import SignUp from "../../components/modals/SignUp/SignUp";
 import Login from "../../components/modals/Login/Login";
 import ConsultationInfo from "../../components/modals/ConsultationInfo/ConsultationInfo";
 import NewAppointment2 from "../../components/modals/NewAppointment2/NewAppointment";
-// import { getManagers } from "../../helpers/api.js";
 
 const ModalsPage = () => {
   const [id, setId] = useState(0);
@@ -24,18 +23,6 @@ const ModalsPage = () => {
   const handleClose = () => {
     setIsOpen(!isOpen);
   };
-  // const getData = async () => {
-  //   const res = await getManagers()
-  //     .then((res) => res.data)
-  //     .catch((error) => console.log(error));
-  //   setData(res);
-  //   console.log("work");
-  //   return res;
-  // };
-  // useEffect(() => {
-  //   getData();
-  // }, []);
-
   return (
     <section>
       {data.map((data) => {
@@ -208,10 +195,6 @@ const ModalsPage = () => {
           <Login isOpen={isOpen} handleClose={() => handleClose()} />
         )}
 
-
-
-
-
         <button
           data-modal="consulta"
           onClick={() => {
@@ -224,11 +207,6 @@ const ModalsPage = () => {
           <ConsultationInfo isOpen={isOpen} handleClose={() => handleClose()} />
         )}
 
-
-
-
-
-        
         <button
           data-modal="new-appointment-2"
           onClick={() => {

@@ -3,8 +3,8 @@ import Modal from "../../Modal/Modal";
 import FormInput from "../../FormInput/FormInput";
 import Select from "../../Select/Select";
 import React, { useState } from "react";
-import {postManager} from '../../../helpers/manager/manager';
-import {getRoles, postUser} from '../../../helpers/user/user';
+import { postManager } from "../../../helpers/manager/manager";
+import { getRoles, postUser } from "../../../helpers/user/user";
 import Form from "../../Form/Form";
 
 const NewUser = ({ isOpen, handleClose, isAdmin }) => {
@@ -18,7 +18,7 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
-            type={{ type: "post" }}
+            type={{ type: "post", erenYeager: "ErenYeager" }}
             requests={{ post: postManager, user: postUser }}
             name={name}
             role={role}
@@ -77,7 +77,6 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
                 handler={setPassword}
               />
             </div>
-
             <Select
               title="Role:"
               request={getRoles}

@@ -4,7 +4,6 @@ import Select from "../../Select/Select";
 import React, { useState } from "react";
 import Form from "../../Form/Form";
 import classnames from "classnames";
-import { style } from "@mui/system";
 
 const SettingsModal = ({ isOpen, handleClose }) => {
   const [language, setLanguage] = useState("english");

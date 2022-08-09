@@ -1,15 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./AdminPage.module.scss";
 
-// import API from "../../helpers/api";
 import Managers from "../../components/Managers/Managers";
-import ManagerModal from "../../components/modals/ManagerModal/ManagerModal";
 import NewUser from "../../components/modals/NewUser/NewUser";
 
 export default function UsersPage() {
   const [isOpen, setIsOpen] = useState(false);
-  const [id, setId] = useState(0);
-  const [modal, setModal] = useState("");
 
   const handleClose = () => {
     setIsOpen(!isOpen);
@@ -18,11 +14,26 @@ export default function UsersPage() {
     <>
       <h3 className={styles.main_title}>Manage users</h3>
       <div className={styles.main_wrapper2}>
-        <Managers text={"Managers"} role="Manager" isOpenModal={isOpen} isAdmin={true}/>
+        <Managers
+          text={"Managers"}
+          role="Manager"
+          isOpenModal={isOpen}
+          isAdmin={true}
+        />
 
-        <Managers text={"Confirmators"} role="Confirmator" isOpenModal={isOpen} isAdmin={true}/>
+        <Managers
+          text={"Confirmators"}
+          role="Confirmator"
+          isOpenModal={isOpen}
+          isAdmin={true}
+        />
 
-        <Managers text={"Call center"} role="Caller" isOpenModal={isOpen} isAdmin={true}/>
+        <Managers
+          text={"Call center"}
+          role="Caller"
+          isOpenModal={isOpen}
+          isAdmin={true}
+        />
       </div>
       <div className={styles.btn_wrapper}>
         <button
@@ -34,20 +45,11 @@ export default function UsersPage() {
         >
           Add new administrator +
         </button>
-        <NewUser isOpen={isOpen} handleClose={() => handleClose()} isAdmin={true}/>
-
-        {/* <button
-            onClick={() => {
-              setManagerModal(!isManagerModal);
-            }}
-          >
-            Click
-          </button>  */}
-        {/* <ManagerModal
-            isOpen={isManagerModal}
-            handleClose={() => handleClose(0)}
-          /> */}
-        {/* <ModalBtn/> */}
+        <NewUser
+          isOpen={isOpen}
+          handleClose={() => handleClose()}
+          isAdmin={true}
+        />
       </div>
     </>
   );

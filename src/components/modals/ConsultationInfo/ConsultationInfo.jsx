@@ -7,7 +7,6 @@ import { getGroups } from "../../../helpers/group/group";
 import { getCourses } from "../../../helpers/course/course";
 import {updateSlot} from '../../../helpers/week/week';
 import {getUsersByRole} from '../../../helpers/user/user';
-import {deleteManager} from '../../../helpers/manager/manager';
 import {postConsultationResult} from '../../../helpers/consultation/consultation'
 import {
   getTable,
@@ -18,7 +17,6 @@ import {
   setManagerLoading,
   changeStatusSlot,
 } from "../../../redux/manager/manager-operations";
-import FormInput from "../../FormInput/FormInput";
 import DropList from "../../DropList/DropList";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";

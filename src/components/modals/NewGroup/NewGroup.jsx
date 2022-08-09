@@ -18,8 +18,6 @@ const NewGroup = ({ isOpen, handleClose }) => {
           <Form
             onSubmit={() => {
               handleClose();
-              // setPassword("");
-              // setLogin("");
               setName("");
             }}
             type={{ type: "post" }}

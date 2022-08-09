@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import classNames from "classnames";
 import { useSelector, useDispatch } from "react-redux";
@@ -92,7 +92,7 @@ const PlanningPage = () => {
           table[dayIndex][hourIndex].time,
           1
         )
-          .then((data) => {
+          .then(() => {
             dispatch(
               changeStatusSlot({
                 dayIndex,
@@ -132,7 +132,7 @@ const PlanningPage = () => {
           table[dayIndex][hourIndex].time,
           0
         )
-          .then((data) => {
+          .then(() => {
             dispatch(
               changeStatusSlot({
                 dayIndex,

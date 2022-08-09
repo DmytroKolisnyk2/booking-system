@@ -17,17 +17,11 @@ import {
 } from "../../redux/caller/caller-selectors";
 import { getCallerCurrentWeek } from "../../redux/caller/caller-operations";
 export default function CallerPage() {
-  const callerTable = new FormData();
   const dispatch = useDispatch();
-  // const templateText = useSelector(getSavedTemplateText);
-  // const templateDate = useSelector(getSavedTemplateDate);
   const tableDate = useSelector(getDate);
   const table = useSelector(getTable);
-  const typeSelection = useSelector(getTypeSelection);
   const weekId = useSelector(getWeekId);
   const { callerId } = useParams();
-  const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  // const tableDate = useSelector(getDate);
   const onClickSlot = (dayIndex, hourIndex) => {
     dispatch(getCallerCurrentWeek(+callerId));
   };
@@ -41,14 +35,6 @@ export default function CallerPage() {
   return (
     <>
       <Header
-        endpoints={
-          [
-            // { text: "users", path: path.users },
-            // { text: "groups", path: path.groups },
-            // { text: "courses", path: path.courses },
-            // { text: "actions", path: path.actions },
-          ]
-        }
         user={{ name: callerName, role: "Caller" }}
       />
       <div className={styles.main__wrapper}>

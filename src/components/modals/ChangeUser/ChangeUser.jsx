@@ -118,12 +118,8 @@ const ChangeUser = ({
               setValue={setRole}
               value={role}
               administrator={administrator}
-              // type="no-request"
               defaultValue="manager/caller/confirmator"
             >
-              {/* <option value="manager">Manager</option>
-              <option value="caller">Caller</option>
-              <option value="confirmator">Confirmator</option> */}
             </Select>
           </Form>
         </Modal>

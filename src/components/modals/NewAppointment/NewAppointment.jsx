@@ -1,17 +1,13 @@
 import styles from "./NewAppointment.module.scss";
 import Modal from "../../Modal/Modal";
 import React, { useState } from "react";
-import {
-  postGroup,
-  getGroups,
-} from "../../../helpers/group/group";
-import {getUsersByRole} from '../../../helpers/user/user';
-import {getCourses} from '../../../helpers/course/course';
+import { postGroup, getGroups } from "../../../helpers/group/group";
+import { getUsersByRole } from "../../../helpers/user/user";
+import { getCourses } from "../../../helpers/course/course";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
 
 const NewAppointment = ({ isOpen, handleClose, data }) => {
-  // const [zohoLink, setZohoLink] = useState("");
   const [course, setCourses] = useState("");
   const [manager, setManager] = useState("");
   const [group, setGroups] = useState("");
@@ -52,7 +48,7 @@ const NewAppointment = ({ isOpen, handleClose, data }) => {
                 classname={styles.select__label}
                 value={course}
                 setValue={setCourses}
-                request={getCourses} //!  getCourses need but backend ZLAMAVSYA and /courses deleted NAFIG
+                request={getCourses}
                 label="course"
                 defaultValue="Select course"
                 title="Course:"
@@ -69,7 +65,7 @@ const NewAppointment = ({ isOpen, handleClose, data }) => {
               <Select
                 classname={styles.select__label}
                 setValue={setDate}
-                request={getGroups} //! I don`t now what request need there or need`s it at all
+                request={getGroups}
                 value={date}
                 label="date"
                 defaultValue="11.07, 11:00"
@@ -100,115 +96,7 @@ const NewAppointment = ({ isOpen, handleClose, data }) => {
                 <option value="no-successfull">Not Successfull</option>
               </Select>
             </div>
-
-            {/* <FormInput
-              title="Start Date:"
-              type="date"
-              name="date"
-              value={start_date}
-              placeholder="Select start date"
-              isRequired={true}
-              handler={setStartDate}
-            />
-            <FormInput
-              title="Class schedule:"
-              type="text"
-              name="schedule"
-              value={schedule}
-              placeholder="Wed 18:00-19:30, Sat 10:00-12:30"
-              isRequired={true}
-              handler={setSchedule}
-            /> */}
-            {/* <FormInput
-            title="Passwotd:"
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Password"
-            isRequired={true}
-            handler={setPassword}
-          /> */}
-
-            {/* <FormInput
-              title="Name:"
-              type="text"
-              name="name"
-              value={name}
-              placeholder="Name"
-              isRequired={true}
-              handler={setName}
-            /> */}
           </Form>
-          {/* <div className={styles.modal}>
-            <h3 className={styles.title}>Make an appointment</h3>
-            <form onSubmit={handleSubmit} className={styles.form}>
-              <div className={styles.input__wrapper}>
-                <label className={styles.input__label}>
-                  <p className={styles.input__label}>Course:</p>
-                  <select
-                    defaultValue={""}
-                    className={classnames(styles.input, styles.select)}
-                    onChange={(e) => setCourseId(e.currentTarget.value)}
-                    required
-                    onClick={(e) => getCoursesData()}
-                  >
-                    <option value="" disabled hidden>
-                      Select group
-                    </option>
-                    {courses.map((i) => {
-                      return (
-                        <option value={i.id} key={i.id}>
-                          {i.name}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </label>
-                <label className={styles.input__label}>
-                  <p className={styles.input__label}>Start date:</p>
-                  <input
-                    className={styles.input}
-                    type="date"
-                    name="name"
-                    required
-                    value={startDate}
-                    placeholder="Select start date"
-                    onChange={(e) => setStartDate(e.currentTarget.value)}
-                  />
-                </label>
-
-                <label className={styles.input__label}>
-                  <p className={styles.input__label}>Class schedule:</p>
-                  <input
-                    className={styles.input}
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="Wed 18:00-19:30, Sat 10:00-12:30"
-                    onChange={(e) => setSchedule(e.currentTarget.value)}
-                  />
-                </label>
-                <label className={styles.input__label}>
-                  <p className={styles.input__label}>Group name:</p>
-                  <input
-                    className={styles.input}
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="Name"
-                    onChange={(e) => setName(e.currentTarget.value)}
-                  />
-                </label>
-              </div>
-
-              <input
-                className={styles.input__submit}
-                type="submit"
-                value="Save"
-              />
-            </form>
-            <p className={styles.exit}>Click outside to exit</p>
-          </div>*/}
         </Modal>
       )}
     </div>

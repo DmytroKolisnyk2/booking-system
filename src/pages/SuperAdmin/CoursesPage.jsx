@@ -5,15 +5,8 @@ import Button from "../../components/Buttons/Buttons";
 // import API from "../../helpers/api";
 import Courses from "../../components/Courses/Courses";
 import NewCourses from "../../components/modals/NewCourse/NewCourse";
-import BgWrapper from "../../components/BgWrapper/BgWrapper";
 
 const CoursesPage = () => {
-  // const [isManagerModal, setManagerModal] = useState(false);
-  // const handleClose = (e) => {
-  //   if (e === 0) {
-  //     setManagerModal(!isManagerModal);
-  //   }
-  // };
   const [id, setId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
