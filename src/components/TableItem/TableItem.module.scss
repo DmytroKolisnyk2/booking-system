@@ -234,21 +234,27 @@
   border-radius: 10px;
   color: $font-black;
   z-index: 1000;
+  transition: 200ms linear;
 }
 .callerFreeYellowColor {
   border: 2px solid #837d00;
+  transition: 200ms linear;
 }
 .callerFreeOrangeColor {
   color: #fff;
   border: 2px solid #8a4c02;
+  transition: 200ms linear;
 }
 .callerFreeRedColor {
   color: #fff;
   border: 2px solid #8c2e2e;
+  transition: 200ms linear;
 }
 .callerFreeGreenColor {
   border: 2px solid #007605;
+  transition: 200ms linear;
 }
 .callerFreeLightGreenColor {
   border: 2px solid #4a8312;
+  transition: 200ms linear;
 }
