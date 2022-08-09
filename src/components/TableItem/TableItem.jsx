@@ -39,7 +39,6 @@ const TableItem = ({
       [styles.callerRedColor]: +colorId === -1,
       [styles.callerGreenColor]: +colorId === 2,
       [styles.callerLightGreenColor]: +colorId === 3,
-      [styles.callerLightGreenColor]: +colorId === 4,
     });
   };
   const activeCallerFreeClassnames = (colorId) => {
@@ -49,7 +48,6 @@ const TableItem = ({
       [styles.callerFreeRedColor]: +colorId === -1,
       [styles.callerFreeGreenColor]: +colorId === 2,
       [styles.callerFreeLightGreenColor]: +colorId === 3,
-      [styles.callerFreeLightGreenColor]: +colorId === 4,
     });
   };
   return (
@@ -65,6 +63,7 @@ const TableItem = ({
             className={activeCallerClassnames(colorId)}
           >
             {`${data}:00`}
+            {console.log(colorId)}
             <div className={activeCallerFreeClassnames(colorId)}>{colorId}</div>
           </li>
           {modal === "appointment" && (

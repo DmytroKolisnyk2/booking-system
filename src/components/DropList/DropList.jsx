@@ -35,10 +35,10 @@ const DropList = ({
       const data = await getData();
       return data;
     };
-    const data = get().then((res) => {
+    get().then((res) => {
       setValue(res[0].name);
       if (setValueSecondary) {
-        setValueSecondary(data());
+        setValueSecondary(res[0].id);
       }
     });
     getData();
