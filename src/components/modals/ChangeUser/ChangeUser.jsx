@@ -22,9 +22,9 @@ const ChangeUser = ({
   dataName,
   dataDesc,
   dataRole,
-  manager,
+  // manager,
   dataLogin,
-  dataPassword,
+  // dataPassword,
   administrator,
 }) => {
   const [name, setName] = useState("");
