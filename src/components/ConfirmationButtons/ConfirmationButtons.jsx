@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { getConfirmatorAppointments } from "../../redux/confirmator/confirmator-selectors";
-import styles from "./ConfirmationButton.scss";
+import "./ConfirmationButton.scss";
 
-const ConfirmatorButtons = ({ value, setValue }) => {
+const ConfirmatorButtons = ({ value, setValue, showPostpone }) => {
   const appointments = useSelector(getConfirmatorAppointments);
 
   const confirmationTable = [
@@ -29,7 +29,10 @@ const ConfirmatorButtons = ({ value, setValue }) => {
           {confirmationTable.map((i) => {
             return (
               <button
-                onClick={() => setValue({ ...value, [item.appointment_id]: i.btn })}
+                onClick={() => {
+                  if (i.btn === "postponed") showPostpone();
+                  setValue({ ...value, [item.appointment_id]: i.btn });
+                }}
                 key={i.btn}
                 className={`${i.class} ${
                   (value[item.appointment_id] === i.btn || i.id === item.status) && i.class
