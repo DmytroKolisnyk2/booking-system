@@ -10,9 +10,7 @@ import {getUsersByRole} from '../../../helpers/user/user';
 import {deleteManager} from '../../../helpers/manager/manager';
 import {postConsultationResult} from '../../../helpers/consultation/consultation'
 import {
-  getDate,
   getTable,
-  getTypeSelection,
   getWeekId,
 } from "../../../redux/manager/manager-selectors";
 import {
