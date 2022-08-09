@@ -5,6 +5,7 @@ const getManagerId = (state) => state.manager.managerId;
 const getWeekId = (state) => state.manager.week.weekId;
 const getSavedTemplateText = (state) => state.manager.savedTemplate.text;
 const getSavedTemplateDate = (state) => state.manager.savedTemplate.date;
+const isManagerLoading = (state) => state.manager.managerLoading;
 
 export {
   getDate,
@@ -14,4 +15,5 @@ export {
   getWeekId,
   getSavedTemplateText,
   getSavedTemplateDate,
+  isManagerLoading,
 };

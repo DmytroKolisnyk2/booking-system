@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./Table.module.scss";
 import TableItem from "../TableItem/TableItem";
+const shortid = require("shortid");
 
 const Table = ({ weekId, table, onClickSlotFn, consultation, caller }) => {
   useEffect(() => {});
@@ -10,11 +11,11 @@ const Table = ({ weekId, table, onClickSlotFn, consultation, caller }) => {
       {table.map((day, dayIndex) => {
         return day.map((item, hourIndex) => {
           return (
-            <>
+            <React.Fragment key={shortid.generate()}>
               {caller ? (
                 <TableItem
                   onClickFn={() => onClickSlotFn()}
-                  key={hourIndex}
+                  key={shortid.generate()}
                   data={item.time}
                   weekId={weekId}
                   colorId={item.amount}
@@ -23,7 +24,7 @@ const Table = ({ weekId, table, onClickSlotFn, consultation, caller }) => {
                 />
               ) : consultation ? (
                 <TableItem
-                  key={hourIndex}
+                  key={shortid.generate()}
                   data={item.time}
                   colorId={item.color}
                   dayIndex={dayIndex}
@@ -35,12 +36,12 @@ const Table = ({ weekId, table, onClickSlotFn, consultation, caller }) => {
               ) : (
                 <TableItem
                   onClickFn={() => onClickSlotFn(dayIndex, hourIndex)}
-                  key={hourIndex}
+                  key={shortid.generate()}
                   data={item.time}
                   colorId={item.color}
                 />
               )}
-            </>
+            </React.Fragment>
           );
         });
       })}

@@ -1,23 +1,21 @@
-// import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import styles from "./CallerPage.module.scss";
 import BgWrapper from "../../components/BgWrapper/BgWrapper";
 import { Outlet, useParams } from "react-router-dom";
 import DatePicker from "../../components/DatePicker/DatePicker";
-import React, { useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "react-calendar/dist/Calendar.css";
 import Table from "../../components/Table/Table";
 import Days from "../../components/Days/Days";
+import { getUserById } from "../../helpers/user/user";
 import {
   getDate,
   getTable,
   getTypeSelection,
   getWeekId,
 } from "../../redux/caller/caller-selectors";
-import {
-  getCallerCurrentWeek,
-} from "../../redux/caller/caller-operations";
+import { getCallerCurrentWeek } from "../../redux/caller/caller-operations";
 export default function CallerPage() {
   const callerTable = new FormData();
   const dispatch = useDispatch();
@@ -33,8 +31,12 @@ export default function CallerPage() {
   const onClickSlot = (dayIndex, hourIndex) => {
     dispatch(getCallerCurrentWeek(+callerId));
   };
+  const [callerName, setCallerName] = useState("");
   useEffect(() => {
     dispatch(getCallerCurrentWeek(+callerId));
+    getUserById(+callerId).then((data) => {
+      setCallerName(data.data.name);
+    });
   }, []);
   return (
     <>
@@ -47,7 +49,7 @@ export default function CallerPage() {
             // { text: "actions", path: path.actions },
           ]
         }
-        user={{ name: callerId, role: "Caller" }}
+        user={{ name: callerName, role: "Caller" }}
       />
       <div className={styles.main__wrapper}>
         <BgWrapper title="Caller" />

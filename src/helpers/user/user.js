@@ -47,4 +47,13 @@ const deleteUser = (id) => {
     });
 };
 
-export { getRoles, getUsersByRole, postUser, deleteUser, putUser };
+const getUserById = (id) => {
+  return axios
+    .get(`/user/${id}`)
+    .then((res) => res.data)
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export { getRoles, getUsersByRole, postUser, deleteUser, putUser, getUserById };
