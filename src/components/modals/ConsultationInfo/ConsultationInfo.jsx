@@ -47,7 +47,7 @@ const ConsultationInfo = ({ isOpen, handleClose, id, api_info, slotId }) => {
               setPassword("");
               setLogin("");
               setName("");
-              postConsultationResult(18, result, group, message);
+              postConsultationResult(+slotId, result, group, message);
             }}
             name={name}
             description={desc}

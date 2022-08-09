@@ -27,6 +27,7 @@ const Table = ({ weekId, table, onClickSlotFn, consultation, caller }) => {
                   data={item.time}
                   colorId={item.color}
                   consultation
+                  slotId={item.slot_id}
                 />
               ) : (
                 <TableItem

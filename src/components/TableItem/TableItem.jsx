@@ -13,6 +13,7 @@ const TableItem = ({
   caller,
   weekId,
   dayIndex,
+  slotId
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
@@ -75,7 +76,7 @@ const TableItem = ({
           )}
         </>
       ) : consultation ? (
-        colorId === 2 ? (
+        colorId === 4 ? (
           <>
             <li className={activeClassnames(colorId)}>
               {`${data}:00`}
@@ -96,6 +97,7 @@ const TableItem = ({
               <ConsultationInfo
                 isOpen={isOpen}
                 handleClose={() => setIsOpen(!isOpen)}
+                slotId={+slotId}
               />
             )}
           </>
