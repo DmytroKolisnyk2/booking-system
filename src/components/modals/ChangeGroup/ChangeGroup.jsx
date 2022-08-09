@@ -8,7 +8,7 @@ const ChangeGroup = ({ isOpen, handleClose, id, dataName }) => {
   const [name, setName] = useState("");
   useEffect(() => {
     setName(dataName);
-  }, [isOpen]);
+  }, [isOpen, dataName]);
   return (
     <>
       {isOpen && (

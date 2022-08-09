@@ -1,7 +1,7 @@
 import styles from "./Form.module.scss";
 import InputSubmit from "../InputSubmit/InputSubmit";
 import InputDelete from "../InputDelete/InputDelete";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Form = ({
   type,
@@ -25,7 +25,7 @@ const Form = ({
     try {
       event.preventDefault();
       if (type.type === "no-request") {
-        if(onSubmit) {
+        if (onSubmit) {
           onSubmit();
         }
         return;

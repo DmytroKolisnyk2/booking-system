@@ -1,16 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "../SuperAdmin/SuperAdminPage.module.scss";
-import Button from "../../components/Buttons/Buttons";
-// import API from "../../helpers/api";
 import Groups from "../../components/Groups/Groups";
 import NewGroup from "../../components/modals/NewGroup/NewGroup";
-import BgWrapper from "../../components/BgWrapper/BgWrapper";
 
 const GroupsPage = () => {
-  const [id, setId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const [modal, setModal] = useState("");
 
   const handleClose = () => {
     setIsOpen(!isOpen);
@@ -32,19 +27,6 @@ const GroupsPage = () => {
           Add new groups +
         </button>
         <NewGroup isOpen={isOpen} handleClose={() => handleClose()} />
-
-        {/* <button
-                onClick={() => {
-                  setManagerModal(!isManagerModal);
-                }}
-              >
-                Click
-              </button>  */}
-        {/* <ManagerModal
-                isOpen={isManagerModal}
-                handleClose={() => handleClose(0)}
-              /> */}
-        {/* <ModalBtn/> */}
       </div>
     </div>
   );

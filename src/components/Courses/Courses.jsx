@@ -1,5 +1,5 @@
 import React from "react";
-import { Component, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getCourses } from "../../helpers/course/course";
 import styles from "../Managers/Managers.module.scss";
 import ChangeCourses from "../modals/ChangeCourse/ChangeCourse";
@@ -8,7 +8,6 @@ export default function Courses({ text, isOpenModal, role }) {
   const [courses, setCorses] = useState([]);
   const [id, setId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const [modal, setModal] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [name, setName] = useState("");
 
@@ -25,11 +24,10 @@ export default function Courses({ text, isOpenModal, role }) {
     setCorses(res);
     return res;
   };
+  
   useEffect(() => {
     getCoursesData();
-  }, []);
-  useEffect(() => {
-    getCoursesData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, isOpenModal]);
   return (
     <>

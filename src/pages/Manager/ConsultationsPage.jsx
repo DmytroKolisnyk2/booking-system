@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "react-calendar/dist/Calendar.css";
@@ -7,7 +7,6 @@ import Table from "../../components/Table/Table";
 import {
   getDate,
   getTable,
-  getTypeSelection,
   getWeekId,
 } from "../../redux/manager/manager-selectors";
 import {
@@ -19,7 +18,6 @@ import {
 } from "../../redux/manager/manager-operations";
 import { postStartConsultation } from "../../helpers/consultation/consultation";
 import { updateSlot } from "../../helpers/week/week";
-import Button from "../../components/Buttons/Buttons";
 import StatusDefinition from "../../components/StatusDefinition/StatusDefinition";
 import DatePicker from "../../components/DatePicker/DatePicker";
 
@@ -39,7 +37,7 @@ const ConsultationPage = () => {
       table[dayIndex][hourIndex].time,
       +managerId
     )
-      .then((data) => {
+      .then(() => {
         return updateSlot(
           managerId,
           weekId,
@@ -47,7 +45,7 @@ const ConsultationPage = () => {
           table[dayIndex][hourIndex].time,
           6
         )
-          .then((data) => {
+          .then(() => {
             dispatch(
               changeStatusSlot({
                 dayIndex,
@@ -64,7 +62,7 @@ const ConsultationPage = () => {
 
   useEffect(() => {
     dispatch(getManagerCurrentWorkWeek(+managerId));
-  }, []);
+  }, [dispatch, managerId]);
   return (
     <section className={styles.tableSection}>
       <StatusDefinition />

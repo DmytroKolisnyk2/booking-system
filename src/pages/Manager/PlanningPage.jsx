@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import classNames from "classnames";
 import { useSelector, useDispatch } from "react-redux";
@@ -92,7 +92,7 @@ const PlanningPage = () => {
           table[dayIndex][hourIndex].time,
           1
         )
-          .then((data) => {
+          .then(() => {
             dispatch(
               changeStatusSlot({
                 dayIndex,
@@ -132,7 +132,7 @@ const PlanningPage = () => {
           table[dayIndex][hourIndex].time,
           0
         )
-          .then((data) => {
+          .then(() => {
             dispatch(
               changeStatusSlot({
                 dayIndex,
@@ -151,7 +151,7 @@ const PlanningPage = () => {
     dispatch(getManagerCurrentWeek(+managerId));
     getWeekTable(+managerId)
       .then((data) => {
-        if(!data) {
+        if (!data) {
           dispatch(setManagerError());
         }
         return dispatch(
@@ -162,9 +162,9 @@ const PlanningPage = () => {
         );
       })
       .catch((error) => {
-       return dispatch(setManagerError(error.message));
+        return dispatch(setManagerError(error.message));
       });
-  }, []);
+  }, [dispatch, managerId]);
   const activeClassnames = (templateText) => {
     return classNames(styles.tableButton, {
       [styles.tableButtonDisabled]: templateText === "No template",

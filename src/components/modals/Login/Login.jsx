@@ -6,12 +6,9 @@ import { postManager } from "../../../helpers/manager/manager";
 import Form from "../../Form/Form";
 
 const Login = ({ isOpen, handleClose }) => {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState("");
-  const [data, setData] = useState("");
   return (
     <>
       {isOpen && (
@@ -19,11 +16,8 @@ const Login = ({ isOpen, handleClose }) => {
           <Form
             onSubmit={() => {
               handleClose();
-              setData("");
               setRemember("");
               setEmail("");
-              setPhone("");
-              setName("");
             }}
             type={{ type: "no-request", button: "login" }}
             text={
@@ -51,7 +45,6 @@ const Login = ({ isOpen, handleClose }) => {
               </>
             }
             requests={{ post: postManager }}
-            setValue={setData}
             remember={remember}
             email={email}
             password={password}
@@ -65,7 +58,7 @@ const Login = ({ isOpen, handleClose }) => {
               value={email}
               placeholder="E-Mail"
               isRequired={true}
-              handler={setEmail}
+              setValue={setEmail}
             />
 
             <FormInput
@@ -76,7 +69,7 @@ const Login = ({ isOpen, handleClose }) => {
               min={5}
               placeholder="Password"
               isRequired={true}
-              handler={setPassword}
+              setValue={setPassword}
             />
             <label className={styles.input__label}>
               <div className={styles.checkbox__wrapper}>

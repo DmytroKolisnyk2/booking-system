@@ -1,16 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { getUsersByRole } from "../../helpers/user/user";
-import {getManagers} from '../../helpers/manager/manager';
 import styles from "./Managers.module.scss";
 import ChangeUser from "../modals/ChangeUser/ChangeUser";
 
-// <<<<<<< HEAD
-// export default Managers = ({ text, isOpenModal, role }) => {
-//   const [isOpen, setIsOpen] = useState(false);
-//   const [managers, setManagers] = useState([]);
-//   const [id, setId] = useState(0);
-// =======
 export default function Managers({ text, isOpenModal, role, isAdmin }) {
   const [name, setName] = useState("");
   const [telegram, setTelegram] = useState("");
@@ -20,45 +13,18 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
   const [errorMessage, setErrorMessage] = useState("");
   const [newRole, setRole] = useState("");
   const [newLogin, setLogin] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleClose = () => {
-    setIsOpen(!isOpen);
-  };
   const getManagersData = async () => {
     const res = await getUsersByRole(role)
       .then((res) =>
         res.data ? res.data : setErrorMessage("Example error message!")
       )
       .catch((error) => setErrorMessage(error.message));
-    // if (role === "Manager") {
-    //   console.log(
-    //     await getManagers()
-    //       .then((res) =>
-    //         res.data ? res.data : setErrorMessage("Example error message!")
-    //       )
-    //       .catch((error) => setErrorMessage(error.message))
-    //   );
-    //   const managers = await getManagers()
-    //     .then((res) =>
-    //       res.data ? res.data : setErrorMessage("Example error message!")
-    //     )
-    //     .catch((error) => setErrorMessage(error.message));
-    //   managers.map((i) => {
-    //     i.manager = true;
-    //     res.push(i);
-    //   });
-    //   console.log(res);
-    // }
     setManagers(res);
     return res;
   };
   useEffect(() => {
     getManagersData();
-  }, []);
-
-  useEffect(() => {
-    getManagersData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, isOpenModal]);
 
   return (
@@ -98,7 +64,6 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
           administrator={isAdmin}
           dataRole={newRole}
           dataLogin={newLogin}
-          dataPassword={password}
         />
       </div>
     </>

@@ -47,6 +47,7 @@ export default function ConfirmatorDatePicker() {
 
   useEffect(() => {
     dispatch(getConfirmatorWeek({ currentWeekId, currentDayId, half }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [half, date]);
 
   return (

@@ -18,7 +18,7 @@ const ConfirmatorPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCurrentConfirmator());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

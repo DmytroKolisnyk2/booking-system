@@ -7,7 +7,6 @@ import { getGroups } from "../../../helpers/group/group";
 import { getCourses } from "../../../helpers/course/course";
 import {updateSlot} from '../../../helpers/week/week';
 import {getUsersByRole} from '../../../helpers/user/user';
-import {deleteManager} from '../../../helpers/manager/manager';
 import {postConsultationResult} from '../../../helpers/consultation/consultation'
 import {
   getTable,
@@ -18,7 +17,6 @@ import {
   setManagerLoading,
   changeStatusSlot,
 } from "../../../redux/manager/manager-operations";
-import FormInput from "../../FormInput/FormInput";
 import DropList from "../../DropList/DropList";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
@@ -27,8 +25,6 @@ const ConsultationInfo = ({ isOpen, handleClose, id, slotId,  dayIndex, hourInde
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
   const [result, setResult] = useState(7);
   const [course, setCourse] = useState("");
   const [group, setGroup] = useState("");
@@ -46,8 +42,6 @@ const ConsultationInfo = ({ isOpen, handleClose, id, slotId,  dayIndex, hourInde
             onSubmit={() => {
               handleClose();
               setDesc("");
-              setPassword("");
-              setLogin("");
               setName("");
               dispatch(setManagerLoading(true));
               postConsultationResult(+slotId, result, group, message)

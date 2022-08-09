@@ -27,11 +27,8 @@ const Select = ({
     return res;
   };
   useEffect(() => {
-    if (type === "no-request") {
-      return;
-    }
-
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <label className={styles.input__label}>
@@ -39,7 +36,6 @@ const Select = ({
       {type === "no-request" ? (
         <select
           multiple={false}
-          // defaultValue={""}
           className={classname ? classnames(styles.select) : styles.select}
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -52,7 +48,6 @@ const Select = ({
         </select>
       ) : (
         <select
-          // defaultValue={""}
           className={
             classname ? classnames(styles.select, classname) : styles.select
           }
@@ -72,10 +67,9 @@ const Select = ({
             </option>
           )}
 
-
           {data.map((i) => {
             if (i.name === "Administrator" && administrator === true) {
-              return;
+              return "";
             }
             return (
               <option value={i.id} key={i.id}>

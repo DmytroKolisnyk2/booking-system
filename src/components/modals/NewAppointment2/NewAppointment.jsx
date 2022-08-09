@@ -10,19 +10,19 @@ import FormInput from "../../FormInput/FormInput";
 import DropList from "../../DropList/DropList";
 import { useDispatch } from "react-redux";
 import { getCallerCurrentWeek } from "../../../redux/caller/caller-operations";
+
 const NewAppointment = ({ isOpen, handleClose, time, weekId, dayIndex }) => {
   const dispatch = useDispatch();
   const [link, setLink] = useState("");
   const [courseId, setCourses] = useState("");
   const [manager, setManager] = useState("");
   const [managerId, setManagerId] = useState("");
-  const [group, setGroups] = useState(1);
   const [message, setMessage] = useState("");
   const [age, setAge] = useState(0);
   const [phone, setPhone] = useState("");
   useEffect(() => {
     !isOpen && dispatch(getCallerCurrentWeek());
-  }, [isOpen]);
+  }, [isOpen, dispatch]);
   return (
     <>
       {isOpen && (
@@ -43,14 +43,6 @@ const NewAppointment = ({ isOpen, handleClose, time, weekId, dayIndex }) => {
             }}
             type={{ type: "no-request" }}
             requests={{ post: createAppointment }}
-            // course_id={course}
-            group_id={group}
-            age={age}
-            slot_id={109}
-            zoho_link={link}
-            comments={message}
-            phone={phone}
-            manager={manager}
             title="Create an appointment"
           >
             <DropList
