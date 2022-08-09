@@ -13,6 +13,9 @@ const TableItem = ({
   caller,
   weekId,
   dayIndex,
+  hourIndex,
+  slotId,
+  onClickBtnStart,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
@@ -75,12 +78,14 @@ const TableItem = ({
           )}
         </>
       ) : consultation ? (
-        colorId === 2 ? (
+        colorId === 4 ? (
           <>
             <li className={activeClassnames(colorId)}>
               {`${data}:00`}
               <div className={styles.hover_buttons}>
-                <button>start</button>
+                <button type="button" onClick={onClickBtnStart}>
+                  start
+                </button>
                 <button
                   type="button"
                   onClick={() => {
@@ -94,6 +99,38 @@ const TableItem = ({
             </li>
             {modal === "consultation" && (
               <ConsultationInfo
+                dayIndex={dayIndex}
+                hourIndex={hourIndex}
+                isOpen={isOpen}
+                handleClose={() => setIsOpen(!isOpen)}
+                slotId={+slotId}
+              />
+            )}
+          </>
+        ) : colorId === 6 ? (
+          <>
+            <li className={activeClassnames(colorId)}>
+              {`${data}:00`}
+              <div className={styles.hover_buttons}>
+                <button
+                  className={styles.only_info_button}
+                  type="button"
+                  data-modal="consultation"
+                  onClick={() => {
+                    setIsOpen(!isOpen);
+                    setModal("consultation");
+                  }}
+                >
+                  info
+                </button>
+              </div>
+            </li>
+
+            {modal === "consultation" && (
+              <ConsultationInfo
+                dayIndex={dayIndex}
+                hourIndex={hourIndex}
+                slotId={+slotId}
                 isOpen={isOpen}
                 handleClose={() => setIsOpen(!isOpen)}
               />

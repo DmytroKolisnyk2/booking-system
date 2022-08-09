@@ -65,7 +65,16 @@ const postAppointment = (credentials) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
-const createAppointment = (link, managerId, weekId, dayIndex, time, courseId, phone, age) => {
+const createAppointment = (
+  link,
+  managerId,
+  weekId,
+  dayIndex,
+  time,
+  courseId,
+  phone,
+  age
+) => {
   return axios
     .post(
       `/create_appointment/${weekId}/${dayIndex}/${time}/${courseId}/${link}/${phone}/${age}/${managerId}`
@@ -158,7 +167,9 @@ const getWeek = (managerId, weekId) => {
 
 const updateSlot = (managerId, weekId, dayIndex, slotHour, colorId) => {
   return axios
-    .post(`/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`)
+    .post(
+      `/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`
+    )
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -185,6 +196,14 @@ const getCurrentWorkWeek = (managerId) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+
+const getWorkWeek = (managerId, weekId) => {
+  return axios
+    .get(`/get_work_week/${managerId}/${weekId}`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+
 const getCurrentConfirmatorData = () => {
   return axios
     .get(`/current_confirmation`)
@@ -199,28 +218,51 @@ const getConfirmatorWeekData = (weekId, dayId, halfId) => {
 };
 const setConfirmation = (slot_id, status, message) => {
   return axios
-    .post(`/set_confirmation/${slot_id}/${status}/${message}`)
+    .post(
+      message
+        ? `/set_confirmation/${slot_id}/${status}/${message}`
+        : `/set_confirmation/${slot_id}/${status}`
+    )
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
 const setCancelConfirmation = (slot_id, status, message) => {
   return axios
-    .post(`/set_cancel_confirmation/${slot_id}/${status}/${message}`)
+    .post(
+      message
+        ? `/set_cancel_confirmation/${slot_id}/${status}/${message}`
+        : `/set_cancel_confirmation/${slot_id}/${status}`
+    )
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
 const postConsultationResult = (slotId, result, groupId, message) => {
   return axios
-    .post(`/consultation_result/${slotId}/${result}/${groupId}/${message}`)
+    .post(
+      message
+        ? `/consultation_result/${slotId}/${result}/${groupId}/${message}`
+        : `/consultation_result/${slotId}/${result}/${groupId}/no-text`
+    )
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+
+const postStartConsultation = (weekId, dayIndex, slotHour, managerId) => {
+    return axios
+      .post(
+        `/start_consultation/${weekId}/${dayIndex}/${slotHour}/${managerId}`
+      )
+      .then((res) => res.data)
+      .catch((error) => console.log(error));
+};
+
 export {
   getConfirmatorWeekData,
   setCancelConfirmation,
   setConfirmation,
   getCurrentConfirmatorData,
   getCurrentWorkWeek,
+  getWorkWeek,
   getManagers,
   getCourses,
   postManager,
@@ -249,4 +291,5 @@ export {
   postAppointment,
   getCallerCurrentWeek2,
   postConsultationResult,
+  postStartConsultation,
 };
