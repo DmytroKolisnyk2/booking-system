@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./AdminPage.module.scss";
 
-import API from "../../helpers/api";
+// import API from "../../helpers/api";
 import Managers from "../../components/Managers/Managers";
 import ManagerModal from "../../components/modals/ManagerModal/ManagerModal";
 import NewUser from "../../components/modals/NewUser/NewUser";

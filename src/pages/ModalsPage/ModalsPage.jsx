@@ -12,7 +12,7 @@ import SignUp from "../../components/modals/SignUp/SignUp";
 import Login from "../../components/modals/Login/Login";
 import ConsultationInfo from "../../components/modals/ConsultationInfo/ConsultationInfo";
 import NewAppointment2 from "../../components/modals/NewAppointment2/NewAppointment";
-import { getManagers } from "../../helpers/api.js";
+// import { getManagers } from "../../helpers/api.js";
 
 const ModalsPage = () => {
   const [id, setId] = useState(0);

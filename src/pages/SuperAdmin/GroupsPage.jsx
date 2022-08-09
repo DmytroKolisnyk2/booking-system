@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import styles from "../SuperAdmin/SuperAdminPage.module.scss";
 import Button from "../../components/Buttons/Buttons";
-import API from "../../helpers/api";
+// import API from "../../helpers/api";
 import Groups from "../../components/Groups/Groups";
 import NewGroup from "../../components/modals/NewGroup/NewGroup";
 import BgWrapper from "../../components/BgWrapper/BgWrapper";
