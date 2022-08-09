@@ -82,7 +82,9 @@ const TableItem = ({
             <li className={activeClassnames(colorId)}>
               {`${data}:00`}
               <div className={styles.hover_buttons}>
-                <button onClick={onClickBtnStart}>start</button>
+                <button type="button" onClick={onClickBtnStart}>
+                  start
+                </button>
                 <button
                   type="button"
                   onClick={() => {
@@ -99,6 +101,33 @@ const TableItem = ({
                 isOpen={isOpen}
                 handleClose={() => setIsOpen(!isOpen)}
                 slotId={+slotId}
+              />
+            )}
+          </>
+        ) : colorId === 6 ? (
+          <>
+            <li className={activeClassnames(colorId)}>
+              {`${data}:00`}
+              <div className={styles.hover_buttons}>
+                <button
+                  className={styles.only_info_button}
+                  type="button"
+                  data-modal="consultation"
+                  onClick={() => {
+                    setIsOpen(!isOpen);
+                    setModal("consultation");
+                  }}
+                >
+                  info
+                </button>
+              </div>
+            </li>
+
+            {modal === "consultation" && (
+              <ConsultationInfo
+                slotId={+slotId}
+                isOpen={isOpen}
+                handleClose={() => setIsOpen(!isOpen)}
               />
             )}
           </>

@@ -30,26 +30,32 @@ const ConsultationPage = () => {
   const weekId = useSelector(getWeekId);
   const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-  const onClickSlotButton = (dayIndex, slotIndex) => {
+  const onClickSlotButton = (dayIndex, hourIndex) => {
     dispatch(setManagerLoading(true));
     return postStartConsultation(
       +weekId,
       dayIndex,
-      table[dayIndex][slotIndex].time,
+      table[dayIndex][hourIndex].time,
       +managerId
     )
       .then((data) => {
-        updateSlot(
+        return updateSlot(
           managerId,
           weekId,
           dayIndex,
-          table[dayIndex][slotIndex].time,
+          table[dayIndex][hourIndex].time,
           6
         )
-          .then((data) =>
-            dispatch(changeStatusSlot({ dayIndex, slotIndex, colorId: 6 }))
-          )
-          .catch((error) => dispatch(setManagerError(error.message)));
+          .then((data) => {
+            dispatch(
+              changeStatusSlot({
+                dayIndex,
+                hourIndex,
+                colorId: 6,
+              })
+            );
+          })
+          .catch((error) => dispatch(setManagerError(error)));
       })
       .catch((error) => dispatch(setManagerError(error.message)))
       .finally(() => dispatch(setManagerLoading(false)));

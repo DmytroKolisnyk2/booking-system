@@ -149,12 +149,25 @@
   justify-content: space-between;
   opacity: 0;
   z-index: 999;
+  visibility: hidden;
+  pointer-events: none;
+  transition: 200ms linear;
 }
 
 .hover_buttons button {
   height: 25px;
   width: 50px;
   border-radius: 14px;
+  background-color: $font-white;
+  font-size: 15px;
+  font-weight: 400;
+  color: $font-black;
+  font-family: $poppins;
+  transition: 200ms linear;
+}
+
+.only_info_button {
+  margin-left: 70px;
 }
 
 .hover_buttons button:nth-child(1) {
@@ -163,7 +176,9 @@
 
 .item:hover .hover_buttons {
   position: absolute;
-  opacity: 100%;
+  opacity: 1;
+  visibility: inherit;
+  pointer-events: inherit;
 }
 
 .callerYellowColor {
