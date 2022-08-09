@@ -1,17 +1,17 @@
 import styles from "./NewAppointment.module.scss";
 import Modal from "../../Modal/Modal";
-import React, { useState } from "react";
-import {getGroups} from '../../../helpers/group/group';
-import {getUsersByRole} from '../../../helpers/user/user';
-import {createAppointment, postAppointment} from '../../../helpers/appointment/appointment';
-import {getCourses} from '../../../helpers/course/course';
+import React, { useState, useEffect } from "react";
+import { getUsersByRole } from "../../../helpers/user/user";
+import { createAppointment } from "../../../helpers/appointment/appointment";
+import { getCourses } from "../../../helpers/course/course";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
 import FormInput from "../../FormInput/FormInput";
-import classnames from "classnames";
 import DropList from "../../DropList/DropList";
-
+import { useDispatch } from "react-redux";
+import { getCallerCurrentWeek } from "../../../redux/caller/caller-operations";
 const NewAppointment = ({ isOpen, handleClose, time, weekId, dayIndex }) => {
+  const dispatch = useDispatch();
   const [link, setLink] = useState("");
   const [courseId, setCourses] = useState("");
   const [manager, setManager] = useState("");
@@ -20,6 +20,9 @@ const NewAppointment = ({ isOpen, handleClose, time, weekId, dayIndex }) => {
   const [message, setMessage] = useState("");
   const [age, setAge] = useState(0);
   const [phone, setPhone] = useState("");
+  useEffect(() => {
+    dispatch(getCallerCurrentWeek());
+  }, [isOpen]);
   return (
     <>
       {isOpen && (
