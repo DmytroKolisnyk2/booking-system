@@ -12,7 +12,7 @@ const Modal = (props) => {
       </div>
     </div>,
     modalRef
-  );
+  );  
 };
 
 export default Modal;

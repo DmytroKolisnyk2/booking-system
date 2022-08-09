@@ -12,6 +12,11 @@
   font-size: 24px;
   font-weight: 400;
   font-family: $poppins;
+  border-bottom: 2px solid transparent;
+  transition: $main-transition;
+  &Active {
+    border-color: black;
+  }
 }
 .calendarController {
   width: 100px;

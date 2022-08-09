@@ -9,9 +9,11 @@ import { useParams } from "react-router-dom";
 import { getCurrentConfirmator } from "../../redux/confirmator/confirmator-operations";
 import ConfirmatorComments from "../../components/ConfirmatorComments/ConfirmatorComments";
 import ConfirmatorDatePicker from "../../components/ConfirmatorDatePicker/ConfirmatorDatePicker";
+import PostponeModal from "../../components/modals/PostponeModal/PostponeModal";
 
 const ConfirmatorPage = () => {
   const [value, setValue] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
   const { confirmatorId } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -38,6 +40,7 @@ const ConfirmatorPage = () => {
           </div>
         </div>
       </section>
+      <PostponeModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
 };

@@ -174,7 +174,9 @@ const getWeekTable = (managerId) => {
   return axios
     .get(`/get_template/${managerId}`)
     .then((res) => res.data)
-    .catch((error) => {throw error});
+    .catch((error) => {
+      throw error;
+    });
 };
 
 const getCurrentWorkWeek = (managerId) => {
@@ -186,6 +188,12 @@ const getCurrentWorkWeek = (managerId) => {
 const getCurrentConfirmatorData = () => {
   return axios
     .get(`/current_confirmation`)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};
+const getConfirmatorWeekData = (weekId, dayId, halfId) => {
+  return axios
+    .get(`/get_confirmation/${weekId}/${dayId}/${halfId}`)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -208,6 +216,7 @@ const postConsultationResult = (slotId, result, groupId, message) => {
     .catch((error) => console.log(error));
 };
 export {
+  getConfirmatorWeekData,
   setCancelConfirmation,
   setConfirmation,
   getCurrentConfirmatorData,

@@ -3,32 +3,59 @@ import moment from "moment";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getDate, getWeekId } from "../../redux/manager/manager-selectors";
-import { getManagerWeek } from "../../redux/manager/manager-operations";
+import {
+  getConfirmatorDate,
+  getConfirmatorDay,
+  getConfirmatorHalf,
+  getConfirmatorWeekId,
+} from "../../redux/confirmator/confirmator-selectors";
+import {
+  decreaseDay,
+  getConfirmatorWeek,
+  increaseDay,
+} from "../../redux/confirmator/confirmator-operations";
 
 export default function ConfirmatorDatePicker() {
-  const tableDate = useSelector(getDate);
-
   const dispatch = useDispatch();
-  const currentWeekId = useSelector(getWeekId);
+
+  const tableDate = useSelector(getConfirmatorDate);
+  const currentWeekId = useSelector(getConfirmatorWeekId);
+  const currentDayId = useSelector(getConfirmatorDay);
+  const currentHalfId = useSelector(getConfirmatorHalf);
+
   const [date, setDate] = useState(new Date(tableDate));
-  const month = date.getMonth() < 10 ? `0${date.getMonth() }` : date.getMonth() ;
+  const [half, setHalf] = useState(currentHalfId);
+
+  const month = date.getMonth() < 10 + 1 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
   const dateDay = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+
   const onClickArrowRight = () => {
     setDate(moment(date).add(1, "days")._d);
-    // dispatch(getManagerWeek({ managerId, weekId }));
+    dispatch(increaseDay());
   };
 
   const onClickArrowLeft = () => {
     setDate(moment(date).subtract(1, "days")._d);
-    // dispatch(getManagerWeek({ managerId, weekId }));
+    dispatch(decreaseDay());
   };
+  const onFirstHalfHandler = () => {
+    setHalf(1);
+  };
+  const onSecondHalfHandler = () => {
+    setHalf(2);
+  };
+
   useEffect(() => {
-    setDate(new Date(tableDate));
-  }, [tableDate]);
+    dispatch(getConfirmatorWeek({ currentWeekId, currentDayId, half }));
+  }, [half, date]);
+
   return (
     <div className={styles.calendar_wrapper}>
-      <button className={styles.halfBtn} type="button">
+      <button
+        onClick={onFirstHalfHandler}
+        className={styles.halfBtn + (half === 1 ? " " + styles.halfBtnActive : "")}
+        type="button"
+      >
         1-half
       </button>
       <div className={styles.calendarController}>
@@ -48,7 +75,11 @@ export default function ConfirmatorDatePicker() {
           {">"}
         </button>
       </div>
-      <button className={styles.halfBtn} type="button">
+      <button
+        onClick={onSecondHalfHandler}
+        className={styles.halfBtn + (half === 2 ? " " + styles.halfBtnActive : "")}
+        type="button"
+      >
         2-half
       </button>
     </div>
