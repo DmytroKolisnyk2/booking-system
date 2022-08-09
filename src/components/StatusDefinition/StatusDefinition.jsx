@@ -1,16 +1,9 @@
 import React from "react";
 import classNames from 'classnames';
-import { useSelector, useDispatch } from "react-redux";
 import styles from "./StatusDefinition.module.scss";
-
-import { changeTypeSelection } from "../../redux/manager/manager-operations";
-import { getTypeSelection } from "../../redux/manager/manager-selectors";
-
-import RadioButton from "../RadioButton/RadioButton";
 import BgWrapper from "../BgWrapper/BgWrapper";
 
 const ControlButtons = () => {
-
   return (
     <BgWrapper title="Manager">
       <div className={styles.wrapperStatsDefins}>

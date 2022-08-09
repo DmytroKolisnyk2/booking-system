@@ -62,7 +62,7 @@ const ConsultationPage = () => {
 
   useEffect(() => {
     dispatch(getManagerCurrentWorkWeek(+managerId));
-  }, []);
+  }, [dispatch, managerId]);
   return (
     <section className={styles.tableSection}>
       <StatusDefinition />

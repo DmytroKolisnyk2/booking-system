@@ -22,7 +22,7 @@ const NewAppointment = ({ isOpen, handleClose, time, weekId, dayIndex }) => {
   const [phone, setPhone] = useState("");
   useEffect(() => {
     !isOpen && dispatch(getCallerCurrentWeek());
-  }, [isOpen]);
+  }, [isOpen, dispatch]);
   return (
     <>
       {isOpen && (

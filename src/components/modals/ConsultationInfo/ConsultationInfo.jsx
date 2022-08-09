@@ -25,8 +25,6 @@ const ConsultationInfo = ({ isOpen, handleClose, id, slotId,  dayIndex, hourInde
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
   const [result, setResult] = useState(7);
   const [course, setCourse] = useState("");
   const [group, setGroup] = useState("");
@@ -44,8 +42,6 @@ const ConsultationInfo = ({ isOpen, handleClose, id, slotId,  dayIndex, hourInde
             onSubmit={() => {
               handleClose();
               setDesc("");
-              setPassword("");
-              setLogin("");
               setName("");
               dispatch(setManagerLoading(true));
               postConsultationResult(+slotId, result, group, message)

@@ -38,7 +38,7 @@ const ChangeUser = ({
     setRole(dataRole);
     setLogin(dataLogin);
     // setPassword(dataPassword);
-  }, [isOpen]);
+  }, [isOpen, dataDesc, dataLogin, dataRole, dataName]);
 
   return (
     <>

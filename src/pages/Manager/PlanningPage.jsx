@@ -151,7 +151,7 @@ const PlanningPage = () => {
     dispatch(getManagerCurrentWeek(+managerId));
     getWeekTable(+managerId)
       .then((data) => {
-        if(!data) {
+        if (!data) {
           dispatch(setManagerError());
         }
         return dispatch(
@@ -162,9 +162,9 @@ const PlanningPage = () => {
         );
       })
       .catch((error) => {
-       return dispatch(setManagerError(error.message));
+        return dispatch(setManagerError(error.message));
       });
-  }, []);
+  }, [dispatch, managerId]);
   const activeClassnames = (templateText) => {
     return classNames(styles.tableButton, {
       [styles.tableButtonDisabled]: templateText === "No template",

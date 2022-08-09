@@ -11,7 +11,7 @@ export default function ManagerPage() {
     getUserById(+managerId).then((data) => {
       setManagerName(data.data.name);
     });
-  }, []);
+  }, [managerId]);
   return (
     <>
       <Header

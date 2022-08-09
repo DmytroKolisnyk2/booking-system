@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { Oval, Rings, TailSpin } from "react-loader-spinner";
+import { TailSpin } from "react-loader-spinner";
 import { useSelector } from "react-redux";
-import { setCancelConfirmation, setConfirmation } from "../../helpers/confirmation/confirmation";
+import {
+  setCancelConfirmation,
+  setConfirmation,
+} from "../../helpers/confirmation/confirmation";
 import styles from "../../pages/Confirmator/ConfirmatorPage.module.scss";
 import {
   getConfirmatorAppointments,
@@ -27,7 +30,6 @@ const ConfirmatorComments = ({ value }) => {
   ];
   return (
     <>
-      
       {loading && <TailSpin height="57" width="57" color="#999DFF" />}
       {appointments.map((item) => (
         <div key={item.appointment_id} className={styles.comment__wrapper}>
@@ -37,7 +39,9 @@ const ConfirmatorComments = ({ value }) => {
               className={styles.comment__input}
               placeholder="Write a comment here..."
               onChange={({ target }) => setConfirm(target.value)}
-              onBlur={() => confirm && setConfirmation(item.slot_id, 4, confirm)}
+              onBlur={() =>
+                confirm && setConfirmation(item.slot_id, 4, confirm)
+              }
             />
           )}
           {value[item.appointment_id] === "canceled" && (
@@ -50,7 +54,9 @@ const ConfirmatorComments = ({ value }) => {
                       setReject(i.text);
                       reject && setCancelConfirmation(item.slot_id, 1, reject);
                     }}
-                    className={`${styles.btn} ${reject === i.text && styles.btn_active}`}
+                    className={`${styles.btn} ${
+                      reject === i.text && styles.btn_active
+                    }`}
                   >
                     {i.text}
                   </button>
@@ -62,7 +68,9 @@ const ConfirmatorComments = ({ value }) => {
                 placeholder="Write a comment here..."
                 value={reject}
                 onChange={({ target }) => setReject(target.value)}
-                onBlur={() => reject && setCancelConfirmation(item.slot_id, 1, reject)}
+                onBlur={() =>
+                  reject && setCancelConfirmation(item.slot_id, 1, reject)
+                }
               />
             </div>
           )}

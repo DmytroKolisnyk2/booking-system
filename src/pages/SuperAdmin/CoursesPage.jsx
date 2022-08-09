@@ -1,15 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "../SuperAdmin/SuperAdminPage.module.scss";
-import Button from "../../components/Buttons/Buttons";
-// import API from "../../helpers/api";
 import Courses from "../../components/Courses/Courses";
 import NewCourses from "../../components/modals/NewCourse/NewCourse";
 
 const CoursesPage = () => {
-  const [id, setId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const [modal, setModal] = useState("");
 
   const handleClose = () => {
     setIsOpen(!isOpen);
@@ -31,19 +27,6 @@ const CoursesPage = () => {
           Add new course +
         </button>
         <NewCourses isOpen={isOpen} handleClose={() => handleClose()} />
-
-        {/* <button
-                onClick={() => {
-                  setManagerModal(!isManagerModal);
-                }}
-              >
-                Click
-              </button>  */}
-        {/* <ManagerModal
-                isOpen={isManagerModal}
-                handleClose={() => handleClose(0)}
-              /> */}
-        {/* <ModalBtn/> */}
       </div>
     </div>
   );

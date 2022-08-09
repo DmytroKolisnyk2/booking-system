@@ -6,7 +6,6 @@ import { postManager } from "../../../helpers/manager/manager";
 import Form from "../../Form/Form";
 
 const Login = ({ isOpen, handleClose }) => {
-  const [data, setData] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState("");

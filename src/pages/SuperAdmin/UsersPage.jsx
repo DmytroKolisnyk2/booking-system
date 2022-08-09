@@ -5,9 +5,6 @@ import NewUser from "../../components/modals/NewUser/NewUser";
 
 export default function UsersPage() {
   const [isOpen, setIsOpen] = useState(false);
-  const [id, setId] = useState(0);
-  const [modal, setModal] = useState("");
-
   const handleClose = () => {
     setIsOpen(!isOpen);
   };
@@ -21,8 +18,6 @@ export default function UsersPage() {
           isOpenModal={isOpen}
           isAdmin={false}
         />
-        {/* >>>>>>> administratorpage */}
-
         <Managers
           text={"Managers"}
           role="Manager"
@@ -59,19 +54,6 @@ export default function UsersPage() {
           handleClose={() => handleClose()}
           isAdmin={false}
         />
-
-        {/* <button
-                  onClick={() => {
-                    setManagerModal(!isManagerModal);
-                  }}
-                >
-                  Click
-                </button>  */}
-        {/* <ManagerModal
-                  isOpen={isManagerModal}
-                  handleClose={() => handleClose(0)}
-                /> */}
-        {/* <ModalBtn/> */}
       </div>
     </>
   );

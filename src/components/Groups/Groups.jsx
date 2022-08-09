@@ -1,5 +1,5 @@
 import React from "react";
-import { Component, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getGroups } from "../../helpers/group/group";
 import { getCourses } from "../../helpers/course/course";
 import styles from "./Groups.module.scss";
@@ -63,7 +63,7 @@ export default function Groups({ text, isOpenModal, dataName }) {
                 <p className={styles.mini_title}>{i.name}</p>
                 <ul className={styles.list}>
                   {groups.map((item) => {
-                    if (item.name === "Не призначено") return;
+                    if (item.name === "Не призначено") return "";
                     return (
                       item.course_id === i.id && (
                         <li className={styles.ul_items} key={item.id}>

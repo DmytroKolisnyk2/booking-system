@@ -12,7 +12,6 @@ import { getUserById } from "../../helpers/user/user";
 import {
   getDate,
   getTable,
-  getTypeSelection,
   getWeekId,
 } from "../../redux/caller/caller-selectors";
 import { getCallerCurrentWeek } from "../../redux/caller/caller-operations";
@@ -31,7 +30,7 @@ export default function CallerPage() {
     getUserById(+callerId).then((data) => {
       setCallerName(data.data.name);
     });
-  }, []);
+  }, [dispatch, callerId]);
   return (
     <>
       <Header

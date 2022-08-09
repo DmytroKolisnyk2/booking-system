@@ -19,15 +19,11 @@ const ModalsPage = () => {
   const [groupId, setGroupId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
-  const [data, setData] = useState([]);
   const handleClose = () => {
     setIsOpen(!isOpen);
   };
   return (
     <section>
-      {data.map((data) => {
-        <p key={data.id}> {data.name}</p>;
-      })}
 
       <div>
         <label>

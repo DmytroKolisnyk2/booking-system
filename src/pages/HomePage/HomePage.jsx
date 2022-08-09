@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../components/Header/Header";
-import path from "../../helpers/routerPath";
+// import path from "../../helpers/routerPath";
 
 const HomePage = () => {
   return (
