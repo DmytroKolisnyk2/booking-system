@@ -13,6 +13,7 @@ const TableItem = ({
   caller,
   weekId,
   dayIndex,
+  hourIndex,
   slotId,
   onClickBtnStart,
 }) => {
@@ -77,7 +78,7 @@ const TableItem = ({
           )}
         </>
       ) : consultation ? (
-        colorId === 1 ? (
+        colorId === 4 ? (
           <>
             <li className={activeClassnames(colorId)}>
               {`${data}:00`}
@@ -98,6 +99,8 @@ const TableItem = ({
             </li>
             {modal === "consultation" && (
               <ConsultationInfo
+                dayIndex={dayIndex}
+                hourIndex={hourIndex}
                 isOpen={isOpen}
                 handleClose={() => setIsOpen(!isOpen)}
                 slotId={+slotId}
@@ -125,6 +128,8 @@ const TableItem = ({
 
             {modal === "consultation" && (
               <ConsultationInfo
+                dayIndex={dayIndex}
+                hourIndex={hourIndex}
                 slotId={+slotId}
                 isOpen={isOpen}
                 handleClose={() => setIsOpen(!isOpen)}

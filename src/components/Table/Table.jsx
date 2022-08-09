@@ -26,6 +26,8 @@ const Table = ({ weekId, table, onClickSlotFn, consultation, caller }) => {
                   key={hourIndex}
                   data={item.time}
                   colorId={item.color}
+                  dayIndex={dayIndex}
+                  hourIndex={hourIndex}
                   consultation
                   slotId={item.slot_id}
                   onClickBtnStart={() => onClickSlotFn(dayIndex, hourIndex)}
