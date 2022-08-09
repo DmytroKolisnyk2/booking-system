@@ -9,6 +9,7 @@ import {
   getManagerTable,
   setSavedTemplate,
   getManagerCurrentWorkWeek,
+  getManagerWorkWeek
 } from "./manager-operations";
 import { combineReducers } from "redux";
 
@@ -140,13 +141,13 @@ const slots = createReducer(initialState, {
   [getManagerCurrentWeek.fulfilled]: (_, action) => action.payload.slots,
   [getManagerWeek.fulfilled]: (_, action) => action.payload.slots,
   [getManagerTable.fulfilled]: (_, action) => action.payload,
-  [getManagerCurrentWorkWeek.fulfilled]: (_, action) => {
-    return action.payload.slots
-  },
+  [getManagerCurrentWorkWeek.fulfilled]: (_, action) => action.payload.slots,
+  [getManagerWorkWeek.fulfilled]: (_, action) => action.payload.slots,
   [changeStatusSlot]: (state, action) => {
     state.map((day, dayIndex) =>
       day.map((item, hourIndex) => {
-        return dayIndex === action.payload.dayIndex && hourIndex === action.payload.hourIndex
+        return dayIndex === action.payload.dayIndex &&
+          hourIndex === action.payload.hourIndex
           ? (item.color = action.payload.colorId)
           : item;
       })
@@ -159,12 +160,19 @@ const weekId = createReducer("", {
   [getManagerCurrentWeek.fulfilled]: (_, action) =>
     action.payload.current_week_id,
   [getManagerWeek.fulfilled]: (_, action) => action.payload.current_week_id,
+  [getManagerCurrentWorkWeek.fulfilled]: (_, action) =>
+    action.payload.current_week_id,
+  [getManagerWorkWeek.fulfilled]: (_, action) => action.payload.current_week_id,
 });
 
 const weekDate = createReducer("Sun Sep 1 1939 22:09:08 GMT+0300", {
   [getManagerCurrentWeek.fulfilled]: (_, action) =>
     action.payload.current_week_date_start,
+  [getManagerCurrentWorkWeek.fulfilled]: (_, action) =>
+    action.payload.current_week_date_start,
   [getManagerWeek.fulfilled]: (_, action) =>
+    action.payload.current_week_date_start,
+  [getManagerWorkWeek.fulfilled]: (_, action) =>
     action.payload.current_week_date_start,
 });
 
@@ -175,10 +183,14 @@ const typeActionSelection = createReducer("", {
 const managerError = createReducer("", {
   [getManagerCurrentWeek.rejected]: (_, action) => action.payload,
   [getManagerWeek.rejected]: (_, action) => action.payload,
+  [getManagerCurrentWorkWeek.rejected]: (_, action) => action.payload,
+  [getManagerWorkWeek.rejected]: (_, action) => action.payload,
   [getManagerTable.rejected]: (_, action) => action.payload,
   [setManagerError]: (_, action) => action.payload,
   [getManagerCurrentWeek.pending]: (_, action) => "",
   [getManagerWeek.pending]: (_, action) => "",
+  [getManagerCurrentWorkWeek.pending]: (_, action) => '',
+  [getManagerWorkWeek.pending]: (_, action) => '',
   [getManagerTable.pending]: (_, action) => "",
   [setManagerLoading]: (_, action) => "",
 });
@@ -186,6 +198,8 @@ const managerError = createReducer("", {
 const managerLoading = createReducer(false, {
   [getManagerCurrentWeek.pending]: (_, action) => true,
   [getManagerWeek.pending]: (_, action) => true,
+  [getManagerCurrentWorkWeek.pending]: (_, action) => true,
+  [getManagerWorkWeek.pending]: (_, action) => true,
   [getManagerTable.pending]: (_, action) => true,
   [setManagerLoading]: (_, action) => action.payload,
   [getManagerCurrentWeek.rejected]: (_, action) => false,
@@ -194,6 +208,10 @@ const managerLoading = createReducer(false, {
   [getManagerWeek.fulfilled]: (_, action) => false,
   [getManagerTable.rejected]: (_, action) => false,
   [getManagerTable.fulfilled]: (_, action) => false,
+  [getManagerCurrentWorkWeek.rejected]: (_, action) => false,
+  [getManagerWorkWeek.rejected]: (_, action) => false,
+  [getManagerCurrentWorkWeek.fulfilled]: (_, action) => false,
+  [getManagerWorkWeek.fulfilled]: (_, action) => false,
 });
 
 const initialTemplate = { text: "No template", date: "" };
