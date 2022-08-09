@@ -31,7 +31,7 @@ const ConfirmatorButtons = ({ value, setValue, showPostpone }) => {
               <button
                 onClick={() => {
                   if (i.btn === "postponed") showPostpone();
-                  setValue({ ...value, [item.appointment_id]: i.btn });
+                  return setValue({ ...value, [item.appointment_id]: i.btn });
                 }}
                 key={i.btn}
                 className={`${i.class} ${
