@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { getConfirmatorWeek, getCurrentConfirmator, increaseDay } from "./confirmator-operations";
+import { decreaseDay, getConfirmatorWeek, getCurrentConfirmator, increaseDay } from "./confirmator-operations";
 
 const INITIAL_WEEK = {
   date: "Tue, 09 Aug 2022 00:00:00 GMT",
@@ -16,10 +16,16 @@ const appointments = createReducer([], {
 
 const date = createReducer(INITIAL_WEEK, {
   [increaseDay.type]: (state, _) => {
-    if (state.day === 7) {
+    if (state.day === 6) {
       return { ...state, day: 1, week_id: state.week_id + 1 };
     }
     return { ...state, day: state.day + 1 };
+  },
+  [decreaseDay.type]: (state, _) => {
+    if (state.day === 0) {
+      return { ...state, day: 6, week_id: state.week_id - 1 };
+    }
+    return { ...state, day: state.day - 1 };
   },
   [getCurrentConfirmator.fulfilled]: (_, { payload }) => ({
     date: payload.date,
@@ -42,6 +48,9 @@ const loading = createReducer(false, {
   [getCurrentConfirmator.pending]: () => true,
   [getCurrentConfirmator.fulfilled]: () => false,
   [getCurrentConfirmator.rejected]: () => false,
+  [getConfirmatorWeek.pending]: () => true,
+  [getConfirmatorWeek.fulfilled]: () => false,
+  [getConfirmatorWeek.rejected]: () => false,
 });
 
 export default combineReducers({
