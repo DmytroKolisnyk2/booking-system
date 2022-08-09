@@ -50,9 +50,15 @@ const getManagerWorkWeek = createAsyncThunk(
 
 const getManagerTable = createAsyncThunk(
   GET_TABLE,
-  ({ managerId, weekId }, { rejectWithValue }) => {
+  ({ managerId, weekId }, { rejectWithValue, dispatch }) => {
     return getWeekTable(managerId)
       .then((data) => {
+        dispatch(
+          setSavedTemplate({
+            text: "Template created",
+            date: data.data.saved_date,
+          })
+        );
         const template = JSON.parse(data.data.template);
         template.map((day, dayIndex) =>
           day.map((item, hourIndex) => {

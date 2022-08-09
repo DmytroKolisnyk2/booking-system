@@ -40,13 +40,25 @@ const PlanningPage = () => {
   const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const onSavedTemplate = () => {
     managerTable.append("template", JSON.stringify(table));
+    managerTable.append(
+      "date",
+      `${
+        new Date().getDate() < 10
+          ? `0${new Date().getDate()}`
+          : new Date().getDate()
+      }.${
+        new Date().getMonth() + 1 < 10
+          ? `0${new Date().getMonth() + 1}`
+          : new Date().getMonth() + 1
+      }.${new Date().getFullYear()}`
+    );
     dispatch(setManagerLoading(true));
     saveTable(managerId, managerTable)
       .then((data) => {
         dispatch(
           setSavedTemplate({
             text: "Template created",
-            date: tableDate,
+            date: data.date,
           })
         );
       })
@@ -145,7 +157,7 @@ const PlanningPage = () => {
         return dispatch(
           setSavedTemplate({
             text: "Template created",
-            date: tableDate,
+            date: data.data.saved_date,
           })
         );
       })
@@ -175,13 +187,13 @@ const PlanningPage = () => {
       <h3 className={styles.templateText}>
         {templateText === "Template created"
           ? `${templateText} ${
-              new Date(tableDate).getDate() < 10
-                ? `0${new Date(tableDate).getDate()}`
-                : new Date(tableDate).getDate()
+              new Date(templateDate).getDate() < 10
+                ? `0${new Date(templateDate).getDate()}`
+                : new Date(templateDate).getDate()
             }.${
-              new Date(tableDate).getMonth() + 1 < 10
-                ? `0${new Date(tableDate).getMonth() + 1}`
-                : new Date(tableDate).getMonth() + 1
+              new Date(templateDate).getMonth() + 1 < 10
+                ? `0${new Date(templateDate).getMonth() + 1}`
+                : new Date(templateDate).getMonth() + 1
             }`
           : templateText}
       </h3>
