@@ -223,6 +223,16 @@ const postConsultationResult = (slotId, result, groupId, message) => {
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
+
+const postStartConsultation = (weekId, dayIndex, slotHour, managerId) => {
+    return axios
+      .post(
+        `/start_consultation/${weekId}/${dayIndex}/${slotHour}/${managerId}`
+      )
+      .then((res) => res.data)
+      .catch((error) => console.log(error));
+};
+
 export {
   setCancelConfirmation,
   setConfirmation,
@@ -256,5 +266,6 @@ export {
   getManagerByName,
   postAppointment,
   getCallerCurrentWeek2,
-  postConsultationResult
+  postConsultationResult,
+  postStartConsultation,
 };

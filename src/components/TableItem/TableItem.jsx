@@ -13,7 +13,8 @@ const TableItem = ({
   caller,
   weekId,
   dayIndex,
-  slotId
+  slotId,
+  onClickBtnStart,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
@@ -76,12 +77,12 @@ const TableItem = ({
           )}
         </>
       ) : consultation ? (
-        colorId === 4 ? (
+        colorId === 1 ? (
           <>
             <li className={activeClassnames(colorId)}>
               {`${data}:00`}
               <div className={styles.hover_buttons}>
-                <button>start</button>
+                <button onClick={onClickBtnStart}>start</button>
                 <button
                   type="button"
                   onClick={() => {

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "react-calendar/dist/Calendar.css";
 import styles from "./ManagerPage.module.scss";
-import Table from '../../components/Table/Table';
+import Table from "../../components/Table/Table";
 import {
   getDate,
   getTable,
@@ -15,9 +15,9 @@ import {
   setManagerError,
   setManagerLoading,
   getManagerCurrentWorkWeek,
-  getManagerWorkWeek
+  getManagerWorkWeek,
 } from "../../redux/manager/manager-operations";
-import { updateSlot } from "../../helpers/api";
+import { updateSlot, postStartConsultation } from "../../helpers/api";
 import Button from "../../components/Buttons/Buttons";
 import StatusDefinition from "../../components/StatusDefinition/StatusDefinition";
 import DatePicker from "../../components/DatePicker/DatePicker";
@@ -30,6 +30,30 @@ const ConsultationPage = () => {
   const weekId = useSelector(getWeekId);
   const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
+  const onClickSlotButton = (dayIndex, slotIndex) => {
+    dispatch(setManagerLoading(true));
+    return postStartConsultation(
+      +weekId,
+      dayIndex,
+      table[dayIndex][slotIndex].time,
+      +managerId
+    )
+      .then((data) => {
+        updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][slotIndex].time,
+          6
+        )
+          .then((data) =>
+            dispatch(changeStatusSlot({ dayIndex, slotIndex, colorId: 6 }))
+          )
+          .catch((error) => dispatch(setManagerError(error.message)));
+      })
+      .catch((error) => dispatch(setManagerError(error.message)))
+      .finally(() => dispatch(setManagerLoading(false)));
+  };
 
   useEffect(() => {
     dispatch(getManagerCurrentWorkWeek(+managerId));
@@ -47,7 +71,7 @@ const ConsultationPage = () => {
           );
         })}
       </div>
-      <Table table={table} consultation />
+      <Table table={table} consultation onClickSlotFn={onClickSlotButton} />
     </section>
   );
 };

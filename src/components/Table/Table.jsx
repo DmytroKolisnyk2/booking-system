@@ -28,6 +28,7 @@ const Table = ({ weekId, table, onClickSlotFn, consultation, caller }) => {
                   colorId={item.color}
                   consultation
                   slotId={item.slot_id}
+                  onClickBtnStart={() => onClickSlotFn(dayIndex, hourIndex)}
                 />
               ) : (
                 <TableItem
