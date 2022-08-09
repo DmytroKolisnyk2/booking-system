@@ -33,7 +33,11 @@ const ConfirmatorPage = () => {
           <Confirmator />
 
           <div className={styles.btn_wrapper}>
-            <ConfirmationButtons value={value} setValue={setValue} />
+            <ConfirmationButtons
+              showPostpone={() => setIsOpen(true)}
+              value={value}
+              setValue={setValue}
+            />
           </div>
           <div className={styles.btn_input_wrapper}>
             <ConfirmatorComments value={value} />
