@@ -17,7 +17,8 @@ import {
   getManagerCurrentWorkWeek,
   getManagerWorkWeek,
 } from "../../redux/manager/manager-operations";
-import { updateSlot, postStartConsultation } from "../../helpers/api";
+import { postStartConsultation } from "../../helpers/consultation/consultation";
+import { updateSlot } from "../../helpers/week/week";
 import Button from "../../components/Buttons/Buttons";
 import StatusDefinition from "../../components/StatusDefinition/StatusDefinition";
 import DatePicker from "../../components/DatePicker/DatePicker";

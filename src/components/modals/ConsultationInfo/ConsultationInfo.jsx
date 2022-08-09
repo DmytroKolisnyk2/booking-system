@@ -3,15 +3,12 @@ import Modal from "../../Modal/Modal";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  putManager,
-  getCourses,
-  deleteManager,
-  getGroups,
-  getUsersByRole,
-  postConsultationResult,
-  updateSlot,
-} from "../../../helpers/api.js";
+import { getGroups } from "../../../helpers/group/group";
+import { getCourses } from "../../../helpers/course/course";
+import {updateSlot} from '../../../helpers/week/week';
+import {getUsersByRole} from '../../../helpers/user/user';
+import {deleteManager} from '../../../helpers/manager/manager';
+import {postConsultationResult} from '../../../helpers/consultation/consultation'
 import {
   getDate,
   getTable,

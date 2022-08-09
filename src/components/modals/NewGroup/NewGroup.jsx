@@ -1,7 +1,8 @@
 import Modal from "../../Modal/Modal";
 import Select from "../../Select/Select";
 import React, { useState } from "react";
-import { getCourses, postGroup } from "../../../helpers/api.js";
+import { postGroup } from "../../../helpers/group/group";
+import { getCourses } from "../../../helpers/course/course";
 import FormInput from "../../FormInput/FormInput";
 import Form from "../../Form/Form";
 

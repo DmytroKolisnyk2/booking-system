@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getUsersByRole, getManagers } from "../../helpers/api";
+import { getUsersByRole } from "../../helpers/user/user";
+import {getManagers} from '../../helpers/manager/manager';
 import styles from "./Managers.module.scss";
 import ChangeUser from "../modals/ChangeUser/ChangeUser";
 

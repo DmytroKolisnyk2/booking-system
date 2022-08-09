@@ -3,13 +3,15 @@ import Modal from "../../Modal/Modal";
 import React, { useState, useEffect } from "react";
 
 import {
-  putManager,
-  deleteManager,
   putUser,
   deleteUser,
-  getRoles,
+  getRoles
+} from "../../../helpers/user/user";
+import {
+  putManager,
+  deleteManager,
   getManagerByName,
-} from "../../../helpers/api.js";
+} from "../../../helpers/manager/manager";
 import FormInput from "../../FormInput/FormInput";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";

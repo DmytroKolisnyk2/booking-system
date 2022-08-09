@@ -22,7 +22,7 @@ import {
   setSavedTemplate,
   getManagerWeek,
 } from "../../redux/manager/manager-operations";
-import { updateSlot, saveTable, getWeekTable } from "../../helpers/api";
+import { updateSlot, saveTable, getWeekTable } from "../../helpers/week/week";
 import Button from "../../components/Buttons/Buttons";
 import ControlButtons from "../../components/ControlButtons/ControlButtons";
 import DatePicker from "../../components/DatePicker/DatePicker";

@@ -1,6 +1,6 @@
 import Modal from "../../Modal/Modal";
 import React, { useState, useEffect } from "react";
-import { putCourse, deleteCourse } from "../../../helpers/api.js";
+import { putCourse, deleteCourse } from "../../../helpers/course/course";
 import Form from "../../Form/Form";
 import FormInput from "../../FormInput/FormInput";
 

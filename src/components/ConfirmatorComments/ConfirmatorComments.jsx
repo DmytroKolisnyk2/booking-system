@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Oval, Rings, TailSpin } from "react-loader-spinner";
 import { useSelector } from "react-redux";
-import { setCancelConfirmation, setConfirmation } from "../../helpers/api";
+import { setCancelConfirmation, setConfirmation } from "../../helpers/confirmation/confirmation";
 import styles from "../../pages/Confirmator/ConfirmatorPage.module.scss";
 import {
   getConfirmatorAppointments,

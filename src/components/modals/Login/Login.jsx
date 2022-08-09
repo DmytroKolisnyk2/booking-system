@@ -2,7 +2,7 @@ import styles from "./Login.module.scss";
 import Modal from "../../Modal/Modal";
 import FormInput from "../../FormInput/FormInput";
 import React, { useState } from "react";
-import { postManager } from "../../../helpers/api.js";
+import { postManager } from "../../../helpers/manager/manager";
 import Form from "../../Form/Form";
 
 const Login = ({ isOpen, handleClose }) => {

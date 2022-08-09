@@ -1,6 +1,6 @@
 import React from "react";
 import { Component, useState, useEffect } from "react";
-import { getCourses } from "../../helpers/api";
+import { getCourses } from "../../helpers/course/course";
 import styles from "../Managers/Managers.module.scss";
 import ChangeCourses from "../modals/ChangeCourse/ChangeCourse";
 

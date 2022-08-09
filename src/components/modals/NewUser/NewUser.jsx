@@ -3,7 +3,8 @@ import Modal from "../../Modal/Modal";
 import FormInput from "../../FormInput/FormInput";
 import Select from "../../Select/Select";
 import React, { useState } from "react";
-import { postManager, getRoles, postUser } from "../../../helpers/api.js";
+import {postManager} from '../../../helpers/manager/manager';
+import {getRoles, postUser} from '../../../helpers/user/user';
 import Form from "../../Form/Form";
 
 const NewUser = ({ isOpen, handleClose, isAdmin }) => {

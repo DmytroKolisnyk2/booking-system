@@ -1,6 +1,6 @@
 import Modal from "../../Modal/Modal";
 import React, { useState, useEffect } from "react";
-import { putGroup, deleteGroup } from "../../../helpers/api.js";
+import { putGroup, deleteGroup } from "../../../helpers/group/group";
 import Form from "../../Form/Form";
 import FormInput from "../../FormInput/FormInput";
 

@@ -2,11 +2,11 @@ import styles from "./NewAppointment.module.scss";
 import Modal from "../../Modal/Modal";
 import React, { useState } from "react";
 import {
-  getCourses,
   postGroup,
-  getUsersByRole,
   getGroups,
-} from "../../../helpers/api.js";
+} from "../../../helpers/group/group";
+import {getUsersByRole} from '../../../helpers/user/user';
+import {getCourses} from '../../../helpers/course/course';
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
 

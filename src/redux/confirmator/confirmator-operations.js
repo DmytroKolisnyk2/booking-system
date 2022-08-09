@@ -1,5 +1,5 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { getCurrentConfirmatorData, getConfirmatorWeekData } from "../../helpers/api";
+import { getCurrentConfirmatorData, getConfirmatorWeekData } from "../../helpers/confirmation/confirmation";
 import {
   DECREASE_DAY,
   GET_CURRENT_CONFIRMATOR,

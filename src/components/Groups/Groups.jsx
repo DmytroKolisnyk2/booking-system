@@ -1,6 +1,7 @@
 import React from "react";
 import { Component, useState, useEffect } from "react";
-import { getGroups, getCourses } from "../../helpers/api";
+import { getGroups } from "../../helpers/group/group";
+import { getCourses } from "../../helpers/course/course";
 import styles from "./Groups.module.scss";
 import ChangeGroup from "../modals/ChangeGroup/ChangeGroup";
 

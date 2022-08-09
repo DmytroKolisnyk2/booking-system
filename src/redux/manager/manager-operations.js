@@ -16,7 +16,7 @@ import {
   updateSlot,
   getCurrentWorkWeek,
   getWorkWeek
-} from "../../helpers/api";
+} from "../../helpers/week/week";
 
 const changeTypeSelection = createAction(TYPE_SELECTION);
 const changeStatusSlot = createAction(TYPE_SLOT);
