@@ -168,13 +168,16 @@
 
 .only_info_button {
   margin-left: 70px;
+  transition: 200ms linear;
 }
 
 .hover_buttons button:nth-child(1) {
   margin-right: 70px;
+  transition: 200ms linear;
 }
 
 .item:hover .hover_buttons {
+  transition: 200ms linear;
   position: absolute;
   opacity: 1;
   visibility: inherit;
