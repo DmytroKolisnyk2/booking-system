@@ -214,9 +214,11 @@ const managerLoading = createReducer(false, {
   [getManagerWorkWeek.fulfilled]: (_, action) => false,
 });
 
-const savedTemplate = createReducer({text: "No template", date: ''}, {
+const initialTemplate = { text: "No template", date: "" };
+
+const savedTemplate = createReducer(initialTemplate, {
   [setSavedTemplate]: (_, action) => action.payload,
-  [setManagerError]: (_, action) => "No template",
+  [setManagerError]: (_, action) => initialTemplate,
 });
 
 const week = combineReducers({

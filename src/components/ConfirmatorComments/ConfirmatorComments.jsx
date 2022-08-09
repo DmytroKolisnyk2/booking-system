@@ -48,7 +48,7 @@ const ConfirmatorComments = ({ value }) => {
                     key={i.text}
                     onClick={() => {
                       setReject(i.text);
-                      reject && setCancelConfirmation(item.slot_id, 8, reject);
+                      reject && setCancelConfirmation(item.slot_id, 1, reject);
                     }}
                     className={`${styles.btn} ${reject === i.text && styles.btn_active}`}
                   >
@@ -62,7 +62,7 @@ const ConfirmatorComments = ({ value }) => {
                 placeholder="Write a comment here..."
                 value={reject}
                 onChange={({ target }) => setReject(target.value)}
-                onBlur={() => reject && setCancelConfirmation(item.slot_id, 8, reject)}
+                onBlur={() => reject && setCancelConfirmation(item.slot_id, 1, reject)}
               />
             </div>
           )}

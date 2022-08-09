@@ -8,6 +8,7 @@ import Header from "../../components/Header/Header";
 import { useParams } from "react-router-dom";
 import { getCurrentConfirmator } from "../../redux/confirmator/confirmator-operations";
 import ConfirmatorComments from "../../components/ConfirmatorComments/ConfirmatorComments";
+import ConfirmatorDatePicker from "../../components/ConfirmatorDatePicker/ConfirmatorDatePicker";
 
 const ConfirmatorPage = () => {
   const [value, setValue] = useState("");
@@ -21,7 +22,9 @@ const ConfirmatorPage = () => {
     <>
       <Header user={{ name: confirmatorId, role: "Confirmator" }} />
 
-      <BgWrapper title="Confirmator" />
+      <BgWrapper title="Confirmator">
+        <ConfirmatorDatePicker />
+      </BgWrapper>
       <section className={styles.tableSection}>
         <h2 className={styles.title}>Confirmation</h2>
         <div className={styles.table__wrapper}>
@@ -32,14 +35,6 @@ const ConfirmatorPage = () => {
           </div>
           <div className={styles.btn_input_wrapper}>
             <ConfirmatorComments value={value} />
-            {/* <ConfirmationBtn />
-            <input
-              type="text"
-              className={styles.input}
-              id="comment"
-              name="comment"
-              placeholder="write a comment..."
-            /> */}
           </div>
         </div>
       </section>

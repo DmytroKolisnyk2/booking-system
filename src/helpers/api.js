@@ -1,6 +1,7 @@
 import axios from "axios";
 
 axios.defaults.baseURL = "https://goiteens-rest-api.herokuapp.com";
+axios.defaults.headers.common["Accept"] = "application/json";
 
 const getManagers = () => {
   return axios
@@ -166,7 +167,9 @@ const getWeek = (managerId, weekId) => {
 
 const updateSlot = (managerId, weekId, dayIndex, slotHour, colorId) => {
   return axios
-    .post(`/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`)
+    .post(
+      `/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`
+    )
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -178,11 +181,13 @@ const saveTable = (managerId, tableCredential) => {
     .catch((error) => console.log(error));
 };
 
-const getTable = (managerId) => {
+const getWeekTable = (managerId) => {
   return axios
     .get(`/get_template/${managerId}`)
     .then((res) => res.data)
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      throw error;
+    });
 };
 
 const getCurrentWorkWeek = (managerId) => {
@@ -201,25 +206,37 @@ const getWorkWeek = (managerId, weekId) => {
 
 const getCurrentConfirmatorData = () => {
   return axios
-    .get(`/get_confirmation/1/5/2`)
+    .get(`/current_confirmation`)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
 const setConfirmation = (slot_id, status, message) => {
   return axios
-    .put(`/set_confirmation/${slot_id}/${status}/${message}`, {})
+    .post(
+      message
+        ? `/set_confirmation/${slot_id}/${status}/${message}`
+        : `/set_confirmation/${slot_id}/${status}`
+    )
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
 const setCancelConfirmation = (slot_id, status, message) => {
   return axios
-    .put(`/set_cancel_confirmation/${slot_id}/${status}/${message}`, {})
+    .post(
+      message
+        ? `/set_cancel_confirmation/${slot_id}/${status}/${message}`
+        : `/set_cancel_confirmation/${slot_id}/${status}`
+    )
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
 const postConsultationResult = (slotId, result, groupId, message) => {
   return axios
-    .post(`/consultation_result/${slotId}/${result}/${groupId}/${message}`)
+    .post(
+      message
+        ? `/consultation_result/${slotId}/${result}/${groupId}/${message}`
+        : `/consultation_result/${slotId}/${result}/${groupId}/no-text`
+    )
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -254,7 +271,7 @@ export {
   getGroups,
   getCurrentWeek,
   saveTable,
-  getTable,
+  getWeekTable,
   getWeek,
   updateSlot,
   getRoles,

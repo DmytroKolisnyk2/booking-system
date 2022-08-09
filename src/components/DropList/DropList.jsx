@@ -31,7 +31,16 @@ const DropList = ({
     if (type === "no-request") {
       return;
     }
-    setValue("Select manager")
+    const get = async () => {
+      const data = await getData();
+      return data;
+    };
+    const data = get().then((res) => {
+      setValue(res[0].name);
+      if (setValueSecondary) {
+        setValueSecondary(data());
+      }
+    });
     getData();
   }, []);
 
@@ -44,9 +53,9 @@ const DropList = ({
           isOpen && getData();
         }}
       >
-        {title}: <span>{value} </span> 
+        {title}: <span>{value} </span>
       </p>
-      <ul className={classnames(styles.menu, isOpen && styles['menu-active'])}>
+      <ul className={classnames(styles.menu, isOpen && styles["menu-active"])}>
         {data.map((i) => {
           return (
             <li
@@ -55,10 +64,12 @@ const DropList = ({
                 isOpen && styles.active
               )}
               key={i.id}
-              onClick={(e) => {
+              onClick={() => {
                 setIsOpen(!isOpen);
                 setValue(i.name);
-                setValueSecondary(i.id)
+                if (setValueSecondary) {
+                  setValueSecondary(i.id);
+                }
               }}
             >
               {i.name}

@@ -67,7 +67,7 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
               />
               <FormInput
                 classname="input__bottom"
-                title="Passwotd:"
+                title="Password:"
                 type="password"
                 name="password"
                 value={password}
