@@ -56,7 +56,7 @@ const TableItem = ({
         <>
           <li
             onClick={() => {
-              setIsOpen(!isOpen);
+              if (colorId !== 0) setIsOpen(!isOpen);
               setModal("appointment");
             }}
             key={dayIndex}

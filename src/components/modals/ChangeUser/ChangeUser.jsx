@@ -2,11 +2,7 @@ import styles from "./ChangeUser.module.scss";
 import Modal from "../../Modal/Modal";
 import React, { useState, useEffect } from "react";
 
-import {
-  putUser,
-  deleteUser,
-  getRoles
-} from "../../../helpers/user/user";
+import { putUser, deleteUser, getRoles } from "../../../helpers/user/user";
 import {
   putManager,
   deleteManager,
@@ -55,7 +51,6 @@ const ChangeUser = ({
               userDelete: deleteManager,
             }}
             startName={dataName}
-            isDescription={true}
             role={role}
             name={name}
             onSubmit={() => {
@@ -68,6 +63,12 @@ const ChangeUser = ({
             }}
             telegram={desc}
             login={login}
+            status={{
+              successMessage: "Successfully changed user",
+              failMessage: "Failed to change user",
+              successMessageDelete: "Successfully deleted user",
+              failMessageDelete: "Failed to delete user",
+            }}
             password={password}
             role_id={role}
             title="Change user's info"
@@ -76,6 +77,7 @@ const ChangeUser = ({
               title="Name:"
               type="text"
               name="name"
+              max={50}
               value={name}
               placeholder="Name"
               isRequired={true}
@@ -84,6 +86,7 @@ const ChangeUser = ({
             <FormInput
               title="Telegram username:"
               type="text"
+              max={50}
               name="username"
               value={desc}
               placeholder="Telegram username"
@@ -96,6 +99,7 @@ const ChangeUser = ({
                 title="Login:"
                 type="text"
                 name="login"
+                max={50}
                 value={login}
                 placeholder="Login"
                 isRequired={true}
@@ -107,6 +111,7 @@ const ChangeUser = ({
                 type="password"
                 name="password"
                 value={password}
+                max={50}
                 placeholder="Password"
                 isRequired={true}
                 handler={setPassword}
@@ -119,8 +124,7 @@ const ChangeUser = ({
               value={role}
               administrator={administrator}
               defaultValue="manager/caller/confirmator"
-            >
-            </Select>
+            ></Select>
           </Form>
         </Modal>
       )}

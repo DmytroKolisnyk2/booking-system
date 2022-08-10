@@ -14,11 +14,14 @@ const FormInput = ({
   handler,
   pattern,
   min,
-  width
+  width,
+  max,
 }) => {
   return (
     <label className={styles.input__label} style={{ width: width }}>
-      <p className={classnames(styles.input__title, styles[`${classname}`])}>{title}</p>
+      <p className={classnames(styles.input__title, styles[`${classname}`])}>
+        {title}
+      </p>
       <input
         className={classnames(styles.input, styles[`${classname}`])}
         type={type}
@@ -27,6 +30,7 @@ const FormInput = ({
         value={value}
         pattern={pattern}
         minLength={min}
+        maxLength={max}
         placeholder={placeholder}
         onChange={(e) => handler(e.currentTarget.value)}
       />

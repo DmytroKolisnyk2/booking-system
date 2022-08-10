@@ -74,6 +74,10 @@ const ConsultationInfo = ({ isOpen, handleClose, id, slotId,  dayIndex, hourInde
             // login={login}
             // password={password}
             // role={role}
+            status={{
+              successMessage: "Successfully change consultation info",
+              failMessage: "Failed to change consultation info",
+            }}
             title="Consultation Info"
           >
             <DropList

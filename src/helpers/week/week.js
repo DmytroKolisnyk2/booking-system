@@ -8,16 +8,18 @@ const getCurrentWeek = (managerId) => {
   return axios
     .get(`/current_week/${managerId}`)
     .then((res) => res.data)
-    .catch((error) => {
-      throw error;
+    .catch((err) => {
+      error(`${err.response.data.message}`);
+      throw err;
     });
 };
 const getCallerCurrentWeek2 = () => {
   return axios
     .get(`/caller_current_week`)
     .then((res) => res.data)
-    .catch((error) => {
-      throw error;
+    .catch((err) => {
+      error(`${err.response.data.message}`);
+      throw err;
     });
 };
 
@@ -25,8 +27,9 @@ const getWeek = (managerId, weekId) => {
   return axios
     .get(`/get_week/${managerId}/${weekId}`)
     .then((res) => res.data)
-    .catch((error) => {
-      throw error;
+    .catch((err) => {
+      error(`${err.response.data.message}`);
+      throw err;
     });
 };
 

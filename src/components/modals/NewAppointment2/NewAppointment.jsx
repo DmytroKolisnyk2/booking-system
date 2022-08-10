@@ -29,7 +29,8 @@ const NewAppointment = ({ isOpen, handleClose, time, weekId, dayIndex }) => {
         <Modal open={isOpen} onClose={handleClose}>
           <Form
             onSubmit={() => {
-              createAppointment(
+              handleClose();
+              return createAppointment(
                 link,
                 managerId,
                 weekId,
@@ -39,7 +40,10 @@ const NewAppointment = ({ isOpen, handleClose, time, weekId, dayIndex }) => {
                 phone,
                 age
               );
-              handleClose();
+            }}
+            status={{
+              successMessage: "Successfully created appointment",
+              failMessage: "Failed to create appointment",
             }}
             type={{ type: "no-request" }}
             requests={{ post: createAppointment }}
@@ -89,6 +93,7 @@ const NewAppointment = ({ isOpen, handleClose, time, weekId, dayIndex }) => {
                 title="Phone Number:"
                 type="Phone"
                 name="Phone"
+                max={13}
                 value={phone}
                 placeholder="Phone number"
                 isRequired={true}
