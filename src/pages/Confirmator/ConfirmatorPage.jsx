@@ -9,20 +9,27 @@ import { useParams } from "react-router-dom";
 import { getCurrentConfirmator } from "../../redux/confirmator/confirmator-operations";
 import ConfirmatorComments from "../../components/ConfirmatorComments/ConfirmatorComments";
 import ConfirmatorDatePicker from "../../components/ConfirmatorDatePicker/ConfirmatorDatePicker";
-import PostponeModal from "../../components/modals/PostponeModal/PostponeModal";
+import { getUserById } from "../../helpers/user/user";
 
 const ConfirmatorPage = () => {
   const [value, setValue] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
   const { confirmatorId } = useParams();
+  const [confirmatorName, setConfirmatorName] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCurrentConfirmator());
-  }, [dispatch]);
+        getUserById(+confirmatorId)
+          .then((data) => {
+            setConfirmatorName(data.data.name);
+          })
+          .catch((err) => {
+            throw err;
+          });
+  }, []);
 
   return (
     <>
-      <Header user={{ name: confirmatorId, role: "Confirmator" }} />
+      <Header user={{ name: confirmatorName, role: "Confirmator" }} />
 
       <BgWrapper title="Confirmator">
         <ConfirmatorDatePicker />
@@ -33,18 +40,13 @@ const ConfirmatorPage = () => {
           <Confirmator />
 
           <div className={styles.btn_wrapper}>
-            <ConfirmationButtons
-              showPostpone={() => setIsOpen(true)}
-              value={value}
-              setValue={setValue}
-            />
+            <ConfirmationButtons value={value} setValue={setValue} />
           </div>
           <div className={styles.btn_input_wrapper}>
             <ConfirmatorComments value={value} />
           </div>
         </div>
       </section>
-      <PostponeModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
 };
