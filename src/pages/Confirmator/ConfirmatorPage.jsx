@@ -24,7 +24,7 @@ const ConfirmatorPage = () => {
     <>
       <Header user={{ name: confirmatorId, role: "Confirmator" }} />
 
-      <BgWrapper title="Confirmator">
+      <BgWrapper top={-200} title="Confirmator">
         <ConfirmatorDatePicker />
       </BgWrapper>
       <section className={styles.tableSection}>
