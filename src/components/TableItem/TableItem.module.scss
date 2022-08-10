@@ -10,9 +10,9 @@
   font-size: 24px;
   border-collapse: collapse;
   border: 1.5px solid #000;
+  transition: 200ms linear;
   cursor: pointer;
   position: relative;
-  transition: 200ms linear;
   &:nth-last-child(-n + 15) {
     border-right: none;
     &::after {
@@ -73,7 +73,6 @@
 
 .grayColor {
   background-color: $tableItem-grayColor;
-  transition: 200ms linear;
   &:hover {
     background-color: $tableItem-grayHover;
   }
@@ -81,7 +80,6 @@
 
 .greenColor {
   background-color: $tableItem-greenColor;
-  transition: 200ms linear;
   &:hover {
     background-color: $tableItem-greenHover;
   }
@@ -89,7 +87,6 @@
 
 .orangeColor {
   background-color: $tableItem-orangeColor;
-  transition: 200ms linear;
   &:hover {
     background-color: $tableItem-orangeHover;
   }
@@ -97,7 +94,6 @@
 
 .darkGreenColor {
   background-color: $tableItem-darkGreenColor;
-  transition: 200ms linear;
   &:hover {
     background-color: $tableItem-darkGreenColorHover;
   }
@@ -105,7 +101,6 @@
 
 .redColor {
   background-color: $tableItem-redColor;
-  transition: 200ms linear;
   &:hover {
     background-color: $tableItem-redColorHover;
   }
@@ -113,7 +108,6 @@
 
 .blueColor {
   background-color: $tableItem-blueColor;
-  transition: 200ms linear;
   &:hover {
     background-color: $tableItem-blueColorHover;
   }
@@ -121,7 +115,6 @@
 
 .whiteColor {
   background-color: $tableItem-whiteColor;
-  transition: 200ms linear;
   &:hover {
     background-color: $tableItem-whiteColorHover;
   }
@@ -129,7 +122,6 @@
 
 .purpleColor {
   background-color: $tableItem-purpleColor;
-  transition: 200ms linear;
   &:hover {
     background-color: $tableItem-purpleColorHover;
   }
@@ -137,7 +129,6 @@
 
 .darkOrangeColor {
   background-color: $tableItem-darkOrangeColor;
-  transition: 200ms linear;
   &:hover {
     background-color: $tableItem-darkOrangeColorHover;
   }
@@ -151,7 +142,6 @@
   z-index: 999;
   visibility: hidden;
   pointer-events: none;
-  transition: 200ms linear;
 }
 
 .hover_buttons button {
@@ -163,21 +153,17 @@
   font-weight: 400;
   color: $font-black;
   font-family: $poppins;
-  transition: 200ms linear;
 }
 
 .only_info_button {
   margin-left: 70px;
-  transition: 200ms linear;
 }
 
 .hover_buttons button:nth-child(1) {
   margin-right: 70px;
-  transition: 200ms linear;
 }
 
 .item:hover .hover_buttons {
-  transition: 200ms linear;
   position: absolute;
   opacity: 1;
   visibility: inherit;
@@ -186,35 +172,30 @@
 
 .callerYellowColor {
   background-color: $caller-yellow;
-  transition: 200ms linear;
   &:hover {
     background-color: darken($caller-yellow, 5%);
   }
 }
 .callerOrangeColor {
   background-color: $caller-orange;
-  transition: 200ms linear;
   &:hover {
     background-color: darken($caller-orange, 5%);
   }
 }
 .callerRedColor {
   background-color: $caller-red;
-  transition: 200ms linear;
   &:hover {
     background-color: darken($caller-red, 5%);
   }
 }
 .callerGreenColor {
   background-color: $caller-green;
-  transition: 200ms linear;
   &:hover {
     background-color: darken($caller-green, 5%);
   }
 }
 .callerLightGreenColor {
   background-color: $caller-lightGreen;
-  transition: 200ms linear;
   &:hover {
     background-color: darken($caller-lightGreen, 5%);
   }
@@ -234,27 +215,21 @@
   border-radius: 10px;
   color: $font-black;
   z-index: 1000;
-  transition: 200ms linear;
 }
 .callerFreeYellowColor {
   border: 2px solid #837d00;
-  transition: 200ms linear;
 }
 .callerFreeOrangeColor {
   color: #fff;
   border: 2px solid #8a4c02;
-  transition: 200ms linear;
 }
 .callerFreeRedColor {
   color: #fff;
   border: 2px solid #8c2e2e;
-  transition: 200ms linear;
 }
 .callerFreeGreenColor {
   border: 2px solid #007605;
-  transition: 200ms linear;
 }
 .callerFreeLightGreenColor {
   border: 2px solid #4a8312;
-  transition: 200ms linear;
 }
