@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
   getCallerCurrentWeek,
-  // getCallerWeek,
+  getCallerWeek,
   changeTypeSelection,
   changeStatusSlot,
   setCallerError,
@@ -135,11 +135,7 @@ const initialState = [
 
 const slots = createReducer(initialState, {
   [getCallerCurrentWeek.fulfilled]: (_, action) => action.payload.slots,
-  // [getCallerWeek.fulfilled]: (_, action) => action.payload.slots,
-  [getCallerTable.fulfilled]: (_, action) => action.payload,
-  [getCallerCurrentWorkWeek.fulfilled]: (_, action) => {
-    return action.payload.slots;
-  },
+  [getCallerWeek.fulfilled]: (_, action) => action.payload.slots,
   [changeStatusSlot]: (state, action) => {
     state.map((day, dayIndex) =>
       day.map((item, hourIndex) => {
@@ -156,14 +152,14 @@ const slots = createReducer(initialState, {
 const weekId = createReducer("", {
   [getCallerCurrentWeek.fulfilled]: (_, action) =>
     action.payload.current_week_id,
-  // [getCallerWeek.fulfilled]: (_, action) => action.payload.current_week_id,
+  [getCallerWeek.fulfilled]: (_, action) => action.payload.current_week_id,
 });
 
-const weekDate = createReducer("Sun Sep 1 1939 22:09:08 GMT+0300", {
+const weekDate = createReducer("Sun Sep 1 1939 04:09:08 GMT+0300", {
   [getCallerCurrentWeek.fulfilled]: (_, action) =>
     action.payload.current_week_date_start,
-  // [getCallerWeek.fulfilled]: (_, action) =>
-  // action.payload.current_week_date_start,
+  [getCallerWeek.fulfilled]: (_, action) =>
+    action.payload.current_week_date_start,
 });
 
 const typeActionSelection = createReducer("", {
@@ -172,24 +168,24 @@ const typeActionSelection = createReducer("", {
 
 const CallerError = createReducer("", {
   [getCallerCurrentWeek.rejected]: (_, action) => action.payload,
-  // [getCallerWeek.rejected]: (_, action) => action.payload,
+  [getCallerWeek.rejected]: (_, action) => action.payload,
   [getCallerTable.rejected]: (_, action) => action.payload,
   [setCallerError]: (_, action) => action.payload,
   [getCallerCurrentWeek.pending]: (_, action) => "",
-  // [getCallerWeek.pending]: (_, action) => "",
+  [getCallerWeek.pending]: (_, action) => "",
   [getCallerTable.pending]: (_, action) => "",
   [setCallerLoading]: (_, action) => "",
 });
 
 const CallerLoading = createReducer(false, {
   [getCallerCurrentWeek.pending]: (_, action) => true,
-  // [getCallerWeek.pending]: (_, action) => true,
+  [getCallerWeek.pending]: (_, action) => true,
   [getCallerTable.pending]: (_, action) => true,
   [setCallerLoading]: (_, action) => action.payload,
   [getCallerCurrentWeek.rejected]: (_, action) => false,
   [getCallerCurrentWeek.fulfilled]: (_, action) => false,
-  // [getCallerWeek.rejected]: (_, action) => false,
-  // [getCallerWeek.fulfilled]: (_, action) => false,
+  [getCallerWeek.rejected]: (_, action) => false,
+  [getCallerWeek.fulfilled]: (_, action) => false,
   [getCallerTable.rejected]: (_, action) => false,
   [getCallerTable.fulfilled]: (_, action) => false,
 });

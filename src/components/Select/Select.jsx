@@ -11,6 +11,7 @@ const Select = ({
   children,
   value,
   setValue,
+  groupId,
   administrator,
 }) => {
   const [data, setData] = useState([]);
@@ -27,6 +28,9 @@ const Select = ({
     return res;
   };
   useEffect(() => {
+    if (type === "no-request") {
+      return;
+    }
     getData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -70,6 +74,15 @@ const Select = ({
           {data.map((i) => {
             if (i.name === "Administrator" && administrator === true) {
               return "";
+            }
+            if (groupId === i.course_id) {
+              return (
+                <option value={i.id} key={i.id}>
+                  {i.name}
+                </option>
+              );
+            } else if (groupId) {
+              return;
             }
             return (
               <option value={i.id} key={i.id}>

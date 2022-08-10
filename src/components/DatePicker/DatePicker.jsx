@@ -7,7 +7,7 @@ import styles from "./DatePicker.module.scss";
 
 import { getWeekId } from "../../redux/manager/manager-selectors";
 
-const DatePicker = ({ tableDate, changeDateFn }) => {
+const DatePicker = ({ tableDate, changeDateFn, caller }) => {
   const { managerId } = useParams();
   const dispatch = useDispatch();
   const currentWeekId = useSelector(getWeekId);
@@ -24,13 +24,17 @@ const DatePicker = ({ tableDate, changeDateFn }) => {
   const onClickArrowRight = () => {
     setDate(moment(date).add(7, "days")._d);
     weekId += 1;
-    dispatch(changeDateFn({ managerId, weekId }));
+    caller
+      ? dispatch(changeDateFn({ weekId }))
+      : dispatch(changeDateFn({ managerId, weekId }));
   };
 
   const onClickArrowLeft = () => {
     setDate(moment(date).subtract(7, "days")._d);
     weekId -= 1;
-    dispatch(changeDateFn({ managerId, weekId }));
+    caller
+      ? dispatch(changeDateFn({ weekId }))
+      : dispatch(changeDateFn({ managerId, weekId }));
   };
   useEffect(() => {
     setDate(new Date(tableDate));

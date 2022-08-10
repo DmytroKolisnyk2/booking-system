@@ -1,4 +1,4 @@
-import React, { useEffect,Fragment } from "react";
+import React, { useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import styles from "./Table.module.scss";
 import TableItem from "../TableItem/TableItem";
@@ -18,6 +18,8 @@ const Table = ({ weekId, table, onClickSlotFn, consultation, caller }) => {
                   weekId={weekId}
                   colorId={item.amount}
                   caller={caller}
+                  hourIndex={table[dayIndex][hourIndex].time}
+                  slotId={item.slot_id}
                   dayIndex={dayIndex}
                 />
               ) : consultation ? (
