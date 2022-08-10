@@ -2,7 +2,7 @@ import styles from "./Form.module.scss";
 import InputSubmit from "../InputSubmit/InputSubmit";
 import InputDelete from "../InputDelete/InputDelete";
 import { useState } from "react";
-
+import { success, error } from "@pnotify/core";
 const Form = ({
   type,
   onSubmit,
@@ -20,7 +20,7 @@ const Form = ({
   manager,
   ...formData
 }) => {
-  const [error, setError] = useState(false);
+  const [errorMessage, setError] = useState(false);
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
@@ -45,16 +45,23 @@ const Form = ({
         onSubmit();
         return await requests.user(data, res.data.id);
       }
-      type.type === "post"
-        ? await requests.post(data).catch(() => setError(!error))
-        : await requests[type.type](data, requests.additional);
+      if (type.type === "post") {
+        return await requests
+          .post(data)
+          .catch(() => {
+            return error("Failed to create");
+          })
+          .then(() => {
+            success("Saved template successfully loaded");
+            return !errorMessage && onSubmit && onSubmit();
+          });
+      }
+      await requests[type.type](data, requests.additional);
     } catch (e) {
-      setError(!error);
-      console.log(error);
+      setError(!errorMessage);
+      error("Failed to create");
       return console.log(e);
     }
-
-    !error && onSubmit && onSubmit();
   };
   const handleDelete = async () => {
     // +role === 1 && (await requests.userDelete(id));
@@ -69,7 +76,7 @@ const Form = ({
       await requests.userDelete(res.data.id);
     }
 
-    !error && onSubmit && onSubmit();
+    !errorMessage && onSubmit && onSubmit();
   };
   return (
     <div className={styles.modal} style={{ width: width }}>
