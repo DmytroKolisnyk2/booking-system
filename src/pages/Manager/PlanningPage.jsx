@@ -62,7 +62,7 @@ const PlanningPage = () => {
           })
         );
       })
-      .catch((error) => dispatch(setManagerError(error)))
+      .catch((error) => dispatch(setManagerError(error.message)))
       .finally(() => dispatch(setManagerLoading(false)));
   };
   const getTemplate = () => {
@@ -101,7 +101,7 @@ const PlanningPage = () => {
               })
             );
           })
-          .catch((error) => dispatch(setManagerError(error)))
+          .catch((error) => dispatch(setManagerError(error.message)))
           .finally(() => dispatch(setManagerLoading(false)));
       case "Working time":
         dispatch(setManagerLoading(true));
@@ -121,7 +121,7 @@ const PlanningPage = () => {
               })
             );
           })
-          .catch((error) => dispatch(setManagerError(error)))
+          .catch((error) => dispatch(setManagerError(error.message)))
           .finally(() => dispatch(setManagerLoading(false)));
       case "Free":
         dispatch(setManagerLoading(true));
@@ -141,7 +141,7 @@ const PlanningPage = () => {
               })
             );
           })
-          .catch((error) => dispatch(setManagerError(error)))
+          .catch((error) => dispatch(setManagerError(error.message)))
           .finally(() => dispatch(setManagerLoading(false)));
       default:
         break;

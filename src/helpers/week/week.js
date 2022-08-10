@@ -1,4 +1,5 @@
 import axios from "axios";
+import { success, error } from "@pnotify/core";
 
 axios.defaults.baseURL = "https://goiteens-rest-api.herokuapp.com";
 axios.defaults.headers.common["Accept"] = "application/json";
@@ -35,8 +36,9 @@ const updateSlot = (managerId, weekId, dayIndex, slotHour, colorId) => {
       `/update_slot/${managerId}/${weekId}/${dayIndex}/${slotHour}/${colorId}`
     )
     .then((res) => res.data)
-    .catch((error) => {
-      throw error;
+    .catch((err) => {
+      error(`${err.response.data.message}`);
+      throw err;
     });
 };
 

@@ -12,6 +12,15 @@ const getManagers = () => {
     });
 };
 
+const getManagerById = (managerId) => {
+  return axios
+    .get(`/manager/${managerId}`)
+    .then((res) => res.data)
+    .catch((error) => {
+      throw error;
+    });
+};
+
 const getManagerByName = (name) => {
   return axios
     .get(`/manager/${name}`)
@@ -54,4 +63,5 @@ export {
   postManager,
   putManager,
   deleteManager,
+  getManagerById,
 };
