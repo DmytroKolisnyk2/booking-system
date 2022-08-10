@@ -24,6 +24,10 @@ const NewGroup = ({ isOpen, handleClose }) => {
             requests={{ post: postGroup }}
             course_id={course_id}
             name={name}
+            status={{
+              successMessage: "Successfully created group",
+              failMessage: "Failed to create group",
+            }}
             timetable={schedule}
             title="Create new group"
           >
@@ -40,6 +44,7 @@ const NewGroup = ({ isOpen, handleClose }) => {
               title="Name:"
               type="text"
               name="name"
+              max={50}
               value={name}
               placeholder="Name"
               isRequired={true}

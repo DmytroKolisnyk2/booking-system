@@ -16,6 +16,7 @@ import {
 } from "../../redux/caller/caller-selectors";
 import { getCallerCurrentWeek, getCallerWeek } from "../../redux/caller/caller-operations";
 export default function CallerPage() {
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const tableDate = useSelector(getDate);
   const table = useSelector(getTable);
@@ -27,15 +28,17 @@ export default function CallerPage() {
   const [callerName, setCallerName] = useState("");
   useEffect(() => {
     dispatch(getCallerCurrentWeek(+callerId));
-    getUserById(+callerId).then((data) => {
-      setCallerName(data.data.name);
-    });
+    getUserById(+callerId)
+      .then((data) => {
+        setCallerName(data.data.name);
+      })
+      .catch((err) => {
+        setError(err);
+      });
   }, [dispatch, callerId]);
   return (
     <>
-      <Header
-        user={{ name: callerName, role: "Caller" }}
-      />
+      <Header user={{ name: callerName, role: "Caller" }} />
       <div className={styles.main__wrapper}>
         <BgWrapper title="Caller" />
         <Outlet />
@@ -45,12 +48,15 @@ export default function CallerPage() {
         <section className={styles.tableSection}>
           <DatePicker changeDateFn={getCallerWeek} tableDate={tableDate} caller={true}/>
           <Days />
-          <Table
-            weekId={weekId}
-            table={table}
-            onClickSlotFn={onClickSlot}
-            caller={true}
-          />
+          {!error && (
+            <Table
+              weekId={weekId}
+              table={table}
+              onClickSlotFn={onClickSlot}
+              caller={true}
+            />
+          )}
+          {error && <p className={styles.free__places}>{error.message}</p>}
         </section>
       </div>
     </>

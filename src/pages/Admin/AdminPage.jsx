@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styles from "./AdminPage.module.scss";
 import Button from "../../components/Buttons/Buttons";
 
@@ -7,9 +7,20 @@ import { Outlet, useParams } from "react-router-dom";
 
 import Header from "../../components/Header/Header";
 import path from "../../helpers/routerPath";
+import { getUserById } from "../../helpers/user/user";
 
 const AdminPage = () => {
+  const [adminName, setAdminName] = useState("");
   const { adminId } = useParams();
+  useEffect(() => {
+    getUserById(+adminId)
+      .then((data) => {
+        setAdminName(data.data.name);
+      })
+      .catch((err) => {
+        setAdminName(err);
+      });
+  }, [])
   return (
     <>
       <Header
@@ -19,7 +30,7 @@ const AdminPage = () => {
           { text: "courses", path: path.courses },
           { text: "actions", path: path.actions },
         ]}
-        user={{ name: adminId, role: "Admin" }}
+        user={{ name: adminName, role: "Admin" }}
       />
       <div className={styles.main_wrapper}>
         <BgWrapper title="Administrator" />

@@ -1,5 +1,9 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { getCurrentConfirmatorData, getConfirmatorWeekData } from "../../helpers/confirmation/confirmation";
+import {
+  getCurrentConfirmatorData,
+  getConfirmatorWeekData,
+} from "../../helpers/confirmation/confirmation";
+import { success, error } from "@pnotify/core";
 import {
   DECREASE_DAY,
   GET_CURRENT_CONFIRMATOR,
@@ -12,7 +16,16 @@ const getCurrentConfirmator = createAsyncThunk(
   (managerId, { rejectWithValue }) => {
     return getCurrentConfirmatorData(managerId)
       .then(({ data }) => data)
-      .catch((data) => rejectWithValue(data.message));
+      .catch((data) => {
+        error(
+          `${
+            data.response.data.message
+              ? data.response.data.message
+              : data.message
+          }`
+        );
+        return rejectWithValue(data.message);
+      });
   }
 );
 const getConfirmatorWeek = createAsyncThunk(
@@ -20,7 +33,16 @@ const getConfirmatorWeek = createAsyncThunk(
   ({ currentDayId, currentWeekId, half }, { rejectWithValue }) => {
     return getConfirmatorWeekData(currentWeekId, currentDayId, half)
       .then(({ data }) => data)
-      .catch((data) => rejectWithValue(data.message));
+      .catch((data) => {
+        error(
+          `${
+            data.response.data.message
+              ? data.response.data.message
+              : data.message
+          }`
+        );
+        return rejectWithValue(data.message);
+      });
   }
 );
 const increaseDay = createAction(INCREASE_DAY);

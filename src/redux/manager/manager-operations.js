@@ -1,4 +1,5 @@
 import { createAsyncThunk, createAction } from "@reduxjs/toolkit";
+import { success, error } from "@pnotify/core";
 import {
   GET_TABLE,
   TYPE_SELECTION,
@@ -15,7 +16,7 @@ import {
   getWeekTable,
   updateSlot,
   getCurrentWorkWeek,
-  getWorkWeek
+  getWorkWeek,
 } from "../../helpers/week/week";
 
 const changeTypeSelection = createAction(TYPE_SELECTION);
@@ -29,22 +30,52 @@ const getManagerCurrentWeek = createAsyncThunk(
   (managerId, { rejectWithValue }) => {
     return getCurrentWeek(managerId)
       .then((data) => data)
-      .catch((data) => rejectWithValue(data.message));
+      .catch((data) => {
+        error(
+          `${
+            data.response.data.message
+              ? data.response.data.message
+              : data.message
+          }`
+        );
+        return rejectWithValue(data.message);
+      });
   }
 );
 
-const getManagerWeek = createAsyncThunk(GET_WEEK, ({ managerId, weekId }, { rejectWithValue }) => {
-  return getWeek(managerId, weekId)
-    .then((data) => data)
-    .catch((data) => rejectWithValue(data.message));
-});
+const getManagerWeek = createAsyncThunk(
+  GET_WEEK,
+  ({ managerId, weekId }, { rejectWithValue }) => {
+    return getWeek(managerId, weekId)
+      .then((data) => data)
+      .catch((data) => {
+        error(
+          `${
+            data.response.data.message
+              ? data.response.data.message
+              : data.message
+          }`
+        );
+        return rejectWithValue(data.message);
+      });
+  }
+);
 
 const getManagerWorkWeek = createAsyncThunk(
   GET_WEEK,
   ({ managerId, weekId }, { rejectWithValue }) => {
     return getWorkWeek(managerId, weekId)
       .then((data) => data)
-      .catch((data) => rejectWithValue(data.message));
+      .catch((data) => {
+        error(
+          `${
+            data.response.data.message
+              ? data.response.data.message
+              : data.message
+          }`
+        );
+        return rejectWithValue(data.message);
+      });
   }
 );
 
@@ -73,9 +104,19 @@ const getManagerTable = createAsyncThunk(
               : item;
           })
         );
+        success("Saved template successfully loaded");
         return template;
       })
-      .catch((data) => rejectWithValue(data.message));
+      .catch((data) => {
+        error(
+          `${
+            data.response.data.message
+              ? data.response.data.message
+              : data.message
+          }`
+        );
+        return rejectWithValue(data.message);
+      });
   }
 );
 
@@ -84,7 +125,16 @@ const getManagerCurrentWorkWeek = createAsyncThunk(
   (managerId, { rejectWithValue }) => {
     return getCurrentWorkWeek(managerId)
       .then((data) => data)
-      .catch((data) => rejectWithValue(data.message));
+      .catch((data) => {
+        error(
+          `${
+            data.response.data.message
+              ? data.response.data.message
+              : data.message
+          }`
+        );
+        return rejectWithValue(data.message);
+      });
   }
 );
 
