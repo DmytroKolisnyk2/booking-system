@@ -40,7 +40,7 @@ const Form = ({
         await requests.user(data, res.data.id);
       }
       if (+role === 1 && type.type === "post") await requests.user(data);
-      if (manager === true) {
+      if (manager) {
         const res = await requests.getByName(startName);
         onSubmit();
         return await requests.user(data, res.data.id);
@@ -50,7 +50,6 @@ const Form = ({
         : await requests[type.type](data, requests.additional);
     } catch (e) {
       setError(!error);
-      console.log(error);
       return console.log(e);
     }
 

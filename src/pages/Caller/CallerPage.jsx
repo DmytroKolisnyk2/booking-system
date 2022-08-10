@@ -14,14 +14,14 @@ import {
   getTable,
   getWeekId,
 } from "../../redux/caller/caller-selectors";
-import { getCallerCurrentWeek } from "../../redux/caller/caller-operations";
+import { getCallerCurrentWeek, getCallerWeek } from "../../redux/caller/caller-operations";
 export default function CallerPage() {
   const dispatch = useDispatch();
   const tableDate = useSelector(getDate);
   const table = useSelector(getTable);
   const weekId = useSelector(getWeekId);
   const { callerId } = useParams();
-  const onClickSlot = (dayIndex, hourIndex) => {
+  const onClickSlot = () => {
     dispatch(getCallerCurrentWeek(+callerId));
   };
   const [callerName, setCallerName] = useState("");
@@ -43,7 +43,7 @@ export default function CallerPage() {
           <span className={styles.free__span}>--</span> - number of free places
         </p>
         <section className={styles.tableSection}>
-          <DatePicker tableDate={tableDate} />
+          <DatePicker changeDateFn={getCallerWeek} tableDate={tableDate} caller={true}/>
           <Days />
           <Table
             weekId={weekId}
