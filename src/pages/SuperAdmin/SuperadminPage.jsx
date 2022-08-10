@@ -114,7 +114,7 @@ const SuperAdministrator = () => {
         ]}
       />
       <div className={styles.main_wrapper}>
-        <BgWrapper title="Super administrator" />
+        <BgWrapper title="Super administrator" bottom={420}/>
         <Outlet />
       </div>
     </>

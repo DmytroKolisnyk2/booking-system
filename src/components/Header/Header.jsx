@@ -4,7 +4,7 @@ import LoginBox from "../LoginBox/LoginBox";
 import Navigation from "../Navigation/Navigation";
 import styles from "./Header.module.scss";
 
-export default function Header({ endpoints, user }) {
+export default function Header({ endpoints=[], user }) {
   return (
     <header className={styles.header}>
       <a
