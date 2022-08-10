@@ -142,6 +142,7 @@
   z-index: 999;
   visibility: hidden;
   pointer-events: none;
+  transition: 200ms linear;
 }
 
 .hover_buttons button {
@@ -153,14 +154,17 @@
   font-weight: 400;
   color: $font-black;
   font-family: $poppins;
+  transition: 200ms linear;
 }
 
 .only_info_button {
   margin-left: 70px;
+  transition: 200ms linear;
 }
 
 .hover_buttons button:nth-child(1) {
   margin-right: 70px;
+  transition: 200ms linear;
 }
 
 .item:hover .hover_buttons {
@@ -168,6 +172,7 @@
   opacity: 1;
   visibility: inherit;
   pointer-events: inherit;
+  transition: 200ms linear;
 }
 
 .callerYellowColor {
@@ -215,6 +220,7 @@
   border-radius: 10px;
   color: $font-black;
   z-index: 1000;
+  transition: 200ms linear;
 }
 .callerFreeYellowColor {
   border: 2px solid #837d00;
