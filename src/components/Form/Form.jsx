@@ -56,7 +56,7 @@ const Form = ({
           });
       }
       if (+role === 1 && type.type === "post") await requests.user(data);
-      if (manager === true) {
+      if (manager) {
         const res = await requests.getByName(startName);
         onSubmit();
         return await requests.user(data, res.data.id).catch(() => {

@@ -71,6 +71,7 @@ const TableItem = ({
               time={data}
               weekId={weekId}
               dayIndex={dayIndex}
+              hourIndex={hourIndex}
               handleClose={() => setIsOpen(!isOpen)}
             />
           )}

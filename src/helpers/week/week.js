@@ -22,6 +22,14 @@ const getCallerCurrentWeek2 = () => {
       throw err;
     });
 };
+const getCallerWorkWeek = (weekId) => {
+  return axios
+    .get(`/get_caller_week/${weekId}`)
+    .then((res) => res.data)
+    .catch((error) => {
+      throw error;
+    });
+};
 
 const getWeek = (managerId, weekId) => {
   return axios
@@ -90,4 +98,5 @@ export {
   getWeekTable,
   getCurrentWorkWeek,
   getWorkWeek,
+  getCallerWorkWeek,
 };

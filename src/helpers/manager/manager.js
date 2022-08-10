@@ -30,6 +30,15 @@ const getManagerByName = (name) => {
     });
 };
 
+const getAvailableManagers = (weekId, dayId, hour) => {
+  return axios
+    .get(`/avaliable_managers/${weekId}/${dayId}/${hour}`)
+    .then((res) => res.data)
+    .catch((error) => {
+      throw error;
+    });
+};
+
 const postManager = (credentials) => {
   return axios
     .post("/register_user", credentials)
@@ -62,6 +71,7 @@ export {
   getManagerByName,
   postManager,
   putManager,
+  getAvailableManagers,
   deleteManager,
   getManagerById,
 };

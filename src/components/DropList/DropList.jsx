@@ -12,6 +12,7 @@ const DropList = ({
   setValueSecondary,
   width,
   request,
+  appointment,
 }) => {
   const [data, setData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -36,15 +37,15 @@ const DropList = ({
       return data;
     };
     get().then((res) => {
-      setValue(res[0].name);
+      console.log(res)
+      setValue(res[0]?.name);
       if (setValueSecondary) {
-        setValueSecondary(res[0].id);
+        setValueSecondary(res[0]?.manager_id);
       }
     });
     getData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <label className={styles.input__label} style={{ width: width }}>
       <p
@@ -58,24 +59,45 @@ const DropList = ({
       </p>
       <ul className={classnames(styles.menu, isOpen && styles["menu-active"])}>
         {data.map((i) => {
-          return (
-            <li
-              className={classnames(
-                styles.input__option,
-                isOpen && styles.active
-              )}
-              key={i.id}
-              onClick={() => {
-                setIsOpen(!isOpen);
-                setValue(i.name);
-                if (setValueSecondary) {
-                  setValueSecondary(i.id);
-                }
-              }}
-            >
-              {i.name}
-            </li>
-          );
+          if (appointment) {
+            return (
+              <li
+                className={classnames(
+                  styles.input__option,
+                  isOpen && styles.active
+                )}
+                key={i.manager_id}
+                onClick={() => {
+                  setIsOpen(!isOpen);
+                  setValue(i.name);
+                  if (setValueSecondary) {
+                    setValueSecondary(i.manager_id);
+                  }
+                }}
+              >
+                {i.name}
+              </li>
+            );
+          } else {
+            return (
+              <li
+                className={classnames(
+                  styles.input__option,
+                  isOpen && styles.active
+                )}
+                key={i.id}
+                onClick={() => {
+                  setIsOpen(!isOpen);
+                  setValue(i.name);
+                  if (setValueSecondary) {
+                    setValueSecondary(i.id);
+                  }
+                }}
+              >
+                {i.name}
+              </li>
+            );
+          }
         })}
       </ul>
     </label>

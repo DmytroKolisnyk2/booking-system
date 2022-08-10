@@ -5,13 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getGroups } from "../../../helpers/group/group";
 import { getCourses } from "../../../helpers/course/course";
-import {updateSlot} from '../../../helpers/week/week';
-import {getUsersByRole} from '../../../helpers/user/user';
-import {postConsultationResult} from '../../../helpers/consultation/consultation'
-import {
-  getTable,
-  getWeekId,
-} from "../../../redux/manager/manager-selectors";
+import { updateSlot } from "../../../helpers/week/week";
+import { getUsersByRole } from "../../../helpers/user/user";
+import { postConsultationResult } from "../../../helpers/consultation/consultation";
+import { getTable, getWeekId } from "../../../redux/manager/manager-selectors";
 import {
   setManagerError,
   setManagerLoading,
@@ -21,7 +18,13 @@ import DropList from "../../DropList/DropList";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
 
-const ConsultationInfo = ({ isOpen, handleClose, id, slotId,  dayIndex, hourIndex}) => {
+const ConsultationInfo = ({
+  isOpen,
+  handleClose,
+  slotId,
+  dayIndex,
+  hourIndex,
+}) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
@@ -30,7 +33,7 @@ const ConsultationInfo = ({ isOpen, handleClose, id, slotId,  dayIndex, hourInde
   const [group, setGroup] = useState("");
   const [message, setMessage] = useState("");
   const [manager, setManager] = useState("");
-  const {managerId} = useParams();
+  const { managerId } = useParams();
   const weekId = useSelector(getWeekId);
   const managerTable = useSelector(getTable);
   return (
@@ -43,6 +46,11 @@ const ConsultationInfo = ({ isOpen, handleClose, id, slotId,  dayIndex, hourInde
               handleClose();
               setDesc("");
               setName("");
+              setResult(7);
+              setCourse("");
+              setGroup("");
+              setMessage("");
+              setManager("");
               dispatch(setManagerLoading(true));
               postConsultationResult(+slotId, result, group, message)
                 .then((data) => {
@@ -97,7 +105,6 @@ const ConsultationInfo = ({ isOpen, handleClose, id, slotId,  dayIndex, hourInde
 
             <Select
               title="Result:"
-              handler={setResult}
               type="no-request"
               defaultValue="Result"
               setValue={setResult}
@@ -111,6 +118,7 @@ const ConsultationInfo = ({ isOpen, handleClose, id, slotId,  dayIndex, hourInde
               value={group}
               request={getGroups}
               setValue={setGroup}
+              groupId={+course}
               defaultValue="Select group"
             />
             <label className={styles.input__label}>
