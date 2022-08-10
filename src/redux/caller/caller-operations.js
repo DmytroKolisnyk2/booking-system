@@ -41,23 +41,22 @@ const getCallerCurrentWeek = createAsyncThunk(
 );
 
 const getCallerWeek = createAsyncThunk(
-   GET_WEEK,
- ({ weekId }, { rejectWithValue }) => {
-     return getCallerWorkWeek(weekId)
-     .then((data) => data)
-     .catch((data) => {
+  GET_WEEK,
+  ({ weekId }, { rejectWithValue }) => {
+    return getCallerWorkWeek(weekId)
+      .then((data) => data)
+      .catch((data) => {
         error(
-         `${
-           data.response.data.message
-             ? data.response.data.message
+          `${
+            data.response.data.message
+              ? data.response.data.message
               : data.message
           }`
-         );
-       return rejectWithValue(data.message);
+        );
+        return rejectWithValue(data.message);
       });
   }
- );
-
+);
 
 const getCallerTable = createAsyncThunk(
   GET_TABLE,
