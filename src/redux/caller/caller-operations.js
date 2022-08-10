@@ -1,4 +1,5 @@
 import { createAsyncThunk, createAction } from "@reduxjs/toolkit";
+import { success, error } from "@pnotify/core";
 import {
   GET_TABLE,
   TYPE_SELECTION,
@@ -26,18 +27,37 @@ const getCallerCurrentWeek = createAsyncThunk(
   (callerId, { rejectWithValue }) => {
     return getCallerCurrentWeek2(+callerId)
       .then((data) => data)
-      .catch((data) => rejectWithValue(data.message));
+      .catch((data) => {
+        error(
+          `${
+            data.response.data.message
+              ? data.response.data.message
+              : data.message
+          }`
+        );
+        return rejectWithValue(data.message);
+      });
   }
 );
 
 const getCallerWeek = createAsyncThunk(
-  GET_WEEK,
-  ({ weekId }, { rejectWithValue }) => {
-    return getCallerWorkWeek(weekId)
-      .then((data) => data)
-      .catch((data) => rejectWithValue(data.message));
+   GET_WEEK,
+ ({ weekId }, { rejectWithValue }) => {
+     return getCallerWorkWeek(weekId)
+     .then((data) => data)
+     .catch((data) => {
+        error(
+         `${
+           data.response.data.message
+             ? data.response.data.message
+              : data.message
+          }`
+         );
+       return rejectWithValue(data.message);
+      });
   }
-);
+ );
+
 
 const getCallerTable = createAsyncThunk(
   GET_TABLE,
@@ -60,7 +80,16 @@ const getCallerTable = createAsyncThunk(
         );
         return template;
       })
-      .catch((data) => rejectWithValue(data.message));
+      .catch((data) => {
+        error(
+          `${
+            data.response.data.message
+              ? data.response.data.message
+              : data.message
+          }`
+        );
+        return rejectWithValue(data.message);
+      });
   }
 );
 
@@ -69,7 +98,16 @@ const getCallerCurrentWorkWeek = createAsyncThunk(
   (callerId, { rejectWithValue }) => {
     return getCurrentWorkWeek(callerId)
       .then((data) => data)
-      .catch((data) => rejectWithValue(data.message));
+      .catch((data) => {
+        error(
+          `${
+            data.response.data.message
+              ? data.response.data.message
+              : data.message
+          }`
+        );
+        return rejectWithValue(data.message);
+      });
   }
 );
 

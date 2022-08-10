@@ -24,6 +24,12 @@ const NewManager = ({ isOpen, handleClose, id, dataName }) => {
               handleClose();
               setName("");
             }}
+            status={{
+              successMessage: "Successfully changed course",
+              failMessage: "Failed to change course",
+              successMessageDelete: "Successfully deleted course",
+              failMessageDelete: "Failed to delete course",
+            }}
             name={name}
             title="Change course's info"
           >

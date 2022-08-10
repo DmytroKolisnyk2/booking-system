@@ -58,7 +58,7 @@ const Select = ({
           value={value ? value : ""}
           onChange={(e) => setValue(e.target.value)}
           onClick={getData}
-          required
+          // required
         >
           {data?.length > 0 && (
             <option value="" disabled hidden>

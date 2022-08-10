@@ -54,7 +54,7 @@ const ConsultationPage = () => {
               })
             );
           })
-          .catch((error) => dispatch(setManagerError(error)));
+          .catch((error) => dispatch(setManagerError(error.message)));
       })
       .catch((error) => dispatch(setManagerError(error.message)))
       .finally(() => dispatch(setManagerLoading(false)));

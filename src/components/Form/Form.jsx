@@ -2,7 +2,7 @@ import styles from "./Form.module.scss";
 import InputSubmit from "../InputSubmit/InputSubmit";
 import InputDelete from "../InputDelete/InputDelete";
 import { useState } from "react";
-
+import { success, error } from "@pnotify/core";
 const Form = ({
   type,
   onSubmit,
@@ -18,15 +18,23 @@ const Form = ({
   isDelete,
   isDescription,
   manager,
+  status,
   ...formData
 }) => {
-  const [error, setError] = useState(false);
+  const [errorsuccessMessage, setError] = useState(false);
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
       if (type.type === "no-request") {
         if (onSubmit) {
-          onSubmit();
+          onSubmit()
+            .catch((e) => {
+              return error(`${status.failMessage}, ${e.message}`);
+            })
+            .then(() => {
+              success(status.successMessage);
+              return !errorsuccessMessage && onSubmit && onSubmit();
+            });
         }
         return;
       }
@@ -37,38 +45,78 @@ const Form = ({
       isDescription && data.append("description", "test");
       if (+role === 1 && type.type === "put") {
         const res = await requests.getByName(startName);
-        await requests.user(data, res.data.id);
+        await requests
+          .user(data, res.data.id)
+          .catch((e) => {
+            return error(`${status.failMessage}, ${e.message}`);
+          })
+          .then(() => {
+            success(status.successMessage);
+            return !errorsuccessMessage && onSubmit && onSubmit();
+          });
       }
       if (+role === 1 && type.type === "post") await requests.user(data);
       if (manager) {
         const res = await requests.getByName(startName);
         onSubmit();
-        return await requests.user(data, res.data.id);
+        return await requests.user(data, res.data.id).catch(() => {
+          return error(status.failMessage);
+        });
       }
-      type.type === "post"
-        ? await requests.post(data).catch(() => setError(!error))
-        : await requests[type.type](data, requests.additional);
+      if (type.type === "post") {
+        return await requests
+          .post(data)
+          .catch((e) => {
+            return error(`${status.failMessage}, ${e.message}`);
+          })
+          .then(() => {
+            success(status.successMessage);
+            return !errorsuccessMessage && onSubmit && onSubmit();
+          });
+      }
+      await requests[type.type](data, requests.additional)
+        .catch((e) => {
+          return error(`${status.failMessage}, ${e.message}`);
+        })
+        .then(() => {
+          success(status.successMessage);
+          return !errorsuccessMessage && onSubmit && onSubmit();
+        });
     } catch (e) {
-      setError(!error);
-      return console.log(e);
+      setError(!errorsuccessMessage);
+      error(`${status.failMessage}, ${e.message}`);
+      console.error(e);
     }
-
-    !error && onSubmit && onSubmit();
   };
   const handleDelete = async () => {
-    // +role === 1 && (await requests.userDelete(id));
     if (manager === true) {
       const res = await requests.getByName(startName);
       onSubmit();
-      return await requests.userDelete(res.data.id);
+      return await requests
+        .userDelete(res.data.id)
+        .catch(() => {
+          return error(status.failMessageDelete);
+        })
+        .then(() => {
+          return success(status.successMessageDelete);
+        });
     }
-    await requests.delete(requests.additional);
+    await requests
+      .delete(requests.additional)
+      .catch((e) => {
+        return error(`${status.failMessageDelete}, ${e.message}`);
+      })
+      .then(() => {
+        return success(status.successMessageDelete);
+      });
     if (+role === 1 && type.additionalType === "delete") {
       const res = await requests.getByName(startName);
-      await requests.userDelete(res.data.id);
+      await requests.userDelete(res.data.id).catch((e) => {
+        return error(`${status.failMessageDelete}, ${e.message}`);
+      });
     }
 
-    !error && onSubmit && onSubmit();
+    !errorsuccessMessage && onSubmit && onSubmit();
   };
   return (
     <div className={styles.modal} style={{ width: width }}>

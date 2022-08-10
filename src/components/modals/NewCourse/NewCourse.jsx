@@ -22,6 +22,10 @@ const NewCourse = ({ isOpen, handleClose }) => {
             requests={{
               post: postCourse,
             }}
+            status={{
+              successMessage: "Successfully created course",
+              failMessage: "Failed to create course",
+            }}
             name={name}
             title="New course"
           >
@@ -29,6 +33,7 @@ const NewCourse = ({ isOpen, handleClose }) => {
               title="Name:"
               type="text"
               name="name"
+              max={50}
               value={name}
               placeholder="Name"
               isRequired={true}

@@ -34,12 +34,17 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
             login={login}
             password={password}
             role_id={role}
+            status={{
+              successMessage: "Successfully created user",
+              failMessage: "Failed to create user",
+            }}
             title="New user"
           >
             <FormInput
               title="Name:"
               type="text"
               name="name"
+              max={50}
               value={name}
               placeholder="Name"
               isRequired={true}
@@ -49,6 +54,7 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
               title="Telegram username:"
               type="text"
               name="telegram"
+              max={50}
               value={telegram}
               placeholder="Telegram username"
               isRequired={true}
@@ -61,6 +67,7 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
                 title="Login:"
                 type="text"
                 name="login"
+                max={50}
                 value={login}
                 placeholder="Login"
                 isRequired={true}
@@ -71,6 +78,7 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
                 title="Password:"
                 type="password"
                 name="password"
+                max={50}
                 value={password}
                 placeholder="Password"
                 isRequired={true}

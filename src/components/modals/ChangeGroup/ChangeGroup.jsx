@@ -25,6 +25,12 @@ const ChangeGroup = ({ isOpen, handleClose, id, dataName }) => {
               handleClose();
               setName("");
             }}
+            status={{
+              successMessage: "Successfully changed group",
+              failMessage: "Failed to change group",
+              successMessageDelete: "Successfully deleted group",
+              failMessageDelete: "Failed to delete group",
+            }}
             name={name}
             title="Change group's info"
           >
