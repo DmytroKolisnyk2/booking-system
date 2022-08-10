@@ -6,9 +6,10 @@ export default function Navigation({ links, user }) {
   return (
     <nav className={styles["menu"]}>
       {/* {user && <p className={styles["role"]}>{user.role + ": " + user.name}</p>} */}
-      {links && links.length === 0 ? (
+      {links.length === 0 && (
         <p className={styles["endpoints_role"]}>{user.role + ": " + user.name}</p>
-      ) : (
+      )}
+      {user && links.length !== 0 && (
         <p className={styles["role"]}>{user.role + ": " + user.name}</p>
       )}
       <ul className={styles["list"]}>

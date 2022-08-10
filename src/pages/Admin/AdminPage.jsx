@@ -23,18 +23,16 @@ const AdminPage = () => {
       />
       <div className={styles.main_wrapper}>
         <BgWrapper title="Administrator" />
-        <a href="/superadmin">
-          <Button
-            paddingRight={36}
-            paddingLeft={36}
-            width={"auto"}
-            bgColor={"purple"}
-            color={"white"}
-            margin={"0 auto"}
-          >
-            Manage: Administrator Марія
-          </Button>
-        </a>
+        <Button
+          paddingRight={36}
+          paddingLeft={36}
+          width={"auto"}
+          bgColor={"purple"}
+          color={"white"}
+          margin={"0 auto"}
+        >
+          Manage: Administrator Марія
+        </Button>
         <Outlet />
       </div>
     </>
