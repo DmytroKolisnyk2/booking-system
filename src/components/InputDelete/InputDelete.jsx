@@ -1,11 +1,15 @@
 import styles from "./InputDelete.module.scss";
+import { error } from "@pnotify/core";
 
-const InputDelete = ({handleDelete}) => {
+const InputDelete = ({ handleDelete }) => {
   return (
     <button
       type="button"
       className={styles.input__delete}
-      onClick={handleDelete}
+      onClick={() => {
+        // handleDelete();
+        error("Delete feature coming soon(never)");
+      }}
     >
       Delete
     </button>
