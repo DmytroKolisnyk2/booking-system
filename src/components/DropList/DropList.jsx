@@ -37,9 +37,9 @@ const DropList = ({
       return data;
     };
     get().then((res) => {
-      setValue(res[1]?.name);
+      setValue(res[0]?.name);
       if (setValueSecondary) {
-        setValueSecondary(res[1]?.manager_id);
+        setValueSecondary(res[0]?.manager_id);
       }
     });
     getData();
