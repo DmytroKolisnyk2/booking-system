@@ -19,11 +19,13 @@ const createAppointment = (
   time,
   courseId,
   phone,
-  age
+  age,
+  message
 ) => {
   return axios
     .post(
-      `/create_appointment/${weekId}/${dayIndex}/${time}/${courseId}/${link}/${phone}/${age}/${managerId}`
+      `/create_appointment/${weekId}/${dayIndex}/${time}/${courseId}/${phone}/${age}/${managerId}/${message}`,
+      link
     )
     .then((res) => res.data)
     .catch((error) => {
