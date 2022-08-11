@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { TailSpin } from "react-loader-spinner";
 import { useSelector } from "react-redux";
-import {
-  setCancelConfirmation,
-  setConfirmation,
-} from "../../helpers/confirmation/confirmation";
+import { setCancelConfirmation, setConfirmation } from "../../helpers/confirmation/confirmation";
 import styles from "../../pages/Confirmator/ConfirmatorPage.module.scss";
 import {
   getConfirmatorAppointments,
@@ -14,7 +11,7 @@ import {
 const ConfirmatorComments = ({ value }) => {
   const appointments = useSelector(getConfirmatorAppointments);
   const loading = useSelector(getConfirmatorLoadings);
-  const [reject, setReject] = useState("");
+  const [reject, setReject] = useState({});
   const [confirm, setConfirm] = useState("");
 
   const confirmationTable = [
@@ -39,9 +36,7 @@ const ConfirmatorComments = ({ value }) => {
               className={styles.comment__input}
               placeholder="Write a comment here..."
               onChange={({ target }) => setConfirm(target.value)}
-              onBlur={() =>
-                confirm && setConfirmation(item.slot_id, 4, confirm)
-              }
+              onBlur={() => confirm && setConfirmation(item.slot_id, 4, confirm)}
             />
           )}
           {value[item.appointment_id] === "canceled" && (
@@ -51,11 +46,12 @@ const ConfirmatorComments = ({ value }) => {
                   <button
                     key={i.text}
                     onClick={() => {
-                      setReject(i.text);
-                      reject && setCancelConfirmation(item.slot_id, 1, reject);
+                      setReject({ ...reject, [item.appointment_id]: i.text });
+                      reject[item.appointment_id] &&
+                        setCancelConfirmation(item.slot_id, 1, reject[item.appointment_id]);
                     }}
                     className={`${styles.btn} ${
-                      reject === i.text && styles.btn_active
+                      reject[item.appointment_id] === i.text && styles.btn_active
                     }`}
                   >
                     {i.text}
@@ -66,10 +62,11 @@ const ConfirmatorComments = ({ value }) => {
                 type="text"
                 className={styles.comment__input}
                 placeholder="Write a comment here..."
-                value={reject}
+                value={reject[item.appointment_id]}
                 onChange={({ target }) => setReject(target.value)}
                 onBlur={() =>
-                  reject && setCancelConfirmation(item.slot_id, 1, reject)
+                  reject[item.appointment_id] &&
+                  setCancelConfirmation(item.slot_id, 1, reject[item.appointment_id])
                 }
               />
             </div>

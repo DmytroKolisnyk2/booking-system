@@ -40,21 +40,16 @@ export default function CallerPage() {
     <>
       <Header user={{ name: callerName, role: "Caller" }} />
       <div className={styles.main__wrapper}>
-        <BgWrapper title="Caller" />
+        <BgWrapper top={-160} title="Caller" />
         <Outlet />
         <p className={styles.free__places}>
           <span className={styles.free__span}>--</span> - number of free places
         </p>
         <section className={styles.tableSection}>
-          <DatePicker changeDateFn={getCallerWeek} tableDate={tableDate} caller={true}/>
+          <DatePicker changeDateFn={getCallerWeek} tableDate={tableDate} caller={true} />
           <Days />
           {!error && (
-            <Table
-              weekId={weekId}
-              table={table}
-              onClickSlotFn={onClickSlot}
-              caller={true}
-            />
+            <Table weekId={weekId} table={table} onClickSlotFn={onClickSlot} caller={true} />
           )}
           {error && <p className={styles.free__places}>{error.message}</p>}
         </section>
