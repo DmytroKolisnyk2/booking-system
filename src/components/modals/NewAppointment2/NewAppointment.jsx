@@ -28,7 +28,7 @@ const NewAppointment = ({
   const [age, setAge] = useState(0);
   const [phone, setPhone] = useState("");
   useEffect(() => {
-    !isOpen && dispatch(getCallerWeek({weekId}));
+    !isOpen && dispatch(getCallerWeek({ weekId }));
   }, [isOpen, dispatch]);
   return (
     <>
@@ -36,7 +36,6 @@ const NewAppointment = ({
         <Modal open={isOpen} onClose={handleClose}>
           <Form
             onSubmit={() => {
-              handleClose();
               return createAppointment(
                 link,
                 managerId,
@@ -46,20 +45,20 @@ const NewAppointment = ({
                 courseId,
                 phone,
                 age
-              );
-              setLink("")
-              setCourses("")
-              setMessage("")
-              setAge("")
-              setPhone("")
-              handleClose();
+              ).finally(() => {
+                setLink("");
+                setCourses("");
+                setMessage("");
+                setAge("");
+                setPhone("");
+                handleClose();
+              });
             }}
             status={{
               successMessage: "Successfully created appointment",
               failMessage: "Failed to create appointment",
             }}
             type={{ type: "no-request" }}
-            requests={{ post: createAppointment }}
             title="Create an appointment"
           >
             <DropList
