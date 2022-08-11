@@ -152,7 +152,7 @@ const Form = ({
             </button>
           )}
 
-          {type.additionalType && <InputDelete handleDelete={handleDelete} />}
+          {type.additionalType && <InputDelete handleDelete={handleDelete}/>}
           {!type.button && <InputSubmit />}
         </div>
       </form>
