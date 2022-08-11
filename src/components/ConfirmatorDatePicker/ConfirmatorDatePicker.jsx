@@ -33,22 +33,26 @@ export default function ConfirmatorDatePicker() {
   const onClickArrowRight = () => {
     setDate(moment(date).add(1, "days")._d);
     dispatch(increaseDay());
+    dispatch(getConfirmatorWeek({ currentWeekId, currentDayId, half }));
   };
 
   const onClickArrowLeft = () => {
     setDate(moment(date).subtract(1, "days")._d);
     dispatch(decreaseDay());
+    dispatch(getConfirmatorWeek({ currentWeekId, currentDayId, half }));
   };
   const onFirstHalfHandler = () => {
     dispatch(firstHalf());
+    dispatch(getConfirmatorWeek({ currentWeekId, currentDayId, half }));
   };
   const onSecondHalfHandler = () => {
     dispatch(secondHalf());
+    dispatch(getConfirmatorWeek({ currentWeekId, currentDayId, half }));
   };
 
-  useEffect(() => {
-    dispatch(getConfirmatorWeek({ currentWeekId, currentDayId, half }));
-  }, [half, date]);
+  // useEffect(() => {
+  //   dispatch(getConfirmatorWeek({ currentWeekId, currentDayId, half }));
+  // }, [half, date]);
 
   return (
     <div className={styles.calendar_wrapper}>

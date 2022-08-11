@@ -49,7 +49,7 @@ export default function CallerPage() {
           <DatePicker changeDateFn={getCallerWeek} tableDate={tableDate} caller={true} />
           <Days />
           {!error && (
-            <Table weekId={weekId} table={table} onClickSlotFn={onClickSlot} caller={true} />
+            <Table postponed weekId={weekId} table={table} onClickSlotFn={onClickSlot} caller={true} />
           )}
           {error && <p className={styles.free__places}>{error.message}</p>}
         </section>
