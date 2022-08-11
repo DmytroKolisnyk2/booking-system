@@ -27,13 +27,12 @@ const Form = ({
       event.preventDefault();
       if (type.type === "no-request") {
         if (onSubmit) {
-          onSubmit()
+          return onSubmit()
             .catch((e) => {
               return error(`${status.failMessage}, ${e.message}`);
             })
             .then(() => {
               success(status.successMessage);
-              return !errorsuccessMessage && onSubmit && onSubmit();
             });
         }
         return;

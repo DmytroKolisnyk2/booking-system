@@ -36,21 +36,24 @@ const NewAppointment = ({
         <Modal open={isOpen} onClose={handleClose}>
           <Form
             onSubmit={() => {
+              const data = new FormData();
+              data.append("crm_link", link);
               return createAppointment(
-                link,
+                data,
                 managerId,
                 weekId,
                 dayIndex,
                 time,
                 courseId,
                 phone,
-                age
+                age,
+                message
               ).finally(() => {
                 setLink("");
                 setCourses("");
                 setMessage("");
                 setAge("");
-                setPhone("");
+                setPhone(0);
                 handleClose();
               });
             }}
