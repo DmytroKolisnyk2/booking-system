@@ -26,7 +26,7 @@ const ConfirmatorButtons = ({ value, setValue, showPostpone }) => {
       id: 4,
     },
   ];
-
+console.log(error)
   if (error) {
     return <h2>{error}</h2>;
   }
