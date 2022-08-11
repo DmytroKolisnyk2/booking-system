@@ -1,6 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { decreaseDay, getConfirmatorWeek, getCurrentConfirmator, increaseDay } from "./confirmator-operations";
+import {
+  decreaseDay,
+  getConfirmatorWeek,
+  getCurrentConfirmator,
+  increaseDay,
+} from "./confirmator-operations";
 
 const INITIAL_WEEK = {
   date: "Tue, 09 Aug 2022 00:00:00 GMT",
@@ -42,8 +47,12 @@ const date = createReducer(INITIAL_WEEK, {
 });
 
 const error = createReducer("", {
+  [getCurrentConfirmator.pending]: () => "",
+  [getConfirmatorWeek.pending]: () => "",
+  [getConfirmatorWeek.rejected]: (_, { payload }) => payload,
   [getCurrentConfirmator.rejected]: (_, { payload }) => payload,
 });
+
 const loading = createReducer(false, {
   [getCurrentConfirmator.pending]: () => true,
   [getCurrentConfirmator.fulfilled]: () => false,

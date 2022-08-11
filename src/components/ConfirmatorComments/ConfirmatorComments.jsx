@@ -81,12 +81,3 @@ const ConfirmatorComments = ({ value }) => {
 };
 
 export default ConfirmatorComments;
-//  <div className={styles.btn_wrapper2}>
-//    {/* {confirmationTable.map((i) => {
-//           return (
-//             <button key={i.text} className={styles.btn}>
-//               {i.text}
-//             </button>
-//           );
-//         })} */}
-//  </div>;

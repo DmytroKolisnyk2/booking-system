@@ -1,10 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { getConfirmatorAppointments } from "../../redux/confirmator/confirmator-selectors";
+import {
+  getConfirmatorAppointments,
+  getConfirmatorError,
+} from "../../redux/confirmator/confirmator-selectors";
 import "./ConfirmationButton.scss";
 
 const ConfirmatorButtons = ({ value, setValue, showPostpone }) => {
   const appointments = useSelector(getConfirmatorAppointments);
+  const error = useSelector(getConfirmatorError);
 
   const confirmationTable = [
     {
@@ -22,8 +26,13 @@ const ConfirmatorButtons = ({ value, setValue, showPostpone }) => {
       id: 4,
     },
   ];
+
+  if (error) {
+    return <h2>{error}</h2>;
+  }
   return (
     <>
+      {appointments.length === 0 && <h2>Nothing to confirm yet</h2>}
       {appointments.map((item) => (
         <div key={item.appointment_id} className="btn_wrapper">
           {confirmationTable.map((i) => {
