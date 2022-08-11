@@ -22,9 +22,6 @@ export default function CallerPage() {
   const table = useSelector(getTable);
   const weekId = useSelector(getWeekId);
   const { callerId } = useParams();
-  const onClickSlot = () => {
-    dispatch(getCallerCurrentWeek(+callerId));
-  };
   const [callerName, setCallerName] = useState("");
   useEffect(() => {
     dispatch(getCallerCurrentWeek(+callerId));
@@ -46,10 +43,10 @@ export default function CallerPage() {
           <span className={styles.free__span}>--</span> - number of free places
         </p>
         <section className={styles.tableSection}>
-          <DatePicker changeDateFn={getCallerWeek} tableDate={tableDate} caller={true} />
+          <DatePicker changeDateFn={getCallerWeek} tableDate={tableDate} caller />
           <Days />
           {!error && (
-            <Table weekId={weekId} table={table} onClickSlotFn={onClickSlot} caller={true} />
+            <Table weekId={weekId} table={table} caller />
           )}
           {error && <p className={styles.free__places}>{error.message}</p>}
         </section>
