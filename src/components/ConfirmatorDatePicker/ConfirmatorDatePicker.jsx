@@ -11,8 +11,10 @@ import {
 } from "../../redux/confirmator/confirmator-selectors";
 import {
   decreaseDay,
+  firstHalf,
   getConfirmatorWeek,
   increaseDay,
+  secondHalf,
 } from "../../redux/confirmator/confirmator-operations";
 
 export default function ConfirmatorDatePicker() {
@@ -21,10 +23,9 @@ export default function ConfirmatorDatePicker() {
   const tableDate = useSelector(getConfirmatorDate);
   const currentWeekId = useSelector(getConfirmatorWeekId);
   const currentDayId = useSelector(getConfirmatorDay);
-  const currentHalfId = useSelector(getConfirmatorHalf);
+  const half = useSelector(getConfirmatorHalf);
 
   const [date, setDate] = useState(new Date(tableDate));
-  const [half, setHalf] = useState(currentHalfId);
 
   const month = date.getMonth() < 10 + 1 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
   const dateDay = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
@@ -39,15 +40,14 @@ export default function ConfirmatorDatePicker() {
     dispatch(decreaseDay());
   };
   const onFirstHalfHandler = () => {
-    setHalf(1);
+    dispatch(firstHalf());
   };
   const onSecondHalfHandler = () => {
-    setHalf(2);
+    dispatch(secondHalf());
   };
 
   useEffect(() => {
     dispatch(getConfirmatorWeek({ currentWeekId, currentDayId, half }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [half, date]);
 
   return (

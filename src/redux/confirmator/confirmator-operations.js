@@ -6,9 +6,11 @@ import {
 import { success, error } from "@pnotify/core";
 import {
   DECREASE_DAY,
+  FIRST_HALF,
   GET_CURRENT_CONFIRMATOR,
   GET_WEEK_CONFIRMATOR,
   INCREASE_DAY,
+  SECOND_HALF,
 } from "./confirmator-types";
 
 const getCurrentConfirmator = createAsyncThunk(
@@ -17,13 +19,7 @@ const getCurrentConfirmator = createAsyncThunk(
     return getCurrentConfirmatorData(managerId)
       .then(({ data }) => data)
       .catch((data) => {
-        error(
-          `${
-            data.response.data.message
-              ? data.response.data.message
-              : data.message
-          }`
-        );
+        error(`${data.response.data.message ? data.response.data.message : data.message}`);
         return rejectWithValue(data.message);
       });
   }
@@ -34,18 +30,21 @@ const getConfirmatorWeek = createAsyncThunk(
     return getConfirmatorWeekData(currentWeekId, currentDayId, half)
       .then(({ data }) => data)
       .catch((data) => {
-        error(
-          `${
-            data.response.data.message
-              ? data.response.data.message
-              : data.message
-          }`
-        );
+        error(`${data.response.data.message ? data.response.data.message : data.message}`);
         return rejectWithValue(data.message);
       });
   }
 );
 const increaseDay = createAction(INCREASE_DAY);
 const decreaseDay = createAction(DECREASE_DAY);
+const firstHalf = createAction(FIRST_HALF);
+const secondHalf = createAction(SECOND_HALF);
 
-export { decreaseDay, increaseDay, getCurrentConfirmator, getConfirmatorWeek };
+export {
+  firstHalf,
+  secondHalf,
+  decreaseDay,
+  increaseDay,
+  getCurrentConfirmator,
+  getConfirmatorWeek,
+};
