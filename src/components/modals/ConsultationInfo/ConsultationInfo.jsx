@@ -44,15 +44,8 @@ const ConsultationInfo = ({
             type={{ type: "no-request" }}
             onSubmit={() => {
               handleClose();
-              setDesc("");
-              setName("");
-              setResult(7);
-              setCourse("");
-              setGroup("");
-              setMessage("");
-              setManager("");
               dispatch(setManagerLoading(true));
-              postConsultationResult(+slotId, result, group, message)
+              return postConsultationResult(+slotId, result, group, message)
                 .then((data) => {
                   return updateSlot(
                     managerId,
@@ -70,10 +63,18 @@ const ConsultationInfo = ({
                         })
                       );
                     })
-                    .catch((error) => dispatch(setManagerError(error)));
+                    .catch((error) => dispatch(setManagerError(error.message)));
                 })
-                .catch((error) => dispatch(setManagerError(error)))
-                .finally(() => dispatch(setManagerLoading(false)));
+                .catch((error) => dispatch(setManagerError(error.message)))
+                .finally(() => {
+                  setDesc("");
+                  setName("");
+                  setResult(7);
+                  setCourse("");
+                  setMessage("");
+                  setManager("");
+                  return dispatch(setManagerLoading(false));
+                });
             }}
             name={name}
             description={desc}
@@ -83,7 +84,7 @@ const ConsultationInfo = ({
             // password={password}
             // role={role}
             status={{
-              successMessage: "Successfully change consultation info",
+              successMessage: "Successfully changed consultation info",
               failMessage: "Failed to change consultation info",
             }}
             title="Consultation Info"

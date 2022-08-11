@@ -37,7 +37,6 @@ const DropList = ({
       return data;
     };
     get().then((res) => {
-      console.log(res);
       setValue(res[1]?.name);
       if (setValueSecondary) {
         setValueSecondary(res[1]?.manager_id);

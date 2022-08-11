@@ -56,10 +56,10 @@ const Select = ({
           className={
             classname ? classnames(styles.select, classname) : styles.select
           }
-          value={value ? value : 2}
+          value={manager && !value ? 2 : value ? value : ""}
           onChange={(e) => setValue(e.target.value)}
           onClick={getData}
-          // required
+          required
         >
           {data?.length > 0 && (
             <option value="" disabled hidden>
