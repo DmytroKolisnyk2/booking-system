@@ -48,14 +48,15 @@ const Form = ({
       isDescription && data.append("description", "test");
       if (+role === 2 && type.type === "put") {
         const res = await requests.getByName(startName);
+        if (data.get("role_id")) data.delete("role_id");
         await requests
           .user(data, res.data.id)
-          .catch((e) => {
-            return error(`${status.failMessage}, ${e.message}`);
-          })
           .then(() => {
             success(status.successMessage);
             return !errorsuccessMessage && onSubmit && onSubmit();
+          })
+          .catch((e) => {
+            return error(`${status.failMessage}, ${e.message}`);
           });
       }
       if (+role === 2 && type.type === "post") await requests.user(data);
