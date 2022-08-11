@@ -24,7 +24,7 @@ export default function Courses({ text, isOpenModal, role }) {
     setCorses(res);
     return res;
   };
-  
+
   useEffect(() => {
     getCoursesData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -43,6 +43,7 @@ export default function Courses({ text, isOpenModal, role }) {
         {courses?.length > 0 && (
           <ul className={styles.main_wrapper}>
             {courses.map((item) => {
+              if (item.name === "Не призначено") return;
               return (
                 <li className={styles.ul_items} key={item.name}>
                   <p className={styles.ul_items_text}>{item.name}</p>

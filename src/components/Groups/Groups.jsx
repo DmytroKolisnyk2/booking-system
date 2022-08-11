@@ -58,12 +58,13 @@ export default function Groups({ text, isOpenModal, dataName }) {
       {courses?.length > 0 && (
         <div className={styles.wrapper}>
           {courses.map((i) => {
+            if (i.name === "Не призначено") return;
             return (
               <div className={styles.main_wrapper} key={i.id}>
                 <p className={styles.mini_title}>{i.name}</p>
                 <ul className={styles.list}>
                   {groups.map((item) => {
-                    if (item.name === "Не призначено") return "";
+                    if (item.name === "Не призначено") return;
                     return (
                       item.course_id === i.id && (
                         <li className={styles.ul_items} key={item.id}>

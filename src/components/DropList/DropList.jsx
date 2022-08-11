@@ -37,10 +37,10 @@ const DropList = ({
       return data;
     };
     get().then((res) => {
-      console.log(res)
-      setValue(res[0]?.name);
+      console.log(res);
+      setValue(res[1]?.name);
       if (setValueSecondary) {
-        setValueSecondary(res[0]?.manager_id);
+        setValueSecondary(res[1]?.manager_id);
       }
     });
     getData();
@@ -59,6 +59,7 @@ const DropList = ({
       </p>
       <ul className={classnames(styles.menu, isOpen && styles["menu-active"])}>
         {data.map((i) => {
+          if (i.name === "Не призначено") return;
           if (appointment) {
             return (
               <li
