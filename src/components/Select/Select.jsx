@@ -13,6 +13,7 @@ const Select = ({
   setValue,
   groupId,
   administrator,
+  manager,
 }) => {
   const [data, setData] = useState([]);
   const getData = async () => {
@@ -73,6 +74,9 @@ const Select = ({
 
           {data.map((i) => {
             if (i.name === "Administrator" && administrator === true) {
+              return "";
+            }
+            if (i.name === "Не призначено" && manager) {
               return "";
             }
             if (groupId === i.course_id) {

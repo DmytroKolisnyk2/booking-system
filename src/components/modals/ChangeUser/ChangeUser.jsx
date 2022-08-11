@@ -123,6 +123,7 @@ const ChangeUser = ({
               setValue={setRole}
               value={role}
               administrator={administrator}
+              manager={true}
               defaultValue="manager/caller/confirmator"
             ></Select>
           </Form>

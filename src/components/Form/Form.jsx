@@ -43,7 +43,7 @@ const Form = ({
         data.append(i, formData[i]);
       }
       isDescription && data.append("description", "test");
-      if (+role === 1 && type.type === "put") {
+      if (+role === 2 && type.type === "put") {
         const res = await requests.getByName(startName);
         await requests
           .user(data, res.data.id)
@@ -55,7 +55,7 @@ const Form = ({
             return !errorsuccessMessage && onSubmit && onSubmit();
           });
       }
-      if (+role === 1 && type.type === "post") await requests.user(data);
+      if (+role === 2 && type.type === "post") await requests.user(data);
       if (manager) {
         const res = await requests.getByName(startName);
         onSubmit();
@@ -109,7 +109,7 @@ const Form = ({
       .then(() => {
         return success(status.successMessageDelete);
       });
-    if (+role === 1 && type.additionalType === "delete") {
+    if (+role === 2 && type.additionalType === "delete") {
       const res = await requests.getByName(startName);
       await requests.userDelete(res.data.id).catch((e) => {
         return error(`${status.failMessageDelete}, ${e.message}`);
