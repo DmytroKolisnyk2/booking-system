@@ -12,7 +12,7 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
   const [telegram, setTelegram] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("Manager");
   return (
     <>
       {isOpen && (
