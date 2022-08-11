@@ -40,6 +40,9 @@ const Form = ({
       }
       const data = new FormData();
       for (const i in formData) {
+        if (!formData[i]) {
+          formData[i] = 2;
+        }
         data.append(i, formData[i]);
       }
       isDescription && data.append("description", "test");
@@ -152,7 +155,7 @@ const Form = ({
             </button>
           )}
 
-          {type.additionalType && <InputDelete handleDelete={handleDelete}/>}
+          {type.additionalType && <InputDelete handleDelete={handleDelete} />}
           {!type.button && <InputSubmit />}
         </div>
       </form>
