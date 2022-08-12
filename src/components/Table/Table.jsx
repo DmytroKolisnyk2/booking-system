@@ -7,25 +7,28 @@ import { isManagerLoading } from "../../redux/manager/manager-selectors";
 import { getCallerLoading } from "../../redux/caller/caller-selectors";
 import { TailSpin } from "react-loader-spinner";
 
-const Table = ({ weekId, table, onClickSlotFn, consultation, caller }) => {
+const Table = ({ postponed, weekId, table, onClickSlotFn, consultation, caller }) => {
   useEffect(() => {});
   const managerLoading = useSelector(isManagerLoading);
   const callerLoading = useSelector(getCallerLoading);
   return (
     <div className={styles.wrapperTable}>
       {(managerLoading || callerLoading) && (
-          <div className={styles.spinner}>
-            <TailSpin height="57" width="57" color="#999DFF" />
-          </div>
-        )}
+        <div className={styles.spinner}>
+          <TailSpin height="57" width="57" color="#999DFF" />
+        </div>
+      )}
       <ul className={styles.table}>
         {table.map((day, dayIndex) => {
+
           return day.map((item, hourIndex) => {
+            console.log(item)
             return (
               <Fragment key={hourIndex}>
                 {caller ? (
                   <TableItem
-                    onClickFn={() => onClickSlotFn()}
+                    postponed={postponed}
+                    onClickFn={() => onClickSlotFn(item.slot_id)}
                     data={item.time}
                     weekId={weekId}
                     colorId={item.amount}

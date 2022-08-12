@@ -45,9 +45,7 @@ export default function CallerPage() {
         <section className={styles.tableSection}>
           <DatePicker changeDateFn={getCallerWeek} tableDate={tableDate} caller />
           <Days />
-          {!error && (
-            <Table weekId={weekId} table={table} caller />
-          )}
+          {!error && <Table weekId={weekId} table={table} caller />}
           {error && <p className={styles.free__places}>{error.message}</p>}
         </section>
       </div>

@@ -7,6 +7,7 @@ import {
   getConfirmatorDate,
   getConfirmatorDay,
   getConfirmatorHalf,
+  getConfirmatorLoadings,
   getConfirmatorWeekId,
 } from "../../redux/confirmator/confirmator-selectors";
 import {
@@ -47,6 +48,7 @@ export default function ConfirmatorDatePicker() {
   };
 
   useEffect(() => {
+    if (!currentDayId || !currentWeekId || !half || !tableDate || !date) return;
     dispatch(getConfirmatorWeek({ currentWeekId, currentDayId, half }));
   }, [half, date]);
 

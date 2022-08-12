@@ -16,6 +16,7 @@ const TableItem = ({
   hourIndex,
   slotId,
   onClickBtnStart,
+  postponed,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
@@ -56,8 +57,12 @@ const TableItem = ({
         <>
           <li
             onClick={() => {
-              if (colorId !== 0) setIsOpen(!isOpen);
-              setModal("appointment");
+              if (!postponed) {
+                if (colorId !== 0) setIsOpen(!isOpen);
+                setModal("appointment");
+              } else {
+                onClickFn(slotId);
+              }
             }}
             key={dayIndex}
             className={activeCallerClassnames(colorId)}
@@ -65,7 +70,7 @@ const TableItem = ({
             {`${data}:00`}
             <div className={activeCallerFreeClassnames(colorId)}>{colorId}</div>
           </li>
-          {modal === "appointment" && (
+          {modal === "appointment" && !postponed && (
             <NewAppointment
               isOpen={isOpen}
               time={data}
@@ -139,10 +144,7 @@ const TableItem = ({
           <li className={activeClassnames(colorId)}>{`${data}:00`}</li>
         )
       ) : (
-        <li
-          onClick={onClickFn}
-          className={activeClassnames(colorId)}
-        >{`${data}:00`}</li>
+        <li onClick={onClickFn} className={activeClassnames(colorId)}>{`${data}:00`}</li>
       )}
     </>
   );

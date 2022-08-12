@@ -3,7 +3,7 @@ import {
   getCurrentConfirmatorData,
   getConfirmatorWeekData,
 } from "../../helpers/confirmation/confirmation";
-import { success, error } from "@pnotify/core";
+import { error } from "@pnotify/core";
 import {
   DECREASE_DAY,
   FIRST_HALF,
