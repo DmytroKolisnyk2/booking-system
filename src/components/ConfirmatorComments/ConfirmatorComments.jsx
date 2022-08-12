@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TailSpin } from "react-loader-spinner";
 import { useSelector } from "react-redux";
 import { setCancelConfirmation, setConfirmation } from "../../helpers/confirmation/confirmation";
@@ -25,6 +25,13 @@ const ConfirmatorComments = ({ value }) => {
       text: "other",
     },
   ];
+
+  useEffect(() => {
+    console.log(reject);
+    Object.keys(reject).forEach((item) =>
+      setCancelConfirmation(reject[item].slot_id, 1, reject[item].text)
+    );
+  }, [reject]);
   return (
     <>
       {loading && <TailSpin height="57" width="57" color="#999DFF" />}
@@ -46,12 +53,13 @@ const ConfirmatorComments = ({ value }) => {
                   <button
                     key={i.text}
                     onClick={() => {
-                      setReject({ ...reject, [item.appointment_id]: i.text });
-                      reject[item.appointment_id] &&
-                        setCancelConfirmation(item.slot_id, 1, reject[item.appointment_id]);
+                      setReject({
+                        ...reject,
+                        [item.appointment_id]: { slot_id: item.slot_id, text: i.text },
+                      });
                     }}
                     className={`${styles.btn} ${
-                      reject[item.appointment_id] === i.text && styles.btn_active
+                      reject[item.appointment_id]?.text === i.text && styles.btn_active
                     }`}
                   >
                     {i.text}
@@ -62,8 +70,13 @@ const ConfirmatorComments = ({ value }) => {
                 type="text"
                 className={styles.comment__input}
                 placeholder="Write a comment here..."
-                value={reject[item.appointment_id]}
-                onChange={({ target }) => setReject(target.value)}
+                value={reject[item.appointment_id]?.text}
+                onChange={({ target }) =>
+                  setReject({
+                    ...reject,
+                    [item.appointment_id]: { slot_id: item.slot_id, text: target.value },
+                  })
+                }
                 onBlur={() =>
                   reject[item.appointment_id] &&
                   setCancelConfirmation(item.slot_id, 1, reject[item.appointment_id])
