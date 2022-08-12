@@ -37,7 +37,9 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
             {managers.map((item) => {
               return (
                 <li className={styles.ul_items} key={item.name}>
-                  <p className={styles.ul_items_text}>{item.name}</p>
+                  <p className={styles.ul_items_text}>
+                    {item.name} ({item.id})
+                  </p>
                   <button
                     className={styles.ul_items_btn}
                     data-modal="change-user"
