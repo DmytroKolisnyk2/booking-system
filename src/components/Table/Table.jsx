@@ -20,9 +20,7 @@ const Table = ({ postponed, weekId, table, onClickSlotFn, consultation, caller }
       )}
       <ul className={styles.table}>
         {table.map((day, dayIndex) => {
-
           return day.map((item, hourIndex) => {
-            console.log(item)
             return (
               <Fragment key={hourIndex}>
                 {caller ? (
