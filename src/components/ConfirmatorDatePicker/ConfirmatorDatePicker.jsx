@@ -46,6 +46,8 @@ export default function ConfirmatorDatePicker() {
     dispatch(secondHalf());
   };
 
+  useEffect(() => setDate(new Date(tableDate)), [tableDate]);
+
   useEffect(() => {
     if (!currentDayId || !currentWeekId || !half || !tableDate || !date) return;
     dispatch(getConfirmatorWeek({ currentWeekId, currentDayId, half }));
