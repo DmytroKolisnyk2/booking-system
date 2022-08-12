@@ -24,7 +24,9 @@ const createAppointment = (
 ) => {
   return axios
     .post(
-      `/create_appointment/${weekId}/${dayIndex}/${time}/${courseId}/${phone}/${age}/${managerId}/${message}`,
+      `/create_appointment/${weekId}/${dayIndex}/${time}/${courseId}/${phone}/${age}/${managerId}/${
+        message ? message : "0"
+      }`,
       link
     )
     .then((res) => res.data)

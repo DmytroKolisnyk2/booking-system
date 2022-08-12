@@ -52,8 +52,8 @@ const NewAppointment = ({
                 setLink("");
                 setCourses("");
                 setMessage("");
-                setAge("");
-                setPhone(0);
+                setAge(0);
+                setPhone("");
                 handleClose();
               });
             }}
