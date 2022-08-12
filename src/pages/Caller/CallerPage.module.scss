@@ -73,13 +73,13 @@
 }
 
 .tableButton {
-    font-size: 32px !important;
-    padding: 15px 31px !important;
-    border-radius: 59px !important;
-    transition: 200ms linear;
-    &:hover {
-        @extend %hover-shadow;
-    }
+  font-size: 32px !important;
+  padding: 15px 31px !important;
+  border-radius: 59px !important;
+  transition: 200ms linear;
+  &:hover {
+    @extend %hover-shadow;
+  }
 }
 
 .templateText {
@@ -94,4 +94,17 @@
   background-color: $tableItem-grayHover !important;
   cursor: none;
   pointer-events: none;
+}
+.button {
+  margin: -20px auto 60px;
+  width: fit-content;
+}
+.postponedWrapper {
+  padding-top: 100px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  background-color: #fff;
 }

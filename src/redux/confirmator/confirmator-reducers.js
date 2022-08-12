@@ -10,10 +10,10 @@ import {
 } from "./confirmator-operations";
 
 const INITIAL_WEEK = {
-  date: "Tue, 09 Aug 2022 00:00:00 GMT",
-  day: 1,
-  half: 1,
-  week_id: 2,
+  date: null,
+  day: null,
+  half: null,
+  week_id: null,
 };
 
 const appointments = createReducer([], {
