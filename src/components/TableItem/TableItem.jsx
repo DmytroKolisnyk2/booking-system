@@ -17,6 +17,7 @@ const TableItem = ({
   slotId,
   onClickBtnStart,
   postponed,
+  slots,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState("");
@@ -57,11 +58,12 @@ const TableItem = ({
         <>
           <li
             onClick={() => {
+              if (colorId === 0) return;
               if (!postponed) {
-                if (colorId !== 0) setIsOpen(!isOpen);
+                setIsOpen(!isOpen);
                 setModal("appointment");
               } else {
-                onClickFn(slotId);
+                onClickFn(slots);
               }
             }}
             key={dayIndex}

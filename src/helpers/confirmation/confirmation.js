@@ -43,8 +43,17 @@ const setCancelConfirmation = (slot_id, status, message) => {
       throw error;
     });
 };
+const setPostponedConfirmation = (slot_id, appointment_id) => {
+  return axios
+    .post(`/set_postpone_confirmation/${slot_id}/${appointment_id}`)
+    .then((res) => res.data)
+    .catch((error) => {
+      throw error;
+    });
+};
 
 export {
+  setPostponedConfirmation,
   getCurrentConfirmatorData,
   getConfirmatorWeekData,
   setConfirmation,

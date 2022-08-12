@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import {
   getConfirmatorAppointments,
   getConfirmatorError,
 } from "../../redux/confirmator/confirmator-selectors";
 import "./ConfirmationButton.scss";
+import PostponeModal from "../../components/modals/PostponeModal/PostponeModal";
 
-const ConfirmatorButtons = ({ value, setValue, showPostpone }) => {
+const ConfirmatorButtons = ({ value, setValue }) => {
+  const [isOpen, setIsOpen] = useState(null);
+
   const appointments = useSelector(getConfirmatorAppointments);
   const error = useSelector(getConfirmatorError);
 
@@ -38,7 +41,7 @@ const ConfirmatorButtons = ({ value, setValue, showPostpone }) => {
             return (
               <button
                 onClick={() => {
-                  if (i.btn === "postponed") showPostpone();
+                  if (i.btn === "postponed") setIsOpen(item.appointment_id);
                   return setValue({ ...value, [item.appointment_id]: i.btn });
                 }}
                 key={i.btn}
@@ -52,6 +55,7 @@ const ConfirmatorButtons = ({ value, setValue, showPostpone }) => {
           })}
         </div>
       ))}
+      <PostponeModal appointmentId={isOpen} isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
 };

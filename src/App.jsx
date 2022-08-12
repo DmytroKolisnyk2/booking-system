@@ -5,8 +5,6 @@ import "./styles/App.scss";
 import "@pnotify/core/dist/PNotify.css";
 import "@pnotify/core/dist/BrightTheme.css";
 
-// import { info, error } from "@pnotify/core";
-
 import path from "./helpers/routerPath";
 
 import ModalsPage from "./pages/ModalsPage/ModalsPage";
@@ -34,9 +32,6 @@ import HomePage from "./pages/HomePage/HomePage";
 
 import Footer from "./components/Footer/Footer";
 const App = () => {
-  // info("Ігор яка красаааа");
-  // error("Ігор яка красаааа");
-
   return (
     <>
       <Routes>

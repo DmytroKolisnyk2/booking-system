@@ -10,12 +10,10 @@ import { getCurrentConfirmator } from "../../redux/confirmator/confirmator-opera
 import ConfirmatorComments from "../../components/ConfirmatorComments/ConfirmatorComments";
 import ConfirmatorDatePicker from "../../components/ConfirmatorDatePicker/ConfirmatorDatePicker";
 import { getUserById } from "../../helpers/user/user";
-import PostponeModal from "../../components/modals/PostponeModal/PostponeModal";
 
 const ConfirmatorPage = () => {
   const [value, setValue] = useState("");
   const { confirmatorId } = useParams();
-  const [isOpen, setIsOpen] = useState(false);
   const [confirmatorName, setConfirmatorName] = useState("");
   const dispatch = useDispatch();
 
@@ -43,18 +41,13 @@ const ConfirmatorPage = () => {
           <Confirmator />
 
           <div className={styles.btn_wrapper}>
-            <ConfirmationButtons
-              showPostpone={() => setIsOpen(true)}
-              value={value}
-              setValue={setValue}
-            />
+            <ConfirmationButtons value={value} setValue={setValue} />
           </div>
           <div className={styles.btn_input_wrapper}>
             <ConfirmatorComments value={value} />
           </div>
         </div>
       </section>
-      <PostponeModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
 };

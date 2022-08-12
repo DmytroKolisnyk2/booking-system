@@ -14,7 +14,7 @@
   padding: 5px 14px;
   border-radius: 15px;
 }
-@import "../../styles/variables.scss";
+
 .tableSection {
   width: 100%;
   max-width: 100vw;
@@ -105,6 +105,16 @@
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 20;
+  z-index: 1;
   background-color: #fff;
+}
+
+.buttonsWrapper {
+  display: inline-grid;
+  gap: 12px;
+}
+.availableManager {
+  font-size: 26px;
+  font-family: $poppins;
+  margin-bottom: 8px;
 }

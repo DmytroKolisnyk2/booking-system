@@ -6,7 +6,7 @@ const Confirmator = () => {
   const appointments = useSelector(getConfirmatorAppointments);
 
   const transformAppointmentData = (i) =>
-    `${i.hour}:00, ${i.course}, ${i.manager_name}, ${i.phone}`;
+    `${i.hour}:00, ${i.course}, ${i.manager_name}, ${i.phone}, ${i.crm_link}`;
 
   return (
     <ul className={styles.wrapper}>

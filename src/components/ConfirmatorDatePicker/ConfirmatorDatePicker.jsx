@@ -7,7 +7,6 @@ import {
   getConfirmatorDate,
   getConfirmatorDay,
   getConfirmatorHalf,
-  getConfirmatorLoadings,
   getConfirmatorWeekId,
 } from "../../redux/confirmator/confirmator-selectors";
 import {

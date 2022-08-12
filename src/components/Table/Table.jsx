@@ -26,7 +26,7 @@ const Table = ({ postponed, weekId, table, onClickSlotFn, consultation, caller }
                 {caller ? (
                   <TableItem
                     postponed={postponed}
-                    onClickFn={() => onClickSlotFn(item.slot_id)}
+                    onClickFn={onClickSlotFn}
                     data={item.time}
                     weekId={weekId}
                     colorId={item.amount}
@@ -34,6 +34,7 @@ const Table = ({ postponed, weekId, table, onClickSlotFn, consultation, caller }
                     hourIndex={table[dayIndex][hourIndex].time}
                     slotId={item.slot_id}
                     dayIndex={dayIndex}
+                    slots={item?.slots}
                   />
                 ) : consultation ? (
                   <TableItem

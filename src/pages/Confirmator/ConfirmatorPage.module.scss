@@ -8,6 +8,7 @@
   overflow: scroll;
   width: 1400px;
   height: 400px;
+  display: flex;
 }
 .title {
   font-size: 32px;
@@ -56,14 +57,11 @@
 .ul_item {
   margin: 0 auto;
 }
-.table__wrapper {
-  display: flex;
-  // justify-content: space-between;
-}
+
 .btn_wrapper {
   width: 600px;
   border-right: 2px solid black;
-  height: auto;
+  height: fit-content;
   align-items: center;
 }
 .btn {
