@@ -17,8 +17,24 @@
   font-family: $poppins;
   font-size: 20px;
   width: 45%;
+  color: $font-black;
   margin: 26px 0 10px;
   text-align-last: left;
+}
+.input__link {
+  margin-top: 20px;
+  font-family: $poppins;
+  font-size: 20px;
+  width: 45%;
+  color: $font-black;
+  margin: 26px 0 10px;
+  text-align-last: left;
+  cursor: pointer;
+  border: 0;
+  transition: ease-in-out 0.5s;
+  &:hover {
+    color: $blue;
+  }
 }
 .input__title {
   text-align: center;
