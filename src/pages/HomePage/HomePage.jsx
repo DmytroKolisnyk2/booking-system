@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../components/Header/Header";
-// import path from "../../helpers/routerPath";
+import styles from './HomePage.module.scss';
 
 const HomePage = () => {
   return (
@@ -14,7 +14,7 @@ const HomePage = () => {
           { text: "confirmator", path: "confirmator/1/" },
         ]}
       />
-      <section></section>
+      <section className={styles.home}><p className={styles.error}><span>404</span>Not Found</p></section>
     </>
   );
 };

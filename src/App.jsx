@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import "./styles/App.scss";
 import "@pnotify/core/dist/PNotify.css";
@@ -37,6 +37,7 @@ const App = () => {
       <Routes>
         <Route path={path.modals} element={<ModalsPage />} />
 
+        <Route path={path.admin} element={<Navigate to={path.users} />} />
         <Route path={path.admin} element={<AdminPage />}>
           <Route path={path.users} element={<AdminUsersPage />} />
           <Route path={path.groups} element={<AdminGroupsPage />} />
@@ -44,6 +45,7 @@ const App = () => {
           <Route path={path.actions} element={<AdminActionsPage />} />
         </Route>
 
+        <Route path={path.superAdmin} element={<Navigate to={path.users} />} />
         <Route path={path.superAdmin} element={<SuperAdministratorPage />}>
           <Route path={path.users} element={<UsersPage />} />
           <Route path={path.groups} element={<GroupsPage />} />
@@ -51,6 +53,7 @@ const App = () => {
           <Route path={path.actions} element={<ActionsPage />} />
         </Route>
 
+        <Route path={path.manager} element={<Navigate to={path.planning} />} />
         <Route path={path.manager} element={<ManagerPage />}>
           <Route path={path.consultations} element={<ConsultationsPage />} />
           <Route path={path.planning} element={<PlanningPage />} />

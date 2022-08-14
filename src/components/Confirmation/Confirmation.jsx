@@ -19,7 +19,7 @@ const Confirmator = () => {
             <li key={i.appointment_id} className={styles.ul_items}>
               <p className={styles.ul_items_text}>
                 {transformAppointmentData(i)}
-                <a target="_blank" href={i.crm_link}>
+                <a className={styles.link} target="_blank" href={i.crm_link}>
                   Link
                 </a>
               </p>

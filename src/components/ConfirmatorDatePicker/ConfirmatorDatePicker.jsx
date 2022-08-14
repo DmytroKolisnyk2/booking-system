@@ -52,14 +52,13 @@ export default function ConfirmatorDatePicker() {
   useEffect(() => setDate(new Date(tableDate)), [tableDate]);
 
   useEffect(() => {
-    console.log(currentDayId);
     if (!currentWeekId || !half || !tableDate || !date) return;
     dispatch(getConfirmatorWeek({ currentWeekId, currentDayId, half }));
   }, [half, date]);
 
   return (
     <div className={styles.calendar_wrapper}>
-      <Fade cascade duration={300} direction={'up'}>
+      <Fade cascade triggerOnce duration={300} direction={'up'}>
         <button
           onClick={onFirstHalfHandler}
           className={styles.halfBtn + (half === 1 ? " " + styles.halfBtnActive : "")}
