@@ -20,6 +20,7 @@ import { postStartConsultation } from "../../helpers/consultation/consultation";
 import { updateSlot } from "../../helpers/week/week";
 import StatusDefinition from "../../components/StatusDefinition/StatusDefinition";
 import DatePicker from "../../components/DatePicker/DatePicker";
+import Days from '../../components/Days/Days';
 
 const ConsultationPage = () => {
   const { managerId } = useParams();
@@ -27,7 +28,6 @@ const ConsultationPage = () => {
   const tableDate = useSelector(getDate);
   const table = useSelector(getTable);
   const weekId = useSelector(getWeekId);
-  const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
   const onClickSlotButton = (dayIndex, hourIndex) => {
     dispatch(setManagerLoading(true));
@@ -67,15 +67,7 @@ const ConsultationPage = () => {
     <section className={styles.tableSection}>
       <StatusDefinition />
       <DatePicker tableDate={tableDate} changeDateFn={getManagerWorkWeek} />
-      <div className={styles.wrapperDays}>
-        {arrayDays.map((item, index) => {
-          return (
-            <div key={index} className={styles.day}>
-              <h3 className={styles.dayTitle}>{item}</h3>
-            </div>
-          );
-        })}
-      </div>
+      <Days />
       <Table table={table} consultation onClickSlotFn={onClickSlotButton} />
     </section>
   );

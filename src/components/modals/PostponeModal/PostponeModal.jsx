@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Table from "../../Table/Table";
 import Days from "../../Days/Days";
 import { getUsersByRole } from "../../../helpers/user/user";
-import { getDate, getTable, getWeekId } from "../../../redux/caller/caller-selectors";
+import { getCallerDate, getTable, getWeekId } from "../../../redux/caller/caller-selectors";
 import { getCallerCurrentWeek, getCallerWeek } from "../../../redux/caller/caller-operations";
 import Button from "../../Buttons/Buttons";
 import ManagerListModal from "./ManagerListModal/ManagerListModal";
@@ -24,7 +24,7 @@ export default function PostponeModal({ isOpen, onClose, appointmentId }) {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
 
   const dispatch = useDispatch();
-  const tableDate = useSelector(getDate);
+  const tableDate = useSelector(getCallerDate);
   const table = useSelector(getTable);
   const weekId = useSelector(getWeekId);
 

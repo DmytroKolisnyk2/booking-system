@@ -10,7 +10,7 @@ import Table from "../../components/Table/Table";
 import Days from "../../components/Days/Days";
 import { getUserById } from "../../helpers/user/user";
 import {
-  getDate,
+  getCallerDate,
   getTable,
   getWeekId,
 } from "../../redux/caller/caller-selectors";
@@ -18,7 +18,7 @@ import { getCallerCurrentWeek, getCallerWeek } from "../../redux/caller/caller-o
 export default function CallerPage() {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
-  const tableDate = useSelector(getDate);
+  const tableDate = useSelector(getCallerDate);
   const table = useSelector(getTable);
   const weekId = useSelector(getWeekId);
   const { callerId } = useParams();
@@ -44,7 +44,7 @@ export default function CallerPage() {
         </p>
         <section className={styles.tableSection}>
           <DatePicker changeDateFn={getCallerWeek} tableDate={tableDate} caller />
-          <Days />
+          <Days caller />
           {!error && <Table weekId={weekId} table={table} caller />}
           {error && <p className={styles.free__places}>{error.message}</p>}
         </section>

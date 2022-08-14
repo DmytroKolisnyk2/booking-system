@@ -18,33 +18,13 @@
   border-bottom: 1px solid $font-black;
   width: 190px;
   align-items: center;
+  color: $font-black;
+  border-collapse: collapse;
+  transition: 200ms linear;
+  &:hover {
+    color: $blue;
+  }
 }
-  // margin-right: 54px;
-  // margin-left: 54px;
-
-// .ul_items::after {
-//   position: absolute;
-//   top: 50%;
-//   right: -24px;
-//   transform: translateY(-50%);
-//   content: "";
-//   display: block;
-//   width: 2px;
-//   height: 100%;
-//   background-color: #000;
-// }
-// .ul_items::after {
-//   content: "";
-//   display: flex;
-//   width: 14px;
-//   height: 14px;
-//   background-position: center;
-//   background-image: url("../../img/pencil.png");
-//   background-repeat: no-repeat;
-//   background-size: 8px 8px;
-//   background-color: $font-black;
-//   border-radius: 50%;
-// }
 
 .ul_items_btn {
   cursor: pointer;
@@ -59,9 +39,7 @@
   align-items: center;
   
 }
-.main_wrapper {
 
-}
 .wrapper {
   border-right: 2px solid black;
   height: auto;

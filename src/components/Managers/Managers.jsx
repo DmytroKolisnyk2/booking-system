@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { getUsersByRole } from "../../helpers/user/user";
 import styles from "./Managers.module.scss";
 import ChangeUser from "../modals/ChangeUser/ChangeUser";
@@ -36,22 +37,36 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
           <ul className={styles.main_wrapper}>
             {managers.map((item) => {
               return (
-                <li className={styles.ul_items} key={item.name}>
-                  <p className={styles.ul_items_text}>
-                    {item.name} ({item.id})
-                  </p>
-                  <button
-                    className={styles.ul_items_btn}
-                    data-modal="change-user"
-                    onClick={() => {
-                      setIsOpen(!isOpen);
-                      setId(item.id);
-                      setName(item.name);
-                      setTelegram(item.telegram);
-                      setRole(item.role_id);
-                      setLogin(item.login);
-                    }}
-                  />
+                <li key={item.name}>
+                  <Link
+                    target="_blank"
+                    className={styles.ul_items}
+                    to={
+                      role === "Manager"
+                        ? `/manager/${item.id}/planning/`
+                        : role === "Administrator"
+                        ? `/admin/${item.id}`
+                        : role === "Caller"
+                        ? `/caller/${item.id}`
+                        : role === "Confirmator" && `/confirmator/${item.id}`
+                    }
+                  >
+                    <p className={styles.ul_items_text}>
+                      {item.name} ({item.id})
+                    </p>
+                    <button
+                      className={styles.ul_items_btn}
+                      data-modal="change-user"
+                      onClick={() => {
+                        setIsOpen(!isOpen);
+                        setId(item.id);
+                        setName(item.name);
+                        setTelegram(item.telegram);
+                        setRole(item.role_id);
+                        setLogin(item.login);
+                      }}
+                    />
+                  </Link>
                 </li>
               );
             })}

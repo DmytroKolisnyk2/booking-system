@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .wrapperDays {
     max-width: 1287px;
@@ -15,6 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     border-right: 3px solid $font-black;
     &:last-child {
         border-right: none;
@@ -26,4 +27,11 @@
     color: $font-black;
     font-weight: 400;
     font-size: 36px;
+}
+
+.dayDate {
+    font-family: $poppins;
+    color: $font-black;
+    font-weight: 400;
+    font-size: 26px;
 }

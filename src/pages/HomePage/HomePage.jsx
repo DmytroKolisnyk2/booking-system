@@ -7,11 +7,7 @@ const HomePage = () => {
     <>
       <Header
         endpoints={[
-          { text: "caller", path: "caller/1" },
           { text: "superadmin", path: "superadmin/users/" },
-          { text: "admin", path: "admin/1/users/" },
-          { text: "manager", path: "manager/1/planning/" },
-          { text: "confirmator", path: "confirmator/1/" },
         ]}
       />
       <section className={styles.home}><p className={styles.error}><span>404</span>Not Found</p></section>

@@ -26,6 +26,7 @@ import { updateSlot, saveTable, getWeekTable } from "../../helpers/week/week";
 import Button from "../../components/Buttons/Buttons";
 import ControlButtons from "../../components/ControlButtons/ControlButtons";
 import DatePicker from "../../components/DatePicker/DatePicker";
+import Days from "../../components/Days/Days";
 
 const PlanningPage = () => {
   const { managerId } = useParams();
@@ -37,7 +38,6 @@ const PlanningPage = () => {
   const table = useSelector(getTable);
   const typeSelection = useSelector(getTypeSelection);
   const weekId = useSelector(getWeekId);
-  const arrayDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const onSavedTemplate = () => {
     managerTable.append("template", JSON.stringify(table));
     managerTable.append(
@@ -174,15 +174,7 @@ const PlanningPage = () => {
     <section className={styles.tableSection}>
       <ControlButtons />
       <DatePicker tableDate={tableDate} changeDateFn={getManagerWeek} />
-      <div className={styles.wrapperDays}>
-        {arrayDays.map((item, index) => {
-          return (
-            <div key={index} className={styles.day}>
-              <h3 className={styles.dayTitle}>{item}</h3>
-            </div>
-          );
-        })}
-      </div>
+      <Days />
       <Table table={table} onClickSlotFn={onClickSlot} />
       <h3 className={styles.templateText}>
         {templateText === "Template created"

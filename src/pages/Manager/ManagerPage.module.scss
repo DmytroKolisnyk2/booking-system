@@ -7,34 +7,6 @@
   margin-bottom: 72px;
 }
 
-.wrapperDays {
-  max-width: 1287px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto 52px auto;
-}
-
-.day {
-  width: 183px;
-  height: 64px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-right: 3px solid $font-black;
-  &:last-child {
-    border-right: none;
-  }
-}
-
-.dayTitle {
-  font-family: $poppins;
-  color: $font-black;
-  font-weight: 400;
-  font-size: 36px;
-}
-
 .verticalLine {
   transform: rotate(90deg);
   width: 63px;
@@ -85,13 +57,13 @@
 }
 
 .tableButton {
-    font-size: 32px !important;
-    padding: 15px 31px !important;
-    border-radius: 59px !important;
-    transition: 200ms linear;
-    &:hover {
-        @extend %hover-shadow;
-    }
+  font-size: 32px !important;
+  padding: 15px 31px !important;
+  border-radius: 59px !important;
+  transition: 200ms linear;
+  &:hover {
+    @extend %hover-shadow;
+  }
 }
 
 .templateText {

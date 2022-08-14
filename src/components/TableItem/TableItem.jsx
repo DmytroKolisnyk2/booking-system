@@ -113,7 +113,7 @@ const TableItem = ({
               />
             )}
           </>
-        ) : colorId === 6 ? (
+        ) : colorId === 6 || colorId === 7 || colorId === 8 ? (
           <>
             <li className={activeClassnames(colorId)}>
               {`${data}:00`}
@@ -146,7 +146,10 @@ const TableItem = ({
           <li className={activeClassnames(colorId)}>{`${data}:00`}</li>
         )
       ) : (
-        <li onClick={onClickFn} className={activeClassnames(colorId)}>{`${data}:00`}</li>
+        <li
+          onClick={onClickFn}
+          className={activeClassnames(colorId)}
+        >{`${data}:00`}</li>
       )}
     </>
   );
