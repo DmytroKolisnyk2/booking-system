@@ -6,7 +6,7 @@ import { Fade } from "react-awesome-reveal";
 export default function BgWrapper({ children, title, top, bottom }) {
   return (
     <section className={styles.bgWrapper}>
-     <Fade triggerOnce duration={300}>
+     <Fade triggerOnce duration={400}>
         <img
           style={{
             marginTop: `${top}px`,
