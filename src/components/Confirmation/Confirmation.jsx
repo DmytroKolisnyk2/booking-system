@@ -9,7 +9,7 @@ const Confirmator = () => {
   const appointments = useSelector(getConfirmatorAppointments);
 
   const transformAppointmentData = (i) =>
-    `${i.hour}:00, ${i.course}, ${i.manager_name}, ${i.phone}, ${i.crm_link}`;
+    `${i.hour}:00, ${i.course}, ${i.manager_name}, ${i.phone}`;
 
   return (
     <ul className={styles.wrapper}>
@@ -17,7 +17,12 @@ const Confirmator = () => {
         {appointments.map((i) => {
           return (
             <li key={i.appointment_id} className={styles.ul_items}>
-              <p className={styles.ul_items_text}>{transformAppointmentData(i)}</p>
+              <p className={styles.ul_items_text}>
+                {transformAppointmentData(i)}
+                <a target="_blank" href={i.crm_link}>
+                  Link
+                </a>
+              </p>
             </li>
           );
         })}
