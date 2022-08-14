@@ -1,20 +1,20 @@
 import styles from "./ConsultationInfo.module.scss";
 import Modal from "../../Modal/Modal";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getGroups } from "../../../helpers/group/group";
 import { getCourses } from "../../../helpers/course/course";
 import { updateSlot } from "../../../helpers/week/week";
-import { getUsersByRole } from "../../../helpers/user/user";
+import { getAppointment } from "../../../helpers/appointment/appointment";
 import { postConsultationResult } from "../../../helpers/consultation/consultation";
 import { getTable, getWeekId } from "../../../redux/manager/manager-selectors";
+import { Link } from "react-router-dom";
 import {
   setManagerError,
   setManagerLoading,
   changeStatusSlot,
 } from "../../../redux/manager/manager-operations";
-import DropList from "../../DropList/DropList";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
 
@@ -32,10 +32,14 @@ const ConsultationInfo = ({
   const [course, setCourse] = useState("");
   const [group, setGroup] = useState("");
   const [message, setMessage] = useState("");
-  const [manager, setManager] = useState("");
   const { managerId } = useParams();
+  const [appointment, setAppointment] = useState([]);
   const weekId = useSelector(getWeekId);
   const managerTable = useSelector(getTable);
+  useEffect(() => {
+    const get = async () => await getAppointment({ id: slotId });
+    get().then((data) => setAppointment(data.data));
+  }, [isOpen]);
   return (
     <>
       {isOpen && (
@@ -72,7 +76,6 @@ const ConsultationInfo = ({
                   setResult(7);
                   setCourse("");
                   setMessage("");
-                  setManager("");
                   return dispatch(setManagerLoading(false));
                 });
             }}
@@ -89,13 +92,17 @@ const ConsultationInfo = ({
             }}
             title="Consultation Info"
           >
-            <DropList
-              title="Manager"
-              value={manager}
-              setValue={setManager}
-              request={() => getUsersByRole("Manager")}
-              label="course"
-            />
+            <label className={styles.input__label}>
+              {appointment && (
+                <a
+                  target="_blank"
+                  href={appointment.zoho_link}
+                  className={styles.input__link}
+                >
+                  CRM Link
+                </a>
+              )}
+            </label>
             <Select
               title="Course:"
               value={course}

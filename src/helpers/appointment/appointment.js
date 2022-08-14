@@ -11,6 +11,14 @@ const postAppointment = (credentials) => {
       throw error;
     });
 };
+const getAppointment = ({ id }) => {
+  return axios
+    .get(`/appointment/${id}`)
+    .then((res) => res.data)
+    .catch((error) => {
+      throw error;
+    });
+};
 const createAppointment = (
   link,
   managerId,
@@ -35,4 +43,4 @@ const createAppointment = (
     });
 };
 
-export { postAppointment, createAppointment };
+export { getAppointment, postAppointment, createAppointment };
