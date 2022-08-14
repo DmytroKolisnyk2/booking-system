@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { getDate } from "../../redux/manager/manager-selectors";
 import { getCallerDate } from "../../redux/caller/caller-selectors";
 import moment from "moment";
+import { Fade } from "react-awesome-reveal";
 
 const Days = ({ caller }) => {
   const managerDate = new Date(useSelector(getDate));
@@ -24,8 +25,10 @@ const Days = ({ caller }) => {
               : moment(date).add(index, "days").month() + 1;
           return (
             <div key={index} className={styles.day}>
-              <h3 className={styles.dayTitle}>{item}</h3>
-              <span className={styles.dayDate}>{`${day}.${month}`}</span>
+                <h3 className={styles.dayTitle}>{item}</h3>
+              <Fade delay={500} triggerOnce duration={500}>
+                <span className={styles.dayDate}>{`${day}.${month}`}</span>
+              </Fade>
             </div>
           );
         })}

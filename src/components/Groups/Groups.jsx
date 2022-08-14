@@ -4,6 +4,7 @@ import { getGroups } from "../../helpers/group/group";
 import { getCourses } from "../../helpers/course/course";
 import styles from "./Groups.module.scss";
 import ChangeGroup from "../modals/ChangeGroup/ChangeGroup";
+import { Fade } from "react-awesome-reveal";
 
 export default function Groups({ text, isOpenModal, dataName }) {
   const [groups, setGroups] = useState([]);
@@ -63,25 +64,27 @@ export default function Groups({ text, isOpenModal, dataName }) {
               <div className={styles.main_wrapper} key={i.id}>
                 <p className={styles.mini_title}>{i.name}</p>
                 <ul className={styles.list}>
-                  {groups.map((item) => {
-                    if (item.name === "Не призначено") return;
-                    return (
-                      item.course_id === i.id && (
-                        <li className={styles.ul_items} key={item.id}>
-                          <p className={styles.ul_items_text}>{item.name}</p>
-                          <button
-                            className={styles.ul_items_btn}
-                            data-modal="change-user"
-                            onClick={() => {
-                              setIsOpen(!isOpen);
-                              setId(item.id);
-                              setName(item.name);
-                            }}
-                          />
-                        </li>
-                      )
-                    );
-                  })}
+                  <Fade cascade triggerOnce duration={300} direction="up">
+                    {groups.map((item) => {
+                      if (item.name === "Не призначено") return;
+                      return (
+                        item.course_id === i.id && (
+                          <li className={styles.ul_items} key={item.id}>
+                            <p className={styles.ul_items_text}>{item.name}</p>
+                            <button
+                              className={styles.ul_items_btn}
+                              data-modal="change-user"
+                              onClick={() => {
+                                setIsOpen(!isOpen);
+                                setId(item.id);
+                                setName(item.name);
+                              }}
+                            />
+                          </li>
+                        )
+                      );
+                    })}
+                  </Fade>
                 </ul>
               </div>
             );

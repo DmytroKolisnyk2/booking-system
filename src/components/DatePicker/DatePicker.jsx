@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import moment from "moment";
 import styles from "./DatePicker.module.scss";
+import { Fade } from "react-awesome-reveal";
+
 
 import { getWeekId } from "../../redux/manager/manager-selectors";
 
@@ -41,7 +43,7 @@ const DatePicker = ({ tableDate, changeDateFn, caller }) => {
   }, [tableDate]);
   return (
     <div className={styles.calendarController}>
-    <>
+    <Fade cascade triggerOnce duration={300} direction='up'>
         <button
           onClick={onClickArrowLeft}
           className={styles.calendarControllerButton}
@@ -59,7 +61,7 @@ const DatePicker = ({ tableDate, changeDateFn, caller }) => {
         >
           {">"}
         </button>
-    </>
+    </Fade>
     </div>
   );
 };

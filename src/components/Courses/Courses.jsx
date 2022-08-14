@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getCourses } from "../../helpers/course/course";
 import styles from "../Managers/Managers.module.scss";
 import ChangeCourses from "../modals/ChangeCourse/ChangeCourse";
+import { Fade } from "react-awesome-reveal";
 
 export default function Courses({ text, isOpenModal, role }) {
   const [courses, setCorses] = useState([]);
@@ -33,37 +34,34 @@ export default function Courses({ text, isOpenModal, role }) {
     <>
       {errorMessage && <p className="error"> {errorMessage} </p>}
       <div className={styles.wrapper}>
-        <ChangeCourses
-          isOpen={isOpen}
-          handleClose={() => handleClose()}
-          id={id}
-          dataName={name}
-        />
+        <ChangeCourses isOpen={isOpen} handleClose={() => handleClose()} id={id} dataName={name} />
         <p className={styles.mini_title}>{text}</p>
         {courses?.length > 0 && (
           <ul className={styles.main_wrapper}>
-            {courses.map((item) => {
-              if (item.name === "Не призначено") return;
-              return (
-                <li className={styles.ul_items} key={item.name}>
-                  <p className={styles.ul_items_text}>{item.name}</p>
-                  {/* <button className={styles.ul_items_btn} onClick={ <ChangeUser
-            isOpen={isOpen}
-            handleClose={() => handleClose()}
-            id={id}
-          />}/> */}
-                  <button
-                    className={styles.ul_items_btn}
-                    data-modal="change-user"
-                    onClick={() => {
-                      setIsOpen(!isOpen);
-                      setId(item.id);
-                      setName(item.name);
-                    }}
-                  />
-                </li>
-              );
-            })}
+            <Fade cascade triggerOnce duration={300} direction="up">
+              {courses.map((item) => {
+                if (item.name === "Не призначено") return;
+                return (
+                  <li className={styles.ul_items} key={item.name}>
+                    <p className={styles.ul_items_text}>{item.name}</p>
+                    {/* <button className={styles.ul_items_btn} onClick={ <ChangeUser
+              isOpen={isOpen}
+              handleClose={() => handleClose()}
+              id={id}
+            />}/> */}
+                    <button
+                      className={styles.ul_items_btn}
+                      data-modal="change-user"
+                      onClick={() => {
+                        setIsOpen(!isOpen);
+                        setId(item.id);
+                        setName(item.name);
+                      }}
+                    />
+                  </li>
+                );
+              })}
+            </Fade>
           </ul>
         )}
       </div>

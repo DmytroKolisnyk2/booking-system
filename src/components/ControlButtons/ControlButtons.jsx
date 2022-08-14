@@ -15,7 +15,9 @@ const ControlButtons = () => {
     dispatch(changeTypeSelection(event.target.name));
   };
   return (
-    <BgWrapper top={-80} title="Manager">
+    <>
+      <BgWrapper top={-80} title="Manager"></BgWrapper>
+
       <div className={styles.wrapperControlButtons}>
         <RadioButton
           buttonType={buttonType}
@@ -42,7 +44,7 @@ const ControlButtons = () => {
           title="Free"
         />
       </div>
-    </BgWrapper>
+    </>
   );
 };
 

@@ -16,10 +16,10 @@ const SuperAdministrator = () => {
           { text: "actions", path: path.actions },
         ]}
       />
-      <div className={styles.main_wrapper}>
+      <section className={styles.main_wrapper}>
         <BgWrapper title="Super administrator" />
         <Outlet />
-      </div>
+      </section>
     </>
   );
 };

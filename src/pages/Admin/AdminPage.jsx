@@ -32,7 +32,7 @@ const AdminPage = () => {
         ]}
         user={{ name: adminName, role: "Admin" }}
       />
-      <div className={styles.main_wrapper}>
+      <section className={styles.main_wrapper}>
         <BgWrapper title="Administrator" />
         <Button
           paddingRight={36}
@@ -45,7 +45,7 @@ const AdminPage = () => {
           Manage: Administrator Марія
         </Button>
         <Outlet />
-      </div>
+      </section>
     </>
   );
 };
