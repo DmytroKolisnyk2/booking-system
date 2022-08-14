@@ -7,7 +7,7 @@
 .table__wrapper {
   overflow: scroll;
   width: 1400px;
-  height: 400px;
+  height: 300px;
   display: flex;
 }
 .title {
@@ -116,7 +116,7 @@
   border-radius: 16px;
   border: 1px solid transparent;
   transition: $main-transition;
-  &::placeholder{
+  &::placeholder {
     font-size: 14px;
   }
   &:focus {
@@ -133,4 +133,9 @@
   justify-content: space-between;
   align-items: center;
   width: 460px;
+}
+.errorTitle {
+  font-size: 26px;
+  font-family: $poppins;
+  height: 300px;
 }

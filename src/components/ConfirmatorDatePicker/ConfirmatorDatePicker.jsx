@@ -17,6 +17,9 @@ import {
   secondHalf,
 } from "../../redux/confirmator/confirmator-operations";
 
+import { Fade } from "react-awesome-reveal";
+
+
 export default function ConfirmatorDatePicker() {
   const dispatch = useDispatch();
 
@@ -49,43 +52,46 @@ export default function ConfirmatorDatePicker() {
   useEffect(() => setDate(new Date(tableDate)), [tableDate]);
 
   useEffect(() => {
-    if (!currentDayId || !currentWeekId || !half || !tableDate || !date) return;
+    console.log(currentDayId);
+    if (!currentWeekId || !half || !tableDate || !date) return;
     dispatch(getConfirmatorWeek({ currentWeekId, currentDayId, half }));
   }, [half, date]);
 
   return (
     <div className={styles.calendar_wrapper}>
-      <button
-        onClick={onFirstHalfHandler}
-        className={styles.halfBtn + (half === 1 ? " " + styles.halfBtnActive : "")}
-        type="button"
-      >
-        1-half
-      </button>
-      <div className={styles.calendarController}>
+      <Fade cascade duration={300} direction={'up'}>
         <button
-          onClick={onClickArrowLeft}
-          className={styles.calendarControllerButton}
+          onClick={onFirstHalfHandler}
+          className={styles.halfBtn + (half === 1 ? " " + styles.halfBtnActive : "")}
           type="button"
         >
-          {"<"}
+          1-half
         </button>
-        <span className={styles.calendarControllerText}>{`${dateDay}.${month}`}</span>
+        <div className={styles.calendarController}>
+          <button
+            onClick={onClickArrowLeft}
+            className={styles.calendarControllerButton}
+            type="button"
+          >
+            {"<"}
+          </button>
+          <span className={styles.calendarControllerText}>{`${dateDay}.${month}`}</span>
+          <button
+            onClick={onClickArrowRight}
+            className={styles.calendarControllerButton}
+            type="button"
+          >
+            {">"}
+          </button>
+        </div>
         <button
-          onClick={onClickArrowRight}
-          className={styles.calendarControllerButton}
+          onClick={onSecondHalfHandler}
+          className={styles.halfBtn + (half === 2 ? " " + styles.halfBtnActive : "")}
           type="button"
         >
-          {">"}
+          2-half
         </button>
-      </div>
-      <button
-        onClick={onSecondHalfHandler}
-        className={styles.halfBtn + (half === 2 ? " " + styles.halfBtnActive : "")}
-        type="button"
-      >
-        2-half
-      </button>
+      </Fade>
     </div>
   );
 }

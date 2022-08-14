@@ -16,6 +16,7 @@
     "node-sass": "^7.0.1",
     "pnotify": "^5.2.0",
     "react": "^18.2.0",
+    "react-awesome-reveal": "^4.0.0",
     "react-calendar": "^3.7.0",
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^5.1.5",

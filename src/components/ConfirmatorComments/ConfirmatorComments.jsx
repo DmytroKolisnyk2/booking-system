@@ -27,7 +27,6 @@ const ConfirmatorComments = ({ value }) => {
   ];
 
   useEffect(() => {
-    console.log(reject);
     Object.keys(reject).forEach((item) =>
       setCancelConfirmation(reject[item].slot_id, 1, reject[item].text)
     );

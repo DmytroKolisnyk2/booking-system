@@ -26,12 +26,13 @@ const date = createReducer(INITIAL_WEEK, {
   [secondHalf.type]: (state, _) => ({ ...state, half: 2 }),
   [increaseDay.type]: (state, _) => {
     if (state.day === 6) {
-      return { ...state, day: 1, week_id: state.week_id + 1 };
+      return { ...state, day: 0, week_id: state.week_id + 1 };
     }
     return { ...state, day: state.day + 1 };
   },
   [decreaseDay.type]: (state, _) => {
     if (state.day === 0) {
+      if (state.week_id === 0) return;
       return { ...state, day: 6, week_id: state.week_id - 1 };
     }
     return { ...state, day: state.day - 1 };

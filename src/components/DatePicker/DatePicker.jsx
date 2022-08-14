@@ -41,23 +41,25 @@ const DatePicker = ({ tableDate, changeDateFn, caller }) => {
   }, [tableDate]);
   return (
     <div className={styles.calendarController}>
-      <button
-        onClick={onClickArrowLeft}
-        className={styles.calendarControllerButton}
-        type="button"
-      >
-        {"<"}
-      </button>
-      <span className={styles.calendarControllerText}>
-        {`${dateDay}.${month} - ${endDateDay}.${endMonth}`}
-      </span>
-      <button
-        onClick={onClickArrowRight}
-        className={styles.calendarControllerButton}
-        type="button"
-      >
-        {">"}
-      </button>
+    <>
+        <button
+          onClick={onClickArrowLeft}
+          className={styles.calendarControllerButton}
+          type="button"
+        >
+          {"<"}
+        </button>
+        <span className={styles.calendarControllerText}>
+          {`${dateDay}.${month} - ${endDateDay}.${endMonth}`}
+        </span>
+        <button
+          onClick={onClickArrowRight}
+          className={styles.calendarControllerButton}
+          type="button"
+        >
+          {">"}
+        </button>
+    </>
     </div>
   );
 };

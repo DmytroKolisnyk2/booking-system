@@ -16,8 +16,8 @@ export default function ManagerListModal({closePostponed, isOpenDropdown, setIsO
               <Button
                 onclick={() =>
                   setPostponedConfirmation(item.id, appointmentId)
-                    .then(({ data }) => {
-                      console.log(data);
+                    .then(() => {
+                      setIsOpenDropdown("")
                       closePostponed();
                       info("Successfully postponed");
                     })
@@ -26,11 +26,12 @@ export default function ManagerListModal({closePostponed, isOpenDropdown, setIsO
                 key={item.id}
                 paddingRight={31}
                 paddingLeft={31}
-                width={"100%"}
+                width={"fit-content"}
                 bgColor={"black"}
                 color={"white"}
+                margin={"0 auto"}
               >
-                Manager id: {item.manager_id}; Slot id: {item.id}
+               Manager: {item.name}
               </Button>
             ))}
           </div>
