@@ -23,6 +23,7 @@ export default function UsersPage() {
           role="Manager"
           isOpenModal={isOpen}
           isAdmin={false}
+          isManager
         />
 
         <Managers

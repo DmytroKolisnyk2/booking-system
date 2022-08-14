@@ -21,9 +21,15 @@
   color: $font-black;
   border-collapse: collapse;
   transition: 200ms linear;
-  &:hover {
+  &:hover .ul_items_link {
     color: $blue;
   }
+}
+
+.ul_items_link {
+    margin: 12px auto;
+  color: $font-black;
+  transition: 200ms linear;
 }
 
 .ul_items_btn {
@@ -55,7 +61,4 @@
   font-weight: 400;
   font-size: 16px;
   text-align: center;
-  margin: 0 auto;
-  margin-bottom: 12px;
-  margin-top: 12px;
 }

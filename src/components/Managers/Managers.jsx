@@ -5,8 +5,9 @@ import { getUsersByRole } from "../../helpers/user/user";
 import styles from "./Managers.module.scss";
 import ChangeUser from "../modals/ChangeUser/ChangeUser";
 import { Fade } from "react-awesome-reveal";
+import { getManagers } from "../../helpers/manager/manager";
 
-export default function Managers({ text, isOpenModal, role, isAdmin }) {
+export default function Managers({ text, isOpenModal, role, isAdmin, isManager }) {
   const [name, setName] = useState("");
   const [telegram, setTelegram] = useState("");
   const [managers, setManagers] = useState([]);
@@ -15,7 +16,7 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
   const [errorMessage, setErrorMessage] = useState("");
   const [newRole, setRole] = useState("");
   const [newLogin, setLogin] = useState("");
-  const getManagersData = async () => {
+  const getUsersData = async () => {
     const res = await getUsersByRole(role)
       .then((res) =>
         res.data ? res.data : setErrorMessage("Example error message!")
@@ -24,8 +25,17 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
     setManagers(res);
     return res;
   };
+    const getManagersData = async () => {
+      const res = await getManagers()
+        .then((res) =>
+          res.data ? res.data : setErrorMessage("Example error message!")
+        )
+        .catch((error) => setErrorMessage(error.message));
+      setManagers(res);
+      return res;
+    };
   useEffect(() => {
-    getManagersData();
+    isManager ? getManagersData() : getUsersData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, isOpenModal]);
 
@@ -39,10 +49,10 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
             <Fade cascade triggerOnce duration={300} direction="up">
               {managers.map((item) => {
                 return (
-                  <li key={item.name}>
+                  <li className={styles.ul_items} key={item.name}>
                     <Link
+                      className={styles.ul_items_link}
                       target="_blank"
-                      className={styles.ul_items}
                       to={
                         role === "Manager"
                           ? `/manager/${item.id}/planning/`
@@ -56,19 +66,19 @@ export default function Managers({ text, isOpenModal, role, isAdmin }) {
                       <p className={styles.ul_items_text}>
                         {item.name} ({item.id})
                       </p>
-                      <button
-                        className={styles.ul_items_btn}
-                        data-modal="change-user"
-                        onClick={() => {
-                          setIsOpen(!isOpen);
-                          setId(item.id);
-                          setName(item.name);
-                          setTelegram(item.telegram);
-                          setRole(item.role_id);
-                          setLogin(item.login);
-                        }}
-                      />
                     </Link>
+                    <button
+                      className={styles.ul_items_btn}
+                      data-modal="change-user"
+                      onClick={() => {
+                        setIsOpen(!isOpen);
+                        setId(item.id);
+                        setName(item.name);
+                        setTelegram(item.telegram);
+                        setRole(item.role_id);
+                        setLogin(item.login);
+                      }}
+                    />
                   </li>
                 );
               })}
