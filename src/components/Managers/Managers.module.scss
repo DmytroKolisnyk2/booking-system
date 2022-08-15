@@ -27,7 +27,7 @@
 }
 
 .ul_items_link {
-    margin: 12px auto;
+  margin: 12px auto;
   color: $font-black;
   transition: 200ms linear;
 }
@@ -42,7 +42,6 @@
   background-color: $font-black;
   border-radius: 50%;
   align-items: center;
-  
 }
 
 .wrapper {
@@ -61,4 +60,18 @@
   font-weight: 400;
   font-size: 16px;
   text-align: center;
+}
+.main_wrapper {
+  border-right: 2px solid black;
+  border-right: 2px solid black;
+  padding: 5px 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+  width: 232px;
+
+  &:nth-last-child(1) {
+    border-right: 0;
+  }
 }

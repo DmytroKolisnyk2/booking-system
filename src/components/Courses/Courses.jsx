@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { getCourses } from "../../helpers/course/course";
-import styles from "../Managers/Managers.module.scss";
+import styles from "../Groups/Groups.module.scss";
 import ChangeCourses from "../modals/ChangeCourse/ChangeCourse";
 import { Fade } from "react-awesome-reveal";
 
@@ -33,7 +33,7 @@ export default function Courses({ text, isOpenModal, role }) {
   return (
     <>
       {errorMessage && <p className="error"> {errorMessage} </p>}
-      <div className={styles.wrapper}>
+      <div className={styles.wrapperCourses}>
         <ChangeCourses isOpen={isOpen} handleClose={() => handleClose()} id={id} dataName={name} />
         <p className={styles.mini_title}>{text}</p>
         {courses?.length > 0 && (

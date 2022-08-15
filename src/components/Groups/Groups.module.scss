@@ -48,13 +48,28 @@
 .list {
   flex-grow: 1;
 }
+.wrapperCourses {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-right: 2px solid black;
+  height: auto;
+  align-items: center;
+  width: 232px;
+
+  padding-right: 20px;
+  padding-left: 20px;
+  &:nth-last-child(1) {
+    border-right: none;
+  }
+}
 .wrapper {
   display: flex;
   justify-content: center;
   border-right: 2px solid black;
   height: auto;
   align-items: center;
-  width: 232px;
+  width: 700px;
 
   padding-right: 20px;
   padding-left: 20px;
