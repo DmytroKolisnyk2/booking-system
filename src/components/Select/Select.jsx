@@ -56,7 +56,7 @@ const Select = ({
           className={
             classname ? classnames(styles.select, classname) : styles.select
           }
-          value={manager ? 2 : value}
+          value={manager && !value ? 2 : value}
           onChange={(e) => setValue(e.target.value)}
           onClick={getData}
           required
