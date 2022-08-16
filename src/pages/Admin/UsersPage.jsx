@@ -10,31 +10,32 @@ export default function UsersPage() {
   const handleClose = () => {
     setIsOpen(!isOpen);
   };
+    const usersArray = [
+      { text: "Managers", role: "Manager", isAdmin: false, isManager: true },
+      {
+        text: "Confirmators",
+        role: "Confirmator",
+        isAdmin: false,
+        isManager: false,
+      },
+      { text: "Call center", role: "Caller", isAdmin: false, isManager: false },
+    ];
   return (
     <>
       <h3 className={styles.main_title}>Manage users</h3>
       <div className={styles.main_wrapper2}>
-        <Managers
-          text={"Managers"}
-          role="Manager"
-          isOpenModal={isOpen}
-          isAdmin={true}
-          isManager
-        />
-
-        <Managers
-          text={"Confirmators"}
-          role="Confirmator"
-          isOpenModal={isOpen}
-          isAdmin={true}
-        />
-
-        <Managers
-          text={"Call center"}
-          role="Caller"
-          isOpenModal={isOpen}
-          isAdmin={true}
-        />
+        {usersArray.map((item, index) => {
+          return (
+            <Managers
+              key={index}
+              text={item.text}
+              role={item.role}
+              isOpenModal={isOpen}
+              isAdmin={item.isAdmin}
+              isManager={item.isManager}
+            />
+          );
+        })}
       </div>
       <div className={styles.btn_wrapper}>
         <button
