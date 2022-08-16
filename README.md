@@ -1,6 +1,8 @@
 # Booking system
 - [Descrption](#description)
 - [Our Team](#our-team)
+- [Start of project](#work-with-project)
+  - [First week](#перший-тиждень)
 
 ### Description
 
@@ -13,8 +15,18 @@ Intern проект нашою команди з використанням reac
 
 ### Our team
 
-[Дмитро Колісник](https://github.com/DmytroKolisnyk2) - Тімлід, а також всезнайка     
-[Максим Попсуй](https://github.com/MaxPopsuy)  - Експерт по модалках  
-[Ігор Якіб'юк](https://github.com/Igoryakib)   - Redux to ducks  
-[Анна-Домініка Козак](https://github.com/Anna-Dominika1) - Хороші стилі  
-[Євген Бочаров](https://github.com/Eugene-Bocharov)   - Js  
+Наша команда складається з 5'ти людей, всі вони внесли свій вклад у проект, тим самим пришвидшивши його, а ось і наша команда
+
+- [Дмитро Колісник](https://github.com/DmytroKolisnyk2) - Тімлід, а також всезнайка     
+- [Максим Попсуй](https://github.com/MaxPopsuy)  - Експерт по модалках  
+- [Ігор Якіб'юк](https://github.com/Igoryakib)   - Redux to ducks  
+- [Анна-Домініка Козак](https://github.com/Anna-Dominika1) - Хороші стилі  
+- [Євген Бочаров](https://github.com/Eugene-Bocharov)   - Js  
+
+
+### Work with project
+
+#### Перший тиждень
+В перший день ми розподілили задачі і почали їх виконувати, поки  що не було зрозуміло як потрібно влаємодіяти з бекендом, але через тиждень все нормалізувалося    
+В перший тиждень ми зробили усі модалки, майже всю сторінку суперадміна і почали тісно взаємодіяти з бекендом, настільки, що коли бекенд клався то і наш сайт клався.
+Також в перший тиждень нашого тімліда майже не було бо він готувався до НМТ
