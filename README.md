@@ -1,7 +1,6 @@
 # Booking system
 - [Descrption](#description)
 - [Our Team](#our-team)
-  - [Dmytro Kolisnyk]()
 
 ### Description
 
@@ -9,5 +8,8 @@ Intern проект нашою команди з використанням reac
 
 ### Our team
 
-[Дмитро Колісник](https://github.com/DmytroKolisnyk2) - тімлід
-
+[Дмитро Колісник](https://github.com/DmytroKolisnyk2)   
+[Максим Попсуй](https://github.com/MaxPopsuy)  
+[Ігор Якіб'юк](https://github.com/Igoryakib)   
+[Анна-Домініка Козак](https://github.com/Anna-Dominika1)     
+[Євген Бочаров](https://github.com/Eugene-Bocharov)   
