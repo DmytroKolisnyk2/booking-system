@@ -13,7 +13,6 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState(2);
-  console.log(role)
   return (
     <>
       {isOpen && (
