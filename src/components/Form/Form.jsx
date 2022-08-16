@@ -50,10 +50,10 @@ const Form = ({
         data.append(i, formData[i]);
       }
       isDescription && data.append("description", "test");
+
       if (+role === 2 && type.type === "put" && startRole !== 2) {
         const res = await getUserByName(startName);
         await requests.delete(res.data.id);
-
         return await postUser(data)
           .then(() => {
             success(status.successMessage);
@@ -65,9 +65,8 @@ const Form = ({
       }
       if (+role !== 2 && type.type === "put" && startRole === 2) {
         const manager = await requests.getByName(startName);
-        // const user = await getUserByName(startName);
         await requests.userDelete(manager.data.id);
-        // await requests.delete(user.data.id);
+
         return await requests
           .post(data)
           .then(() => {
@@ -93,7 +92,10 @@ const Form = ({
           });
       }
 
-      if (+role === 2 && type.type === "post") await requests.user(data);
+      if (+role === 2 && type.type === "post") {
+        onSubmit();
+        return await requests.user(data);
+      }
       if (manager) {
         const res = await requests.getByName(startName);
         onSubmit();
@@ -114,6 +116,7 @@ const Form = ({
             return !errorsuccessMessage && onSubmit && onSubmit();
           });
       }
+
       await requests[type.type](data, requests.additional)
         .catch((e) => {
           return error(

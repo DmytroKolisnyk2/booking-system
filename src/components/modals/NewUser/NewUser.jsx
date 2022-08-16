@@ -13,18 +13,19 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState(2);
+  console.log(role)
   return (
     <>
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
-            type={{ type: "post", erenYeager: "ErenYeager" }}
+            type={{ type: "post" }}
             requests={{ post: postManager, user: postUser }}
             name={name}
             role={role}
             onSubmit={() => {
               handleClose();
-              setRole("");
+              setRole(2);
               setTelegram("");
               setPassword("");
               setLogin("");
