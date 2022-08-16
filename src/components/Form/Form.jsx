@@ -4,6 +4,7 @@ import InputDelete from "../InputDelete/InputDelete";
 import { useState } from "react";
 import { success, error } from "@pnotify/core";
 import { getUserByName } from "../../helpers/user/user";
+import { postUser } from "../../helpers/user/user";
 import { defaults } from "@pnotify/core";
 defaults.delay = 1000;
 const Form = ({
@@ -49,12 +50,10 @@ const Form = ({
         data.append(i, formData[i]);
       }
       isDescription && data.append("description", "test");
-      if (+role !== 2 && type.type === "put" && startRole === 2) {
+      if (+role === 2 && type.type === "put" && startRole !== 2) {
         const res = await getUserByName(startName);
-        const manager = await requests.getByName(startName);
-        await requests.userDelete(manager.data.id);
-        return await requests
-          .put(data, res.data.id)
+        await requests.delete(res.data.id);
+        return await postUser(data)
           .then(() => {
             success(status.successMessage);
             return !errorsuccessMessage && onSubmit && onSubmit();
@@ -63,6 +62,20 @@ const Form = ({
             return error(`${status.failMessage}, ${e.message}`);
           });
       }
+      if (+role !== 2 && type.type === "put" && startRole === 2) {
+        const manager = await requests.getByName(startName);
+        await requests.userDelete(manager.data.id);
+        return await requests
+          .post(data)
+          .then(() => {
+            success(status.successMessage);
+            return !errorsuccessMessage && onSubmit && onSubmit();
+          })
+          .catch((e) => {
+            return error(`${status.failMessage}, ${e.message}`);
+          });
+      }
+
       if (+role === 2 && type.type === "put") {
         const res = await requests.getByName(startName);
         if (data.get("role_id")) data.delete("role_id");

@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { putUser, deleteUser, getRoles } from "../../../helpers/user/user";
 import {
   putManager,
+  postManager,
   deleteManager,
   getManagerByName,
 } from "../../../helpers/manager/manager";
@@ -47,6 +48,7 @@ const ChangeUser = ({
               additional: id,
               delete: deleteUser,
               user: putManager,
+              post: postManager,
               getByName: getManagerByName,
               userDelete: deleteManager,
             }}
