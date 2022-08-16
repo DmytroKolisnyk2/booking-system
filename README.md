@@ -8,8 +8,8 @@ Intern проект нашою команди з використанням reac
 
 ### Our team
 
-[Дмитро Колісник](https://github.com/DmytroKolisnyk2)   
-[Максим Попсуй](https://github.com/MaxPopsuy)  
-[Ігор Якіб'юк](https://github.com/Igoryakib)   
-[Анна-Домініка Козак](https://github.com/Anna-Dominika1)     
-[Євген Бочаров](https://github.com/Eugene-Bocharov)   
+[Дмитро Колісник](https://github.com/DmytroKolisnyk2) - Тімлід, а також всезнайка   
+[Максим Попсуй](https://github.com/MaxPopsuy)  - Експерт по модалках
+[Ігор Якіб'юк](https://github.com/Igoryakib)   - Redux to ducks
+[Анна-Домініка Козак](https://github.com/Anna-Dominika1) - Хороші стилі
+[Євген Бочаров](https://github.com/Eugene-Bocharov)   - Js
