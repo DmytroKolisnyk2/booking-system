@@ -37,7 +37,8 @@ Intern проект нашої команди з використанням `rea
 - [Олександр Зборовський](https://github.com/dormyyy)  - Створював роути `Back_End`
 
 
-## Work with project
+## Tech proccess
+
 
 
 ![License](https://img.shields.io/badge/-License:_Goiteens-292D3E?style=for-the-badge)
