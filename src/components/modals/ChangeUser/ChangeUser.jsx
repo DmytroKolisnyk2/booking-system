@@ -50,6 +50,7 @@ const ChangeUser = ({
               getByName: getManagerByName,
               userDelete: deleteManager,
             }}
+            startRole={dataRole}
             role={role}
             startName={dataName}
             name={name}

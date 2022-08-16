@@ -9,6 +9,7 @@ const Form = ({
   onSubmit,
   title,
   id,
+  startRole,
   requests,
   children,
   width,
@@ -46,10 +47,10 @@ const Form = ({
         data.append(i, formData[i]);
       }
       isDescription && data.append("description", "test");
-      if (+role !== 2 && type.type === "put") {
+      if (+role !== 2 && type.type === "put" && startRole === 2) {
         const res = await getUserByName(startName);
-        const manager = await requests.getByName(startName)
-        await requests.userDelete(manager.data.id)
+        const manager = await requests.getByName(startName);
+        await requests.userDelete(manager.data.id);
         return await requests
           .put(data, res.data.id)
           .then(() => {
