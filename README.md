@@ -37,3 +37,4 @@ Intern проект нашої команди з використанням `rea
 ### Work with project
 
 
+![License](https://img.shields.io/badge/-License:_Goiteens-292D3E?style=for-the-badge)
