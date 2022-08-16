@@ -27,7 +27,7 @@ const ChangeUser = ({
   const [desc, setDesc] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState(2);
   useEffect(() => {
     setName(dataName);
     setDesc(dataDesc);
@@ -50,8 +50,8 @@ const ChangeUser = ({
               getByName: getManagerByName,
               userDelete: deleteManager,
             }}
-            startName={dataName}
             role={role}
+            startName={dataName}
             name={name}
             onSubmit={() => {
               handleClose();

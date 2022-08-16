@@ -3,6 +3,7 @@ import InputSubmit from "../InputSubmit/InputSubmit";
 import InputDelete from "../InputDelete/InputDelete";
 import { useState } from "react";
 import { success, error } from "@pnotify/core";
+import { getUserByName } from "../../helpers/user/user";
 const Form = ({
   type,
   onSubmit,
@@ -29,7 +30,7 @@ const Form = ({
         if (onSubmit) {
           return onSubmit()
             .catch((e) => {
-              return error(`${status.failMessage}, ${e.message}`);
+              return error(`${status.failMessage}, ${e.response.message}`);
             })
             .then(() => {
               success(status.successMessage);
@@ -45,10 +46,24 @@ const Form = ({
         data.append(i, formData[i]);
       }
       isDescription && data.append("description", "test");
+      if (+role !== 2 && type.type === "put") {
+        const res = await getUserByName(startName);
+        const manager = await requests.getByName(startName)
+        await requests.userDelete(manager.data.id)
+        return await requests
+          .put(data, res.data.id)
+          .then(() => {
+            success(status.successMessage);
+            return !errorsuccessMessage && onSubmit && onSubmit();
+          })
+          .catch((e) => {
+            return error(`${status.failMessage}, ${e.message}`);
+          });
+      }
       if (+role === 2 && type.type === "put") {
         const res = await requests.getByName(startName);
         if (data.get("role_id")) data.delete("role_id");
-        await requests
+        return await requests
           .user(data, res.data.id)
           .then(() => {
             success(status.successMessage);
@@ -58,6 +73,7 @@ const Form = ({
             return error(`${status.failMessage}, ${e.message}`);
           });
       }
+
       if (+role === 2 && type.type === "post") await requests.user(data);
       if (manager) {
         const res = await requests.getByName(startName);
@@ -70,7 +86,9 @@ const Form = ({
         return await requests
           .post(data)
           .catch((e) => {
-            return error(`${status.failMessage}, ${e.message}`);
+            return error(
+              `${e.response.data.message ? e.response.data.message : e.message}`
+            );
           })
           .then(() => {
             success(status.successMessage);
@@ -79,7 +97,9 @@ const Form = ({
       }
       await requests[type.type](data, requests.additional)
         .catch((e) => {
-          return error(`${status.failMessage}, ${e.message}`);
+          return error(
+            `${e.response.data.message ? e.response.data.message : e.message}`
+          );
         })
         .then(() => {
           success(status.successMessage);
@@ -87,7 +107,7 @@ const Form = ({
         });
     } catch (e) {
       setError(!errorsuccessMessage);
-      error(`${status.failMessage}, ${e.message}`);
+      error(`${e.response.data.message ? e.response.data.message : e.message}`);
       console.error(e);
     }
   };

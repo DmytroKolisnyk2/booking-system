@@ -7,8 +7,8 @@ const InputDelete = ({ handleDelete }) => {
       type="button"
       className={styles.input__delete}
       onClick={() => {
-        // handleDelete();
-        error("Delete feature coming soon(never)");
+        handleDelete();
+        // error("Delete feature coming soon(never)");
       }}
     >
       Delete

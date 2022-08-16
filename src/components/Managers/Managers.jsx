@@ -7,7 +7,13 @@ import ChangeUser from "../modals/ChangeUser/ChangeUser";
 import { Fade } from "react-awesome-reveal";
 import { getManagers } from "../../helpers/manager/manager";
 
-export default function Managers({ text, isOpenModal, role, isAdmin, isManager }) {
+export default function Managers({
+  text,
+  isOpenModal,
+  role,
+  isAdmin,
+  isManager,
+}) {
   const [name, setName] = useState("");
   const [telegram, setTelegram] = useState("");
   const [managers, setManagers] = useState([]);
@@ -25,15 +31,15 @@ export default function Managers({ text, isOpenModal, role, isAdmin, isManager }
     setManagers(res);
     return res;
   };
-    const getManagersData = async () => {
-      const res = await getManagers()
-        .then((res) =>
-          res.data ? res.data : setErrorMessage("Example error message!")
-        )
-        .catch((error) => setErrorMessage(error.message));
-      setManagers(res);
-      return res;
-    };
+  const getManagersData = async () => {
+    const res = await getManagers()
+      .then((res) =>
+        res.data ? res.data : setErrorMessage("Example error message!")
+      )
+      .catch((error) => setErrorMessage(error.message));
+    setManagers(res);
+    return res;
+  };
   useEffect(() => {
     isManager ? getManagersData() : getUsersData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -75,7 +81,10 @@ export default function Managers({ text, isOpenModal, role, isAdmin, isManager }
                         setId(item.id);
                         setName(item.name);
                         setTelegram(item.telegram);
-                        setRole(item.role_id);
+                        if (!item.role_id) setRole(2);
+                        else {
+                          setRole(item.role_id);
+                        }
                         setLogin(item.login);
                       }}
                     />

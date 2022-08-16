@@ -20,6 +20,14 @@ const getUsersByRole = (roleName) => {
       throw error;
     });
 };
+const getUserByName = (name) => {
+  return axios
+    .get(`/user/${name}`)
+    .then((res) => res.data)
+    .catch((error) => {
+      throw error;
+    });
+};
 
 const postUser = (credentials) => {
   return axios
@@ -58,4 +66,12 @@ const getUserById = (id) => {
     });
 };
 
-export { getRoles, getUsersByRole, postUser, deleteUser, putUser, getUserById };
+export {
+  getRoles,
+  getUsersByRole,
+  postUser,
+  deleteUser,
+  putUser,
+  getUserById,
+  getUserByName,
+};
