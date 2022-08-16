@@ -43,8 +43,7 @@ export default function Managers({
   useEffect(() => {
     isManager ? getManagersData() : getUsersData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen, isOpenModal]);
-
+  }, [isOpen, isOpenModal, managers]);
   return (
     <>
       <div className={styles.wrapper}>

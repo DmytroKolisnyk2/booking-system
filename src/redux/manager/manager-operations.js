@@ -18,6 +18,8 @@ import {
   getCurrentWorkWeek,
   getWorkWeek,
 } from "../../helpers/week/week";
+import { defaults } from "@pnotify/core";
+defaults.delay = 1000;
 
 const changeTypeSelection = createAction(TYPE_SELECTION);
 const changeStatusSlot = createAction(TYPE_SLOT);

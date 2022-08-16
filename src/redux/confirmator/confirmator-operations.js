@@ -12,6 +12,8 @@ import {
   INCREASE_DAY,
   SECOND_HALF,
 } from "./confirmator-types";
+import { defaults } from "@pnotify/core";
+defaults.delay = 1000;
 
 const getCurrentConfirmator = createAsyncThunk(
   GET_CURRENT_CONFIRMATOR,

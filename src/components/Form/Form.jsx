@@ -4,6 +4,8 @@ import InputDelete from "../InputDelete/InputDelete";
 import { useState } from "react";
 import { success, error } from "@pnotify/core";
 import { getUserByName } from "../../helpers/user/user";
+import { defaults } from "@pnotify/core";
+defaults.delay = 1000;
 const Form = ({
   type,
   onSubmit,

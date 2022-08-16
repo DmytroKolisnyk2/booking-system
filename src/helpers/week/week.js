@@ -1,15 +1,18 @@
 import axios from "axios";
 import { success, error } from "@pnotify/core";
-
+import { defaults } from "@pnotify/core";
 axios.defaults.baseURL = "https://goiteens-rest-api.herokuapp.com";
 axios.defaults.headers.common["Accept"] = "application/json";
+defaults.delay = 1000;
 
 const getCurrentWeek = (managerId) => {
   return axios
     .get(`/current_week/${managerId}`)
     .then((res) => res.data)
     .catch((err) => {
-      error(`${err.response.data.message}`);
+      error(
+        `${err.response.data.message ? err.response.data.message : err.message}`
+      );
       throw err;
     });
 };
@@ -18,7 +21,7 @@ const getCallerCurrentWeek2 = () => {
     .get(`/caller_current_week`)
     .then((res) => res.data)
     .catch((err) => {
-      error(`${err.response.data.message}`);
+      error(`${err.response.data.message ? err.response.data.message : err.message}`);
       throw err;
     });
 };
@@ -36,7 +39,7 @@ const getWeek = (managerId, weekId) => {
     .get(`/get_week/${managerId}/${weekId}`)
     .then((res) => res.data)
     .catch((err) => {
-      error(`${err.response.data.message}`);
+      error(`${err.response.data.message ? err.response.data.message : err.message}`);
       throw err;
     });
 };
@@ -48,7 +51,7 @@ const updateSlot = (managerId, weekId, dayIndex, slotHour, colorId) => {
     )
     .then((res) => res.data)
     .catch((err) => {
-      error(`${err.response.data.message}`);
+      error(`${err.response.data.message ? err.response.data.message : err.message}`);
       throw err;
     });
 };
