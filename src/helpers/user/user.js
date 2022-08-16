@@ -12,6 +12,14 @@ const getRoles = () => {
       throw error;
     });
 };
+const getUsers = () => {
+  return axios
+    .get("/users")
+    .then((res) => res.data)
+    .catch((error) => {
+      throw error;
+    });
+};
 const getUsersByRole = (roleName) => {
   return axios
     .get(`/users/${roleName}`)
@@ -74,4 +82,5 @@ export {
   putUser,
   getUserById,
   getUserByName,
+  getUsers,
 };
