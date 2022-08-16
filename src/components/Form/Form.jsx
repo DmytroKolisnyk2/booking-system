@@ -53,6 +53,7 @@ const Form = ({
       if (+role === 2 && type.type === "put" && startRole !== 2) {
         const res = await getUserByName(startName);
         await requests.delete(res.data.id);
+
         return await postUser(data)
           .then(() => {
             success(status.successMessage);
@@ -64,11 +65,11 @@ const Form = ({
       }
       if (+role !== 2 && type.type === "put" && startRole === 2) {
         const manager = await requests.getByName(startName);
-        const user = await getUserByName(startName);
+        // const user = await getUserByName(startName);
         await requests.userDelete(manager.data.id);
-
+        // await requests.delete(user.data.id);
         return await requests
-          .put(data, user.data.id)
+          .post(data)
           .then(() => {
             success(status.successMessage);
             return !errorsuccessMessage && onSubmit && onSubmit();
