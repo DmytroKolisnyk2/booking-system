@@ -124,7 +124,7 @@ Redux🦆 у нас виглядає наступним чином:
 
 ![img](./src/img/doc7.png)
 
-Також на фото ви бачите імпорт усіх необхідних `types`, [`CreateAction`](https://redux-toolkit.js.org/usage/usage-with-typescript#createaction), [`CreateAsyncThunk`](https://redux-toolkit.js.org/usage/usage-with-typescript#createasyncthunk), а також імпорт API функції з якими детально можете ознайомитись тут [Api structure](#api-structure).
+Також на фото ви бачите імпорт усіх необхідних `types`, [CreateAction](https://redux-toolkit.js.org/usage/usage-with-typescript#createaction), [CreateAsyncThunk](https://redux-toolkit.js.org/usage/usage-with-typescript#createasyncthunk), а також імпорт API функції з якими детально можете ознайомитись тут [Api structure](#api-structure).
 
 
 
