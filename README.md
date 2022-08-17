@@ -1,9 +1,34 @@
 # Booking system
-- [Descrption](#description)
+- [Get started](#get-started)
+- [Descrpition](#description)
 - [Our Team](#our-team)
 - [Tech Process](#tech-process)
   - [Project structure](#project-structure)
   - [Redux structure](#redux-structure)
+
+## Get started
+
+#### `Dependencies:`
+1. Lts version of Node
+2. Npm version 8.3.0 and higher
+
+#### `Commands`
+1. Запуск проєкту `npm start`
+2. Деплой проєкту `npm run deploy`
+
+#### `Guide`
+1. Склонуйте репозиторій 
+```json
+git clone https://github.com/DmytroKolisnyk2/booking-system
+```
+2. Встановіть залежності
+```json
+npm clean-install
+```
+3. Запустіть проєкт 
+```json
+npm start
+```
 
 ## Description
 
