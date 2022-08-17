@@ -41,8 +41,15 @@ Intern проект нашої команди з використанням `rea
 ## Tech process
 
 - ### `Project structure`
-![img](./src/img/doc29.png)![img](./src/img/doc28.png)![img](./src/img/doc27.png)
-![img](./src/img/doc26.png)![img](./src/img/doc25.png)
+Структура нашого проєкту виглядає ось так:
+
+![img](./src/img/doc29.png)
+
+На фото ви бачите кореневу папку `src` в якій знаходиться серце нашого проекту: `components`, `helpers`, `img`, `pages`, `redux`, App і глобальні стилі. На фото нижче ви побачите наповнення важливих папок:
+
+![img](./src/img/doc28.png)  ![img](./src/img/doc27.png)
+
+![img](./src/img/doc26.png)  ![img](./src/img/doc25.png)
 
 - ### `Redux structure`
 ![img](./src/img/doc1.png)
