@@ -20,6 +20,15 @@ const getUsers = () => {
       throw error;
     });
 };
+const getUserById = (id) => {
+  return axios
+    .get(`/user/${id}`)
+    .then((res) => res.data)
+    .catch((err) => {
+      error(`${err.response.data.message}`);
+      throw err;
+    });
+};
 const getUsersByRole = (roleName) => {
   return axios
     .get(`/users/${roleName}`)
@@ -61,16 +70,6 @@ const deleteUser = (id) => {
     .then((res) => res.data)
     .catch((error) => {
       throw error;
-    });
-};
-
-const getUserById = (id) => {
-  return axios
-    .get(`/user/${id}`)
-    .then((res) => res.data)
-    .catch((err) => {
-      error(`${err.response.data.message}`);
-      throw err;
     });
 };
 
