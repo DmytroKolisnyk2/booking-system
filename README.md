@@ -2,8 +2,8 @@
 - [Descrption](#description)
 - [Our Team](#our-team)
 - [Tech Process](#tech-process)
-  - [Project structure](#project-structure)
-  - [Redux structure](#redux-structure)
+ - [Project structure](#project-structure)
+ - [Redux structure](#redux-structure)
 
 ## Description
 
