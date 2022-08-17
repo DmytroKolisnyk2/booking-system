@@ -39,6 +39,6 @@ Intern проект нашої команди з використанням `rea
 
 ## Tech process
 
-
+![img](./src/img/doc1.png)
 
 ![License](https://img.shields.io/badge/-License:_Goiteens-292D3E?style=for-the-badge)
