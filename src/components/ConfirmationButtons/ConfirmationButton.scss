@@ -1,0 +1,46 @@
+@import "../../styles/variables.scss";
+
+.btn_yelllow,
+.btn_red,
+.btn_blue {
+  border-radius: 16px;
+  padding: 2px 42px;
+  font-family: $poppins;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  display: block;
+  height: 30px;
+  transition: $main-transition;
+}
+
+.btn_yelllow {
+  background-color: $light_yellow;
+  border: 1px solid $yellow_btn;
+  &--active {
+    background-color: $yellow_btn;
+  }
+}
+
+.btn_red {
+  background-color: $light_red;
+  border: 1px solid $red;
+  &--active {
+    background-color: $red;
+  }
+}
+.btn_blue {
+  background-color: $light_blue;
+  border: 1px solid $blue_btn;
+  &--active {
+    background-color: $blue_btn;
+  }
+}
+.btn_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 57px;
+  margin-right: 36px;
+  margin-left: 36px;
+}

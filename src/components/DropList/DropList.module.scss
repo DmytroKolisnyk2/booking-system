@@ -1,0 +1,53 @@
+@import "../../styles/variables.scss";
+.input__label {
+  margin-top: 20px;
+  font-family: $poppins;
+  font-size: 20px;
+  width: 45%;
+  margin: 26px 0 10px;
+  z-index: 2000;
+  transition: ease-in-out 0.5s;
+  position: relative;
+}
+.input__title {
+  cursor: pointer;
+  text-align: center;
+  margin: 5px;
+  font-size: 18px;
+  font-family: $poppins;
+}
+.input__option {
+  transition: ease-in-out 0.5s;
+  font-size: 18px;
+  z-index: 2000;
+  visibility: hidden;
+  &:hover {
+    background-color: #d9d9d9;
+  }
+}
+.active {
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu {
+  transition: all 0.5s;
+  border: 0px solid #f5f5f5;
+  border-radius: 10px;
+  position: absolute;
+  transform: translateX(50%);
+  z-index: 9999;
+  opacity: 0;
+  background-color: #f0f0f0;
+  width: 100%;
+  pointer-events: none;
+}
+.menu-active {
+  opacity: 1;
+  pointer-events: visible;
+}
+.input__title > span {
+  color: #797979;
+}
+

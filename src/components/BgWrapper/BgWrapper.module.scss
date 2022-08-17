@@ -1,0 +1,23 @@
+@import "../../styles/variables.scss";
+
+.bgWrapper {
+  position: relative;
+  z-index: -1;
+}
+.title {
+  text-align: center;
+  font-family: $poppins;
+  font-size: 64px;
+  color: $font-black;
+  margin-bottom: 55px;
+}
+.bgImg {
+  position: absolute;
+  // top: -70px;
+  // left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  object-fit: cover;
+  max-width: 1540px;
+  z-index: -1;
+}

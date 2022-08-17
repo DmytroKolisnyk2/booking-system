@@ -1,0 +1,63 @@
+@import "../../../styles/variables.scss";
+.title {
+  margin-top: 30px !important;
+}
+.exit {
+  color: $font-black;
+  font-size: 13px;
+  margin: 10px;
+  font-family: $poppins;
+}
+.exit > span {
+  border-bottom: 1px solid $font-black;
+  cursor: pointer;
+  transition: all 1s;
+  &:hover {
+    color: $footer-black;
+    border-bottom: 1px solid $footer-black;
+  }
+}
+.input__title {
+  text-align: center;
+}
+.checkbox__wrapper {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin: 15px;
+}
+.checkbox__wrapper2 {
+  width: 30px;
+  border-radius: 30px;
+}
+.input {
+  display: block;
+  appearance: none;
+  background-color: #b7b7b7;
+  font-size: 20px;
+  font-family: $poppins;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  transition: ease-in 200ms;
+  margin: 5px;
+}
+.input:checked {
+  background-color: $blue;
+}
+.input__label {
+  font-size: 15px;
+  margin-top: 20px;
+  font-family: $poppins;
+  font-size: 20px;
+  width: 45%;
+  margin: 26px 0 10px;
+  text-align-last: left;
+}
+.input__bottom {
+  display: inline-block;
+  width: 100%;
+}

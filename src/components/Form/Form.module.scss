@@ -1,0 +1,62 @@
+@import "../../styles/variables.scss";
+.form {
+  margin: 0 auto;
+}
+.exit {
+  text-align: center;
+  color: #6f6f6f;
+  font-size: 16px;
+}
+.title {
+  border-bottom: 2px $font-black solid;
+  text-align: center;
+  font-family: $poppins;
+  padding-bottom: 13px;
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+.button__wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 25px;
+}
+.signup {
+  border-radius: 43px;
+  background-color: $blue;
+  color: $font-white;
+  font-family: $poppins;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 10px 24px;
+  transition: $main-transition;
+  &:hover {
+    @extend %hover-shadow;
+  }
+}
+.login {
+  font-family: $poppins;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 10px 24px;
+  color: $font-black;
+  background-color: transparent;
+  border-radius: 43px;
+  border: 1px solid $blue;
+  transition: $main-transition;
+  &:hover {
+    @extend %hover-shadow;
+  }
+}
+.signup {
+  border-radius: 43px;
+  background-color: $blue;
+  color: $font-white;
+  font-family: $poppins;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 10px 24px;
+  transition: $main-transition;
+  &:hover {
+    @extend %hover-shadow;
+  }
+}

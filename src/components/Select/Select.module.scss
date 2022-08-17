@@ -1,0 +1,66 @@
+@import "/src/styles/variables.scss";
+
+.input__label {
+  margin-top: 20px;
+  font-family: $poppins;
+  font-size: 20px;
+  margin: 13px auto 13px auto;
+  text-align-last: left;
+}
+
+.select {
+  background-color: $grey;
+  transition: all 1s;
+  width: 100%;
+  cursor: pointer;
+  display: grid;
+  grid-template-areas: "select";
+}
+.select::after {
+  content: "../";
+  justify-self: end;
+  width: 0.8em;
+  height: 0.5em;
+  background-color: #777;
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+.select {
+  margin: 10px auto;
+  display: block;
+  width: 100%;
+  background-color: $grey;
+  border-radius: 10px;
+  border: 0;
+  height: 45px;
+  padding-left: 15px;
+  font-size: 20px;
+  font-family: $poppins;
+  padding: 10px;
+  -moz-appearance: none;
+  text-align: center;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("../../img/down-arrow.png");
+  background-repeat: no-repeat, repeat;
+  background-position: right 0.7em top 55%, 0 0;
+  align-items: center;
+  transition: all 0.5s;
+}
+.select::-ms-expand {
+  display: none;
+}
+.select:hover {
+  border-color: #888;
+}
+.select:focus {
+  outline: none;
+}
+
+.select option {
+  font-weight: normal;
+}
+.input__title {
+  margin-top: 26px;
+  text-align: center;
+}

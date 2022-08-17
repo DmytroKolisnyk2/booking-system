@@ -1,0 +1,37 @@
+@import "../../styles/variables.scss";
+.input {
+  display: block;
+  width: 100%;
+  background-color: $grey;
+  border-radius: 10px;
+  border: 0;
+  height: 45px;
+  padding-left: 15px;
+  font-size: 20px;
+  font-family: $poppins;
+}
+.input__title {
+  margin-top: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  margin: 15px 0 10px;
+  text-align-last: left;
+}
+.input__label {
+  margin-top: 20px;
+  font-family: $poppins;
+  font-size: 20px;
+  width: 45%;
+  margin: 26px 0 10px;
+  text-align-last: left;
+}
+.input__bottom {
+  display: inline-block;
+  width: 100%;
+}
+.input__bottom__age {
+  width: 100%;
+}
+.input__bottom__phone {
+  width: 100%;
+}

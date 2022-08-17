@@ -1,0 +1,63 @@
+@import "../../styles/variables.scss";
+.menu {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: $content-width;
+}
+.role {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  font-family: $poppins;
+  font-weight: 400;
+  font-size: 20px;
+  color: $font-black;
+}
+
+.endpoints_role {
+  font-family: $poppins;
+  font-weight: 400;
+  font-size: 20px;
+  color: $font-black;
+}
+
+.list {
+  margin: 0 auto;
+  width: fit-content;
+  margin-bottom: 35px;
+}
+.list__item {
+  position: relative;
+  margin-right: 47px;
+  display: inline-block;
+  &::after {
+    position: absolute;
+    top: 50%;
+    right: -24px;
+    transform: translateY(-50%);
+    content: "";
+    display: block;
+    width: 2px;
+    height: 100%;
+    background-color: $font-black;
+  }
+  &:nth-last-child(1) {
+    margin-right: 0;
+    &::after {
+      display: none;
+    }
+  }
+}
+.NavLink {
+  position: relative;
+  font-family: $poppins;
+  font-weight: 400;
+  font-size: 32px;
+  color: $font-black;
+  border-bottom: 3px solid transparent;
+  transition: $main-transition;
+  &Active {
+    border-color: $font-black;
+  }
+}

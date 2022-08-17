@@ -1,0 +1,42 @@
+@import "../../styles/App.scss";
+.main_title {
+  font-family: $poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  color: $font-black;
+  margin-top: 35px;
+  margin-bottom: 45px;
+}
+.main_title::after {
+  width: 881px;
+  height: 2px;
+  background-color: #000000;
+  display: block;
+  content: "";
+  margin: 0 auto;
+  margin-top: 17px;
+}
+
+.main_wrapper2 {
+  display: flex;
+  justify-content: center;
+  min-height: 500px;
+  margin: 0 auto;
+}
+.add_btn {
+  padding: 11px 39px;
+  border-radius: 20px;
+  color: $font-white;
+  background-color: $font-black;
+  font-family: $poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  margin: 0 auto;
+  margin-top: 56px;
+  margin-bottom: 57px;
+}
+.main_wrapper {
+  flex-grow: 1;
+}

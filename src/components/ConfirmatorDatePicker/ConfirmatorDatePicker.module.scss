@@ -1,0 +1,43 @@
+@import "../../styles/variables.scss";
+.calendar_wrapper {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto 49px;
+}
+
+.halfBtn {
+  background-color: transparent;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: $poppins;
+  border-bottom: 2px solid transparent;
+  transition: $main-transition;
+  &Active {
+    border-color: black;
+  }
+}
+.calendarController {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.calendarControllerText {
+  font-family: $poppins;
+  color: $font-black;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.calendarControllerButton {
+  background-color: transparent;
+  font-size: 28px;
+  font-weight: 400;
+  font-family: $poppins;
+  position: relative;
+  top: -3px;
+  width: 17px;
+  height: 17px;
+}

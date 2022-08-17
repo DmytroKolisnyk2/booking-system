@@ -1,0 +1,33 @@
+@import "../../styles/variables.scss";
+.calendarController {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto 49px auto;
+}
+
+.calendarControllerText {
+    font-family: $poppins;
+    color: $font-black;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.calendarControllerButton {
+    background-color: transparent;
+    font-size: 28px;
+    font-weight: 400;
+    font-family: $poppins;
+    position: relative;
+    top: -3px;
+    width: 17px;
+    height: 17px;
+}
+
+.dataPicker {
+    width: 330px !important;
+    position: absolute;
+    top: 410px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

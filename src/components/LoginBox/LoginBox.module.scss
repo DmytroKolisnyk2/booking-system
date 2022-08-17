@@ -1,0 +1,67 @@
+@import "../../styles/variables.scss";
+
+.loginBoxWrapper {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+.button {
+  position: relative;
+  top: -1px;
+  background-color: transparent;
+  margin-left: 10px;
+  transition: 1s all;
+  &:hover {
+    transform: rotate(360deg) scale(1.3);
+  }
+}
+.role {
+  font-family: $poppins;
+  font-size: 24px;
+  font-weight: 400;
+  color: $font-black;
+}
+.logout {
+  margin-top: 4px;
+  color: $font-black;
+  font-family: $poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  border-bottom: 1px solid #000;
+  background-color: transparent;
+}
+.btnWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 272px;
+}
+.login {
+  font-family: $poppins;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 10px 24px;
+  color: $font-black;
+  background-color: transparent;
+  border-radius: 43px;
+  border: 1px solid $blue;
+  transition: $main-transition;
+  &:hover {
+    @extend %hover-shadow;
+  }
+}
+.signup {
+  border-radius: 43px;
+  background-color: $blue;
+  color: $font-white;
+  font-family: $poppins;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 10px 24px;
+  transition: $main-transition;
+  &:hover {
+    @extend %hover-shadow;
+  }
+}

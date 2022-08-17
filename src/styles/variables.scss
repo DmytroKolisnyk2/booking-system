@@ -3,6 +3,14 @@
 
 $poppins: "Poppins", sans-serif;
 
+$content-width: 1240px;
+
+$main-transition: linear 200ms;
+
+%hover-shadow {
+  box-shadow: -3px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 // colors
 $font-black: #000;
 $footer-black: #454545;
@@ -10,3 +18,33 @@ $font-white: #fff;
 $blue: #6268ff;
 $grey: #d9d9d9;
 $red: #ff5b5b;
+$tableItem-grayColor: rgb(240, 240, 240);
+$tableItem-orangeColor: rgb(255, 235, 163);
+$tableItem-greenColor: rgb(188, 255, 165);
+$tableItem-darkGreenColor: rgba(112, 191, 32, 1);
+$tableItem-redColor: rgba(255, 97, 97, 1);
+$tableItem-blueColor: rgba(218, 232, 252, 1);
+$tableItem-whiteColor: rgba(255, 255, 255, 1);
+$tableItem-purpleColor: rgba(248, 234, 255, 1);
+$tableItem-darkOrangeColor: rgba(240, 163, 10, 1);
+$tableItem-grayHover: rgb(211, 211, 211);
+$tableItem-orangeHover: rgb(249, 202, 132);
+$tableItem-greenHover: rgb(144, 216, 119);
+$tableItem-darkGreenColorHover: rgba(61, 117, 6, 1);
+$tableItem-redColorHover: rgba(187, 46, 46, 1);
+$tableItem-blueColorHover: rgba(140, 187, 255, 1);
+$tableItem-whiteColorHover: rgba(233, 233, 233, 1);
+$tableItem-purpleColorHover: rgba(231, 182, 255, 1);
+$tableItem-darkOrangeColorHover: rgba(198, 131, 0, 1);
+$light_yellow: #fff8dd;
+$yellow_btn: #ffe37e;
+$light_red: #ffdada;
+$light_blue: #e1e2ff;
+$blue_btn: #999dff;
+$ligh_grey: #f4f4f4;
+$dark_grey: #c1c1c1;
+$caller-yellow: #fff500;
+$caller-orange: #ff9820;
+$caller-red: #ff6161;
+$caller-green: #00ff0a;
+$caller-lightGreen: #bcffa5;

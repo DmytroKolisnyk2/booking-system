@@ -1,0 +1,37 @@
+@import "../../styles/variables.scss";
+
+.ul_items {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid $font-black;
+  width: 250px;
+  align-items: center;
+  margin-right: 36px;
+  height: 57px;
+}
+
+.wrapper {
+  border-right: 2px solid black;
+  height: auto;
+  align-items: center;
+  min-width: 288px;
+  height: fit-content;
+  &:nth-last-child(1) {
+    border-right: none;
+  }
+}
+.ul_items_text {
+  font-family: $poppins;
+  font-weight: 500;
+  font-size: 16px;
+  color: $font-black;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.link{
+  font-family: $poppins;
+  font-weight: 400;
+  font-size: 17px;
+  color: $blue;
+  margin-left: 15px;
+}

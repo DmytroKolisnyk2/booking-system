@@ -1,0 +1,241 @@
+@import "../../styles//variables.scss";
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $poppins;
+  color: $font-black;
+  font-weight: 400;
+  text-align: center;
+  font-size: 24px;
+  border-collapse: collapse;
+  border: 1.5px solid #000;
+  transition: 200ms linear;
+  cursor: pointer;
+  position: relative;
+  &:nth-last-child(-n + 15) {
+    border-right: none;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 99;
+      display: block;
+      width: 53px;
+      height: 60px;
+      background-color: inherit;
+    }
+  }
+  &:nth-child(-n + 15) {
+    border-left: none;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      display: block;
+      width: 53px;
+      height: 60px;
+      background-color: inherit;
+    }
+  }
+  &:nth-child(15n + 1) {
+    border-top: none;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -3px;
+      z-index: 99;
+      display: block;
+      width: 60px;
+      height: 21px;
+      background-color: inherit;
+    }
+  }
+  &:nth-last-child(15n + 1) {
+    border-bottom: none;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: -3px;
+      z-index: 99;
+      display: block;
+      width: 60px;
+      height: 21px;
+      background-color: inherit;
+    }
+  }
+}
+
+.grayColor {
+  background-color: $tableItem-grayColor;
+  &:hover {
+    background-color: $tableItem-grayHover;
+  }
+}
+
+.greenColor {
+  background-color: $tableItem-greenColor;
+  &:hover {
+    background-color: $tableItem-greenHover;
+  }
+}
+
+.orangeColor {
+  background-color: $tableItem-orangeColor;
+  &:hover {
+    background-color: $tableItem-orangeHover;
+  }
+}
+
+.darkGreenColor {
+  background-color: $tableItem-darkGreenColor;
+  &:hover {
+    background-color: $tableItem-darkGreenColorHover;
+  }
+}
+
+.redColor {
+  background-color: $tableItem-redColor;
+  &:hover {
+    background-color: $tableItem-redColorHover;
+  }
+}
+
+.blueColor {
+  background-color: $tableItem-blueColor;
+  &:hover {
+    background-color: $tableItem-blueColorHover;
+  }
+}
+
+.whiteColor {
+  background-color: $tableItem-whiteColor;
+  &:hover {
+    background-color: $tableItem-whiteColorHover;
+  }
+}
+
+.purpleColor {
+  background-color: $tableItem-purpleColor;
+  &:hover {
+    background-color: $tableItem-purpleColorHover;
+  }
+}
+
+.darkOrangeColor {
+  background-color: $tableItem-darkOrangeColor;
+  &:hover {
+    background-color: $tableItem-darkOrangeColorHover;
+  }
+}
+
+.hover_buttons {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+  z-index: 999;
+  visibility: hidden;
+  pointer-events: none;
+  transition: 200ms linear;
+}
+
+.hover_buttons button {
+  height: 25px;
+  width: 50px;
+  border-radius: 14px;
+  background-color: $font-white;
+  font-size: 15px;
+  font-weight: 400;
+  color: $font-black;
+  font-family: $poppins;
+  transition: 200ms linear;
+}
+
+.only_info_button {
+  margin-left: 70px;
+  transition: 200ms linear;
+}
+
+.hover_buttons button:nth-child(1) {
+  margin-right: 70px;
+  transition: 200ms linear;
+}
+
+.item:hover .hover_buttons {
+  position: absolute;
+  opacity: 1;
+  visibility: inherit;
+  pointer-events: inherit;
+  transition: 200ms linear;
+}
+
+.callerYellowColor {
+  background-color: $caller-yellow;
+  &:hover {
+    background-color: darken($caller-yellow, 5%);
+  }
+}
+.callerOrangeColor {
+  background-color: $caller-orange;
+  &:hover {
+    background-color: darken($caller-orange, 5%);
+  }
+}
+.callerRedColor {
+  background-color: $caller-red;
+  &:hover {
+    background-color: darken($caller-red, 5%);
+  }
+}
+.callerGreenColor {
+  background-color: $caller-green;
+  &:hover {
+    background-color: darken($caller-green, 5%);
+  }
+}
+.callerLightGreenColor {
+  background-color: $caller-lightGreen;
+  &:hover {
+    background-color: darken($caller-lightGreen, 5%);
+  }
+}
+
+.free__button {
+  position: absolute;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  font-family: $poppins;
+  font-size: 20px;
+  margin-left: 20px;
+  //   padding: 2px 6px;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  color: $font-black;
+  z-index: 1000;
+  transition: 200ms linear;
+}
+.callerFreeYellowColor {
+  border: 2px solid #837d00;
+}
+.callerFreeOrangeColor {
+  color: #fff;
+  border: 2px solid #8a4c02;
+}
+.callerFreeRedColor {
+  color: #fff;
+  border: 2px solid #8c2e2e;
+}
+.callerFreeGreenColor {
+  border: 2px solid #007605;
+}
+.callerFreeLightGreenColor {
+  border: 2px solid #4a8312;
+}

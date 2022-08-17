@@ -1,0 +1,31 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/reset.scss";
+.modal {
+  height: 636px;
+}
+
+.input__title {
+  text-align: center;
+  margin: 15px;
+  font-size: 18px;
+  font-family: $poppins;
+}
+.select__wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 400px;
+  flex-direction: column;
+}
+.select {
+  width: 408px;
+  margin: 13px auto;
+}
+.select__wrapper > * {
+  flex: 1 1 auto;
+}
+
+.select__label {
+  width: 408px;
+  margin: 7px auto;
+}

@@ -1,0 +1,45 @@
+@import "../../../styles/variables.scss";
+.btnWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 272px;
+}
+.login {
+  font-family: $poppins;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 10px 24px;
+  color: $font-black;
+  background-color: transparent;
+  border-radius: 43px;
+  border: 1px solid $blue;
+  transition: $main-transition;
+  margin: 15px;
+  &:hover {
+    @extend %hover-shadow;
+  }
+}
+.title {
+  margin-top: 30px;
+}
+.signup {
+  border-radius: 43px;
+  background-color: $blue;
+  color: $font-white;
+  font-family: $poppins;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 10px 24px;
+  transition: $main-transition;
+  margin: 15px;
+  &:hover {
+    @extend %hover-shadow;
+  }
+}
+.loginBoxWrapper {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+}

@@ -1,0 +1,28 @@
+@import "../../styles/variables.scss";
+.table {
+    margin: 0 auto 61px auto;
+    border-collapse: collapse;
+    width: 100%;
+    border: 3px solid $font-black;
+    border-radius: 28px;
+    overflow: hidden;
+    display: grid;
+    grid-template: repeat(15, 58px) / repeat(7, 183px);
+    grid-auto-flow: column;
+    transition: 200ms linear;
+}
+
+.spinner {
+    width: 57px;
+    top: 5px;
+    left: 5px;
+    position: absolute;
+    z-index: 999;
+}
+
+.wrapperTable {
+    position: relative;
+    max-width: 1287px;
+    width: 100%;
+    margin: 0 auto;
+}
