@@ -1,5 +1,5 @@
 import axios from "axios";
-import { success, error } from "@pnotify/core";
+import { error } from "@pnotify/core";
 
 axios.defaults.baseURL = "https://goiteens-rest-api.herokuapp.com";
 axios.defaults.headers.common["Accept"] = "application/json";
