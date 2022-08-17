@@ -2,6 +2,7 @@
 - [Descrption](#description)
 - [Our Team](#our-team)
 - [Tech Process](#tech-process)
+  - [Project structure](#project-structure)
   - [Redux structure](#redux-structure)
 
 ## Description
@@ -38,6 +39,10 @@ Intern проект нашої команди з використанням `rea
 
 
 ## Tech process
+
+- ### `Project structure`
+![img](./src/img/doc29.png)![img](./src/img/doc28.png)![img](./src/img/doc27.png)
+![img](./src/img/doc26.png)![img](./src/img/doc25.png)
 
 - ### `Redux structure`
 ![img](./src/img/doc1.png)
