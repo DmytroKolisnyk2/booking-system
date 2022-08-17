@@ -1,8 +1,8 @@
 # Booking system
 - [Descrption](#description)
 - [Our Team](#our-team)
-- [Start of project](#work-with-project)
-  - [First week](#перший-тиждень)
+- [Tech Process](#tech-process)
+  - [Redux structure](#redux-structure)
 
 ## Description
 
@@ -37,7 +37,7 @@ Intern проект нашої команди з використанням `rea
 - [Олександр Зборовський](https://github.com/dormyyy)  - Створював роути `Back_End`
 
 
-## Tech proccess
+## Tech process
 
 
 
