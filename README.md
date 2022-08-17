@@ -39,12 +39,12 @@ Intern проект нашої команди з використанням `rea
 
 ## Tech process
 
+- ### `Redux structure`
 ![img](./src/img/doc1.png)
 ![img](./src/img/doc2.png)
 ![img](./src/img/doc3.png)
 ![img](./src/img/doc4.png)
 ![img](./src/img/doc5.png)
-![img](./src/img/doc6.png)
 
 
 
