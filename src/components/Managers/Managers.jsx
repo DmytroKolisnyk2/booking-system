@@ -90,13 +90,13 @@ export default function Managers({ isOpenModal, role, isAdmin, data }) {
                               className={styles.ul_items_link}
                               target="_blank"
                               to={
-                                role === "Manager"
+                                i.role === "Manager"
                                   ? `/manager/${item.id}/planning/`
-                                  : role === "Administrator"
+                                  : i.role === "Administrator"
                                   ? `/admin/${item.id}`
-                                  : role === "Caller"
+                                  : i.role === "Caller"
                                   ? `/caller/${item.id}`
-                                  : role === "Confirmator" &&
+                                  : i.role === "Confirmator" &&
                                     `/confirmator/${item.id}`
                               }
                             >
