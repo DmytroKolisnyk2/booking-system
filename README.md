@@ -16,6 +16,7 @@ A brief description of what this project does and who it's for
     - [Project's components](#projects-components)
     - [Router structure](#router-structure)
   - [Back_End](#back_end-1)
+    - [Backend structure](#back-end-project-structure)
 
 ## Get started
 
@@ -257,7 +258,7 @@ Redux🦆 у нас виглядає наступним чином:
 
  ### Back_End
 
-  - #### `Project structure`
+  - #### `back-end-project-structure`
   
 Структура нашого проєкту виглядає ось так:
 
@@ -277,7 +278,9 @@ Redux🦆 у нас виглядає наступним чином:
 
 2. Перевіряємо наявність слота та тижня. У негативному випадку виводимо повідовлення:
 
-![img](https://i.imgur.com/4eQbd6q.png) Some code ![img](https://i.imgur.com/3iJQcc0.png)
+![img](https://i.imgur.com/4eQbd6q.png)  
+Some code  
+![img](https://i.imgur.com/3iJQcc0.png)
 
 3. Оголошуємо списки `Result` & `Current_week_days`; Генеруємо шаблон для виводу, якщо на певний день слоти відсутні
 
