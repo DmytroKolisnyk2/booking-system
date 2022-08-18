@@ -9,6 +9,7 @@
     - [Api structure](#api-structure)
     - [Pages structure](#pages-structure)
     - [Project's components](#projects-components)
+    - [Router structure](#router-structure)
   - [Back_End](#back_end-1)
 
 ## Get started
@@ -240,6 +241,11 @@ Redux🦆 у нас виглядає наступним чином:
 Приклад рендеру компонента `Table` на сторінці менеджера, розділ консультації:
 
 ![img](./src/img/doc46.png)
+
+
+- #### `Router structure`
+
+
 
 
  ### Back_End
