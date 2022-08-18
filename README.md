@@ -263,6 +263,6 @@ Redux🦆 у нас виглядає наступним чином:
 #### [Back_End](#back_end-1) частина:
 [Ярославу Висоцький](https://github.com/Yaroslav702) або [Олександру Зборовський](https://github.com/dormyyy)
 
-![License](https://img.shields.io/badge/-License:_Goiteens-292D3E?style=for-the-badge)
-
 [Go Back](#booking-system)
+
+![License](https://img.shields.io/badge/-License:_Goiteens-292D3E?style=for-the-badge)
