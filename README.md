@@ -326,5 +326,15 @@ Some code
 [Ярослав Висоцький](https://github.com/Yaroslav702) або [Олександр Зборовський](https://github.com/dormyyy)
 
 [Go Back](#booking-system)
+### Час праці:
+Ярослав - 147 годин
+Олександр - 126 годин
+Дмитро - * годин
+Анна - * годин
+Максим - * годин
+Ігор - * годин
+Євген - * годин
+(Створення документації - 2 дні) 
+
 
 ![License](https://img.shields.io/badge/-License:_Goiteens-292D3E?style=for-the-badge)
