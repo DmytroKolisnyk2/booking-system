@@ -334,7 +334,7 @@ Some code
 Максим ~ 128 годин  
 Ігор ~ 128 годин  
 Євген ~ 80 годин  
-(Створення документації - 2 дні)  
+(Створення документації - 20 годин)  
 
 
 ![License](https://img.shields.io/badge/-License:_Goiteens-292D3E?style=for-the-badge)
