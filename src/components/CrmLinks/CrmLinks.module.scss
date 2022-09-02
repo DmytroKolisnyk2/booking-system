@@ -1,0 +1,94 @@
+@import "../../styles/variables.scss";
+
+.mini_title {
+  font-family: $poppins;
+  color: #000;
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.text_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.ul_items {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid $font-black;
+  width: 190px;
+  align-items: center;
+}
+
+.ul_items_btn {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background-image: url("../../img/pencil.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-color: $font-black;
+  border-radius: 50%;
+  align-items: center;
+}
+.main_wrapper {
+  border-right: 2px solid black;
+  border-right: 2px solid black;
+  padding: 5px 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+  width: 232px;
+
+  &:nth-last-child(1) {
+    border-right: 0;
+  }
+}
+.list {
+  flex-grow: 1;
+}
+.wrapperCourses {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-right: 2px solid black;
+  height: auto;
+  align-items: center;
+  width: 232px;
+
+  padding-right: 20px;
+  padding-left: 20px;
+  &:nth-last-child(1) {
+    border-right: none;
+  }
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  border-right: 2px solid black;
+  height: auto;
+  align-items: center;
+  width: 700px;
+
+  padding-right: 20px;
+  padding-left: 20px;
+  &:nth-last-child(1) {
+    border-right: none;
+  }
+}
+.ul_items_text {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+.appointment__data {
+  font-family: $poppins;
+  font-weight: 400;
+  font-size: 18px;
+  margin-top: 10px;
+}

@@ -13,5 +13,6 @@ const path = {
   manager: "/manager/:managerId/",
   consultations: "consultations/",
   planning: "planning/",
+  crm: "searchcrm/",
 };
 export default path;

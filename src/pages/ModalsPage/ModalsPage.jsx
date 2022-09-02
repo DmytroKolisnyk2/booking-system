@@ -12,6 +12,7 @@ import SignUp from "../../components/modals/SignUp/SignUp";
 import Login from "../../components/modals/Login/Login";
 import ConsultationInfo from "../../components/modals/ConsultationInfo/ConsultationInfo";
 import NewAppointment2 from "../../components/modals/NewAppointment2/NewAppointment";
+import ChangeAppointment from "../../components/modals/ChangeAppointment/ChangeAppointment"
 
 const ModalsPage = () => {
   const [id, setId] = useState(0);
@@ -24,7 +25,6 @@ const ModalsPage = () => {
   };
   return (
     <section>
-
       <div>
         <label>
           You will be editing manager with id {id}
@@ -213,6 +213,20 @@ const ModalsPage = () => {
         </button>
         {modal === "new-appointment-2" && (
           <NewAppointment2 isOpen={isOpen} handleClose={() => handleClose()} />
+        )}
+        <button
+          data-modal="search-by-crm"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          Open crm
+        </button>
+        {modal === "search-by-crm" && (
+          <ChangeAppointment
+            isOpen={isOpen}
+            handleClose={() => handleClose()}
+          />
         )}
       </div>
     </section>
