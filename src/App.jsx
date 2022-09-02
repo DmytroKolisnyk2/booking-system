@@ -20,6 +20,7 @@ import UsersPage from "./pages/SuperAdmin/UsersPage";
 import GroupsPage from "./pages/SuperAdmin/GroupsPage";
 import CoursesPage from "./pages/SuperAdmin/CoursesPage";
 import ActionsPage from "./pages/SuperAdmin/ActionsPage";
+import CrmPage from "./pages/SuperAdmin/CrmPage";
 
 import ManagerPage from "./pages/Manager/ManagerPage";
 import ConsultationsPage from "./pages/Manager/ConsultationsPage";
@@ -43,6 +44,7 @@ const App = () => {
           <Route path={path.groups} element={<AdminGroupsPage />} />
           <Route path={path.courses} element={<AdminCoursesPage />} />
           <Route path={path.actions} element={<AdminActionsPage />} />
+          <Route path={path.crm} element={<CrmPage />} />
         </Route>
 
         <Route path={path.superAdmin} element={<Navigate to={path.users} />} />
@@ -51,6 +53,7 @@ const App = () => {
           <Route path={path.groups} element={<GroupsPage />} />
           <Route path={path.courses} element={<CoursesPage />} />
           <Route path={path.actions} element={<ActionsPage />} />
+          <Route path={path.crm} element={<CrmPage />} />
         </Route>
 
         <Route path={path.manager} element={<Navigate to={path.planning} />} />

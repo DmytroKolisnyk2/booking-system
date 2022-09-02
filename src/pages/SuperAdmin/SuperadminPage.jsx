@@ -14,6 +14,7 @@ const SuperAdministrator = () => {
           { text: "groups", path: path.groups },
           { text: "courses", path: path.courses },
           { text: "actions", path: path.actions },
+          { text: "Search by CRM", path: path.crm },
         ]}
       />
       <section className={styles.main_wrapper}>
