@@ -60,3 +60,15 @@
     @extend %hover-shadow;
   }
 }
+.appointment__data {
+  font-family: $poppins;
+  font-weight: 400;
+  font-size: 18px;
+  // margin-top: 10px;
+}
+.appointment {
+  padding: 5px 10px 5px;
+  border: 1px solid $font-black;
+  border-radius: 30px;
+  margin: 15px;
+}

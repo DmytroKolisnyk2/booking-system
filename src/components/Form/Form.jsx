@@ -23,25 +23,31 @@ const Form = ({
   isDelete,
   isDescription,
   manager,
+  buttonTitle,
+  data,
   status,
   ...formData
 }) => {
   const [errorsuccessMessage, setError] = useState(false);
   const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (type.type === "no-request") {
+      if (onSubmit) {
+        return onSubmit()
+          .catch((e) => {
+            return error(`${status.failMessage}, ${e.response.message}`);
+          })
+          .then(() => {
+            success(status.successMessage);
+          });
+      }
+      return;
+    }
+    if (type.type === "no-request-test") {
+      return onSubmit();
+    }
     try {
       event.preventDefault();
-      if (type.type === "no-request") {
-        if (onSubmit) {
-          return onSubmit()
-            .catch((e) => {
-              return error(`${status.failMessage}, ${e.response.message}`);
-            })
-            .then(() => {
-              success(status.successMessage);
-            });
-        }
-        return;
-      }
       const data = new FormData();
       for (const i in formData) {
         if (!formData[i]) {
@@ -165,7 +171,7 @@ const Form = ({
   };
   return (
     <div className={styles.modal} style={{ width: width }}>
-      <h3 className={styles.title}>{title}</h3>
+      {title && <h3 className={styles.title}>{title}</h3>}
       <form
         onSubmit={(e) => {
           handleSubmit(e);
@@ -198,11 +204,30 @@ const Form = ({
           )}
 
           {type.additionalType && <InputDelete handleDelete={handleDelete} />}
-          {!type.button && <InputSubmit />}
+          {!type.button && (
+            <InputSubmit buttonTitle={buttonTitle ? buttonTitle : "Save"} />
+          )}
         </div>
       </form>
+      {data
+        ? data.map((item) => {
+            return (
+              <div className={styles.appointment}>
+                <p className={styles.appointment__data}>
+                  {item.date}, {item.course}, {item.manager}, {item.number}{" "}
+                </p>
+              </div>
+            );
+          })
+        : type.type === "no-request-test" && (
+            <p className={styles.appointment__data}>
+              There are no scheduled appointments for this CRM link
+            </p>
+          )}
       {text}
-      <p className={styles.exit}>Click outside to exit</p>
+      {type.type !== "no-request-test" && (
+        <p className={styles.exit}>Click outside to exit</p>
+      )}
     </div>
   );
 };
