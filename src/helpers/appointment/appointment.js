@@ -2,6 +2,9 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://goiteens-rest-api.herokuapp.com";
 axios.defaults.headers.common["Accept"] = "application/json";
+axios.create({
+  withCredentials: true
+})
 
 const postAppointment = (credentials) => {
   return axios
@@ -21,15 +24,15 @@ const getAppointment = ({ id }) => {
 };
 const getAppointmentByCrm = (credentials) => {
   return axios
-    .get(`/appointment`, credentials)
+    .post(`/search`, credentials)
     .then((res) => res.data)
     .catch((error) => {
       throw error;
     });
 };
-const putAppointment = (credentials, id) => {
+const putAppointment = (credentials) => {
   return axios
-    .put(`/appointment/${id}`, credentials)
+    .post(`/update_superad_appointment`, credentials)
     .then((res) => res.data)
     .catch((error) => {
       throw error;

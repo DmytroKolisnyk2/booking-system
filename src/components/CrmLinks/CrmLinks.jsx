@@ -1,48 +1,40 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { getGroups } from "../../helpers/group/group";
-import { getCourses } from "../../helpers/course/course";
-import styles from "./CrmLinks.module.scss";
-import { Fade } from "react-awesome-reveal";
+import { useState } from "react";
+import { getAppointmentByCrm } from "../../helpers/appointment/appointment";
 import FormInput from "../FormInput/FormInput";
 import Form from "../Form/Form";
+import { success, error, defaults } from "@pnotify/core";
+defaults.delay = 1000;
 
-export default function Groups({ text, isOpenModal, dataName }) {
+export default function CrmLinks() {
   const [link, setLink] = useState("");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([0]);
 
   return (
     <>
       <Form
-        onSubmit={() => {
-          // handleClose();
-          setData([
-            {
-              date: "Пн, 17.08, 12:00",
-              course: "Minecraft",
-              manager: "Maria",
-              number: "number",
-            },
-            {
-              date: "Пн, 17.08, 12:00",
-              course: "Minecraft",
-              manager: "Maria",
-              number: "number",
-            },
-            {
-              date: "Пн, 17.08, 12:00",
-              course: "Minecraft",
-              manager: "Maria",
-              number: "+2347891287367",
-            },
-          ]);
-          // setLink("");
+        onSubmit={async () => {
+          const formData = new FormData();
+          formData.append("crm_link", link);
+          const res = await getAppointmentByCrm(formData)
+            .then((res) => {
+              setLink("");
+              success("Succesfully found")
+              return res.data;
+            })
+            .catch((err) => {
+              error(`Appointment not found, ${err.message}`)
+              setData([undefined]);
+            });
+          res && setData([res]);
+
+          return res;
         }}
         isDescription={true}
         type={{ type: "no-request-test" }}
         status={{
           successMessage: "Successfully found",
-          failMessage: "Failed to found appointments",
+          failMessage: "Appointment not found",
         }}
         buttonTitle={"Search"}
         width={"400px"}
@@ -72,7 +64,7 @@ export default function Groups({ text, isOpenModal, dataName }) {
                 <p className={styles.mini_title}>{i.name}</p>
                 <ul className={styles.list}>
                   <Fade cascade triggerOnce duration={300} direction="up">
-                    {groups.map((item) => {
+                    {CrmLinks.map((item) => {
                       if (item.name === "Не призначено") return;
                       return (
                         item.course_id === i.id && (

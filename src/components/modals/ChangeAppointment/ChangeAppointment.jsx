@@ -1,35 +1,37 @@
 import styles from "./ChangeAppointment.module.scss";
 import Modal from "../../Modal/Modal";
 import React, { useState, useEffect } from "react";
-import { getAvailableManagers } from "../../../helpers/manager/manager";
-import { createAppointment } from "../../../helpers/appointment/appointment";
+import { putAppointment } from "../../../helpers/appointment/appointment";
 import { getCourses } from "../../../helpers/course/course";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
 import FormInput from "../../FormInput/FormInput";
-import DropList from "../../DropList/DropList";
-import { useDispatch } from "react-redux";
-import { getCallerWeek } from "../../../redux/caller/caller-operations";
+import classnames from "classnames";
 
 const ChangeAppointment = ({
   isOpen,
   handleClose,
-  time,
-  weekId,
-  dayIndex,
-  hourIndex,
+  manager,
+  id,
+  course,
+  crm,
+  day,
+  hour,
+  managerId,
+  number,
+  messageInit,
 }) => {
-  const dispatch = useDispatch();
   const [link, setLink] = useState("");
   const [courseId, setCourses] = useState("");
-  const [manager, setManager] = useState("");
-  const [managerId, setManagerId] = useState("");
   const [message, setMessage] = useState("");
   const [age, setAge] = useState(0);
   const [phone, setPhone] = useState("");
-  // useEffect(() => {
-  //   !isOpen && dispatch(getCallerWeek({ weekId }));
-  // }, [isOpen, dispatch]);
+  useEffect(() => {
+    setCourses(course);
+    setPhone(number);
+    setMessage(messageInit);
+    setLink(crm);
+  }, [isOpen]);
   return (
     <>
       {isOpen && (
@@ -38,24 +40,21 @@ const ChangeAppointment = ({
             onSubmit={() => {
               const data = new FormData();
               data.append("crm_link", link);
-              // return createAppointment(
-              //   data,
-              //   managerId,
-              //   weekId,
-              //   dayIndex,
-              //   time,
-              //   courseId,
-              //   phone,
-              //   age,
-              //   message
-              // ).finally(() => {
-              //   setLink("");
-              //   setCourses("");
-              //   setMessage("");
-              //   setAge(0);
-              //   setPhone("");
-              //   handleClose();
-              // });
+              data.append("appointment_id", id);
+              data.append("day", day);
+              data.append("hour", hour);
+              data.append("course_id", courseId);
+              data.append("phone", phone);
+              data.append("age", age);
+              data.append("manager_id", managerId);
+              return putAppointment(data).finally(() => {
+                setLink("");
+                setCourses("");
+                setMessage("");
+                setAge(0);
+                setPhone("");
+                handleClose();
+              });
             }}
             status={{
               successMessage: "Successfully created appointment",
@@ -64,14 +63,9 @@ const ChangeAppointment = ({
             type={{ type: "no-request" }}
             title="Change appointment info"
           >
-            <DropList
-              title="Manager"
-              value={manager}
-              appointment={true}
-              setValue={setManager}
-              setValueSecondary={setManagerId}
-              request={() => getAvailableManagers(weekId, dayIndex, hourIndex)}
-            />
+            <p className={classnames(styles.input__title)}>
+              Manager: <span>{manager} </span>
+            </p>
             <Select
               classname={styles.select__label}
               value={courseId}

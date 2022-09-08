@@ -67,8 +67,15 @@
   // margin-top: 10px;
 }
 .appointment {
+  cursor: pointer;
   padding: 5px 10px 5px;
   border: 1px solid $font-black;
   border-radius: 30px;
   margin: 15px;
+  transition: 200ms all;
+  &:hover {
+    background-color: $blue;
+    color: white;
+    border-radius: 15px;
+  }
 }

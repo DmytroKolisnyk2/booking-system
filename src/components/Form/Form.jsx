@@ -1,11 +1,13 @@
 import styles from "./Form.module.scss";
 import InputSubmit from "../InputSubmit/InputSubmit";
 import InputDelete from "../InputDelete/InputDelete";
-import { useState } from "react";
+import React, { useState } from "react";
 import { success, error } from "@pnotify/core";
 import { getUserByName } from "../../helpers/user/user";
 import { postUser } from "../../helpers/user/user";
 import { defaults } from "@pnotify/core";
+import { Fade } from "react-awesome-reveal";
+import ChangeAppointment from "../modals/ChangeAppointment/ChangeAppointment";
 defaults.delay = 1000;
 const Form = ({
   type,
@@ -28,23 +30,24 @@ const Form = ({
   status,
   ...formData
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const [errorsuccessMessage, setError] = useState(false);
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (type.type === "no-request-test") {
+      return onSubmit();
+    }
     if (type.type === "no-request") {
       if (onSubmit) {
         return onSubmit()
           .catch((e) => {
-            return error(`${status.failMessage}, ${e.response.message}`);
+            error(`${status.failMessage}, ${e.message}`);
           })
           .then(() => {
             success(status.successMessage);
           });
       }
       return;
-    }
-    if (type.type === "no-request-test") {
-      return onSubmit();
     }
     try {
       event.preventDefault();
@@ -209,17 +212,45 @@ const Form = ({
           )}
         </div>
       </form>
-      {data
-        ? data.map((item) => {
+      {type.type === "no-request-test" &&
+      data.length > 0 &&
+      data[0] !== 0 &&
+      data[0] !== undefined
+        ? data.map((item, i) => {
+            console.log(item);
             return (
-              <div className={styles.appointment}>
-                <p className={styles.appointment__data}>
-                  {item.date}, {item.course}, {item.manager}, {item.number}{" "}
-                </p>
-              </div>
+              <React.Fragment key={i}>
+                <Fade cascade triggerOnce duration={300} direction="up">
+                  <ChangeAppointment
+                    isOpen={isOpen}
+                    handleClose={() => setIsOpen(!isOpen)}
+                    manager={item.manager_name}
+                    managerId={item.manager_id}
+                    id={item.appointment_id}
+                    course={item.course_id}
+                    crm={item.crm_link}
+                    day={item.day}
+                    hour={item.hour}
+                    slotId={item.slot_id}
+                    number={item.phone}
+                    messageInit={item.message}
+                  />
+                  <div
+                    className={styles.appointment}
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    <p className={styles.appointment__data}>
+                      {item.date.slice(0, 11)},{" "}
+                      {item.hour > 9 ? item.hour : "0" + item.hour}:00{" "}
+                      {item.course}, {item.manager_name}, {item.phone}{" "}
+                    </p>
+                  </div>
+                </Fade>
+              </React.Fragment>
             );
           })
-        : type.type === "no-request-test" && (
+        : type.type === "no-request-test" &&
+          data[0] === undefined && (
             <p className={styles.appointment__data}>
               There are no scheduled appointments for this CRM link
             </p>
