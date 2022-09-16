@@ -10,6 +10,8 @@ import ChangeAppointment from "../modals/ChangeAppointment/ChangeAppointment";
 defaults.delay = 1000;
 const Form = ({
   type,
+  postpone,
+  postponeClick,
   onSubmit,
   title,
   id,
@@ -209,6 +211,18 @@ const Form = ({
           {!type.button && (
             <InputSubmit buttonTitle={buttonTitle ? buttonTitle : "Save"} />
           )}
+          {postpone && (
+            <button
+              className={styles.input__submit}
+              type="button"
+              onClick={() => {
+                postponeClick();
+                handleClose();
+              }}
+            >
+              Postpone
+            </button>
+          )}
         </div>
       </form>
       {type.type === "no-request-test" &&
@@ -216,16 +230,17 @@ const Form = ({
       data[0] !== 0 &&
       data[0] !== undefined
         ? data.map((item, i) => {
-            console.log(item);
             return (
               <React.Fragment key={i}>
                 <Fade cascade triggerOnce duration={300} direction="up">
                   <ChangeAppointment
                     isOpen={isOpen}
+                    setIsOpenModal={setIsOpen}
                     handleClose={() => setIsOpen(!isOpen)}
                     manager={item.manager_name}
-                    managerId={item.manager_id}
+                    managerIdInit={item.manager_id}
                     id={item.appointment_id}
+                    weekId={item.week_id}
                     course={item.course_id}
                     crm={item.crm_link}
                     day={item.day}

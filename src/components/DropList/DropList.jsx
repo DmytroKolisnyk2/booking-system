@@ -13,6 +13,7 @@ const DropList = ({
   width,
   request,
   appointment,
+  changeAppointment,
 }) => {
   const [data, setData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -39,6 +40,9 @@ const DropList = ({
     get().then((res) => {
       setValue(res[0]?.name);
       if (setValueSecondary) {
+        if (changeAppointment) {
+          return;
+        }
         setValueSecondary(res[0]?.manager_id);
       }
     });

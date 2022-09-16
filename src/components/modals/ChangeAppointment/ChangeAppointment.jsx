@@ -6,10 +6,11 @@ import { getCourses } from "../../../helpers/course/course";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
 import FormInput from "../../FormInput/FormInput";
-import classnames from "classnames";
+import PostponeModal from "../PostponeModal/PostponeModal";
 
 const ChangeAppointment = ({
   isOpen,
+  setIsOpenModal,
   handleClose,
   manager,
   id,
@@ -17,13 +18,18 @@ const ChangeAppointment = ({
   crm,
   day,
   hour,
-  managerId,
+  managerIdInit,
   number,
+  weekId,
+  slotId,
   messageInit,
 }) => {
+  const [isOpenPostpone, setIsOpen] = useState(false);
   const [link, setLink] = useState("");
   const [courseId, setCourses] = useState("");
   const [message, setMessage] = useState("");
+  const [managerId, setManagerId] = useState(managerIdInit);
+  const [managerName, setManagerName] = useState(manager);
   const [age, setAge] = useState(0);
   const [phone, setPhone] = useState("");
   useEffect(() => {
@@ -34,6 +40,21 @@ const ChangeAppointment = ({
   }, [isOpen]);
   return (
     <>
+      <PostponeModal
+        isOpen={isOpenPostpone}
+        onClose={() => setIsOpen(false)}
+        appointmentId={id}
+        isAppointment
+        link={link}
+        courseId={courseId}
+        day={day}
+        hour={hour}
+        phone={phone}
+        age={age}
+        slotId={slotId}
+        weekId={weekId}
+        message={message}
+      />
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
@@ -46,7 +67,10 @@ const ChangeAppointment = ({
               data.append("course_id", courseId);
               data.append("phone", phone);
               data.append("age", age);
-              data.append("manager_id", managerId);
+              data.append("manager_id", managerIdInit);
+              data.append("week_id", weekId);
+              data.append("slot_id", slotId);
+              data.append("message", message);
               return putAppointment(data).finally(() => {
                 setLink("");
                 setCourses("");
@@ -56,6 +80,9 @@ const ChangeAppointment = ({
                 handleClose();
               });
             }}
+            postpone
+            postponeClick={() => setIsOpen(!isOpenPostpone)}
+            handleClose={() => setIsOpenModal(!isOpen)}
             status={{
               successMessage: "Successfully created appointment",
               failMessage: "Failed to create appointment",
@@ -63,8 +90,17 @@ const ChangeAppointment = ({
             type={{ type: "no-request" }}
             title="Change appointment info"
           >
-            <p className={classnames(styles.input__title)}>
-              Manager: <span>{manager} </span>
+            {/* <DropList
+              title="Manager"
+              value={managerName}
+              appointment={true}
+              changeAppointment={true}
+              setValue={setManagerName}
+              setValueSecondary={setManagerId}
+              request={() => getAvailableManagers(weekId, day, hour)}
+            /> */}
+            <p className={styles.input__title}>
+              Manager: <span>{managerName} </span>
             </p>
             <Select
               classname={styles.select__label}
