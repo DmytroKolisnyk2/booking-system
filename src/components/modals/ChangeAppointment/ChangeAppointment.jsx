@@ -1,62 +1,88 @@
 import styles from "./ChangeAppointment.module.scss";
 import Modal from "../../Modal/Modal";
 import React, { useState, useEffect } from "react";
-import { getAvailableManagers } from "../../../helpers/manager/manager";
-import { createAppointment } from "../../../helpers/appointment/appointment";
+import { putAppointment } from "../../../helpers/appointment/appointment";
 import { getCourses } from "../../../helpers/course/course";
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
 import FormInput from "../../FormInput/FormInput";
-import DropList from "../../DropList/DropList";
-import { useDispatch } from "react-redux";
-import { getCallerWeek } from "../../../redux/caller/caller-operations";
+import PostponeModal from "../PostponeModal/PostponeModal";
 
 const ChangeAppointment = ({
   isOpen,
+  setIsOpenModal,
   handleClose,
-  time,
+  manager,
+  id,
+  course,
+  crm,
+  day,
+  hour,
+  managerIdInit,
+  number,
   weekId,
-  dayIndex,
-  hourIndex,
+  slotId,
+  messageInit,
 }) => {
-  const dispatch = useDispatch();
+  const [isOpenPostpone, setIsOpen] = useState(false);
   const [link, setLink] = useState("");
   const [courseId, setCourses] = useState("");
-  const [manager, setManager] = useState("");
-  const [managerId, setManagerId] = useState("");
   const [message, setMessage] = useState("");
+  const [managerId, setManagerId] = useState(managerIdInit);
+  const [managerName, setManagerName] = useState(manager);
   const [age, setAge] = useState(0);
   const [phone, setPhone] = useState("");
-  // useEffect(() => {
-  //   !isOpen && dispatch(getCallerWeek({ weekId }));
-  // }, [isOpen, dispatch]);
+  useEffect(() => {
+    setCourses(course);
+    setPhone(number);
+    setMessage(messageInit);
+    setLink(crm);
+  }, [isOpen]);
   return (
     <>
+      <PostponeModal
+        isOpen={isOpenPostpone}
+        onClose={() => setIsOpen(false)}
+        appointmentId={id}
+        isAppointment
+        link={link}
+        courseId={courseId}
+        day={day}
+        hour={hour}
+        phone={phone}
+        age={age}
+        slotId={slotId}
+        weekId={weekId}
+        message={message}
+      />
       {isOpen && (
         <Modal open={isOpen} onClose={handleClose}>
           <Form
             onSubmit={() => {
               const data = new FormData();
               data.append("crm_link", link);
-              // return createAppointment(
-              //   data,
-              //   managerId,
-              //   weekId,
-              //   dayIndex,
-              //   time,
-              //   courseId,
-              //   phone,
-              //   age,
-              //   message
-              // ).finally(() => {
-              //   setLink("");
-              //   setCourses("");
-              //   setMessage("");
-              //   setAge(0);
-              //   setPhone("");
-              //   handleClose();
-              // });
+              data.append("appointment_id", id);
+              data.append("day", day);
+              data.append("hour", hour);
+              data.append("course_id", courseId);
+              data.append("phone", phone);
+              data.append("age", age);
+              data.append("manager_id", managerIdInit);
+              data.append("week_id", weekId);
+              data.append("slot_id", slotId);
+              data.append("message", message);
+              return putAppointment(data).finally(() => {
+                setLink("");
+                setCourses("");
+                setMessage("");
+                setAge(0);
+                setPhone("");
+                handleClose();
+              });
             }}
+            postpone
+            postponeClick={() => setIsOpen(!isOpenPostpone)}
+            handleClose={() => setIsOpenModal(!isOpen)}
             status={{
               successMessage: "Successfully created appointment",
               failMessage: "Failed to create appointment",
@@ -64,14 +90,18 @@ const ChangeAppointment = ({
             type={{ type: "no-request" }}
             title="Change appointment info"
           >
-            <DropList
+            {/* <DropList
               title="Manager"
-              value={manager}
+              value={managerName}
               appointment={true}
-              setValue={setManager}
+              changeAppointment={true}
+              setValue={setManagerName}
               setValueSecondary={setManagerId}
-              request={() => getAvailableManagers(weekId, dayIndex, hourIndex)}
-            />
+              request={() => getAvailableManagers(weekId, day, hour)}
+            /> */}
+            <p className={styles.input__title}>
+              Manager: <span>{managerName} </span>
+            </p>
             <Select
               classname={styles.select__label}
               value={courseId}

@@ -7,7 +7,15 @@ import { isManagerLoading } from "../../redux/manager/manager-selectors";
 import { getCallerLoading } from "../../redux/caller/caller-selectors";
 import { TailSpin } from "react-loader-spinner";
 
-const Table = ({ postponed, weekId, table, onClickSlotFn, consultation, caller }) => {
+const Table = ({
+  postponed,
+  weekId,
+  table,
+  onClickSlotFn,
+  consultation,
+  caller,
+  isAppointment,
+}) => {
   useEffect(() => {});
   const managerLoading = useSelector(isManagerLoading);
   const callerLoading = useSelector(getCallerLoading);
@@ -25,6 +33,7 @@ const Table = ({ postponed, weekId, table, onClickSlotFn, consultation, caller }
               <Fragment key={hourIndex}>
                 {caller ? (
                   <TableItem
+                    isAppointment={isAppointment}
                     postponed={postponed}
                     onClickFn={onClickSlotFn}
                     data={item.time}
