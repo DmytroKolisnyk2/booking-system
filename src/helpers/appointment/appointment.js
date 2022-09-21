@@ -1,10 +1,8 @@
-import axios from "axios";
+import axios from "../axios-config";
 
-axios.defaults.baseURL = "https://goiteens-rest-api.herokuapp.com";
-axios.defaults.headers.common["Accept"] = "application/json";
 axios.create({
-  withCredentials: true
-})
+  withCredentials: true,
+});
 
 const postAppointment = (credentials) => {
   return axios
@@ -62,10 +60,4 @@ const createAppointment = (
     });
 };
 
-export {
-  getAppointment,
-  postAppointment,
-  createAppointment,
-  putAppointment,
-  getAppointmentByCrm,
-};
+export { getAppointment, postAppointment, createAppointment, putAppointment, getAppointmentByCrm };

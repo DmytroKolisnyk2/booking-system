@@ -1,7 +1,4 @@
-import axios from "axios";
-
-axios.defaults.baseURL = "https://goiteens-rest-api.herokuapp.com";
-axios.defaults.headers.common["Accept"] = "application/json";
+import axios from "../axios-config";
 
 const getGroups = () => {
   return axios

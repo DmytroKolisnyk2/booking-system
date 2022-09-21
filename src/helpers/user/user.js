@@ -1,8 +1,5 @@
-import axios from "axios";
+import axios from "../axios-config";
 import { error } from "@pnotify/core";
-
-axios.defaults.baseURL = "https://goiteens-rest-api.herokuapp.com";
-axios.defaults.headers.common["Accept"] = "application/json";
 
 const getRoles = () => {
   return axios
