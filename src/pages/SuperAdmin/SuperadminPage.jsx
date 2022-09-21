@@ -13,7 +13,6 @@ const SuperAdministrator = () => {
           { text: "users", path: path.users },
           { text: "groups", path: path.groups },
           { text: "courses", path: path.courses },
-          { text: "actions", path: path.actions },
           { text: "Search by CRM", path: path.crm },
         ]}
       />
