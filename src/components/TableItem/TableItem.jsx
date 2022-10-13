@@ -113,7 +113,7 @@ const TableItem = ({
               />
             )}
           </>
-        ) : colorId === 6 || colorId === 7 || colorId === 8 ? (
+        ) : colorId === 6 || colorId === 7 || colorId === 8 || colorId === 3 ? (
           <>
             <li className={activeClassnames(colorId)}>
               {`${data}:00`}
