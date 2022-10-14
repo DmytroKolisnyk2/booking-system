@@ -4,6 +4,7 @@ import { getAppointmentByCrm } from "../../helpers/appointment/appointment";
 import FormInput from "../FormInput/FormInput";
 import Form from "../Form/Form";
 import { success, error, defaults } from "@pnotify/core";
+import {Fade} from "react-awesome-reveal"
 defaults.delay = 1000;
 
 export default function CrmLinks() {
@@ -12,48 +13,49 @@ export default function CrmLinks() {
 
   return (
     <>
-      <Form
-        onSubmit={async () => {
-          const formData = new FormData();
-          formData.append("crm_link", link);
-          const res = await getAppointmentByCrm(formData)
-            .then((res) => {
-              setLink("");
-              success("Succesfully found")
-              return res.data;
-            })
-            .catch((err) => {
-              error(`Appointment not found, ${err.message}`)
-              setData([undefined]);
-            });
-          res && setData([res]);
+      <Fade cascade triggerOnce duration={500} direction="up">
+        <Form
+          onSubmit={async () => {
+            const formData = new FormData();
+            formData.append("crm_link", link);
+            const res = await getAppointmentByCrm(formData)
+              .then((res) => {
+                setLink("");
+                success("Succesfully found");
+                return res.data;
+              })
+              .catch((err) => {
+                error(`Appointment not found, ${err.message}`);
+                setData([undefined]);
+              });
+            res && setData([res]);
 
-          return res;
-        }}
-        isDescription={true}
-        type={{ type: "no-request-test" }}
-        status={{
-          successMessage: "Successfully found",
-          failMessage: "Appointment not found",
-        }}
-        buttonTitle={"Search"}
-        width={"400px"}
-        link={link}
-        title={false}
-        data={data}
-      >
-        <FormInput
-          title="CRM link:"
-          type="text"
-          name="crm"
-          value={link}
-          width={"50%"}
-          placeholder="CRM link"
-          isRequired={true}
-          handler={setLink}
-        />
-      </Form>
-
+            return res;
+          }}
+          isDescription={true}
+          type={{ type: "no-request-test" }}
+          status={{
+            successMessage: "Successfully found",
+            failMessage: "Appointment not found",
+          }}
+          buttonTitle={"Search"}
+          width={"400px"}
+          link={link}
+          title={false}
+          data={data}
+        >
+          <FormInput
+            title="CRM link:"
+            type="text"
+            name="crm"
+            value={link}
+            width={"50%"}
+            placeholder="CRM link"
+            isRequired={true}
+            handler={setLink}
+          />
+        </Form>
+      </Fade>
       {/* {errorMessage && <p className="error"> {errorMessage} </p>} */}
       {/* {courses?.length > 0 && (
         <div className={styles.wrapper}>

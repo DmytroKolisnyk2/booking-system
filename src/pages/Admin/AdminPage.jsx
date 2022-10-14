@@ -28,6 +28,7 @@ const AdminPage = () => {
           { text: "users", path: path.users },
           { text: "groups", path: path.groups },
           { text: "courses", path: path.courses },
+          { text: "Search by CRM", path: path.crm },
         ]}
         user={{ name: adminName, role: "Admin" }}
       />

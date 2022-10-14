@@ -60,6 +60,7 @@ const App = () => {
         <Route path={path.manager} element={<ManagerPage />}>
           <Route path={path.consultations} element={<ConsultationsPage />} />
           <Route path={path.planning} element={<PlanningPage />} />
+          <Route path={path.crm} element={<CrmPage />} />
         </Route>
 
         <Route path={path.confirmator} element={<ConfirmatorPage />} />
