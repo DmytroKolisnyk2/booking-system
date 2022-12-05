@@ -1,8 +1,3 @@
-
-# Project Title
-
-A brief description of what this project does and who it's for
-
 # Booking system
 - [Get started](#get-started)
 - [Description](#description)
