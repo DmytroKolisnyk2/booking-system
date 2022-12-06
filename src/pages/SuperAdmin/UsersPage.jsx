@@ -36,7 +36,7 @@ export default function UsersPage() {
   }, [isOpen]);
   return (
     <>
-      <h3 className={styles.main_title}>Manage administrators</h3>
+      <h3 className={styles.main_title}>Manage users</h3>
       <div className={styles.main_wrapper2}>
         {usersArray.map((item, index) => {
           return (

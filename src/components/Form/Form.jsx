@@ -143,6 +143,7 @@ const Form = ({
       console.error(e);
     }
   };
+  
   const handleDelete = async () => {
     if (manager === true) {
       const res = await requests.getByName(startName);
