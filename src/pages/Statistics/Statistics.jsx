@@ -10,7 +10,7 @@ const Statistics = () => {
       <section className={styles.home}>
      <Fade triggerOnce duration={250} direction="down">
           <p className={styles.error}>
-            <span>404</span>Not Found
+           Statistics page.
           </p>
      </Fade>
       </section>
