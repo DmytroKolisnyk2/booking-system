@@ -18,4 +18,4 @@ const Statistics = () => {
   );
 };
 
-export default HomePage;
+export default Statistics;
