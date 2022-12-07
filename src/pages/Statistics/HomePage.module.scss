@@ -1,0 +1,16 @@
+@import "../../styles/variables.scss";
+.error{
+  font-size: 80px;
+  font-family: $poppins;
+  margin-top: -50px;
+  & span{
+    margin-right: 15px;
+    font-weight: 800;
+    color: tomato;
+  }
+}
+.home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
