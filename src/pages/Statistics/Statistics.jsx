@@ -1,9 +1,9 @@
 import { Fade } from "react-awesome-reveal";
 import React from "react";
 import Header from "../../components/Header/Header";
-import styles from "./HomePage.module.scss";
+import styles from "./Statistics.module.scss";
 
-const HomePage = () => {
+const Statistics = () => {
   return (
     <>
       <Header endpoints={[{ text: "superadmin", path: "superadmin/users/" }]} />

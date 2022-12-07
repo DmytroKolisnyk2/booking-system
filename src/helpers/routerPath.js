@@ -14,5 +14,6 @@ const path = {
   consultations: "consultations/",
   planning: "planning/",
   crm: "searchcrm/",
+  statistics: "/statistics/",
 };
 export default path;

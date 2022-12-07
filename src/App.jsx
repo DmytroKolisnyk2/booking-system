@@ -31,6 +31,8 @@ import ConfirmatorPage from "./pages/Confirmator/ConfirmatorPage";
 
 import HomePage from "./pages/HomePage/HomePage";
 
+import HomePage from "./pages/Statistics/HomePage";
+
 import Footer from "./components/Footer/Footer";
 const App = () => {
   return (
@@ -67,6 +69,7 @@ const App = () => {
         <Route path={path.caller} element={<CallerPage />} />
 
         <Route path={path.all} element={<HomePage />} />
+        <Route path={path.statistics} element={<Statistics />} />
       </Routes>
       <Footer />
     </>
