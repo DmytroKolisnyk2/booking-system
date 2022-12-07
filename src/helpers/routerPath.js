@@ -3,6 +3,7 @@ const path = {
   home: "/",
   modals: "/modals/",
   confirmator: "/confirmator/:confirmatorId/",
+  confirmed: "/confirmed/:confirmatorId/",
   caller: "/caller/:callerId/",
   superAdmin: "/superAdmin/",
   admin: "/admin/:adminId/",

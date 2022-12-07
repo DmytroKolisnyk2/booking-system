@@ -28,6 +28,8 @@ import PlanningPage from "./pages/Manager/PlanningPage";
 
 import CallerPage from "./pages/Caller/CallerPage";
 import ConfirmatorPage from "./pages/Confirmator/ConfirmatorPage";
+import ConfirmedPage from "./pages/Confirmator/ConfirmedPage";
+
 
 import HomePage from "./pages/HomePage/HomePage";
 
@@ -66,6 +68,7 @@ const App = () => {
         </Route>
 
         <Route path={path.confirmator} element={<ConfirmatorPage />} />
+        <Route path={path.confirmed} element={<ConfirmedPage />} />
         <Route path={path.caller} element={<CallerPage />} />
 
         <Route path={path.all} element={<HomePage />} />
