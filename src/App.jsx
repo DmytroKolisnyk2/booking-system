@@ -31,7 +31,7 @@ import ConfirmatorPage from "./pages/Confirmator/ConfirmatorPage";
 
 import HomePage from "./pages/HomePage/HomePage";
 
-import HomePage from "./pages/Statistics/HomePage";
+import Statistics from "./pages/Statistics/Statistics";
 
 import Footer from "./components/Footer/Footer";
 const App = () => {
