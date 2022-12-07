@@ -6,7 +6,7 @@ import styles from "./Statistics.module.scss";
 const Statistics = () => {
   return (
     <>
-      <Header endpoints={[{ text: "superadmin", path: "superadmin/users/" }]} />
+      <Header endpoints={[{ text: "To Superadmin page", path: "superadmin/users/" }]} />
       <section className={styles.home}>
      <Fade triggerOnce duration={250} direction="down">
           <p className={styles.error}>
