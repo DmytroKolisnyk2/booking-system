@@ -2,6 +2,10 @@
   "name": "booking-system",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": ">=9.0.0 <10.0.0",
+    "node": ">=16.0.0 <17.0.0"
+  },
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
