@@ -7,16 +7,16 @@ import { error } from "@pnotify/core";
 import {
   DECREASE_DAY,
   FIRST_HALF,
-  GET_CURRENT_CONFIRMATOR,
-  GET_WEEK_CONFIRMATOR,
+  GET_CURRENT_CONFIRMED,
+  GET_WEEK_CONFIRMED,
   INCREASE_DAY,
   SECOND_HALF,
-} from "./confirmator-types";
+} from "./confirmed-types";
 import { defaults } from "@pnotify/core";
 defaults.delay = 1000;
 
 const getCurrentConfirmed = createAsyncThunk(
-  GET_CURRENT_CONFIRMATOR,
+  GET_CURRENT_CONFIRMED,
   (managerId, { rejectWithValue }) => {
     return getCurrentConfirmedData(managerId)
       .then(({ data }) => data)
@@ -27,7 +27,7 @@ const getCurrentConfirmed = createAsyncThunk(
   }
 );
 const getConfirmedWeek = createAsyncThunk(
-  GET_WEEK_CONFIRMATOR,
+  GET_WEEK_CONFIRMED,
   ({ currentDayId, currentWeekId, half }, { rejectWithValue }) => {
     return getConfirmedWeekData(currentWeekId, currentDayId, half)
       .then(({ data }) => data)
