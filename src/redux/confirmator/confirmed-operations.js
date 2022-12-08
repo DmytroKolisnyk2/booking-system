@@ -2,7 +2,7 @@ import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getCurrentConfirmedData,
   getConfirmedWeekData,
-} from "../../helpers/confirmation/confirmation";
+} from "../../helpers/confirmation/confirmed";
 import { error } from "@pnotify/core";
 import {
   DECREASE_DAY,
