@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./ConfirmatorPage.module.scss"; //Оформлення
 import BgWrapper from "../../components/BgWrapper/BgWrapper"; //Елемент сторінки
-import Confirmator from "../../components/Confirmation/Confirmation";  // структурвання виводу
+import Confirmator from "../../components/Confirmation/Confirmed";  // структурвання виводу
 import ConfirmationButtons from "../../components/ConfirmationButtons/ConfirmationButtons"; //вантажимо кнопочки
 import Header from "../../components/Header/Header";  // підключаємо шапку
 import { useParams } from "react-router-dom";
