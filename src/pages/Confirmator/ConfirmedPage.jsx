@@ -6,7 +6,7 @@ import Confirmator from "../../components/Confirmation/Confirmation";  // стр
 import ConfirmationButtons from "../../components/ConfirmationButtons/ConfirmationButtons"; //вантажимо кнопочки
 import Header from "../../components/Header/Header";  // підключаємо шапку
 import { useParams } from "react-router-dom";
-import { getCurrentConfirmator } from "../../redux/confirmator/confirmed-operations"; // Ключові дані
+import { getCurrentConfirmed } from "../../redux/confirmator/confirmed-operations"; // Ключові дані
 import ConfirmatorComments from "../../components/ConfirmatorComments/ConfirmatorComments";  // коментарі 
 import ConfirmatorDatePicker from "../../components/ConfirmatorDatePicker/ConfirmatorDatePicker"; // дата пікер
 import { getUserById } from "../../helpers/user/user";  // отримаємо менеджерів
@@ -21,7 +21,7 @@ const ConfirmedPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCurrentConfirmator());
+    dispatch(getCurrentConfirmed());
     getUserById(+confirmatorId)
       .then((data) => {
         setConfirmatorName(data.data.name);

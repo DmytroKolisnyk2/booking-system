@@ -1,7 +1,7 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import {
-  getCurrentConfirmatorData,
-  getConfirmatorWeekData,
+  getCurrentConfirmedData,
+  getConfirmedWeekData,
 } from "../../helpers/confirmation/confirmation";
 import { error } from "@pnotify/core";
 import {
@@ -15,10 +15,10 @@ import {
 import { defaults } from "@pnotify/core";
 defaults.delay = 1000;
 
-const getCurrentConfirmator = createAsyncThunk(
+const getCurrentConfirmed = createAsyncThunk(
   GET_CURRENT_CONFIRMATOR,
   (managerId, { rejectWithValue }) => {
-    return getCurrentConfirmatorData(managerId)
+    return getCurrentConfirmedData(managerId)
       .then(({ data }) => data)
       .catch((data) => {
         error(`${data.response.data.message ? data.response.data.message : data.message}`);
@@ -26,7 +26,7 @@ const getCurrentConfirmator = createAsyncThunk(
       });
   }
 );
-const getConfirmatorWeek = createAsyncThunk(
+const getConfirmedWeek = createAsyncThunk(
   GET_WEEK_CONFIRMATOR,
   ({ currentDayId, currentWeekId, half }, { rejectWithValue }) => {
     return getConfirmatorWeekData(currentWeekId, currentDayId, half)
@@ -47,6 +47,6 @@ export {
   secondHalf,
   decreaseDay,
   increaseDay,
-  getCurrentConfirmator,
-  getConfirmatorWeek,
+  getCurrentConfirmed,
+  getConfirmedWeek,
 };
