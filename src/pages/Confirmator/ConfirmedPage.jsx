@@ -10,7 +10,7 @@ import { getCurrentConfirmed } from "../../redux/confirmator/confirmed-operation
 import ConfirmatorComments from "../../components/ConfirmatorComments/ConfirmatorComments";  // коментарі 
 import ConfirmatorDatePicker from "../../components/ConfirmatorDatePicker/ConfirmatorDatePicker"; // дата пікер
 import { getUserById } from "../../helpers/user/user";  // отримаємо менеджерів
-import { getConfirmatorAppointments } from "../../redux/confirmator/confirmed-selectors"; // загальна проброска типів
+import { getConfirmedAppointments } from "../../redux/confirmator/confirmed-selectors"; // загальна проброска типів
 
 const ConfirmedPage = () => {
   const [value, setValue] = useState("");
