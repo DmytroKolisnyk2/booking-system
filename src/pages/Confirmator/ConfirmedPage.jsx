@@ -16,7 +16,7 @@ const ConfirmedPage = () => {
   const [value, setValue] = useState("");
   const { confirmatorId } = useParams();
   const [confirmatorName, setConfirmatorName] = useState("");
-  const appointments = useSelector(getConfirmatorAppointments);
+  const appointments = useSelector(getConfirmedAppointments);
 
   const dispatch = useDispatch();
 
