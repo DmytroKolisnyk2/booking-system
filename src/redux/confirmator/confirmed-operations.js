@@ -1,26 +1,24 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import {
-  getCurrentConfirmedData,
-  getConfirmedWeekData,
-} from "../../helpers/confirmation/confirmed"; //отримання ключових даних
-
-
+  getCurrentConfirmatorData,
+  getConfirmatorWeekData,
+} from "../../helpers/confirmation/confirmation";
 import { error } from "@pnotify/core";
 import {
   DECREASE_DAY,
   FIRST_HALF,
-  GET_CURRENT_CONFIRMED,
-  GET_WEEK_CONFIRMED,
+  GET_CURRENT_CONFIRMATOR,
+  GET_WEEK_CONFIRMATOR,
   INCREASE_DAY,
   SECOND_HALF,
 } from "./confirmator-types";
 import { defaults } from "@pnotify/core";
 defaults.delay = 1000;
 
-const getCurrentConfirmed = createAsyncThunk(
+const getCurrentConfirmator = createAsyncThunk(
   GET_CURRENT_CONFIRMATOR,
   (managerId, { rejectWithValue }) => {
-    return getCurrentConfirmedData(managerId)
+    return getCurrentConfirmatorData(managerId)
       .then(({ data }) => data)
       .catch((data) => {
         error(`${data.response.data.message ? data.response.data.message : data.message}`);
