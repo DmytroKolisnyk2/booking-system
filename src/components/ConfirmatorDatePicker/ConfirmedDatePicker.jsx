@@ -12,7 +12,7 @@ import {
 import {
   decreaseDay,
   firstHalf,
-  getConfirmatorWeek,
+  getConfirmedWeek,
   increaseDay,
   secondHalf,
 } from "../../redux/confirmator/confirmed-operations";
@@ -53,7 +53,7 @@ export default function ConfirmedDatePicker() {
 
   useEffect(() => {
     if (!currentWeekId || !half || !tableDate || !date) return;
-    dispatch(getConfirmatorWeek({ currentWeekId, currentDayId, half }));
+    dispatch(getConfirmedWeek({ currentWeekId, currentDayId, half }));
   }, [half, date]);
 
   return (
