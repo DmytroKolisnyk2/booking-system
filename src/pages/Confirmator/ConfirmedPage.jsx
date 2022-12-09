@@ -8,7 +8,7 @@ import Header from "../../components/Header/Header";  // підключаємо 
 import { useParams } from "react-router-dom";
 import { getCurrentConfirmed } from "../../redux/confirmator/confirmed-operations"; // Ключові дані
 import ConfirmatorComments from "../../components/ConfirmatorComments/ConfirmatorComments";  // коментарі 
-import ConfirmatorDatePicker from "../../components/ConfirmatorDatePicker/ConfirmatorDatePicker"; // дата пікер
+import ConfirmedDatePicker from "../../components/ConfirmatorDatePicker/ConfirmedDatePicker"; // дата пікер
 import { getUserById } from "../../helpers/user/user";  // отримаємо менеджерів
 import { getConfirmedAppointments } from "../../redux/confirmator/confirmed-selectors"; // загальна проброска типів
 
