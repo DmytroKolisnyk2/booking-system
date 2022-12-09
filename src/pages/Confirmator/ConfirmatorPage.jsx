@@ -37,10 +37,9 @@ const ConfirmatorPage = () => {
     <>
       <Header 
       endpoints={[
-        { text: "users", path: path.users },
-        { text: "groups", path: path.groups },
-        { text: "courses", path: path.courses },
-        { text: "Search by CRM", path: path.crm },
+        { text: "Confirmator", path: 'path.users' },
+        { text: "Confirmed", path: '../confirmed'+confirmatorId },
+       
       ]}
       user={{ name: confirmatorName, role: "Confirmator" }} />
 
