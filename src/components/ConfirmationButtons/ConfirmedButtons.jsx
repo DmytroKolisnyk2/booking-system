@@ -24,11 +24,7 @@ const ConfirmatorButtons = ({ value, setValue }) => {
       class: "btn_red",
       id: 8,
     },
-    {
-      btn: "confirmed",
-      class: "btn_blue",
-      id: 4,
-    },
+   
   ];
   if (error) {
     return <h2>{error}</h2>;
