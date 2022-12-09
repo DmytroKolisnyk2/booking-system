@@ -33,7 +33,13 @@ const ConfirmedPage = () => {
 
   return (
     <>
-      <Header user={{ name: confirmatorName, role: "Confirmator" }} />
+      <Header 
+      endpoints={[
+        { text: "Confirmator", path: '../confirmator/'+confirmatorId },
+        { text: "Confirmed", path: '../confirmed/'+confirmatorId },
+       
+      ]}
+      user={{ name: confirmatorName, role: "Confirmator" }} />
 
       <BgWrapper top={-200} title="Confirmed" />
       <ConfirmedDatePicker />
