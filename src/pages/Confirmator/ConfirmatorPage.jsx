@@ -12,6 +12,8 @@ import ConfirmatorDatePicker from "../../components/ConfirmatorDatePicker/Confir
 import { getUserById } from "../../helpers/user/user";
 import { getConfirmatorAppointments } from "../../redux/confirmator/confirmator-selectors";
 
+import path from "../../helpers/routerPath";
+
 const ConfirmatorPage = () => {
   const [value, setValue] = useState("");
   const { confirmatorId } = useParams();
@@ -33,7 +35,14 @@ const ConfirmatorPage = () => {
 
   return (
     <>
-      <Header user={{ name: confirmatorName, role: "Confirmator" }} />
+      <Header 
+      endpoints={[
+        { text: "users", path: path.users },
+        { text: "groups", path: path.groups },
+        { text: "courses", path: path.courses },
+        { text: "Search by CRM", path: path.crm },
+      ]}
+      user={{ name: confirmatorName, role: "Confirmator" }} />
 
       <BgWrapper top={-200} title="Confirmator" />
       <ConfirmatorDatePicker />
