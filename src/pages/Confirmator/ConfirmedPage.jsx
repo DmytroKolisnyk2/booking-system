@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./ConfirmatorPage.module.scss"; //Оформлення
 import BgWrapper from "../../components/BgWrapper/BgWrapper"; //Елемент сторінки
 import Confirmator from "../../components/Confirmation/Confirmed";  // структурвання виводу
-import ConfirmationButtons from "../../components/ConfirmationButtons/ConfirmationButtons"; //вантажимо кнопочки
+import ConfirmationButtons from "../../components/ConfirmationButtons/ConfirmedButtons"; //вантажимо кнопочки
 import Header from "../../components/Header/Header";  // підключаємо шапку
 import { useParams } from "react-router-dom";
 import { getCurrentConfirmed } from "../../redux/confirmator/confirmed-operations"; // Ключові дані
