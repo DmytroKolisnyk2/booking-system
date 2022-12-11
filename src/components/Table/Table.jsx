@@ -7,6 +7,7 @@ import { isManagerLoading } from "../../redux/manager/manager-selectors";
 import { getCallerLoading } from "../../redux/caller/caller-selectors";
 import { TailSpin } from "react-loader-spinner";
 
+console.log("Table");
 const Table = ({
   postponed,
   weekId,

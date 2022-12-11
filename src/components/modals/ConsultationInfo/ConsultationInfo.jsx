@@ -18,6 +18,8 @@ import {
 import Select from "../../Select/Select";
 import Form from "../../Form/Form";
 
+console.log("ConsultationInfo");
+
 const ConsultationInfo = ({
   isOpen,
   handleClose,
