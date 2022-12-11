@@ -30,8 +30,9 @@ const ConsultationPage = () => {
   const weekId = useSelector(getWeekId);
 
   const onClickSlotButton = (dayIndex, hourIndex) => {
+    console.log("Point1");
     dispatch(setManagerLoading(true));
-    console.log("Point");
+    console.log("Point2");
     return postStartConsultation(
       +weekId,
       dayIndex,
@@ -54,6 +55,7 @@ const ConsultationPage = () => {
                 colorId: 6,
               })
             );
+            console.log("Point3");
           })
           .catch((error) => dispatch(setManagerError(error.message)));
       })
