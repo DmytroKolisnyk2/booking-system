@@ -211,6 +211,12 @@ const Form = ({
           {type.additionalType && <InputDelete handleDelete={handleDelete} />}
           {!type.button && (
             <InputSubmit buttonTitle={buttonTitle ? buttonTitle : "Save"} />
+            
+          )}
+          
+          {!type.button && (
+            <InputSubmit buttonTitle={buttonTitle ? buttonTitle : "Save"} />
+            
           )}
           {postpone && (
             <button
