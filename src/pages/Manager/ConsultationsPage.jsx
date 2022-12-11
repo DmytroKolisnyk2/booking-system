@@ -22,6 +22,7 @@ import StatusDefinition from "../../components/StatusDefinition/StatusDefinition
 import DatePicker from "../../components/DatePicker/DatePicker";
 import Days from '../../components/Days/Days';
 
+console.log("start");
 const ConsultationPage = () => {
   const { managerId } = useParams();
   const dispatch = useDispatch();
