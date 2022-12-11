@@ -25,6 +25,8 @@ import { createPortal } from "react-dom";
 
 const modalRef = document.querySelector("#postpone-modal");
 
+console.log("postpone-modal");
+
 export default function PostponeModal({
   isOpen,
   onClose,
@@ -47,7 +49,7 @@ export default function PostponeModal({
   const weekId = useSelector(getWeekId);
 
   const onClickSlotFn = (data) => {
-    // console.log(data);
+    console.log(data);
     // setData(data)
     setIsOpenDropdown(data);
   };
