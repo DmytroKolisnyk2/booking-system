@@ -38,6 +38,7 @@ const ConfirmatorButtons = ({ value, setValue }) => {
               return (
                 <button
                   onClick={() => {
+                    console.log("postponed");
                     if (i.btn === "postponed") setIsOpen(item.appointment_id);
                     return setValue({ ...value, [item.appointment_id]: i.btn });
                   }}
