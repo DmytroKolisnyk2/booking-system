@@ -31,6 +31,7 @@ const ConsultationPage = () => {
 
   const onClickSlotButton = (dayIndex, hourIndex) => {
     dispatch(setManagerLoading(true));
+    console.log("Point");
     return postStartConsultation(
       +weekId,
       dayIndex,
