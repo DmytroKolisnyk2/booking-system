@@ -78,5 +78,5 @@ const ConsultationPage = () => {
     </section>
   );
 };
-
+console.log("start02");
 export default ConsultationPage;
