@@ -35,6 +35,7 @@ const ConfirmatorButtons = ({ value, setValue }) => {
         {appointments.map((item) => (
           <div key={item.appointment_id} className="btn_wrapper">
             {confirmationTable.map((i) => {
+              console.log("confirmation map");
               return (
                 <button
                   onClick={() => {
