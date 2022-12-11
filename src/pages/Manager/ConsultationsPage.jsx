@@ -64,7 +64,7 @@ const ConsultationPage = () => {
       .catch((error) => dispatch(setManagerError(error.message)))
       .finally(() => dispatch(setManagerLoading(false)));
   };
-
+  console.log("Point01");
   useEffect(() => {
     console.log("use Effect");
     dispatch(getManagerCurrentWorkWeek(+managerId));
