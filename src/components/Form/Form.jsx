@@ -7,6 +7,7 @@ import { getUserByName } from "../../helpers/user/user";
 import { postUser } from "../../helpers/user/user";
 import { Fade } from "react-awesome-reveal";
 import ChangeAppointment from "../modals/ChangeAppointment/ChangeAppointment";
+import ConfirmationButtons from "../../components/ConfirmationButtons/ConfirmedButtons"; //вантажимо кнопочки
 defaults.delay = 1000;
 const Form = ({
   type,
@@ -216,16 +217,7 @@ const Form = ({
           
           {type.type === "no-request" && (
 
-            <button
-              className={styles.input__submit}
-              type="button"
-              onClick={() => {
-                postponeClick();
-                handleClose();
-              }}
-            >
-              Postpone!
-            </button>            
+              <ConfirmationButtons value={value} setValue={setValue} />
           )}
           {postpone && (
             <button
@@ -236,7 +228,7 @@ const Form = ({
                 handleClose();
               }}
             >
-              Postpone!
+              Postpone
             </button>
           )}
         </div>

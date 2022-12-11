@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "react-calendar/dist/Calendar.css";
 import styles from "./ManagerPage.module.scss";
 import Table from "../../components/Table/Table";
+import ConfirmationButtons from "../../components/ConfirmationButtons/ConfirmedButtons"; //вантажимо кнопочки
 import {
   getDate,
   getTable,
