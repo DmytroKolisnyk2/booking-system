@@ -214,7 +214,7 @@ const Form = ({
             
           )}
           
-          {!type.button && (
+          {type.type === "no-request" && (
 
             <button
               className={styles.input__submit}
@@ -224,7 +224,7 @@ const Form = ({
                 handleClose();
               }}
             >
-              Postpone
+              Postpone!
             </button>            
           )}
           {postpone && (
@@ -236,7 +236,7 @@ const Form = ({
                 handleClose();
               }}
             >
-              Postpone
+              Postpone!
             </button>
           )}
         </div>
