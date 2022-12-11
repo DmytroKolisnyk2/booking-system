@@ -24,6 +24,7 @@ import Days from '../../components/Days/Days';
 
 console.log("start");
 const ConsultationPage = () => {
+  console.log("Point0");
   const { managerId } = useParams();
   const dispatch = useDispatch();
   const tableDate = useSelector(getDate);
@@ -65,6 +66,7 @@ const ConsultationPage = () => {
   };
 
   useEffect(() => {
+    console.log("use Effect");
     dispatch(getManagerCurrentWorkWeek(+managerId));
   }, [dispatch, managerId]);
   return (
