@@ -137,6 +137,9 @@ const ConsultationInfo = ({
                 onChange={(e) => setMessage(e.target.value)}
               ></textarea>
             </label>
+            <label className={styles.input__label}>
+              <p className={styles.input__label}>Some Text</p>
+            </label>
           </Form>
         </Modal>
       )}
