@@ -215,8 +215,17 @@ const Form = ({
           )}
           
           {!type.button && (
-            <InputSubmit buttonTitle={buttonTitle ? buttonTitle : "Save"} />
-            
+
+            <button
+              className={styles.input__submit}
+              type="button"
+              onClick={() => {
+                postponeClick();
+                handleClose();
+              }}
+            >
+              Postpone
+            </button>            
           )}
           {postpone && (
             <button
