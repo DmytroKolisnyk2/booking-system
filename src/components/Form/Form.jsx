@@ -217,7 +217,7 @@ const Form = ({
           
           {type.type === "no-request" && (
 
-              <ConfirmationButtons value={value} setValue={setValue} />
+              <ConfirmationButtons value='' setValue='' />
           )}
           {postpone && (
             <button
