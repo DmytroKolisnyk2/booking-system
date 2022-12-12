@@ -18,7 +18,8 @@ export default function ManagerPage() {
         endpoints={[
           { text: "planning", path: path.planning },
           { text: "consultations", path: path.consultations },
-          { text: "Search by CRM", path: path.crm },
+          { text: "CRM", path: path.crm },
+          { text: "Postpone", path: path.postpone },
         ]}
         user={{ name: managerName, role: "Manager" }}
       />

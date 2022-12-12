@@ -16,5 +16,6 @@ const path = {
   planning: "planning/",
   crm: "searchcrm/",
   statistics: "/statistics/",
+  postpone: "/confirmator/34/",
 };
 export default path;
