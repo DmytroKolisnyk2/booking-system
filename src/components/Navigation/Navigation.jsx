@@ -14,6 +14,7 @@ export default function Navigation({ links, user }) {
           <p className={styles["role"]}>{user.role + ": " + user.name}</p>
         )}
       </Fade>
+      <div></div>
       <ul className={styles["list"]}>
        <Fade duration={250} cascade triggerOnce direction="up">
           {links.map((item) => (
