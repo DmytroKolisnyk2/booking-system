@@ -7,8 +7,8 @@ const ControlButtons = () => {
   return (
     <BgWrapper top={-80} title="Manager">
       <div className={styles.wrapperStatsDefins}>
-        <div className={classNames(styles.statDefin, styles.bck_blue)}>Scheduled</div>
-        <div className={classNames(styles.statDefin, styles.bck_pink)}>Confirmed</div>
+        <div className={classNames(styles.statDefin, styles.bck_scheduled)}>Scheduled</div>
+        <div className={classNames(styles.statDefin, styles.bck_confirmed)}>Confirmed</div>
         <div className={classNames(styles.statDefin, styles.bck_orange)}>Going on now</div>
         <div className={classNames(styles.statDefin, styles.bck_green)}>
           Successfully completed
