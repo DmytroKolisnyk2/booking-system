@@ -5,15 +5,15 @@ import styles from "./Navigation.module.scss";
 
 export default function Navigation({ links, user }) {
   return (
-    <Fade duration={200} triggerOnce delay={300} direction="up">
-    {links.length === 0 && (
-      <p className={styles["endpoints_role"]}>{user.role + ": " + user.name}</p>
-    )}
-    {user && links.length !== 0 && (
-      <p className={styles["role"]}>{user.role + ": " + user.name}</p>
-    )}
-  </Fade>
     <nav className={styles["menu"]}>
+      <Fade duration={200} triggerOnce delay={300} direction="up">
+        {links.length === 0 && (
+          <p className={styles["endpoints_role"]}>{user.role + ": " + user.name}</p>
+        )}
+        {user && links.length !== 0 && (
+          <p className={styles["role"]}>{user.role + ": " + user.name}</p>
+        )}
+      </Fade>
       <ul className={styles["list"]}>
        <Fade duration={250} cascade triggerOnce direction="up">
           {links.map((item) => (
