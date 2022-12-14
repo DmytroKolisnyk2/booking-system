@@ -215,10 +215,7 @@ const Form = ({
             
           )}
           
-          {type.type === "no-request" && (
 
-              <ConfirmationButtons value='' setValue='' />
-          )}
           {postpone && (
             <button
               className={styles.input__submit}
